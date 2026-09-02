@@ -1293,8 +1293,8 @@ async function openFlightModal(flight) {
   // External Search Links
   document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
   document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
-  document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
-  document.getElementById('m-adsb-search-btn').href = `https://globe.adsbexchange.com/?callsign=${encodeURIComponent(callsign)}`;
+  document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent((flight.flight_number ? flight.flight_number.replace(/\s+/g, '') : callsign))}`;
+  document.getElementById('m-adsb-search-btn').href = `https://globe.adsb.fi/?callsign=${encodeURIComponent(callsign)}`;
 
   // SimBrief & SkyVector Links (Prefilled Airline, Callsign, Aircraft, Exact UTC Date & Time, Auto-computed Route)
   const simbriefBtn = document.getElementById('m-simbrief-btn');
