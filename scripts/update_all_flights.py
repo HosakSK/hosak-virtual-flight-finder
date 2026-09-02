@@ -19,28 +19,60 @@ for icao, apt in airports.items():
     if iata:
         iata_to_icao[iata] = icao
 
-# Major European and global hubs
+# Complete List of Core Hubs & Dedicated Bases for All Requested Airlines
 HUB_ICAOS = [
-    'LZIB', # Bratislava
-    'LOWW', # Vienna
-    'LKPR', # Prague
-    'LHBP', # Budapest
-    'EPWA', # Warsaw
-    'EPKK', # Krakow
-    'EDDF', # Frankfurt
-    'EDDM', # Munich
-    'EHAM', # Amsterdam
-    'EGLL', # London Heathrow
-    'EGSS', # London Stansted
-    'EGKK', # London Gatwick
-    'LFPG', # Paris CDG
-    'LSZH', # Zurich
-    'LIRF', # Rome Fiumicino
-    'LEMD', # Madrid
-    'LEBL', # Barcelona
-    'LEPA', # Palma de Mallorca
-    'OMDB', # Dubai
-    'OTHH'  # Doha
+    # 1. Domestic & Regional (Smartwings, Ryanair, Wizz Air, Austrian, LOT)
+    'LZIB', # Bratislava (BTS)
+    'LZKZ', # Kosice (KSC - Smartwings, Ryanair, Wizz)
+    'LOWW', # Vienna (VIE - Austrian HQ, Wizz Air base, Ryanair base)
+    'LKPR', # Prague (PRG - Smartwings HQ, easyJet, Ryanair)
+    'LKTB', # Brno (BRQ - Smartwings, Ryanair)
+    'LKMT', # Ostrava (OSR - Smartwings, LOT)
+    'LHBP', # Budapest (BUD - Wizz Air HQ, Smartwings base, Ryanair)
+    'EPWA', # Warsaw Chopin (WAW - LOT, Smartwings, Wizz)
+    'EPKK', # Krakow (KRK - Ryanair base, Wizz Air base)
+    'EPKT', # Katowice (KTW - Wizz Air main base, Smartwings base)
+    'EPGD', # Gdansk (GDN - Wizz Air base, Ryanair base)
+    
+    # 2. Wizz Air & easyJet Core European Megahubs
+    'EGGW', # London Luton (LTN - #1 Wizz Air & easyJet UK HQ)
+    'EGKK', # London Gatwick (LGW - #1 easyJet Mega-Hub)
+    'EGSS', # London Stansted (STN - #1 Ryanair Mega-Hub)
+    'EGLL', # London Heathrow (LHR - British Airways)
+    'EGCC', # Manchester (MAN - easyJet, Ryanair)
+    'EGPH', # Edinburgh (EDI - easyJet, Ryanair)
+    'LSGG', # Geneva (GVA - #1 easyJet Switzerland Hub)
+    'LFSB', # Basel (BSL - easyJet Switzerland Hub)
+    'LIMC', # Milan Malpensa (MXP - #1 easyJet EU Mega-Base & Wizz)
+    'LIME', # Milan Bergamo (BGY - #1 Ryanair EU Mega-Base, Wizz Air)
+    'EDDB', # Berlin Brandenburg (BER - easyJet Hub, Eurowings)
+    'LFMN', # Nice (NCE - easyJet Hub)
+    'LROP', # Bucharest (OTP - #1 Wizz Air Mega-Base)
+    'LATI', # Tirana (TIA - Wizz Air Mega-Base)
+    'LWSK', # Skopje (SKP - Wizz Air Mega-Base)
+    'OMAA', # Abu Dhabi (AUH - Wizz Air Abu Dhabi Hub)
+    
+    # 3. Legacy Megahubs (Lufthansa, KLM, Swiss, Air France, Iberia)
+    'EDDF', # Frankfurt (FRA - Lufthansa Global Hub)
+    'EDDM', # Munich (MUC - Lufthansa Global Hub)
+    'EHAM', # Amsterdam (AMS - KLM Global Hub)
+    'LFPG', # Paris CDG (CDG - Air France Hub, easyJet)
+    'LSZH', # Zurich (ZRH - Swiss Global Hub)
+    'LIRF', # Rome Fiumicino (FCO - ITA Airways Hub, Wizz, Ryanair)
+    'LEMD', # Madrid (MAD - Iberia Global Hub, Ryanair)
+    'LEBL', # Barcelona (BCN - Vueling Hub, easyJet, Ryanair)
+    
+    # 4. Smartwings, Ryanair & Wizz Holiday Charter Hubs
+    'LEPA', # Palma de Mallorca (PMI)
+    'LTAI', # Antalya (AYT - Smartwings, SunExpress, Corendon)
+    'HEGN', # Hurghada (HRG - Smartwings, Wizz, easyJet)
+    'LGIR', # Heraklion (HER - Smartwings, easyJet, Wizz)
+    'LGRP', # Rhodes (RHO - Smartwings, Ryanair)
+    'LBBG', # Burgas (BOJ - Smartwings, Wizz, Ryanair)
+    
+    # 5. Global Intercontinental Hubs
+    'OMDB', # Dubai (DXB - Emirates Global Hub, flydubai)
+    'OTHH'  # Doha (DOH - Qatar Airways Global Hub)
 ]
 
 def haversine_nm(lat1, lon1, lat2, lon2):
