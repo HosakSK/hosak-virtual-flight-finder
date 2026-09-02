@@ -3,11 +3,81 @@ let lastRenderedFlights = [];
 let globeMapInstance = null;
 let globeLayerGroup = null;
 
+// Multi-Select State
+let selectedAirlines = []; // array of airline ids e.g. ['Ryanair', 'Lufthansa']
+let selectedAircraft = []; // array of aircraft type codes e.g. ['B738', 'A320']
+
+const AIRLINE_DEFINITIONS = [
+  { id: 'Ryanair', name: 'Ryanair', icao: 'RYR', iata: 'FR', color: '#f1c40f', aircraft: ['B738', 'B38M'] },
+  { id: 'Wizz Air', name: 'Wizz Air', icao: 'WZZ', iata: 'W6', color: '#ff66cc', aircraft: ['A320', 'A321', 'A21N'] },
+  { id: 'easyJet', name: 'easyJet', icao: 'EZY', iata: 'U2', color: '#ff6600', aircraft: ['A320', 'A321'] },
+  { id: 'Lufthansa', name: 'Lufthansa', icao: 'DLH', iata: 'LH', color: '#ffba00', aircraft: ['A320', 'A321', 'B748', 'B744', 'A388', 'A359'] },
+  { id: 'British Airways', name: 'British Airways', icao: 'BAW', iata: 'BA', color: '#5dade2', aircraft: ['A320', 'A321', 'E190', 'A388', 'A35K', 'B77W', 'B789'] },
+  { id: 'KLM', name: 'KLM Royal Dutch Airlines', icao: 'KLM', iata: 'KL', color: '#00d2ff', aircraft: ['B738', 'E190', 'E295', 'B77W'] },
+  { id: 'Smartwings', name: 'Smartwings', icao: 'TVS', iata: 'QS', color: '#ff9955', aircraft: ['B738', 'B38M'] },
+  { id: 'Austrian Airlines', name: 'Austrian Airlines', icao: 'AUA', iata: 'OS', color: '#ff5555', aircraft: ['A320', 'A321', 'E195', 'B789'] },
+  { id: 'Emirates', name: 'Emirates', icao: 'UAE', iata: 'EK', color: '#d71921', aircraft: ['A388', 'B77W'] },
+  { id: 'Qatar Airways', name: 'Qatar Airways', icao: 'QTR', iata: 'QR', color: '#a61d62', aircraft: ['A388', 'A35K', 'A359', 'B77W', 'B789'] }
+];
+
+const AIRCRAFT_DEFINITIONS = [
+  // Heavy / Widebody
+  { id: 'B748', code: 'B748', name: 'Boeing 747-8', category: 'Heavy / Widebody', searchKeywords: ['747', '747-8', 'b748', 'jumbo', 'boeing', 'queen of the skies'] },
+  { id: 'B744', code: 'B744', name: 'Boeing 747-400', category: 'Heavy / Widebody', searchKeywords: ['747', '747-400', 'b744', 'jumbo', 'boeing'] },
+  { id: 'A388', code: 'A388', name: 'Airbus A380-800', category: 'Heavy / Widebody', searchKeywords: ['380', 'a380', 'a388', 'superjumbo', 'airbus', 'double decker'] },
+  { id: 'B77W', code: 'B77W', name: 'Boeing 777-300ER', category: 'Heavy / Widebody', searchKeywords: ['777', '777-300', '777-300er', 'b77w', 'triple seven', 'boeing'] },
+  { id: 'A35K', code: 'A35K', name: 'Airbus A350-1000', category: 'Heavy / Widebody', searchKeywords: ['350', 'a350', 'a350-1000', 'a35k', 'airbus'] },
+  { id: 'A359', code: 'A359', name: 'Airbus A350-900', category: 'Heavy / Widebody', searchKeywords: ['350', 'a350', 'a350-900', 'a359', 'airbus'] },
+  { id: 'B789', code: 'B789', name: 'Boeing 787-9 Dreamliner', category: 'Heavy / Widebody', searchKeywords: ['787', '787-9', 'b789', 'dreamliner', 'boeing'] },
+
+  // Narrowbody
+  { id: 'B738', code: 'B738', name: 'Boeing 737-800', category: 'Narrowbody', searchKeywords: ['737', '737-800', 'b738', 'boeing'] },
+  { id: 'B38M', code: 'B38M', name: 'Boeing 737 MAX 8', category: 'Narrowbody', searchKeywords: ['737', '737 max', 'max 8', 'b38m', 'max', 'boeing'] },
+  { id: 'A320', code: 'A320', name: 'Airbus A320', category: 'Narrowbody', searchKeywords: ['320', 'a320', 'airbus'] },
+  { id: 'A321', code: 'A321', name: 'Airbus A321', category: 'Narrowbody', searchKeywords: ['321', 'a321', 'airbus'] },
+  { id: 'A21N', code: 'A21N', name: 'Airbus A321neo', category: 'Narrowbody', searchKeywords: ['321', 'a321neo', 'a21n', 'neo', 'airbus'] },
+
+  // Regional
+  { id: 'E190', code: 'E190', name: 'Embraer E190', category: 'Regional Jets', searchKeywords: ['190', 'e190', 'e-jet', 'embraer'] },
+  { id: 'E195', code: 'E195', name: 'Embraer E195 / E2', category: 'Regional Jets', searchKeywords: ['195', 'e195', 'e295', 'e2', 'embraer'] }
+];
+
+const AIRLINE_COLORS = {
+  'Ryanair': '#f1c40f',
+  'Wizz Air': '#ff66cc',
+  'easyJet': '#ff6600',
+  'Lufthansa': '#ffba00',
+  'British Airways': '#5dade2',
+  'KLM': '#00d2ff',
+  'Smartwings': '#ff9955',
+  'Austrian Airlines': '#ff5555',
+  'Emirates': '#d71921',
+  'Qatar Airways': '#a61d62'
+};
+
 const DOM = {
   grid: document.getElementById('flights-grid'),
   count: document.getElementById('results-count'),
-  filterAirline: document.getElementById('filter-airline'),
-  filterAircraft: document.getElementById('filter-aircraft'),
+  
+  // Custom multi-select elements
+  msAirline: document.getElementById('ms-airline'),
+  msAirlineTrigger: document.getElementById('ms-airline-trigger'),
+  msAirlineLabel: document.getElementById('ms-airline-label'),
+  msAirlineDropdown: document.getElementById('ms-airline-dropdown'),
+  msAirlineSearch: document.getElementById('ms-airline-search'),
+  msAirlineSelectAll: document.getElementById('ms-airline-select-all'),
+  msAirlineClear: document.getElementById('ms-airline-clear'),
+  msAirlineOptions: document.getElementById('ms-airline-options'),
+
+  msAircraft: document.getElementById('ms-aircraft'),
+  msAircraftTrigger: document.getElementById('ms-aircraft-trigger'),
+  msAircraftLabel: document.getElementById('ms-aircraft-label'),
+  msAircraftDropdown: document.getElementById('ms-aircraft-dropdown'),
+  msAircraftSearch: document.getElementById('ms-aircraft-search'),
+  msAircraftSelectAll: document.getElementById('ms-aircraft-select-all'),
+  msAircraftClear: document.getElementById('ms-aircraft-clear'),
+  msAircraftOptions: document.getElementById('ms-aircraft-options'),
+
   filterOrigin: document.getElementById('filter-origin'),
   filterDest: document.getElementById('filter-dest'),
   btnSwap: document.getElementById('btn-swap-route'),
@@ -37,26 +107,13 @@ const DOM = {
   lastUpdatedText: document.getElementById('last-updated-text')
 };
 
-const AIRLINE_COLORS = {
-  'Ryanair': '#f1c40f',
-  'Wizz Air': '#ff66cc',
-  'easyJet': '#ff6600',
-  'Lufthansa': '#ffba00',
-  'British Airways': '#5dade2',
-  'KLM': '#00d2ff',
-  'Smartwings': '#ff9955',
-  'Austrian Airlines': '#ff5555',
-  'Emirates': '#d71921',
-  'Qatar Airways': '#a61d62'
-};
-
 async function init() {
   initTheme();
   try {
     const res = await fetch('./flights.json').catch(() => fetch('/flights.json')).catch(() => fetch('./ryanair_flights_lzib.json')).catch(() => fetch('/finder/ryanair_flights_lzib.json'));
     allFlights = await res.json();
 
-    // Fetch last updated timestamp
+    // Fetch last updated metadata
     try {
       const metaRes = await fetch('./metadata.json').catch(() => fetch('/metadata.json'));
       if (metaRes.ok) {
@@ -65,10 +122,9 @@ async function init() {
           DOM.lastUpdatedText.textContent = `Last updated: ${meta.last_updated_formatted}`;
         }
       }
-    } catch (e) {
-      console.log('Using default metadata timestamp');
-    }
+    } catch (e) {}
 
+    initMultiSelects();
     setupListeners();
     setupGlobeModal();
     applyFilters();
@@ -90,7 +146,6 @@ function showToast(msg) {
 function initTheme() {
   const savedTheme = localStorage.getItem('finder-theme');
   const isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
-  
   if (isDark) {
     document.documentElement.setAttribute('data-theme', 'dark');
   }
@@ -124,9 +179,245 @@ function toggleTheme() {
   }
 }
 
+// ==========================================
+// CUSTOM SEARCHABLE MULTI-SELECT HANDLERS
+// ==========================================
+function initMultiSelects() {
+  renderAirlineOptions();
+  renderAircraftOptions();
+
+  // Toggle Airline Dropdown
+  DOM.msAirlineTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = !DOM.msAirlineDropdown.classList.contains('hidden');
+    closeAllDropdowns();
+    if (!isOpen) {
+      DOM.msAirlineDropdown.classList.remove('hidden');
+      DOM.msAirline.classList.add('open');
+      DOM.msAirlineSearch.focus();
+    }
+  });
+
+  // Toggle Aircraft Dropdown
+  DOM.msAircraftTrigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = !DOM.msAircraftDropdown.classList.contains('hidden');
+    closeAllDropdowns();
+    if (!isOpen) {
+      DOM.msAircraftDropdown.classList.remove('hidden');
+      DOM.msAircraft.classList.add('open');
+      DOM.msAircraftSearch.focus();
+    }
+  });
+
+  // Search input listeners
+  DOM.msAirlineSearch.addEventListener('input', (e) => {
+    renderAirlineOptions(e.target.value.toLowerCase().trim());
+  });
+
+  DOM.msAircraftSearch.addEventListener('input', (e) => {
+    renderAircraftOptions(e.target.value.toLowerCase().trim());
+  });
+
+  // Airline Select All / Clear
+  DOM.msAirlineSelectAll.addEventListener('click', () => {
+    selectedAirlines = AIRLINE_DEFINITIONS.map(a => a.id);
+    updateAirlineLabel();
+    renderAirlineOptions(DOM.msAirlineSearch.value.toLowerCase().trim());
+    syncAircraftAvailability();
+    applyFilters();
+  });
+
+  DOM.msAirlineClear.addEventListener('click', () => {
+    selectedAirlines = [];
+    updateAirlineLabel();
+    renderAirlineOptions(DOM.msAirlineSearch.value.toLowerCase().trim());
+    syncAircraftAvailability();
+    applyFilters();
+  });
+
+  // Aircraft Select All / Clear
+  DOM.msAircraftSelectAll.addEventListener('click', () => {
+    const availableCodes = getAvailableAircraftCodes();
+    selectedAircraft = [...availableCodes];
+    updateAircraftLabel();
+    renderAircraftOptions(DOM.msAircraftSearch.value.toLowerCase().trim());
+    applyFilters();
+  });
+
+  DOM.msAircraftClear.addEventListener('click', () => {
+    selectedAircraft = [];
+    updateAircraftLabel();
+    renderAircraftOptions(DOM.msAircraftSearch.value.toLowerCase().trim());
+    applyFilters();
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-multiselect')) {
+      closeAllDropdowns();
+    }
+  });
+}
+
+function closeAllDropdowns() {
+  if (DOM.msAirlineDropdown) DOM.msAirlineDropdown.classList.add('hidden');
+  if (DOM.msAircraftDropdown) DOM.msAircraftDropdown.classList.add('hidden');
+  if (DOM.msAirline) DOM.msAirline.classList.remove('open');
+  if (DOM.msAircraft) DOM.msAircraft.classList.remove('open');
+}
+
+function updateAirlineLabel() {
+  if (selectedAirlines.length === 0 || selectedAirlines.length === AIRLINE_DEFINITIONS.length) {
+    DOM.msAirlineLabel.textContent = 'All Airlines (' + AIRLINE_DEFINITIONS.length + ')';
+  } else if (selectedAirlines.length === 1) {
+    DOM.msAirlineLabel.textContent = selectedAirlines[0];
+  } else {
+    DOM.msAirlineLabel.textContent = selectedAirlines.length + ' Airlines selected';
+  }
+}
+
+function updateAircraftLabel() {
+  if (selectedAircraft.length === 0) {
+    DOM.msAircraftLabel.textContent = 'All Aircraft Types';
+  } else if (selectedAircraft.length === 1) {
+    const item = AIRCRAFT_DEFINITIONS.find(a => a.code === selectedAircraft[0]);
+    DOM.msAircraftLabel.textContent = item ? item.name : selectedAircraft[0];
+  } else {
+    DOM.msAircraftLabel.textContent = selectedAircraft.length + ' Aircraft Types';
+  }
+}
+
+function getAvailableAircraftCodes() {
+  if (selectedAirlines.length === 0) {
+    return AIRCRAFT_DEFINITIONS.map(a => a.code);
+  }
+  const codes = new Set();
+  AIRLINE_DEFINITIONS.filter(a => selectedAirlines.includes(a.id)).forEach(a => {
+    (a.aircraft || []).forEach(ac => codes.add(ac));
+  });
+  return Array.from(codes);
+}
+
+function syncAircraftAvailability() {
+  const available = getAvailableAircraftCodes();
+  selectedAircraft = selectedAircraft.filter(ac => available.includes(ac));
+  updateAircraftLabel();
+  renderAircraftOptions(DOM.msAircraftSearch.value.toLowerCase().trim());
+}
+
+function renderAirlineOptions(query = '') {
+  if (!DOM.msAirlineOptions) return;
+  DOM.msAirlineOptions.innerHTML = '';
+
+  const filtered = AIRLINE_DEFINITIONS.filter(a => {
+    if (!query) return true;
+    const nameMatch = a.name.toLowerCase().includes(query);
+    const icaoMatch = a.icao.toLowerCase().includes(query);
+    const iataMatch = a.iata.toLowerCase().includes(query);
+    return nameMatch || icaoMatch || iataMatch;
+  });
+
+  if (filtered.length === 0) {
+    DOM.msAirlineOptions.innerHTML = '<div style="padding: 0.5rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No airlines match search</div>';
+    return;
+  }
+
+  filtered.forEach(a => {
+    const isSelected = selectedAirlines.includes(a.id);
+    const item = document.createElement('div');
+    item.className = 'ms-option-item' + (isSelected ? ' selected' : '');
+    item.innerHTML = `
+      <input type="checkbox" class="ms-option-checkbox" ${isSelected ? 'checked' : ''}>
+      <div class="ms-option-label">
+        <span>${a.name}</span>
+        <span class="ms-option-tag" style="border-color: ${a.color}40; color: ${a.color};">${a.icao} / ${a.iata}</span>
+      </div>
+    `;
+
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = selectedAirlines.indexOf(a.id);
+      if (idx > -1) {
+        selectedAirlines.splice(idx, 1);
+      } else {
+        selectedAirlines.push(a.id);
+      }
+      updateAirlineLabel();
+      renderAirlineOptions(DOM.msAirlineSearch.value.toLowerCase().trim());
+      syncAircraftAvailability();
+      applyFilters();
+    });
+
+    DOM.msAirlineOptions.appendChild(item);
+  });
+}
+
+function renderAircraftOptions(query = '') {
+  if (!DOM.msAircraftOptions) return;
+  DOM.msAircraftOptions.innerHTML = '';
+
+  const availableCodes = getAvailableAircraftCodes();
+
+  const filtered = AIRCRAFT_DEFINITIONS.filter(ac => {
+    if (!availableCodes.includes(ac.code)) return false;
+
+    if (!query) return true;
+    const nameMatch = ac.name.toLowerCase().includes(query);
+    const codeMatch = ac.code.toLowerCase().includes(query);
+    const kwMatch = (ac.searchKeywords || []).some(k => k.includes(query));
+    return nameMatch || codeMatch || kwMatch;
+  });
+
+  if (filtered.length === 0) {
+    DOM.msAircraftOptions.innerHTML = '<div style="padding: 0.5rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No aircraft types available</div>';
+    return;
+  }
+
+  const categories = {};
+  filtered.forEach(ac => {
+    if (!categories[ac.category]) categories[ac.category] = [];
+    categories[ac.category].push(ac);
+  });
+
+  Object.entries(categories).forEach(([cat, list]) => {
+    const header = document.createElement('div');
+    header.className = 'ms-category-header';
+    header.textContent = cat;
+    DOM.msAircraftOptions.appendChild(header);
+
+    list.forEach(ac => {
+      const isSelected = selectedAircraft.includes(ac.code);
+      const item = document.createElement('div');
+      item.className = 'ms-option-item' + (isSelected ? ' selected' : '');
+      item.innerHTML = `
+        <input type="checkbox" class="ms-option-checkbox" ${isSelected ? 'checked' : ''}>
+        <div class="ms-option-label">
+          <span>${ac.name}</span>
+          <span class="ms-option-tag">${ac.code}</span>
+        </div>
+      `;
+
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const idx = selectedAircraft.indexOf(ac.code);
+        if (idx > -1) {
+          selectedAircraft.splice(idx, 1);
+        } else {
+          selectedAircraft.push(ac.code);
+        }
+        updateAircraftLabel();
+        renderAircraftOptions(DOM.msAircraftSearch.value.toLowerCase().trim());
+        applyFilters();
+      });
+
+      DOM.msAircraftOptions.appendChild(item);
+    });
+  });
+}
+
 function setupListeners() {
   const inputs = [
-    DOM.filterAirline, DOM.filterAircraft,
     DOM.filterOrigin, DOM.filterDest,
     DOM.filterDay, DOM.filterTimeFrom, DOM.filterTimeTo,
     DOM.filterHours, DOM.filterDuration, DOM.filterDurationMin, DOM.filterHomebase,
@@ -140,7 +431,6 @@ function setupListeners() {
     }
   });
 
-  // Update --range-fill CSS variable for gradient track highlight
   function updateRangeFill(el) {
     const min = parseFloat(el.min) || 0;
     const max = parseFloat(el.max) || 100;
@@ -197,6 +487,13 @@ function setupListeners() {
   });
 
   DOM.resetBtn.addEventListener('click', () => {
+    selectedAirlines = [];
+    selectedAircraft = [];
+    updateAirlineLabel();
+    updateAircraftLabel();
+    renderAirlineOptions();
+    renderAircraftOptions();
+
     inputs.forEach(el => {
       if (!el) return;
       if (el.tagName === 'SELECT') el.selectedIndex = 0;
@@ -296,9 +593,6 @@ function getOffsetString(localTime, utcTime) {
 }
 
 function applyFilters() {
-  const selectedAirline = (DOM.filterAirline ? DOM.filterAirline.value : '').toLowerCase().trim();
-  const selectedAircraft = (DOM.filterAircraft ? DOM.filterAircraft.value : '').toUpperCase().trim();
-
   const originStr = DOM.filterOrigin.value.toLowerCase();
   const origins = originStr ? originStr.split(',').map(s => s.trim()).filter(Boolean) : [];
   
@@ -312,16 +606,15 @@ function applyFilters() {
   const hVal = parseInt(DOM.filterHours.value);
   
   let results = allFlights.filter(f => {
-    // 1. Airline Filter
-    if (selectedAirline) {
-      const aVal = (f.airline || '').toLowerCase();
-      if (!aVal.includes(selectedAirline)) return false;
+    // 1. Multi-Select Airline Filter
+    if (selectedAirlines.length > 0) {
+      if (!selectedAirlines.includes(f.airline)) return false;
     }
 
-    // 2. Aircraft Type Filter
-    if (selectedAircraft) {
-      const acVal = (f.aircraft_type || 'B738').toUpperCase();
-      if (acVal !== selectedAircraft) return false;
+    // 2. Multi-Select Aircraft Filter
+    if (selectedAircraft.length > 0) {
+      const acType = f.aircraft_type || 'B738';
+      if (!selectedAircraft.includes(acType)) return false;
     }
 
     if (origins.length > 0) {
@@ -508,7 +801,6 @@ function render(flights) {
     });
   });
 
-  // Store rendered flights globally for event delegation
   lastRenderedFlights = flights;
 }
 
@@ -574,7 +866,6 @@ function renderGlobeRoutes(flights) {
   const airportsMap = new Map();
   const bounds = L.latLngBounds([]);
 
-  // Draw routes
   list.forEach(f => {
     if (!f.departure_lat || !f.departure_lon || !f.arrival_lat || !f.arrival_lon) return;
 
@@ -592,8 +883,7 @@ function renderGlobeRoutes(flights) {
     const polyline = L.polyline([depLatLng, arrLatLng], {
       color: color,
       weight: 2,
-      opacity: 0.65,
-      dashArray: null
+      opacity: 0.65
     }).addTo(globeLayerGroup);
 
     const tooltipHtml = `
@@ -604,7 +894,7 @@ function renderGlobeRoutes(flights) {
         <span style="font-size: 11px; opacity: 0.8; color: #38bdf8;">👉 Click to open flight dispatch</span>
       </div>
     `;
-    polyline.bindTooltip(tooltipHtml, { sticky: true, className: 'globe-route-tooltip' });
+    polyline.bindTooltip(tooltipHtml, { sticky: true });
 
     polyline.on('mouseover', () => {
       polyline.setStyle({ weight: 4, opacity: 1 });
@@ -619,7 +909,6 @@ function renderGlobeRoutes(flights) {
     });
   });
 
-  // Draw airport node markers
   airportsMap.forEach((apt, icao) => {
     const marker = L.circleMarker([apt.lat, apt.lon], {
       radius: 4,
