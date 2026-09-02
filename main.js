@@ -32,31 +32,34 @@ const AIRLINE_DEFINITIONS = [
 
 // Complete Aircraft Definitions
 const AIRCRAFT_DEFINITIONS = [
-  { code: 'B738', name: 'Boeing 737-800' },
-  { code: 'B38M', name: 'Boeing 737 MAX 8' },
-  { code: 'B737', name: 'Boeing 737-700' },
-  { code: 'B739', name: 'Boeing 737-900' },
-  { code: 'A319', name: 'Airbus A319' },
-  { code: 'A320', name: 'Airbus A320' },
-  { code: 'A321', name: 'Airbus A321' },
-  { code: 'A20N', name: 'Airbus A320neo' },
-  { code: 'A21N', name: 'Airbus A321neo' },
-  { code: 'A332', name: 'Airbus A330-200' },
-  { code: 'A333', name: 'Airbus A330-300' },
-  { code: 'A343', name: 'Airbus A340-300' },
-  { code: 'A359', name: 'Airbus A350-900' },
-  { code: 'A351', name: 'Airbus A350-1000' },
-  { code: 'A388', name: 'Airbus A380-800' },
-  { code: 'B744', name: 'Boeing 747-400' },
-  { code: 'B748', name: 'Boeing 747-8' },
-  { code: 'B763', name: 'Boeing 767-300ER' },
-  { code: 'B772', name: 'Boeing 777-200ER' },
-  { code: 'B77W', name: 'Boeing 777-300ER' },
-  { code: 'B788', name: 'Boeing 787-8' },
-  { code: 'B789', name: 'Boeing 787-9' },
-  { code: 'B78X', name: 'Boeing 787-10' },
-  { code: 'E190', name: 'Embraer E190' },
-  { code: 'E295', name: 'Embraer E195-E2' }
+  { code: 'B737', name: 'Boeing 737-700', category: 'Boeing Narrowbody' },
+  { code: 'B738', name: 'Boeing 737-800', category: 'Boeing Narrowbody' },
+  { code: 'B739', name: 'Boeing 737-900', category: 'Boeing Narrowbody' },
+  { code: 'B38M', name: 'Boeing 737 MAX 8', category: 'Boeing Narrowbody' },
+
+  { code: 'A319', name: 'Airbus A319', category: 'Airbus Narrowbody' },
+  { code: 'A320', name: 'Airbus A320', category: 'Airbus Narrowbody' },
+  { code: 'A321', name: 'Airbus A321', category: 'Airbus Narrowbody' },
+  { code: 'A20N', name: 'Airbus A320neo', category: 'Airbus Narrowbody' },
+  { code: 'A21N', name: 'Airbus A321neo', category: 'Airbus Narrowbody' },
+
+  { code: 'A332', name: 'Airbus A330-200', category: 'Widebody Long-Haul' },
+  { code: 'A333', name: 'Airbus A330-300', category: 'Widebody Long-Haul' },
+  { code: 'A343', name: 'Airbus A340-300', category: 'Widebody Long-Haul' },
+  { code: 'A359', name: 'Airbus A350-900', category: 'Widebody Long-Haul' },
+  { code: 'A351', name: 'Airbus A350-1000', category: 'Widebody Long-Haul' },
+  { code: 'A388', name: 'Airbus A380-800', category: 'Widebody Long-Haul' },
+  { code: 'B744', name: 'Boeing 747-400', category: 'Widebody Long-Haul' },
+  { code: 'B748', name: 'Boeing 747-8', category: 'Widebody Long-Haul' },
+  { code: 'B763', name: 'Boeing 767-300ER', category: 'Widebody Long-Haul' },
+  { code: 'B772', name: 'Boeing 777-200ER', category: 'Widebody Long-Haul' },
+  { code: 'B77W', name: 'Boeing 777-300ER', category: 'Widebody Long-Haul' },
+  { code: 'B788', name: 'Boeing 787-8', category: 'Widebody Long-Haul' },
+  { code: 'B789', name: 'Boeing 787-9', category: 'Widebody Long-Haul' },
+  { code: 'B78X', name: 'Boeing 787-10', category: 'Widebody Long-Haul' },
+
+  { code: 'E190', name: 'Embraer E190', category: 'Regional Jets' },
+  { code: 'E295', name: 'Embraer E195-E2', category: 'Regional Jets' }
 ];
 
 // DOM Elements synchronized with index.html
@@ -316,15 +319,26 @@ function renderAircraftMultiSelect(searchQuery = '') {
         <button type="button" class="ms-btn-action" id="ms-aircraft-clear">Clear</button>
       </div>
       <div class="ms-options-list">
-        ${filtered.map(a => {
-          const checked = selectedAircraft.includes(a.code) ? 'checked' : '';
-          return `
-            <div class="ms-option-item ${checked ? 'selected' : ''}" data-code="${escapeHtml(a.code)}">
-              <input type="checkbox" ${checked} />
-              <span class="ms-option-label"><strong>${escapeHtml(a.code)}</strong> - ${escapeHtml(a.name)}</span>
-            </div>
-          `;
-        }).join('')}
+        ${(() => {
+          const categories = ['Boeing Narrowbody', 'Airbus Narrowbody', 'Widebody Long-Haul', 'Regional Jets'];
+          let html = '';
+          categories.forEach(cat => {
+            const catItems = filtered.filter(a => a.category === cat);
+            if (catItems.length > 0) {
+              html += `<div class="ms-category-header">${escapeHtml(cat)}</div>`;
+              catItems.forEach(a => {
+                const checked = selectedAircraft.includes(a.code) ? 'checked' : '';
+                html += `
+                  <div class="ms-option-item ${checked ? 'selected' : ''}" data-code="${escapeHtml(a.code)}">
+                    <input type="checkbox" ${checked} />
+                    <span class="ms-option-label"><strong>${escapeHtml(a.code)}</strong> - ${escapeHtml(a.name)}</span>
+                  </div>
+                `;
+              });
+            }
+          });
+          return html;
+        })()}
       </div>
     </div>
   `;

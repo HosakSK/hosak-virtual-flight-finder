@@ -1882,3 +1882,184 @@ h1 {
   border-radius: 999px !important;
   height: 6px !important;
 }
+
+/* Filter Dashboard Elevation & Dropdown Z-Index */
+.vff-filters-dashboard {
+  position: relative !important;
+  z-index: 500 !important;
+  overflow: visible !important;
+}
+
+.vff-filter-row {
+  overflow: visible !important;
+}
+
+.vff-field {
+  overflow: visible !important;
+}
+
+.vff-select-wrap {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.ms-dropdown {
+  position: absolute !important;
+  top: calc(100% + 6px) !important;
+  left: 0 !important;
+  width: 100% !important;
+  min-width: 290px !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #D1D5DB !important;
+  border-radius: 8px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 380px !important;
+  overflow: hidden !important;
+}
+
+[data-theme="dark"] .ms-dropdown,
+.theme-dark .ms-dropdown {
+  background-color: #1A1D1E !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* Multi-select Search Box Input */
+.ms-search-box {
+  padding: 0.6rem !important;
+  background: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .ms-search-box,
+.theme-dark .ms-search-box {
+  background: #232728 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.ms-search-box input {
+  width: 100% !important;
+  height: 36px !important;
+  padding: 0 0.75rem !important;
+  background: #FFFFFF !important;
+  border: 1px solid #CBD5E1 !important;
+  border-radius: 6px !important;
+  color: #1E293B !important;
+  font-size: 0.84rem !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+[data-theme="dark"] .ms-search-box input,
+.theme-dark .ms-search-box input {
+  background: #17191A !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #F3F4F6 !important;
+}
+
+.ms-search-box input:focus {
+  border-color: var(--color-accent) !important;
+}
+
+/* Action Buttons (Select All / Clear) */
+.ms-actions {
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 0.4rem 0.8rem !important;
+  background: #F1F5F9 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .ms-actions,
+.theme-dark .ms-actions {
+  background: #1F2224 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.ms-btn-action {
+  background: transparent !important;
+  border: none !important;
+  color: var(--color-accent) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 4px !important;
+  transition: all 0.15s ease !important;
+}
+
+.ms-btn-action:hover {
+  background: rgba(var(--color-accent-rgb), 0.15) !important;
+}
+
+/* Options List & Category Headers */
+.ms-options-list {
+  overflow-y: auto !important;
+  padding: 0.4rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.15rem !important;
+  max-height: 260px !important;
+  background: #FFFFFF !important;
+}
+
+[data-theme="dark"] .ms-options-list,
+.theme-dark .ms-options-list {
+  background: #1A1D1E !important;
+}
+
+.ms-category-header {
+  font-size: 0.68rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  color: var(--color-accent) !important;
+  padding: 0.55rem 0.6rem 0.2rem 0.6rem !important;
+  margin-top: 0.3rem !important;
+  border-top: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .ms-category-header,
+.theme-dark .ms-category-header {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.ms-category-header:first-child {
+  border-top: none !important;
+  margin-top: 0 !important;
+}
+
+.ms-option-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.65rem !important;
+  padding: 0.45rem 0.65rem !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: background 0.15s ease !important;
+  font-size: 0.84rem !important;
+  color: var(--text-main) !important;
+}
+
+.ms-option-item:hover {
+  background: #F1F5F9 !important;
+}
+
+[data-theme="dark"] .ms-option-item:hover,
+.theme-dark .ms-option-item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ms-option-item.selected {
+  background: rgba(var(--color-accent-rgb), 0.15) !important;
+  font-weight: 700 !important;
+}
+
+.vff-main-content {
+  position: relative !important;
+  z-index: 10 !important;
+}
