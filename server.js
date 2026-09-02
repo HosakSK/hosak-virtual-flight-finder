@@ -1,7 +1,6 @@
 ﻿const http = require('http');
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
 
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = __dirname;
@@ -18,10 +17,11 @@ const MIME_TYPES = {
 };
 
 async function handleApi(req, res, parsedUrl) {
-  const { pathname, query } = parsedUrl;
+  const pathname = parsedUrl.pathname;
+  const searchParams = parsedUrl.searchParams;
 
   if (pathname === '/api/metar') {
-    const ids = query.ids;
+    const ids = searchParams.get('ids');
     if (!ids) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       return res.end(JSON.stringify({ error: 'ids parameter is required' }));
@@ -44,7 +44,7 @@ async function handleApi(req, res, parsedUrl) {
   }
 
   if (pathname === '/api/taf') {
-    const ids = query.ids;
+    const ids = searchParams.get('ids');
     if (!ids) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       return res.end(JSON.stringify({ error: 'ids parameter is required' }));
@@ -67,8 +67,8 @@ async function handleApi(req, res, parsedUrl) {
   }
 
   if (pathname === '/api/flight-route') {
-    const from = (query.from || '').toUpperCase();
-    const to = (query.to || '').toUpperCase();
+    const from = (searchParams.get('from') || '').toUpperCase();
+    const to = (searchParams.get('to') || '').toUpperCase();
     if (!from || !to) {
       res.writeHead(400, { 'Content-Type': 'application/json' });
       return res.end(JSON.stringify({ error: 'from and to parameters are required' }));
@@ -149,7 +149,7 @@ async function handleApi(req, res, parsedUrl) {
 }
 
 const server = http.createServer(async (req, res) => {
-  const parsedUrl = url.parse(req.url, true);
+  const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   let pathname = parsedUrl.pathname;
 
   if (pathname.startsWith('/api/')) {
