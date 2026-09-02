@@ -672,6 +672,113 @@ async function loadFlights() {
   }
 }
 
+
+// Country & Continent Synonyms Dictionary (English, Local, and Region names)
+const COUNTRY_SYNONYMS = {
+  'slovakia': ['slovakia', 'slovensko', 'slovak republic', 'sk'],
+  'czech republic': ['czechia', 'czech republic', 'cesko', 'cz'],
+  'austria': ['austria', 'oesterreich', 'rakusko', 'at'],
+  'germany': ['germany', 'deutschland', 'nemecko', 'de'],
+  'spain': ['spain', 'espana', 'spanielsko', 'es'],
+  'italy': ['italy', 'italia', 'taliansko', 'it'],
+  'france': ['france', 'francuzsko', 'fr'],
+  'uk': ['united kingdom', 'uk', 'great britain', 'england', 'scotland', 'gb'],
+  'united kingdom': ['united kingdom', 'uk', 'great britain', 'england', 'scotland', 'gb'],
+  'united states': ['united states', 'usa', 'america', 'us', 'states'],
+  'poland': ['poland', 'polska', 'pl'],
+  'greece': ['greece', 'hellas', 'gr'],
+  'turkey': ['turkey', 'turkiye', 'tr'],
+  'united arab emirates': ['united arab emirates', 'uae', 'dubai', 'ae'],
+  'croatia': ['croatia', 'hrvatska', 'hr'],
+  'portugal': ['portugal', 'pt'],
+  'switzerland': ['switzerland', 'schweiz', 'suisse', 'ch'],
+  'netherlands': ['netherlands', 'holland', 'nl'],
+  'belgium': ['belgium', 'be'],
+  'norway': ['norway', 'no'],
+  'sweden': ['sweden', 'se'],
+  'finland': ['finland', 'fi'],
+  'denmark': ['denmark', 'dk'],
+  'ireland': ['ireland', 'ie'],
+  'japan': ['japan', 'nippon', 'jp'],
+  'china': ['china', 'cn'],
+  'south korea': ['south korea', 'korea', 'kr'],
+  'canada': ['canada', 'ca'],
+  'australia': ['australia', 'au'],
+  'new zealand': ['new zealand', 'nz'],
+  'brazil': ['brazil', 'brasil', 'br'],
+  'egypt': ['egypt', 'eg'],
+  'thailand': ['thailand', 'th'],
+  'singapore': ['singapore', 'sg'],
+  'india': ['india', 'in'],
+  'mexico': ['mexico', 'mx'],
+  'qatar': ['qatar', 'qa']
+};
+
+const CONTINENT_SYNONYMS = {
+  'europe': ['europe', 'europa', 'eu', 'european union', 'european'],
+  'north america': ['north america', 'severna amerika', 'na'],
+  'south america': ['south america', 'latin america', 'sa'],
+  'asia': ['asia', 'azia', 'as'],
+  'africa': ['africa', 'afrika', 'af'],
+  'oceania': ['oceania', 'australia and oceania', 'australasia'],
+  'middle east': ['middle east', 'gulf', 'blizky vychod']
+};
+
+function normalizeGeoText(str) {
+  if (!str) return '';
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[\s\-_]/g, '');
+}
+
+function getContinentForCountryOrIcao(country, icao) {
+  const c = (country || '').toLowerCase();
+  const ic = (icao || '').toUpperCase();
+
+  if (ic.startsWith('E') || ic.startsWith('L')) return 'europe';
+  if (ic.startsWith('K') || ic.startsWith('C') || ic.startsWith('M') || ic.startsWith('PA') || ic.startsWith('PH')) return 'north america';
+  if (ic.startsWith('S')) return 'south america';
+  if (ic.startsWith('Y') || ic.startsWith('NZ')) return 'oceania';
+  if (ic.startsWith('F') || ic.startsWith('D') || ic.startsWith('H') || ic.startsWith('G')) return 'africa';
+  if (ic.startsWith('O')) return 'middle east';
+  if (ic.startsWith('Z') || ic.startsWith('R') || ic.startsWith('V') || ic.startsWith('W') || ic.startsWith('U') || ic.startsWith('RK')) return 'asia';
+
+  return 'unknown';
+}
+
+function matchesAirportOrCountryOrContinent(query, icao, iata, city, country) {
+  if (!query) return true;
+  const qClean = normalizeGeoText(query);
+  if (!qClean) return true;
+  
+  // 1. Direct text match against ICAO, IATA, City, Country
+  const fullText = [icao, iata, city, country].filter(Boolean).join(' ');
+  const fullClean = normalizeGeoText(fullText);
+  if (fullClean.includes(qClean)) return true;
+
+  // 2. Synonyms check for country
+  const cNorm = (country || '').toLowerCase().trim();
+  for (const [canonical, syns] of Object.entries(COUNTRY_SYNONYMS)) {
+    if (cNorm === canonical || cNorm.includes(canonical)) {
+      if (normalizeGeoText(canonical).includes(qClean)) return true;
+      for (const s of syns) {
+        if (normalizeGeoText(s) === qClean || (qClean.length >= 3 && normalizeGeoText(s).startsWith(qClean))) return true;
+      }
+    }
+  }
+
+  // 3. Continent check
+  const continent = getContinentForCountryOrIcao(country, icao);
+  for (const [canonicalCont, syns] of Object.entries(CONTINENT_SYNONYMS)) {
+    if (continent === canonicalCont) {
+      if (normalizeGeoText(canonicalCont).includes(qClean)) return true;
+      for (const s of syns) {
+        if (normalizeGeoText(s) === qClean || (qClean.length >= 4 && normalizeGeoText(s).startsWith(qClean))) return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 function applyFilters() {
   const depQ = (searchDep ? searchDep.value : '').toLowerCase().trim();
   const arrQ = (searchArr ? searchArr.value : '').toLowerCase().trim();
@@ -679,20 +786,18 @@ function applyFilters() {
   const sortOption = sortBy ? sortBy.value : 'upcoming';
 
   filteredFlights = allFlights.filter(f => {
-    // Departure filter
+    // Departure filter (ICAO, IATA, City, Country, or Continent)
     if (depQ) {
-      const qDepClean = depQ.replace(/[\s\-_]/g, '').toLowerCase();
-      const depText = [f.dep_icao, f.dep_iata, f.dep_city, f.dep_country].filter(Boolean).join(' ').toLowerCase();
-      const depClean = depText.replace(/[\s\-_]/g, '');
-      if (!depClean.includes(qDepClean) && !depText.includes(depQ)) return false;
+      if (!matchesAirportOrCountryOrContinent(depQ, f.dep_icao, f.dep_iata, f.dep_city, f.dep_country)) {
+        return false;
+      }
     }
 
-    // Arrival filter
+    // Arrival filter (ICAO, IATA, City, Country, or Continent)
     if (arrQ) {
-      const qArrClean = arrQ.replace(/[\s\-_]/g, '').toLowerCase();
-      const arrText = [f.arr_icao, f.arr_iata, f.arr_city, f.arr_country].filter(Boolean).join(' ').toLowerCase();
-      const arrClean = arrText.replace(/[\s\-_]/g, '');
-      if (!arrClean.includes(qArrClean) && !arrText.includes(arrQ)) return false;
+      if (!matchesAirportOrCountryOrContinent(arrQ, f.arr_icao, f.arr_iata, f.arr_city, f.arr_country)) {
+        return false;
+      }
     }
 
     // Callsign / Flight number / Aircraft search filter (Space & punctuation insensitive)
