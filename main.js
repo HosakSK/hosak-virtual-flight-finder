@@ -8,7 +8,7 @@ let filteredFlights = [];
 let selectedAirlines = [];
 let selectedAircraft = [];
 let currentDay = 'all';
-let maxDurationMins = 360;
+let maxDurationMins = Infinity;
 let currentPage = 1;
 const PAGE_SIZE = 100;
 let leafletMap = null;
@@ -589,7 +589,7 @@ function applyFilters() {
     }
 
     // Max Duration slider
-    if (maxDurationMins && f.duration_minutes > maxDurationMins) {
+    if (maxDurationMins !== Infinity && f.duration_minutes > maxDurationMins) {
       return false;
     }
 
