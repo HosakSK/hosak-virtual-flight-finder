@@ -3,8 +3,8 @@
     "airline": "Ryanair",
     "airline_icao": "RYR",
     "airline_iata": "FR",
-    "aircraft_type": "B738",
-    "fromIcao": "LZIB",
+    "aircraft_type": "A320",
+    "fromIcao": "LOWW",
     "toIcao": "EIDW",
     "flightNumOut": "687",
     "callsignOut": "RYR687",
@@ -70,7 +70,7 @@
     "airline_icao": "RYR",
     "airline_iata": "FR",
     "aircraft_type": "B738",
-    "fromIcao": "LZIB",
+    "fromIcao": "LEPA",
     "toIcao": "LIME",
     "flightNumOut": "2311",
     "callsignOut": "RYR2311",
@@ -109,8 +109,8 @@
     "airline_icao": "RYR",
     "airline_iata": "FR",
     "aircraft_type": "B738",
-    "fromIcao": "LZIB",
-    "toIcao": "LMML",
+    "fromIcao": "LEPA",
+    "toIcao": "LEMD",
     "flightNumOut": "403",
     "callsignOut": "RYR403",
     "flightNumIn": "404",
@@ -127,13 +127,13 @@
     "airline_icao": "RYR",
     "airline_iata": "FR",
     "aircraft_type": "B738",
-    "fromIcao": "LZIB",
-    "toIcao": "EGPH",
+    "fromIcao": "LPPT",
+    "toIcao": "EIDW",
     "flightNumOut": "673",
     "callsignOut": "RYR673",
     "flightNumIn": "674",
     "callsignIn": "RYR674",
-    "depTimeOutLocal": "23:20",
+    "depTimeOutLocal": "22:20",
     "daysOfWeek": [
       3,
       7
@@ -146,7 +146,7 @@
     "airline_iata": "FR",
     "aircraft_type": "B738",
     "fromIcao": "LZIB",
-    "toIcao": "LGTS",
+    "toIcao": "LICJ",
     "flightNumOut": "2313",
     "callsignOut": "RYR2313",
     "flightNumIn": "2314",
@@ -156,7 +156,7 @@
       1,
       5
     ],
-    "depTimeInLocal": "20:15"
+    "depTimeInLocal": "19:15"
   },
   {
     "airline": "Ryanair",
@@ -181,8 +181,8 @@
     "airline_icao": "RYR",
     "airline_iata": "FR",
     "aircraft_type": "B738",
-    "fromIcao": "LZIB",
-    "toIcao": "LBBG",
+    "fromIcao": "EDDK",
+    "toIcao": "LEMG",
     "flightNumOut": "2321",
     "callsignOut": "RYR9JJ",
     "flightNumIn": "2322",
@@ -210,7 +210,7 @@
       3,
       7
     ],
-    "depTimeInLocal": "20:10"
+    "depTimeInLocal": "20:55"
   },
   {
     "airline": "Ryanair",
@@ -223,29 +223,30 @@
     "callsignOut": "RYR2325",
     "flightNumIn": "2326",
     "callsignIn": "RYR2326",
-    "depTimeOutLocal": "10:40",
+    "depTimeOutLocal": "22:40",
     "daysOfWeek": [
       6
     ],
-    "depTimeInLocal": "13:35"
+    "depTimeInLocal": "19:45"
   },
   {
     "airline": "Ryanair",
     "airline_icao": "RYR",
     "airline_iata": "FR",
     "aircraft_type": "B38M",
-    "fromIcao": "LZIB",
+    "fromIcao": "LEPA",
     "toIcao": "EGGW",
     "flightNumOut": "2327",
     "callsignOut": "RYR2327",
     "flightNumIn": "2328",
     "callsignIn": "RYR2328",
-    "depTimeOutLocal": "19:10",
+    "depTimeOutLocal": "23:00",
     "daysOfWeek": [
       2,
       4,
       6
-    ]
+    ],
+    "depTimeInLocal": "06:00"
   },
   {
     "airline": "Wizz Air",
@@ -264,7 +265,8 @@
       3,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Wizz Air",
@@ -286,7 +288,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:50"
   },
   {
     "airline": "Smartwings",
@@ -304,7 +307,8 @@
       2,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "07:30"
   },
   {
     "airline": "Smartwings",
@@ -322,7 +326,8 @@
       1,
       4,
       6
-    ]
+    ],
+    "depTimeInLocal": "09:05"
   },
   {
     "airline": "Smartwings",
@@ -339,7 +344,8 @@
     "daysOfWeek": [
       3,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:45"
   },
   {
     "airline": "Smartwings",
@@ -356,7 +362,8 @@
     "daysOfWeek": [
       2,
       6
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Smartwings",
@@ -374,7 +381,8 @@
       1,
       3,
       5
-    ]
+    ],
+    "depTimeInLocal": "09:30"
   },
   {
     "airline": "Smartwings",
@@ -391,41 +399,44 @@
     "daysOfWeek": [
       4,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:20"
   },
   {
     "airline": "Smartwings",
     "airline_icao": "TVS",
     "airline_iata": "QS",
     "aircraft_type": "B738",
-    "fromIcao": "LZIB",
-    "toIcao": "LCLK",
+    "fromIcao": "LKTB",
+    "toIcao": "LGRP",
     "flightNumOut": "1414",
     "callsignOut": "TVS1414",
     "flightNumIn": "1415",
     "callsignIn": "TVS1415",
-    "depTimeOutLocal": "08:45",
+    "depTimeOutLocal": "18:30",
     "daysOfWeek": [
       3,
       6
-    ]
+    ],
+    "depTimeInLocal": "23:50"
   },
   {
     "airline": "Smartwings",
     "airline_icao": "TVS",
     "airline_iata": "QS",
     "aircraft_type": "B38M",
-    "fromIcao": "LZIB",
-    "toIcao": "DTTJ",
+    "fromIcao": "LKTB",
+    "toIcao": "LGKR",
     "flightNumOut": "1416",
     "callsignOut": "TVS1416",
     "flightNumIn": "1417",
     "callsignIn": "TVS1417",
-    "depTimeOutLocal": "13:10",
+    "depTimeOutLocal": "18:15",
     "daysOfWeek": [
       2,
       5
-    ]
+    ],
+    "depTimeInLocal": "20:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -493,7 +504,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:45"
   },
   {
     "airline": "Austrian Airlines",
@@ -552,7 +564,7 @@
     "callsignOut": "AUA451",
     "flightNumIn": "452",
     "callsignIn": "AUA452",
-    "depTimeOutLocal": "06:45",
+    "depTimeOutLocal": "09:40",
     "daysOfWeek": [
       1,
       2,
@@ -562,7 +574,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "08:50"
+    "depTimeInLocal": "12:50"
   },
   {
     "airline": "Austrian Airlines",
@@ -676,7 +688,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:35"
   },
   {
     "airline": "Austrian Airlines",
@@ -730,12 +743,12 @@
     "airline_iata": "OS",
     "aircraft_type": "A320",
     "fromIcao": "LOWW",
-    "toIcao": "EHAM",
+    "toIcao": "LFMN",
     "flightNumOut": "377",
     "callsignOut": "AUA377",
     "flightNumIn": "378",
     "callsignIn": "AUA378",
-    "depTimeOutLocal": "17:50",
+    "depTimeOutLocal": "12:25",
     "daysOfWeek": [
       1,
       2,
@@ -744,7 +757,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -775,12 +789,12 @@
     "airline_iata": "OS",
     "aircraft_type": "A320",
     "fromIcao": "LOWW",
-    "toIcao": "LSZH",
+    "toIcao": "LICJ",
     "flightNumOut": "565",
     "callsignOut": "AUA565",
     "flightNumIn": "566",
     "callsignIn": "AUA566",
-    "depTimeOutLocal": "17:30",
+    "depTimeOutLocal": "17:25",
     "daysOfWeek": [
       1,
       2,
@@ -812,7 +826,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -834,7 +849,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -847,7 +863,7 @@
     "callsignOut": "AUA575",
     "flightNumIn": "576",
     "callsignIn": "AUA576",
-    "depTimeOutLocal": "15:20",
+    "depTimeOutLocal": "17:25",
     "daysOfWeek": [
       1,
       2,
@@ -856,7 +872,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:25"
   },
   {
     "airline": "Austrian Airlines",
@@ -878,7 +895,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:40"
   },
   {
     "airline": "Austrian Airlines",
@@ -900,7 +918,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -922,7 +941,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Austrian Airlines",
@@ -990,7 +1010,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:35"
   },
   {
     "airline": "Austrian Airlines",
@@ -1012,7 +1033,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -1034,7 +1056,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:45"
   },
   {
     "airline": "Austrian Airlines",
@@ -1056,7 +1079,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -1078,7 +1102,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -1123,7 +1148,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:50"
   },
   {
     "airline": "Austrian Airlines",
@@ -1168,7 +1194,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -1190,7 +1217,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:45"
   },
   {
     "airline": "Austrian Airlines",
@@ -1212,7 +1240,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "00:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -1234,7 +1263,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:20"
   },
   {
     "airline": "Austrian Airlines",
@@ -1256,7 +1286,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -1278,7 +1309,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -1323,7 +1355,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:40"
   },
   {
     "airline": "Austrian Airlines",
@@ -1345,7 +1378,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "Austrian Airlines",
@@ -1367,7 +1401,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:20"
   },
   {
     "airline": "Austrian Airlines",
@@ -1389,7 +1424,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -1411,7 +1447,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:10"
   },
   {
     "airline": "Austrian Airlines",
@@ -1433,7 +1470,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:20"
   },
   {
     "airline": "Austrian Airlines",
@@ -1455,7 +1493,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -1477,7 +1516,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -1499,7 +1539,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:30"
   },
   {
     "airline": "Austrian Airlines",
@@ -1521,7 +1562,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:45"
   },
   {
     "airline": "Austrian Airlines",
@@ -1543,7 +1585,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:10"
   },
   {
     "airline": "Austrian Airlines",
@@ -1680,7 +1723,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:15"
   },
   {
     "airline": "Lufthansa",
@@ -1702,7 +1746,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:00"
   },
   {
     "airline": "British Airways",
@@ -1724,7 +1769,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:45"
   },
   {
     "airline": "KLM",
@@ -1746,7 +1792,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:30"
   },
   {
     "airline": "Ryanair",
@@ -1768,7 +1815,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Ryanair",
@@ -1790,7 +1838,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:30"
   },
   {
     "airline": "Ryanair",
@@ -1812,7 +1861,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "Ryanair",
@@ -1834,7 +1884,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:45"
   },
   {
     "airline": "Ryanair",
@@ -1856,7 +1907,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:50"
   },
   {
     "airline": "Ryanair",
@@ -1878,7 +1930,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "Ryanair",
@@ -1900,7 +1953,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:10"
   },
   {
     "airline": "Ryanair",
@@ -1922,7 +1976,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:35"
   },
   {
     "airline": "Ryanair",
@@ -1944,7 +1999,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:00"
   },
   {
     "airline": "Ryanair",
@@ -1966,7 +2022,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:00"
   },
   {
     "airline": "Ryanair",
@@ -1988,7 +2045,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:45"
   },
   {
     "airline": "Ryanair",
@@ -2010,7 +2068,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:20"
   },
   {
     "airline": "Ryanair",
@@ -2032,7 +2091,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:50"
   },
   {
     "airline": "Ryanair",
@@ -2054,7 +2114,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Ryanair",
@@ -2076,7 +2137,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:15"
   },
   {
     "airline": "Ryanair",
@@ -2098,7 +2160,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "Ryanair",
@@ -2120,7 +2183,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:45"
   },
   {
     "airline": "Wizz Air",
@@ -2142,7 +2206,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:00"
   },
   {
     "airline": "Wizz Air",
@@ -2164,7 +2229,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:15"
   },
   {
     "airline": "Wizz Air",
@@ -2186,7 +2252,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:30"
   },
   {
     "airline": "Wizz Air",
@@ -2208,7 +2275,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Wizz Air",
@@ -2230,7 +2298,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:45"
   },
   {
     "airline": "Wizz Air",
@@ -2252,7 +2321,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:30"
   },
   {
     "airline": "Wizz Air",
@@ -2274,7 +2344,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:50"
   },
   {
     "airline": "Wizz Air",
@@ -2296,7 +2367,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:10"
   },
   {
     "airline": "Wizz Air",
@@ -2318,7 +2390,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:30"
   },
   {
     "airline": "Smartwings",
@@ -2340,7 +2413,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "07:00"
   },
   {
     "airline": "Smartwings",
@@ -2362,7 +2436,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "07:30"
   },
   {
     "airline": "Smartwings",
@@ -2407,7 +2482,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:20"
   },
   {
     "airline": "Smartwings",
@@ -2429,7 +2505,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:00"
   },
   {
     "airline": "Smartwings",
@@ -2451,7 +2528,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Smartwings",
@@ -2473,7 +2551,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:45"
   },
   {
     "airline": "Smartwings",
@@ -2495,7 +2574,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "Smartwings",
@@ -2517,7 +2597,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:30"
   },
   {
     "airline": "Smartwings",
@@ -2539,7 +2620,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:10"
   },
   {
     "airline": "Smartwings",
@@ -2561,7 +2643,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:00"
   },
   {
     "airline": "Smartwings",
@@ -2583,7 +2666,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "Smartwings",
@@ -2605,7 +2689,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:45"
   },
   {
     "airline": "Smartwings",
@@ -2627,7 +2712,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "Smartwings",
@@ -2672,7 +2758,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:20"
   },
   {
     "airline": "Ryanair",
@@ -2694,7 +2781,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:50"
   },
   {
     "airline": "Ryanair",
@@ -2716,7 +2804,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:10"
   },
   {
     "airline": "Ryanair",
@@ -2738,7 +2827,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:45"
   },
   {
     "airline": "Ryanair",
@@ -2760,7 +2850,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "Ryanair",
@@ -2782,7 +2873,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:15"
   },
   {
     "airline": "Ryanair",
@@ -2804,7 +2896,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:40"
   },
   {
     "airline": "Ryanair",
@@ -2826,7 +2919,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:30"
   },
   {
     "airline": "Ryanair",
@@ -2848,29 +2942,8 @@
       5,
       6,
       7
-    ]
-  },
-  {
-    "airline": "Ryanair",
-    "airline_icao": "RYR",
-    "airline_iata": "FR",
-    "aircraft_type": "B738",
-    "fromIcao": "LKPR",
-    "toIcao": "EPWA",
-    "flightNumOut": "2029",
-    "callsignOut": "RYR2029",
-    "flightNumIn": "2030",
-    "callsignIn": "RYR2030",
-    "depTimeOutLocal": "13:20",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "easyJet",
@@ -2892,7 +2965,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "easyJet",
@@ -2914,7 +2988,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:15"
   },
   {
     "airline": "easyJet",
@@ -2936,7 +3011,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:30"
   },
   {
     "airline": "easyJet",
@@ -2958,7 +3034,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:45"
   },
   {
     "airline": "easyJet",
@@ -3003,7 +3080,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:00"
   },
   {
     "airline": "easyJet",
@@ -3025,7 +3103,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:20"
   },
   {
     "airline": "easyJet",
@@ -3047,7 +3126,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:40"
   },
   {
     "airline": "Lufthansa",
@@ -3092,7 +3172,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:45"
   },
   {
     "airline": "British Airways",
@@ -3206,7 +3287,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Wizz Air",
@@ -3228,7 +3310,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:40"
   },
   {
     "airline": "Wizz Air",
@@ -3250,7 +3333,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:00"
   },
   {
     "airline": "Wizz Air",
@@ -3272,7 +3356,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:30"
   },
   {
     "airline": "Wizz Air",
@@ -3294,7 +3379,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:00"
   },
   {
     "airline": "Wizz Air",
@@ -3316,7 +3402,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "22:15"
   },
   {
     "airline": "Wizz Air",
@@ -3338,7 +3425,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Wizz Air",
@@ -3360,7 +3448,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:45"
   },
   {
     "airline": "Wizz Air",
@@ -3382,7 +3471,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:20"
   },
   {
     "airline": "Wizz Air",
@@ -3427,7 +3517,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "Wizz Air",
@@ -3449,7 +3540,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:30"
   },
   {
     "airline": "Wizz Air",
@@ -3471,7 +3563,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:45"
   },
   {
     "airline": "Wizz Air",
@@ -3493,7 +3586,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:15"
   },
   {
     "airline": "Wizz Air",
@@ -3515,7 +3609,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Wizz Air",
@@ -3537,7 +3632,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:40"
   },
   {
     "airline": "Wizz Air",
@@ -3559,7 +3655,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:20"
   },
   {
     "airline": "Lufthansa",
@@ -3604,7 +3701,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "British Airways",
@@ -3718,7 +3816,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:30"
   },
   {
     "airline": "Ryanair",
@@ -3740,7 +3839,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:45"
   },
   {
     "airline": "Ryanair",
@@ -3762,7 +3862,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:40"
   },
   {
     "airline": "Smartwings",
@@ -3784,7 +3885,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "07:30"
   },
   {
     "airline": "Smartwings",
@@ -3806,7 +3908,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Ryanair",
@@ -3828,7 +3931,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Ryanair",
@@ -3896,7 +4000,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:15"
   },
   {
     "airline": "Ryanair",
@@ -3918,7 +4023,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:00"
   },
   {
     "airline": "Ryanair",
@@ -3940,7 +4046,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:00"
   },
   {
     "airline": "Ryanair",
@@ -3962,7 +4069,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:30"
   },
   {
     "airline": "Ryanair",
@@ -3984,7 +4092,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:15"
   },
   {
     "airline": "Ryanair",
@@ -4006,7 +4115,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:30"
   },
   {
     "airline": "Ryanair",
@@ -4028,7 +4138,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Ryanair",
@@ -4050,7 +4161,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:10"
   },
   {
     "airline": "Ryanair",
@@ -4072,7 +4184,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:45"
   },
   {
     "airline": "Ryanair",
@@ -4094,7 +4207,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Ryanair",
@@ -4116,7 +4230,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:40"
   },
   {
     "airline": "Ryanair",
@@ -4138,7 +4253,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:15"
   },
   {
     "airline": "Ryanair",
@@ -4160,7 +4276,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:00"
   },
   {
     "airline": "Ryanair",
@@ -4182,7 +4299,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:20"
   },
   {
     "airline": "Ryanair",
@@ -4204,7 +4322,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:45"
   },
   {
     "airline": "Ryanair",
@@ -4226,7 +4345,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:15"
   },
   {
     "airline": "Ryanair",
@@ -4248,7 +4368,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "Ryanair",
@@ -4270,7 +4391,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:00"
   },
   {
     "airline": "Ryanair",
@@ -4292,7 +4414,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:30"
   },
   {
     "airline": "Ryanair",
@@ -4314,7 +4437,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "Ryanair",
@@ -4336,7 +4460,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:40"
   },
   {
     "airline": "Ryanair",
@@ -4358,7 +4483,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:20"
   },
   {
     "airline": "Ryanair",
@@ -4380,7 +4506,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Ryanair",
@@ -4402,7 +4529,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:20"
   },
   {
     "airline": "Ryanair",
@@ -4424,7 +4552,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "Ryanair",
@@ -4446,7 +4575,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "Ryanair",
@@ -4468,7 +4598,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:15"
   },
   {
     "airline": "Ryanair",
@@ -4490,7 +4621,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:30"
   },
   {
     "airline": "Ryanair",
@@ -4535,7 +4667,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Lufthansa",
@@ -4557,7 +4690,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:45"
   },
   {
     "airline": "Austrian Airlines",
@@ -4579,7 +4713,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -4601,7 +4736,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:30"
   },
   {
     "airline": "British Airways",
@@ -4623,7 +4759,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:15"
   },
   {
     "airline": "Wizz Air",
@@ -4645,7 +4782,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:40"
   },
   {
     "airline": "Wizz Air",
@@ -4667,7 +4805,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "easyJet",
@@ -4689,7 +4828,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:15"
   },
   {
     "airline": "easyJet",
@@ -4711,7 +4851,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:00"
   },
   {
     "airline": "easyJet",
@@ -4733,7 +4874,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:30"
   },
   {
     "airline": "easyJet",
@@ -4755,7 +4897,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:45"
   },
   {
     "airline": "easyJet",
@@ -4777,7 +4920,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:15"
   },
   {
     "airline": "British Airways",
@@ -4799,7 +4943,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:45"
   },
   {
     "airline": "British Airways",
@@ -4821,7 +4966,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "Lufthansa",
@@ -4843,7 +4989,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:00"
   },
   {
     "airline": "Lufthansa",
@@ -4888,7 +5035,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:20"
   },
   {
     "airline": "Wizz Air",
@@ -4910,7 +5058,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:30"
   },
   {
     "airline": "Wizz Air",
@@ -4932,7 +5081,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Wizz Air",
@@ -4954,7 +5104,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:30"
   },
   {
     "airline": "Wizz Air",
@@ -4976,7 +5127,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:00"
   },
   {
     "airline": "Wizz Air",
@@ -5334,7 +5486,7 @@
     "callsignOut": "UAE111",
     "flightNumIn": "112",
     "callsignIn": "UAE112",
-    "depTimeOutLocal": "10:35",
+    "depTimeOutLocal": "09:55",
     "daysOfWeek": [
       1,
       2,
@@ -5344,7 +5496,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "16:00"
+    "depTimeInLocal": "15:50"
   },
   {
     "airline": "Qatar Airways",
@@ -5357,7 +5509,7 @@
     "callsignOut": "QTR3",
     "flightNumIn": "4",
     "callsignIn": "QTR4",
-    "depTimeOutLocal": "07:55",
+    "depTimeOutLocal": "08:00",
     "daysOfWeek": [
       1,
       2,
@@ -5373,14 +5525,14 @@
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "A35K",
+    "aircraft_type": "A351",
     "fromIcao": "OTHH",
     "toIcao": "EGLL",
     "flightNumOut": "1",
     "callsignOut": "QTR1",
     "flightNumIn": "2",
     "callsignIn": "QTR2",
-    "depTimeOutLocal": "12:30",
+    "depTimeOutLocal": "12:40",
     "daysOfWeek": [
       1,
       2,
@@ -5396,14 +5548,14 @@
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "B77W",
+    "aircraft_type": "A359",
     "fromIcao": "OTHH",
     "toIcao": "EGLL",
     "flightNumOut": "7",
     "callsignOut": "QTR7",
     "flightNumIn": "8",
     "callsignIn": "QTR8",
-    "depTimeOutLocal": "15:15",
+    "depTimeOutLocal": "08:55",
     "daysOfWeek": [
       1,
       2,
@@ -5413,20 +5565,20 @@
       6,
       7
     ],
-    "depTimeInLocal": "21:55"
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "A35K",
+    "aircraft_type": "B789",
     "fromIcao": "OTHH",
     "toIcao": "EDDF",
     "flightNumOut": "67",
     "callsignOut": "QTR67",
     "flightNumIn": "68",
     "callsignIn": "QTR68",
-    "depTimeOutLocal": "08:05",
+    "depTimeOutLocal": "08:55",
     "daysOfWeek": [
       1,
       2,
@@ -5442,14 +5594,14 @@
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "A359",
+    "aircraft_type": "B789",
     "fromIcao": "OTHH",
     "toIcao": "EDDM",
     "flightNumOut": "57",
     "callsignOut": "QTR57",
     "flightNumIn": "58",
     "callsignIn": "QTR58",
-    "depTimeOutLocal": "08:35",
+    "depTimeOutLocal": "08:20",
     "daysOfWeek": [
       1,
       2,
@@ -5472,53 +5624,7 @@
     "callsignOut": "QTR273",
     "flightNumIn": "274",
     "callsignIn": "QTR274",
-    "depTimeOutLocal": "08:00",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ],
-    "depTimeInLocal": "16:10"
-  },
-  {
-    "airline": "Qatar Airways",
-    "airline_icao": "QTR",
-    "airline_iata": "QR",
-    "aircraft_type": "A388",
-    "fromIcao": "OTHH",
-    "toIcao": "LFPG",
-    "flightNumOut": "39",
-    "callsignOut": "QTR39",
-    "flightNumIn": "40",
-    "callsignIn": "QTR40",
-    "depTimeOutLocal": "08:00",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ],
-    "depTimeInLocal": "16:25"
-  },
-  {
-    "airline": "Qatar Airways",
-    "airline_icao": "QTR",
-    "airline_iata": "QR",
-    "aircraft_type": "B789",
-    "fromIcao": "OTHH",
-    "toIcao": "LIRF",
-    "flightNumOut": "115",
-    "callsignOut": "QTR115",
-    "flightNumIn": "116",
-    "callsignIn": "QTR116",
-    "depTimeOutLocal": "08:45",
+    "depTimeOutLocal": "08:10",
     "daysOfWeek": [
       1,
       2,
@@ -5534,14 +5640,14 @@
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "A359",
+    "aircraft_type": "A388",
     "fromIcao": "OTHH",
-    "toIcao": "LEMD",
-    "flightNumOut": "149",
-    "callsignOut": "QTR149",
-    "flightNumIn": "150",
-    "callsignIn": "QTR150",
-    "depTimeOutLocal": "08:15",
+    "toIcao": "LFPG",
+    "flightNumOut": "39",
+    "callsignOut": "QTR39",
+    "flightNumIn": "40",
+    "callsignIn": "QTR40",
+    "depTimeOutLocal": "08:35",
     "daysOfWeek": [
       1,
       2,
@@ -5551,7 +5657,53 @@
       6,
       7
     ],
-    "depTimeInLocal": "16:05"
+    "depTimeInLocal": "16:25"
+  },
+  {
+    "airline": "Qatar Airways",
+    "airline_icao": "QTR",
+    "airline_iata": "QR",
+    "aircraft_type": "A359",
+    "fromIcao": "OTHH",
+    "toIcao": "LIRF",
+    "flightNumOut": "115",
+    "callsignOut": "QTR115",
+    "flightNumIn": "116",
+    "callsignIn": "QTR116",
+    "depTimeOutLocal": "02:25",
+    "daysOfWeek": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "depTimeInLocal": "09:40"
+  },
+  {
+    "airline": "Qatar Airways",
+    "airline_icao": "QTR",
+    "airline_iata": "QR",
+    "aircraft_type": "B77W",
+    "fromIcao": "OTHH",
+    "toIcao": "LEMD",
+    "flightNumOut": "149",
+    "callsignOut": "QTR149",
+    "flightNumIn": "150",
+    "callsignIn": "QTR150",
+    "depTimeOutLocal": "07:50",
+    "daysOfWeek": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "depTimeInLocal": "15:45"
   },
   {
     "airline": "Qatar Airways",
@@ -5574,7 +5726,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "16:00"
+    "depTimeInLocal": "16:35"
   },
   {
     "airline": "Qatar Airways",
@@ -5603,14 +5755,14 @@
     "airline": "Qatar Airways",
     "airline_icao": "QTR",
     "airline_iata": "QR",
-    "aircraft_type": "A359",
+    "aircraft_type": "B788",
     "fromIcao": "OTHH",
     "toIcao": "LHBP",
     "flightNumOut": "199",
     "callsignOut": "QTR199",
     "flightNumIn": "200",
     "callsignIn": "QTR200",
-    "depTimeOutLocal": "08:45",
+    "depTimeOutLocal": "08:40",
     "daysOfWeek": [
       1,
       2,
@@ -5642,7 +5794,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:45"
   },
   {
     "airline": "Lufthansa",
@@ -5762,7 +5915,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:40"
   },
   {
     "airline": "British Airways",
@@ -5846,7 +6000,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:30"
   },
   {
     "airline": "Lufthansa",
@@ -6131,13 +6286,13 @@
       6,
       7
     ],
-    "depTimeInLocal": "17:50"
+    "depTimeInLocal": "16:35"
   },
   {
     "airline": "Lufthansa",
     "airline_icao": "DLH",
     "airline_iata": "LH",
-    "aircraft_type": "A388",
+    "aircraft_type": "A359",
     "fromIcao": "EDDM",
     "toIcao": "KJFK",
     "flightNumOut": "410",
@@ -6233,14 +6388,14 @@
     "airline": "KLM",
     "airline_icao": "KLM",
     "airline_iata": "KL",
-    "aircraft_type": "B77W",
+    "aircraft_type": "B78X",
     "fromIcao": "EHAM",
     "toIcao": "KJFK",
     "flightNumOut": "641",
     "callsignOut": "KLM641",
     "flightNumIn": "642",
     "callsignIn": "KLM642",
-    "depTimeOutLocal": "13:20",
+    "depTimeOutLocal": "12:35",
     "turnaroundMins": 120,
     "daysOfWeek": [
       1,
@@ -6288,7 +6443,7 @@
     "callsignOut": "KLM861",
     "flightNumIn": "862",
     "callsignIn": "KLM862",
-    "depTimeOutLocal": "14:25",
+    "depTimeOutLocal": "13:55",
     "turnaroundMins": 130,
     "daysOfWeek": [
       1,
@@ -6312,7 +6467,7 @@
     "callsignOut": "KLM835",
     "flightNumIn": "836",
     "callsignIn": "KLM836",
-    "depTimeOutLocal": "20:50",
+    "depTimeOutLocal": "21:00",
     "turnaroundMins": 140,
     "daysOfWeek": [
       1,
@@ -6368,7 +6523,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "18:10"
+    "depTimeInLocal": "18:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -6477,7 +6632,7 @@
     "callsignOut": "BAW117",
     "flightNumIn": "116",
     "callsignIn": "BAW116",
-    "depTimeOutLocal": "08:30",
+    "depTimeOutLocal": "08:20",
     "turnaroundMins": 120,
     "daysOfWeek": [
       1,
@@ -6501,7 +6656,7 @@
     "callsignOut": "BAW269",
     "flightNumIn": "268",
     "callsignIn": "BAW268",
-    "depTimeOutLocal": "15:15",
+    "depTimeOutLocal": "15:05",
     "turnaroundMins": 140,
     "daysOfWeek": [
       1,
@@ -6525,7 +6680,7 @@
     "callsignOut": "BAW285",
     "flightNumIn": "284",
     "callsignIn": "BAW284",
-    "depTimeOutLocal": "11:15",
+    "depTimeOutLocal": "10:45",
     "turnaroundMins": 130,
     "daysOfWeek": [
       1,
@@ -6549,7 +6704,7 @@
     "callsignOut": "BAW11",
     "flightNumIn": "12",
     "callsignIn": "BAW12",
-    "depTimeOutLocal": "19:50",
+    "depTimeOutLocal": "19:25",
     "turnaroundMins": 140,
     "daysOfWeek": [
       1,
@@ -6560,7 +6715,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "23:15"
+    "depTimeInLocal": "23:25"
   },
   {
     "airline": "British Airways",
@@ -6573,7 +6728,7 @@
     "callsignOut": "BAW31",
     "flightNumIn": "32",
     "callsignIn": "BAW32",
-    "depTimeOutLocal": "18:40",
+    "depTimeOutLocal": "19:20",
     "turnaroundMins": 130,
     "daysOfWeek": [
       1,
@@ -6609,5 +6764,28 @@
       7
     ],
     "depTimeInLocal": "19:20"
+  },
+  {
+    "airline": "Ryanair",
+    "airline_icao": "RYR",
+    "airline_iata": "FR",
+    "aircraft_type": "B738",
+    "fromIcao": "EIDW",
+    "toIcao": "EPKK",
+    "flightNumOut": "2030",
+    "callsignOut": "RYR2030",
+    "flightNumIn": "2029",
+    "callsignIn": "RYR2029",
+    "depTimeOutLocal": "19:40",
+    "depTimeInLocal": "16:45",
+    "daysOfWeek": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
   }
 ]
