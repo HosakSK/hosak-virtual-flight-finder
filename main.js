@@ -229,6 +229,23 @@ function initTheme() {
 // ----------------------------------------------------
 // Bidirectional Multi-Select Filters
 // ----------------------------------------------------
+function getAircraftInfo(code) {
+  if (!code) return { code: 'A320', name: 'Airbus A320', category: 'Airbus Narrowbody' };
+  const meta = AIRCRAFT_METADATA[code] || (AIRCRAFT_DEFINITIONS && AIRCRAFT_DEFINITIONS.find(a => a.code === code));
+  if (meta) {
+    return {
+      code: code,
+      name: meta.name || code,
+      category: meta.category || 'Aircraft'
+    };
+  }
+  return {
+    code: code,
+    name: code,
+    category: 'Uncategorized / Other'
+  };
+}
+
 function getAvailableAircraftCodes() {
   if (selectedAirlines.length === 0) {
     return AIRCRAFT_DEFINITIONS.map(a => a.code);
@@ -813,7 +830,10 @@ function renderFlights() {
           <div class="fc-identifiers-row">
             <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
             ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge flightnum">${escapeHtml(f.flight_number)}</span>` : ''}
-            <span class="badge aircraft-badge">${escapeHtml(f.aircraft_type || 'B738')}</span>
+            ${(() => {
+            const acInfo = getAircraftInfo(f.aircraft_type);
+            return `<span class="badge aircraft-badge" title="${escapeHtml(acInfo.name)} (${escapeHtml(acInfo.category)})">✈️ ${escapeHtml(f.aircraft_type || 'B738')} • ${escapeHtml(acInfo.name)}</span>`;
+          })()}
           </div>
         </div>
       </div>
