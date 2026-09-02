@@ -37,15 +37,17 @@
           <div class="filter-group">
             <label for="filter-airline">AIRLINE</label>
             <select id="filter-airline">
-              <option value="">All Airlines (8)</option>
-              <option value="Ryanair">Ryanair (B738 / B38M)</option>
-              <option value="Wizz Air">Wizz Air (A320 / A321 / neo)</option>
-              <option value="easyJet">easyJet (A320 / A321)</option>
-              <option value="Lufthansa">Lufthansa (A320 / A321)</option>
-              <option value="British Airways">British Airways (A320 / E190)</option>
-              <option value="KLM">KLM Royal Dutch Airlines (B738 / E195)</option>
-              <option value="Smartwings">Smartwings (B738 / B38M)</option>
-              <option value="Austrian Airlines">Austrian Airlines (A320 / E195)</option>
+              <option value="">All Airlines (10)</option>
+              <option value="Ryanair">Ryanair</option>
+              <option value="Wizz Air">Wizz Air</option>
+              <option value="easyJet">easyJet</option>
+              <option value="Lufthansa">Lufthansa</option>
+              <option value="British Airways">British Airways</option>
+              <option value="KLM">KLM Royal Dutch Airlines</option>
+              <option value="Smartwings">Smartwings</option>
+              <option value="Austrian Airlines">Austrian Airlines</option>
+              <option value="Emirates">Emirates</option>
+              <option value="Qatar Airways">Qatar Airways</option>
             </select>
           </div>
 
@@ -53,13 +55,26 @@
             <label for="filter-aircraft">AIRCRAFT TYPE</label>
             <select id="filter-aircraft">
               <option value="">All Aircraft Types</option>
-              <option value="B738">Boeing 737-800 (B738)</option>
-              <option value="B38M">Boeing 737 MAX 8 (B38M)</option>
-              <option value="A320">Airbus A320 (A320)</option>
-              <option value="A321">Airbus A321 (A321)</option>
-              <option value="A21N">Airbus A321neo (A21N)</option>
-              <option value="E190">Embraer E190 (E190)</option>
-              <option value="E195">Embraer E195 (E195)</option>
+              <optgroup label="Heavy / Widebody">
+                <option value="B748">Boeing 747-8 (B748)</option>
+                <option value="B744">Boeing 747-400 (B744)</option>
+                <option value="A388">Airbus A380-800 (A388)</option>
+                <option value="B77W">Boeing 777-300ER (B77W)</option>
+                <option value="A35K">Airbus A350-1000 (A35K)</option>
+                <option value="A359">Airbus A350-900 (A359)</option>
+                <option value="B789">Boeing 787-9 Dreamliner (B789)</option>
+              </optgroup>
+              <optgroup label="Narrowbody">
+                <option value="B738">Boeing 737-800 (B738)</option>
+                <option value="B38M">Boeing 737 MAX 8 (B38M)</option>
+                <option value="A320">Airbus A320 (A320)</option>
+                <option value="A321">Airbus A321 (A321)</option>
+                <option value="A21N">Airbus A321neo (A21N)</option>
+              </optgroup>
+              <optgroup label="Regional Jets">
+                <option value="E190">Embraer E190 (E190)</option>
+                <option value="E195">Embraer E195 / E2 (E195)</option>
+              </optgroup>
             </select>
           </div>
 
