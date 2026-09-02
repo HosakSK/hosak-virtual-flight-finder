@@ -456,10 +456,7 @@ function applyFilters() {
     if (currentDay !== 'all') {
       const targetDay = currentDay === 0 ? 7 : currentDay;
       const flightDay = f.day_of_operation === 0 ? 7 : (f.day_of_operation || 1);
-      if (flightDay !== targetDay) {
-        const days = (f.days_of_week || f.days_of_operation || []).map(d => d === 0 ? 7 : d);
-        if (!days.includes(targetDay)) return false;
-      }
+      if (flightDay !== targetDay) return false;
     }
 
     return true;

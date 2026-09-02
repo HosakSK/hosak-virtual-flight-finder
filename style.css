@@ -1826,3 +1826,59 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
 }
+
+/* Sleek Borderless Range Slider */
+.vff-range {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 100% !important;
+  height: 6px !important;
+  background: rgba(100, 116, 139, 0.25) !important;
+  border-radius: 999px !important;
+  outline: none !important;
+  border: none !important;
+  margin: 18px 0 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .vff-range,
+.theme-dark .vff-range {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.vff-range::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: var(--color-accent) !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 10px rgba(var(--color-accent-rgb), 0.6) !important;
+  border: 2px solid #FFFFFF !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.vff-range::-webkit-slider-thumb:hover {
+  transform: scale(1.25) !important;
+  box-shadow: 0 0 14px rgba(var(--color-accent-rgb), 0.9) !important;
+}
+
+.vff-range::-moz-range-thumb {
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 50% !important;
+  background: var(--color-accent) !important;
+  cursor: pointer !important;
+  box-shadow: 0 0 10px rgba(var(--color-accent-rgb), 0.6) !important;
+  border: 2px solid #FFFFFF !important;
+}
+
+.vff-range::-moz-range-track {
+  background: rgba(100, 116, 139, 0.25) !important;
+  border: none !important;
+  border-radius: 999px !important;
+  height: 6px !important;
+}
