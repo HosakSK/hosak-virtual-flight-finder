@@ -1,61 +1,21 @@
-// Virtual Flight Finder - Main Application Logic
-// Multi-Airline & European Schedule Network with Searchable Multi-Select & Fast Pagination
+// Virtual Flight Finder - Main Application Logic (Clean Rewrite)
 
 let allFlights = [];
 let filteredFlights = [];
-let currentDay = new Date().getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
+let currentDay = 'all';
 let leafletMap = null;
 let globeMap = null;
 let globePolylines = [];
 
-// PAGINATION STATE
+// Pagination State
 let currentPage = 1;
 const PAGE_SIZE = 100;
 
-// Multi-select state
-let selectedAirlines = []; // empty means All
-let selectedAircraft = []; // empty means All
+// Multi-select State
+let selectedAirlines = []; // empty = all
+let selectedAircraft = []; // empty = all
 
-// DOM Elements
-const searchDep = document.getElementById('search-dep');
-const searchArr = document.getElementById('search-arr');
-const filterDuration = document.getElementById('filter-duration');
-const durationLabel = document.getElementById('duration-label');
-const filterHomebase = document.getElementById('filter-homebase');
-const filterCallsign = document.getElementById('filter-callsign');
-const sortBy = document.getElementById('sort-by');
-const resetFiltersBtn = document.getElementById('reset-filters');
-const resultsCount = document.getElementById('results-count');
-const flightsGrid = document.getElementById('flights-grid');
-const lastUpdatedText = document.getElementById('last-updated-text');
-const btnGlobeMap = document.getElementById('btn-globe-map');
-const globeModal = document.getElementById('globe-modal');
-const globeModalClose = document.getElementById('globe-modal-close');
-const globeRoutesCount = document.getElementById('globe-routes-count');
-
-// Pagination Elements
-const paginationContainer = document.getElementById('pagination-container');
-const paginationInfo = document.getElementById('pagination-info');
-const btnPageFirst = document.getElementById('btn-page-first');
-const btnPagePrev = document.getElementById('btn-page-prev');
-const pageNumbersContainer = document.getElementById('page-numbers');
-const btnPageNext = document.getElementById('btn-page-next');
-const btnPageLast = document.getElementById('btn-page-last');
-
-// Multi-select containers
-const msAirline = document.getElementById('ms-airline');
-const msAircraft = document.getElementById('ms-aircraft');
-
-// Modal Elements
-const flightModal = document.getElementById('flight-modal');
-const modalClose = document.getElementById('modal-close');
-const modalLoading = document.getElementById('modal-loading');
-const modalBody = document.getElementById('modal-body');
-
-// Theme Switcher
-const themeToggle = document.getElementById('theme-toggle');
-
-// Airline Definitions (Master)
+// Master Airline Definitions
 const AIRLINE_DEFINITIONS = [
   { id: 'Ryanair', name: 'Ryanair', icao: 'RYR', iata: 'FR', aircraft: ['B738', 'B38M'] },
   { id: 'Wizz Air', name: 'Wizz Air', icao: 'WZZ', iata: 'W6', aircraft: ['A320', 'A321', 'A21N'] },
@@ -69,31 +29,61 @@ const AIRLINE_DEFINITIONS = [
   { id: 'Qatar Airways', name: 'Qatar Airways', icao: 'QTR', iata: 'QR', aircraft: ['A388', 'A35K', 'A359', 'B77W', 'B789'] }
 ];
 
-// Aircraft Definitions (Master)
+// Master Aircraft Definitions
 const AIRCRAFT_DEFINITIONS = [
-  // Boeing Narrowbody
-  { code: 'B738', name: 'Boeing 737-800', category: 'Boeing Narrowbody', searchKeywords: '737 738 b738 boeing narrowbody' },
-  { code: 'B38M', name: 'Boeing 737 MAX 8', category: 'Boeing Narrowbody', searchKeywords: '737 max max8 b38m boeing' },
-  // Airbus Narrowbody
-  { code: 'A320', name: 'Airbus A320', category: 'Airbus Narrowbody', searchKeywords: '320 a320 airbus narrowbody' },
-  { code: 'A321', name: 'Airbus A321', category: 'Airbus Narrowbody', searchKeywords: '321 a321 airbus narrowbody' },
-  { code: 'A21N', name: 'Airbus A321neo', category: 'Airbus Narrowbody', searchKeywords: '321 neo a21n a321neo airbus' },
-  // Regional
-  { code: 'E190', name: 'Embraer E190', category: 'Regional', searchKeywords: 'e190 embraer regional' },
-  { code: 'E195', name: 'Embraer E195', category: 'Regional', searchKeywords: 'e195 embraer regional' },
-  // Boeing Widebody
-  { code: 'B77W', name: 'Boeing 777-300ER', category: 'Boeing Widebody', searchKeywords: '777 77w b77w triple seven widebody' },
-  { code: 'B789', name: 'Boeing 787-9 Dreamliner', category: 'Boeing Widebody', searchKeywords: '787 789 b789 dreamliner widebody' },
-  // Airbus Widebody
-  { code: 'A359', name: 'Airbus A350-900', category: 'Airbus Widebody', searchKeywords: '350 359 a359 a350 airbus widebody' },
-  { code: 'A35K', name: 'Airbus A350-1000', category: 'Airbus Widebody', searchKeywords: '350 35k a35k a350-1000 airbus widebody' },
-  // Heavies / Giants of the Skies
-  { code: 'A388', name: 'Airbus A380-800 (Superjumbo)', category: 'Super Heavy & Jumbo', searchKeywords: '380 a388 a380 superjumbo double decker heavy' },
-  { code: 'B748', name: 'Boeing 747-8 Intercontinental', category: 'Super Heavy & Jumbo', searchKeywords: '747 748 b748 queen jumbo heavy' },
-  { code: 'B744', name: 'Boeing 747-400', category: 'Super Heavy & Jumbo', searchKeywords: '747 744 b744 queen jumbo heavy' }
+  { code: 'B738', name: 'Boeing 737-800', category: 'Boeing Narrowbody', keywords: '737 738 b738 boeing' },
+  { code: 'B38M', name: 'Boeing 737 MAX 8', category: 'Boeing Narrowbody', keywords: '737 max max8 b38m boeing' },
+  { code: 'A320', name: 'Airbus A320', category: 'Airbus Narrowbody', keywords: '320 a320 airbus' },
+  { code: 'A321', name: 'Airbus A321', category: 'Airbus Narrowbody', keywords: '321 a321 airbus' },
+  { code: 'A21N', name: 'Airbus A321neo', category: 'Airbus Narrowbody', keywords: '321 neo a21n airbus' },
+  { code: 'E190', name: 'Embraer E190', category: 'Regional', keywords: 'e190 embraer' },
+  { code: 'E195', name: 'Embraer E195', category: 'Regional', keywords: 'e195 embraer' },
+  { code: 'B77W', name: 'Boeing 777-300ER', category: 'Boeing Widebody', keywords: '777 77w b77w triple seven' },
+  { code: 'B789', name: 'Boeing 787-9 Dreamliner', category: 'Boeing Widebody', keywords: '787 789 b789 dreamliner' },
+  { code: 'A359', name: 'Airbus A350-900', category: 'Airbus Widebody', keywords: '350 359 a359 airbus' },
+  { code: 'A35K', name: 'Airbus A350-1000', category: 'Airbus Widebody', keywords: '350 35k a35k airbus' },
+  { code: 'A388', name: 'Airbus A380-800', category: 'Super Heavy & Jumbo', keywords: '380 a388 superjumbo heavy' },
+  { code: 'B748', name: 'Boeing 747-8', category: 'Super Heavy & Jumbo', keywords: '747 748 b748 queen jumbo' },
+  { code: 'B744', name: 'Boeing 747-400', category: 'Super Heavy & Jumbo', keywords: '747 744 b744 queen jumbo' }
 ];
 
-// Helper: Haversine distance NM
+// DOM Elements
+const searchDep = document.getElementById('search-dep');
+const searchArr = document.getElementById('search-arr');
+const btnSwapRoute = document.getElementById('btn-swap-route');
+const filterCallsign = document.getElementById('filter-callsign');
+const filterDuration = document.getElementById('filter-duration');
+const durationLabel = document.getElementById('duration-label');
+const sortBy = document.getElementById('sort-by');
+const resetFiltersBtn = document.getElementById('reset-filters');
+const resultsCount = document.getElementById('results-count');
+const flightsGrid = document.getElementById('flights-grid');
+
+const msAirline = document.getElementById('ms-airline');
+const msAircraft = document.getElementById('ms-aircraft');
+
+const btnGlobeMap = document.getElementById('btn-globe-map');
+const globeModal = document.getElementById('globe-modal');
+const globeModalClose = document.getElementById('globe-modal-close');
+const globeRoutesCount = document.getElementById('globe-routes-count');
+
+const paginationContainer = document.getElementById('pagination-container');
+const paginationInfo = document.getElementById('pagination-info');
+const btnPageFirst = document.getElementById('btn-page-first');
+const btnPagePrev = document.getElementById('btn-page-prev');
+const pageNumbersContainer = document.getElementById('page-numbers');
+const btnPageNext = document.getElementById('btn-page-next');
+const btnPageLast = document.getElementById('btn-page-last');
+
+const flightModal = document.getElementById('flight-modal');
+const modalClose = document.getElementById('modal-close');
+const modalLoading = document.getElementById('modal-loading');
+const modalBody = document.getElementById('modal-body');
+
+const themeToggle = document.getElementById('theme-toggle');
+const lastUpdatedText = document.getElementById('last-updated-text');
+
+// Helper: Distance
 function calcDistanceNm(lat1, lon1, lat2, lon2) {
   if (!lat1 || !lon1 || !lat2 || !lon2) return 0;
   const R = 3440.065;
@@ -105,7 +95,7 @@ function calcDistanceNm(lat1, lon1, lat2, lon2) {
   return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
 }
 
-// Initialize
+// App Initialization
 document.addEventListener('DOMContentLoaded', async () => {
   setupTheme();
   setupMultiSelects();
@@ -125,14 +115,11 @@ function setupTheme() {
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
-      if (globeMap) {
-        initGlobeMap();
-      }
+      if (globeMap) initGlobeMap();
     });
   }
 }
 
-// Load metadata (timestamp)
 async function loadMetadata() {
   try {
     const res = await fetch('./metadata.json');
@@ -143,12 +130,12 @@ async function loadMetadata() {
       }
     }
   } catch (e) {
-    console.warn('Could not load metadata.json', e);
+    console.warn('Metadata not loaded', e);
   }
 }
 
 // =========================================================================
-// SEARCHABLE MULTI-SELECT FILTER LOGIC
+// SEARCHABLE MULTI-SELECT FILTER ENGINE
 // =========================================================================
 
 function setupMultiSelects() {
@@ -156,38 +143,34 @@ function setupMultiSelects() {
   renderAircraftMultiSelect();
 
   document.addEventListener('click', (e) => {
-    if (msAirline && !msAirline.contains(e.target)) {
-      closeMultiSelect(msAirline);
-    }
-    if (msAircraft && !msAircraft.contains(e.target)) {
-      closeMultiSelect(msAircraft);
-    }
+    if (msAirline && !msAirline.contains(e.target)) closeDropdown(msAirline);
+    if (msAircraft && !msAircraft.contains(e.target)) closeDropdown(msAircraft);
   });
 }
 
-function openMultiSelect(container) {
+function openDropdown(container) {
   container.classList.add('open');
-  const dropdown = container.querySelector('.ms-dropdown');
-  if (dropdown) {
-    dropdown.classList.remove('hidden');
-    const input = dropdown.querySelector('.ms-search-input');
+  const dd = container.querySelector('.ms-dropdown');
+  if (dd) {
+    dd.classList.remove('hidden');
+    const input = dd.querySelector('.ms-search-input');
     if (input) input.focus();
   }
 }
 
-function closeMultiSelect(container) {
+function closeDropdown(container) {
   container.classList.remove('open');
-  const dropdown = container.querySelector('.ms-dropdown');
-  if (dropdown) dropdown.classList.add('hidden');
+  const dd = container.querySelector('.ms-dropdown');
+  if (dd) dd.classList.add('hidden');
 }
 
-function toggleMultiSelect(container) {
+function toggleDropdown(container) {
   if (container.classList.contains('open')) {
-    closeMultiSelect(container);
+    closeDropdown(container);
   } else {
-    if (msAirline && msAirline !== container) closeMultiSelect(msAirline);
-    if (msAircraft && msAircraft !== container) closeMultiSelect(msAircraft);
-    openMultiSelect(container);
+    if (msAirline && msAirline !== container) closeDropdown(msAirline);
+    if (msAircraft && msAircraft !== container) closeDropdown(msAircraft);
+    openDropdown(container);
   }
 }
 
@@ -206,8 +189,8 @@ function getAvailableAircraftCodes() {
 }
 
 function syncAircraftAvailability() {
-  const availableCodes = getAvailableAircraftCodes();
-  selectedAircraft = selectedAircraft.filter(ac => availableCodes.includes(ac));
+  const allowed = getAvailableAircraftCodes();
+  selectedAircraft = selectedAircraft.filter(ac => allowed.includes(ac));
   renderAircraftMultiSelect();
 }
 
@@ -224,8 +207,8 @@ function renderAirlineMultiSelect(searchQuery = '') {
   });
 
   const triggerLabel = selectedAirlines.length === 0 
-    ? 'All Airlines (10)' 
-    : (selectedAirlines.length === 1 ? selectedAirlines[0] : `${selectedAirlines.length} Airlines Selected`);
+    ? 'All Airlines (' + AIRLINE_DEFINITIONS.length + ')' 
+    : (selectedAirlines.length === 1 ? selectedAirlines[0] : selectedAirlines.length + ' Airlines Selected');
 
   msAirline.innerHTML = `
     <div class="ms-trigger" tabindex="0" id="ms-airline-trigger">
@@ -259,15 +242,9 @@ function renderAirlineMultiSelect(searchQuery = '') {
   `;
 
   const trigger = msAirline.querySelector('#ms-airline-trigger');
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMultiSelect(msAirline);
-  });
+  trigger.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown(msAirline); });
   trigger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMultiSelect(msAirline);
-    }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDropdown(msAirline); }
   });
 
   const searchInput = msAirline.querySelector('#ms-airline-search');
@@ -299,8 +276,7 @@ function renderAirlineMultiSelect(searchQuery = '') {
     applyFilters();
   });
 
-  const items = msAirline.querySelectorAll('.ms-option-item');
-  items.forEach(item => {
+  msAirline.querySelectorAll('.ms-option-item').forEach(item => {
     item.addEventListener('click', (e) => {
       e.stopPropagation();
       const id = item.getAttribute('data-id');
@@ -319,19 +295,19 @@ function renderAirlineMultiSelect(searchQuery = '') {
 function renderAircraftMultiSelect(searchQuery = '') {
   if (!msAircraft) return;
   const q = searchQuery.toLowerCase().trim();
-  const availableCodes = getAvailableAircraftCodes();
+  const allowed = getAvailableAircraftCodes();
 
   const filtered = AIRCRAFT_DEFINITIONS.filter(a => {
-    if (!availableCodes.includes(a.code)) return false;
+    if (!allowed.includes(a.code)) return false;
     if (!q) return true;
     return a.code.toLowerCase().includes(q) ||
            a.name.toLowerCase().includes(q) ||
-           a.searchKeywords.toLowerCase().includes(q);
+           a.keywords.toLowerCase().includes(q);
   });
 
   const triggerLabel = selectedAircraft.length === 0
-    ? `All Aircraft (${availableCodes.length})`
-    : (selectedAircraft.length === 1 ? selectedAircraft[0] : `${selectedAircraft.length} Aircraft Types`);
+    ? 'All Aircraft (' + allowed.length + ')'
+    : (selectedAircraft.length === 1 ? selectedAircraft[0] : selectedAircraft.length + ' Aircraft Selected');
 
   const categories = {};
   filtered.forEach(ac => {
@@ -380,15 +356,9 @@ function renderAircraftMultiSelect(searchQuery = '') {
   `;
 
   const trigger = msAircraft.querySelector('#ms-aircraft-trigger');
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMultiSelect(msAircraft);
-  });
+  trigger.addEventListener('click', (e) => { e.stopPropagation(); toggleDropdown(msAircraft); });
   trigger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleMultiSelect(msAircraft);
-    }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleDropdown(msAircraft); }
   });
 
   const searchInput = msAircraft.querySelector('#ms-aircraft-search');
@@ -405,7 +375,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
   const btnAll = msAircraft.querySelector('#ms-aircraft-all');
   btnAll.addEventListener('click', (e) => {
     e.stopPropagation();
-    selectedAircraft = [...availableCodes];
+    selectedAircraft = [...allowed];
     renderAircraftMultiSelect(searchInput.value);
     applyFilters();
   });
@@ -418,8 +388,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
     applyFilters();
   });
 
-  const items = msAircraft.querySelectorAll('.ms-option-item');
-  items.forEach(item => {
+  msAircraft.querySelectorAll('.ms-option-item').forEach(item => {
     item.addEventListener('click', (e) => {
       e.stopPropagation();
       const code = item.getAttribute('data-code');
@@ -435,18 +404,18 @@ function renderAircraftMultiSelect(searchQuery = '') {
 }
 
 // =========================================================================
-// DATA LOADING & FILTERING
+// DATA LOADING & CLEAN FILTER ENGINE
 // =========================================================================
 
 async function loadFlights() {
   try {
-    resultsCount.textContent = 'Loading flights dataset...';
+    resultsCount.textContent = 'Loading flights...';
     const res = await fetch('./flights.json');
-    if (!res.ok) throw new Error('Failed to load flights.json: ' + res.status);
-    const rawFlights = await res.json();
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const rawData = await res.json();
     
-    // Normalize properties for 100% data consistency
-    allFlights = rawFlights.map(f => {
+    // Normalize data model
+    allFlights = rawData.map(f => {
       const depIcao = f.dep_icao || f.departure_icao || 'LZIB';
       const arrIcao = f.arr_icao || f.arrival_icao || 'EGSS';
       const depCity = f.dep_city || f.departure_city || depIcao;
@@ -501,60 +470,77 @@ async function loadFlights() {
 
     applyFilters();
   } catch (err) {
-    console.error('Failed to load flights:', err);
-    resultsCount.textContent = 'Error loading flights. Please check console.';
+    console.error('Error loading flights:', err);
+    resultsCount.textContent = 'Error loading flights';
   }
 }
 
 function setupEventListeners() {
-  // Day filter pills
-  const dayPills = document.querySelectorAll('.day-pill');
-  dayPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      dayPills.forEach(p => p.classList.remove('active'));
-      pill.classList.add('active');
-      const val = pill.getAttribute('data-day');
+  // Day of week buttons
+  document.querySelectorAll('.vff-day-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.vff-day-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const val = btn.getAttribute('data-day');
       currentDay = val === 'all' ? 'all' : parseInt(val, 10);
+      currentPage = 1;
       applyFilters();
     });
   });
 
-  // Filter inputs
-  [searchDep, searchArr, filterHomebase, filterCallsign, sortBy].forEach(el => {
+  // Search Inputs
+  [searchDep, searchArr, filterCallsign, sortBy].forEach(el => {
     if (el) el.addEventListener('input', () => { currentPage = 1; applyFilters(); });
     if (el && el.tagName === 'SELECT') el.addEventListener('change', () => { currentPage = 1; applyFilters(); });
   });
 
+  // Swap Route Button
+  if (btnSwapRoute) {
+    btnSwapRoute.addEventListener('click', () => {
+      const temp = searchDep.value;
+      searchDep.value = searchArr.value;
+      searchArr.value = temp;
+      currentPage = 1;
+      applyFilters();
+    });
+  }
+
+  // Duration Slider
   if (filterDuration) {
     filterDuration.addEventListener('input', (e) => {
       const val = parseInt(e.target.value, 10);
       if (val >= 360) {
-        durationLabel.textContent = 'Max Duration: Any';
+        durationLabel.textContent = 'Any duration';
       } else {
         const h = Math.floor(val / 60);
         const m = val % 60;
-        durationLabel.textContent = `Max Duration: ${h}h ${m > 0 ? m + 'm' : ''}`;
+        durationLabel.textContent = `Max ${h}h ${m > 0 ? m + 'm' : ''}`;
       }
       currentPage = 1;
       applyFilters();
     });
   }
 
-  // Reset Filters
+  // Reset Filters Button
   if (resetFiltersBtn) {
     resetFiltersBtn.addEventListener('click', () => {
       if (searchDep) searchDep.value = '';
       if (searchArr) searchArr.value = '';
+      if (filterCallsign) filterCallsign.value = '';
       if (filterDuration) {
         filterDuration.value = 360;
-        durationLabel.textContent = 'Max Duration: Any';
+        durationLabel.textContent = 'Any duration';
       }
-      if (filterHomebase) filterHomebase.value = '';
-      if (filterCallsign) filterCallsign.value = '';
       if (sortBy) sortBy.value = 'time';
 
       selectedAirlines = [];
       selectedAircraft = [];
+      currentDay = 'all';
+
+      document.querySelectorAll('.vff-day-btn').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-day') === 'all');
+      });
+
       syncAircraftAvailability();
       renderAirlineMultiSelect();
       renderAircraftMultiSelect();
@@ -573,31 +559,17 @@ function setupEventListeners() {
     goToPage(totalPages);
   });
 
-  // Globe Modal Open / Close
-  if (btnGlobeMap) {
-    btnGlobeMap.addEventListener('click', () => {
-      openGlobeModal();
-    });
-  }
-
-  if (globeModalClose) {
-    globeModalClose.addEventListener('click', () => {
-      closeGlobeModal();
-    });
-  }
-
+  // Globe Modal
+  if (btnGlobeMap) btnGlobeMap.addEventListener('click', openGlobeModal);
+  if (globeModalClose) globeModalClose.addEventListener('click', closeGlobeModal);
   if (globeModal) {
     globeModal.addEventListener('click', (e) => {
       if (e.target === globeModal) closeGlobeModal();
     });
   }
 
-  // Modal close
-  if (modalClose) {
-    modalClose.addEventListener('click', () => {
-      flightModal.classList.add('hidden');
-    });
-  }
+  // Flight Modal Close
+  if (modalClose) modalClose.addEventListener('click', () => flightModal.classList.add('hidden'));
   if (flightModal) {
     flightModal.addEventListener('click', (e) => {
       if (e.target === flightModal) flightModal.classList.add('hidden');
@@ -608,62 +580,56 @@ function setupEventListeners() {
 function applyFilters() {
   const depTerm = (searchDep?.value || '').trim().toUpperCase();
   const arrTerm = (searchArr?.value || '').trim().toUpperCase();
-  const maxDur = parseInt(filterDuration?.value || '360', 10);
-  const homebaseTerm = (filterHomebase?.value || '').trim().toUpperCase();
   const callsignTerm = (filterCallsign?.value || '').trim().toUpperCase();
+  const maxDur = parseInt(filterDuration?.value || '360', 10);
   const sortOption = sortBy?.value || 'time';
 
   filteredFlights = allFlights.filter(f => {
-    // Day of week
+    // Operating Day
     if (currentDay !== 'all') {
       const days = f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
       if (!days.includes(currentDay)) return false;
     }
 
-    // Searchable Multi-Select: Airline
+    // Airlines Multi-Select
     if (selectedAirlines.length > 0) {
       if (!selectedAirlines.includes(f.airline)) return false;
     }
 
-    // Searchable Multi-Select: Aircraft Type
+    // Aircraft Types Multi-Select
     if (selectedAircraft.length > 0) {
       const type = f.aircraft_type || 'B738';
       if (!selectedAircraft.includes(type)) return false;
     }
 
-    // Dep / Arr Airport Search (supports ICAO, IATA, City, Country)
+    // Origin Dep Airport (ICAO, IATA, City, Country)
     if (depTerm) {
-      const depMatch = (f.dep_icao && f.dep_icao.includes(depTerm)) || 
+      const depMatch = (f.dep_icao && f.dep_icao.includes(depTerm)) ||
                        (f.dep_iata && f.dep_iata.includes(depTerm)) ||
                        (f.dep_city && f.dep_city.toUpperCase().includes(depTerm)) ||
                        (f.dep_country && f.dep_country.toUpperCase().includes(depTerm));
       if (!depMatch) return false;
     }
 
+    // Destination Arr Airport (ICAO, IATA, City, Country)
     if (arrTerm) {
-      const arrMatch = (f.arr_icao && f.arr_icao.includes(arrTerm)) || 
+      const arrMatch = (f.arr_icao && f.arr_icao.includes(arrTerm)) ||
                        (f.arr_iata && f.arr_iata.includes(arrTerm)) ||
                        (f.arr_city && f.arr_city.toUpperCase().includes(arrTerm)) ||
                        (f.arr_country && f.arr_country.toUpperCase().includes(arrTerm));
       if (!arrMatch) return false;
     }
 
-    // Duration filter
-    if (maxDur < 360 && f.duration_minutes > maxDur) {
-      return false;
-    }
-
-    // Homebase
-    if (homebaseTerm) {
-      const baseMatch = (f.dep_icao && f.dep_icao.includes(homebaseTerm)) || (f.arr_icao && f.arr_icao.includes(homebaseTerm));
-      if (!baseMatch) return false;
-    }
-
-    // Callsign / Flight number
+    // Callsign or Flight Number
     if (callsignTerm) {
       const csMatch = (f.callsign && f.callsign.toUpperCase().includes(callsignTerm)) ||
                       (f.flight_number && f.flight_number.toUpperCase().includes(callsignTerm));
       if (!csMatch) return false;
+    }
+
+    // Max Duration
+    if (maxDur < 360 && f.duration_minutes > maxDur) {
+      return false;
     }
 
     return true;
@@ -675,11 +641,10 @@ function applyFilters() {
   } else if (sortOption === 'duration-desc') {
     filteredFlights.sort((a, b) => b.duration_minutes - a.duration_minutes);
   } else {
-    // Earliest departure time
     filteredFlights.sort((a, b) => (a.dep_time_local || '99:99').localeCompare(b.dep_time_local || '99:99'));
   }
 
-  // Keep current page within valid bounds
+  // Update Page & Render
   const totalPages = Math.ceil(filteredFlights.length / PAGE_SIZE) || 1;
   if (currentPage > totalPages) currentPage = 1;
 
@@ -695,11 +660,8 @@ function goToPage(page) {
   renderFlights();
   renderPagination();
 
-  // Smooth scroll back to top of results
-  const resultsArea = document.querySelector('.results-area');
-  if (resultsArea) {
-    resultsArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  const mainContent = document.querySelector('.vff-main-content');
+  if (mainContent) mainContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function renderPagination() {
@@ -763,31 +725,26 @@ function renderFlights() {
 
   if (filteredFlights.length === 0) {
     flightsGrid.innerHTML = `
-      <div class="no-results">
-        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></svg>
-        <h3>No flights found</h3>
-        <p>Try adjusting your search criteria or reset filters.</p>
+      <div style="grid-column: 1 / -1; padding: 3rem; text-align: center; color: var(--text-muted);">
+        <h3 style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 0.5rem;">No flights found</h3>
+        <p>Try adjusting your search criteria or resetting filters.</p>
       </div>
     `;
     return;
   }
 
-  // Render ONLY 100 flights in DOM for ultra-fast instant UI performance
   const startIndex = (currentPage - 1) * PAGE_SIZE;
   const pageFlights = filteredFlights.slice(startIndex, startIndex + PAGE_SIZE);
-
   const fragment = document.createDocumentFragment();
 
   pageFlights.forEach(f => {
     const card = document.createElement('div');
-    const airlineSlug = (f.airline || 'ryanair').toLowerCase().replace(/\s+/g, '-');
-    card.className = `flight-card airline-${airlineSlug}`;
+    card.className = 'flight-card';
     card.setAttribute('data-id', f.id || `${f.callsign}-${f.dep_icao}-${f.arr_icao}`);
 
     const durH = Math.floor(f.duration_minutes / 60);
     const durM = f.duration_minutes % 60;
     const durStr = `${durH}h ${durM < 10 ? '0' : ''}${durM}m`;
-
     const airlineClass = getAirlineClass(f.airline_icao);
 
     card.innerHTML = `
@@ -798,7 +755,7 @@ function renderFlights() {
         <div class="fc-identifiers">
           <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
           ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
-          <span class="badge" style="background: rgba(var(--color-accent-rgb), 0.12); color: var(--color-accent); font-weight:700;">${escapeHtml(f.aircraft_type || 'B738')}</span>
+          <span class="badge" style="background: rgba(var(--color-accent-rgb), 0.15); color: var(--color-accent);">${escapeHtml(f.aircraft_type || 'B738')}</span>
         </div>
       </div>
 
@@ -811,7 +768,7 @@ function renderFlights() {
         </div>
 
         <div class="fc-divider">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"/>
             <path d="m12 5 7 7-7 7"/>
           </svg>
@@ -836,7 +793,7 @@ function renderFlights() {
           ${[1,2,3,4,5,6,7].map(d => {
             const active = (f.days_of_week || []).includes(d);
             const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-            return `<span class="day-dot ${active ? 'active active-primary' : ''}">${labels[d-1]}</span>`;
+            return `<span class="day-dot ${active ? 'active' : ''}">${labels[d-1]}</span>`;
           }).join('')}
         </div>
       </div>
@@ -861,25 +818,21 @@ function getAirlineClass(icao) {
     case 'AUA': return 'badge-aua';
     case 'UAE': return 'badge-uae';
     case 'QTR': return 'badge-qtr';
-    default: return 'badge-generic';
+    default: return 'badge-ryr';
   }
 }
 
 // =========================================================================
-// GLOBE / WORLD ROUTE MAP MODAL (SHOWS 100% OF FLIGHTS GLOBALLY)
+// GLOBE / WORLD ROUTE MAP MODAL
 // =========================================================================
 
 function openGlobeModal() {
   if (!globeModal) return;
   globeModal.classList.remove('hidden');
-  
   if (globeRoutesCount) {
     globeRoutesCount.textContent = `Showing ${filteredFlights.length.toLocaleString()} routes`;
   }
-
-  setTimeout(() => {
-    initGlobeMap();
-  }, 100);
+  setTimeout(initGlobeMap, 100);
 }
 
 function closeGlobeModal() {
@@ -912,11 +865,9 @@ function initGlobeMap() {
     globeMap.invalidateSize();
   }
 
-  // Clear existing polylines
   globePolylines.forEach(layer => globeMap.removeLayer(layer));
   globePolylines = [];
 
-  // Render ALL filtered flight lines across the globe
   filteredFlights.forEach(f => {
     const depLat = f.dep_lat || f.departure_lat;
     const depLon = f.dep_lon || f.departure_lon;
@@ -964,7 +915,7 @@ function getAirlineColor(icao) {
 }
 
 // =========================================================================
-// FLIGHT DETAIL MODAL & DISPATCH
+// FLIGHT DETAIL MODAL
 // =========================================================================
 
 async function openFlightModal(flight) {
@@ -979,13 +930,11 @@ async function openFlightModal(flight) {
   document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || flight.dep_city || '---'})`;
   document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || flight.arr_city || '---'})`;
 
-  // Search links
   document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
   document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
   document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
   document.getElementById('m-adsb-search-btn').href = `https://globe.adsbexchange.com/?callsign=${encodeURIComponent(callsign)}`;
 
-  // Simbrief button
   const simbriefBtn = document.getElementById('m-simbrief-btn');
   if (simbriefBtn) {
     const params = new URLSearchParams({
@@ -998,13 +947,11 @@ async function openFlightModal(flight) {
     simbriefBtn.href = `https://dispatch.simbrief.com/options/custom?${params.toString()}`;
   }
 
-  // Skyvector button
   const skyvectorBtn = document.getElementById('m-skyvector-btn');
   if (skyvectorBtn) {
     skyvectorBtn.href = `https://skyvector.com/?fpl=${flight.dep_icao}+${flight.arr_icao}`;
   }
 
-  // Stats
   document.getElementById('m-fstat-dist').textContent = flight.distance_nm || '—';
   document.getElementById('m-fstat-fl').textContent = flight.planned_fl || (flight.distance_nm > 500 ? 'FL360' : 'FL320');
   const durH = Math.floor(flight.duration_minutes / 60);
@@ -1013,14 +960,12 @@ async function openFlightModal(flight) {
   document.getElementById('m-fstat-wpts').textContent = flight.route_string ? flight.route_string.split(' ').length : 'DCT';
   document.getElementById('m-route-string').textContent = flight.route_string || 'DCT';
 
-  // ATC Live buttons
   document.getElementById('m-dep-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.dep_icao}`;
   document.getElementById('m-arr-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.arr_icao}`;
 
   modalLoading.classList.add('hidden');
   modalBody.classList.remove('hidden');
 
-  // Render modal Leaflet map
   setTimeout(() => {
     renderModalRouteMap(flight);
     fetchLiveWeather(flight.dep_icao, 'dep');
@@ -1081,9 +1026,6 @@ async function fetchLiveWeather(icao, type) {
       const text = await res.text();
       if (text && text.trim()) {
         if (rawEl) rawEl.textContent = text.trim();
-        if (graphicEl) {
-          graphicEl.innerHTML = `<div class="metar-card-simple"><strong>Live METAR:</strong> ${escapeHtml(text.trim())}</div>`;
-        }
         return;
       }
     }

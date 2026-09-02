@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Virtual Flight Finder - Flight Schedules & Dispatch</title>
+    <title>Virtual Flight Finder - Flight Schedules &amp; Dispatch</title>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,104 +49,128 @@
         </div>
       </header>
 
-      <!-- FULL-WIDTH TOP FILTER BAR (ABOVE FLIGHTS, BELOW HEADER) -->
-      <section class="filters-top-panel glass">
-        <div class="filters-bar-header">
-          <div class="filters-title">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-            <h2>Flight Filters</h2>
+      <!-- BRAND NEW CLEAN FULL-WIDTH FILTER DASHBOARD -->
+      <section class="vff-filters-dashboard glass">
+        <!-- Dashboard Header / Status Bar -->
+        <div class="vff-dashboard-header">
+          <div class="vff-dashboard-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/>
+            </svg>
+            <span>Flight Schedule Filters</span>
           </div>
-          <div class="filters-bar-actions">
-            <div class="results-count-container">
-              <h3 id="results-count">Loading flights...</h3>
-            </div>
-            <button id="reset-filters" class="btn-secondary btn-reset-compact">Reset Filters</button>
+          
+          <div class="vff-dashboard-status">
+            <span id="results-count" class="vff-badge-results">Loading flights...</span>
+            <button id="reset-filters" class="btn-reset" title="Reset all filters">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span>Reset</span>
+            </button>
           </div>
         </div>
 
-        <div class="filters-grid-horizontal">
+        <!-- Row 1: Primary Search Inputs & Dropdowns -->
+        <div class="vff-filter-row vff-grid-primary">
           <!-- Airlines Multi-Select -->
-          <div class="filter-col">
-            <label>Airlines</label>
-            <div class="custom-multiselect" id="ms-airline"></div>
+          <div class="vff-field">
+            <label class="vff-label">Airlines</label>
+            <div class="vff-select-wrap" id="ms-airline"></div>
           </div>
 
           <!-- Aircraft Types Multi-Select -->
-          <div class="filter-col">
-            <label>Aircraft Types</label>
-            <div class="custom-multiselect" id="ms-aircraft"></div>
+          <div class="vff-field">
+            <label class="vff-label">Aircraft Types</label>
+            <div class="vff-select-wrap" id="ms-aircraft"></div>
           </div>
 
-          <!-- Origin -->
-          <div class="filter-col">
-            <label for="search-dep">Origin (City / ICAO)</label>
-            <input type="text" id="search-dep" placeholder="e.g. LZIB, LOWW, EGLL, BTS" autocomplete="off" />
+          <!-- Origin Departure -->
+          <div class="vff-field">
+            <label class="vff-label" for="search-dep">Origin (Dep)</label>
+            <div class="vff-input-icon-wrap">
+              <input type="text" id="search-dep" class="vff-input" placeholder="e.g. LZIB, Vienna, BTS..." autocomplete="off" />
+              <span class="vff-input-icon">🛫</span>
+            </div>
           </div>
 
-          <!-- Destination -->
-          <div class="filter-col">
-            <label for="search-arr">Destination (City / ICAO)</label>
-            <input type="text" id="search-arr" placeholder="e.g. Dublin, EIDW, STN, CDG" autocomplete="off" />
+          <!-- Swap Route Button -->
+          <div class="vff-field-swap">
+            <button type="button" id="btn-swap-route" class="vff-btn-swap" title="Swap Origin &amp; Destination">⇄</button>
           </div>
 
-          <!-- Flight / Callsign -->
-          <div class="filter-col">
-            <label for="filter-callsign">Flight / Callsign</label>
-            <input type="text" id="filter-callsign" placeholder="e.g. RYR2315 or OS121" autocomplete="off" />
+          <!-- Destination Arrival -->
+          <div class="vff-field">
+            <label class="vff-label" for="search-arr">Destination (Arr)</label>
+            <div class="vff-input-icon-wrap">
+              <input type="text" id="search-arr" class="vff-input" placeholder="e.g. Dublin, EGSS, STN..." autocomplete="off" />
+              <span class="vff-input-icon">🛬</span>
+            </div>
           </div>
 
-          <!-- Duration Slider -->
-          <div class="filter-col">
-            <label for="filter-duration" id="duration-label">Max Duration: Any</label>
-            <input type="range" id="filter-duration" min="30" max="360" step="30" value="360" />
+          <!-- Flight Number / Callsign -->
+          <div class="vff-field">
+            <label class="vff-label" for="filter-callsign">Flight / Callsign</label>
+            <div class="vff-input-icon-wrap">
+              <input type="text" id="filter-callsign" class="vff-input" placeholder="e.g. RYR2315, OS121..." autocomplete="off" />
+              <span class="vff-input-icon">🏷️</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2: Secondary Controls (Days, Duration, Sort) -->
+        <div class="vff-filter-row vff-grid-secondary">
+          <!-- Days of Week Pills -->
+          <div class="vff-field vff-field-days">
+            <label class="vff-label">Operating Days</label>
+            <div class="vff-days-group">
+              <button type="button" class="vff-day-btn active" data-day="all">All</button>
+              <button type="button" class="vff-day-btn" data-day="1">Mon</button>
+              <button type="button" class="vff-day-btn" data-day="2">Tue</button>
+              <button type="button" class="vff-day-btn" data-day="3">Wed</button>
+              <button type="button" class="vff-day-btn" data-day="4">Thu</button>
+              <button type="button" class="vff-day-btn" data-day="5">Fri</button>
+              <button type="button" class="vff-day-btn" data-day="6">Sat</button>
+              <button type="button" class="vff-day-btn" data-day="0">Sun</button>
+            </div>
           </div>
 
-          <!-- Sort By -->
-          <div class="filter-col">
-            <label for="sort-by">Sort By</label>
-            <select id="sort-by">
+          <!-- Max Duration Slider -->
+          <div class="vff-field vff-field-slider">
+            <div class="vff-slider-header">
+              <label class="vff-label" for="filter-duration">Max Flight Time</label>
+              <span id="duration-label" class="vff-slider-value">Any duration</span>
+            </div>
+            <input type="range" id="filter-duration" class="vff-range" min="30" max="360" step="30" value="360" />
+          </div>
+
+          <!-- Sort Order -->
+          <div class="vff-field vff-field-sort">
+            <label class="vff-label" for="sort-by">Sort Schedule</label>
+            <select id="sort-by" class="vff-select">
               <option value="time">Earliest Departure Time</option>
               <option value="duration-asc">Duration (Shortest First)</option>
               <option value="duration-desc">Duration (Longest First)</option>
             </select>
           </div>
         </div>
-
-        <!-- Days of Operation Row -->
-        <div class="filters-days-row">
-          <span class="days-label">Day of Operation:</span>
-          <div class="day-pills">
-            <button type="button" class="day-pill active" data-day="all">All Days</button>
-            <button type="button" class="day-pill" data-day="1">Mon</button>
-            <button type="button" class="day-pill" data-day="2">Tue</button>
-            <button type="button" class="day-pill" data-day="3">Wed</button>
-            <button type="button" class="day-pill" data-day="4">Thu</button>
-            <button type="button" class="day-pill" data-day="5">Fri</button>
-            <button type="button" class="day-pill" data-day="6">Sat</button>
-            <button type="button" class="day-pill" data-day="0">Sun</button>
-          </div>
-        </div>
       </section>
 
-      <!-- Main Results Area (Full Width Grid) -->
-      <main class="main-content-full">
-        <section class="results-area">
-          <div id="flights-grid" class="flights-grid">
-            <!-- Flight cards injected via JS -->
-          </div>
+      <!-- Main Results Area -->
+      <main class="vff-main-content">
+        <div id="flights-grid" class="flights-grid">
+          <!-- Flight cards injected via JS -->
+        </div>
 
-          <!-- Pagination Bar -->
-          <div id="pagination-container" class="pagination-container">
-            <div class="pagination-info" id="pagination-info">Showing 1–100 of flights</div>
-            <div class="pagination-controls" id="pagination-controls">
-              <button id="btn-page-first" class="btn-page" title="First page">⏮</button>
-              <button id="btn-page-prev" class="btn-page" title="Previous page">◀ Prev</button>
-              <div id="page-numbers" class="page-numbers"></div>
-              <button id="btn-page-next" class="btn-page" title="Next page">Next ▶</button>
-              <button id="btn-page-last" class="btn-page" title="Last page">⏭</button>
-            </div>
+        <!-- Pagination Bar -->
+        <div id="pagination-container" class="pagination-container">
+          <div class="pagination-info" id="pagination-info">Showing 1–100 of flights</div>
+          <div class="pagination-controls" id="pagination-controls">
+            <button id="btn-page-first" class="btn-page" title="First page">⏮</button>
+            <button id="btn-page-prev" class="btn-page" title="Previous page">◀ Prev</button>
+            <div id="page-numbers" class="page-numbers"></div>
+            <button id="btn-page-next" class="btn-page" title="Next page">Next ▶</button>
+            <button id="btn-page-last" class="btn-page" title="Last page">⏭</button>
           </div>
-        </section>
+        </div>
       </main>
     </div>
 
