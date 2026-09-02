@@ -816,47 +816,70 @@ function renderFlights() {
     const durH = Math.floor(f.duration_minutes / 60);
     const durM = f.duration_minutes % 60;
     const durStr = `${durH}h ${durM < 10 ? '0' : ''}${durM}m`;
+    const dayFullName = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][(f.day_of_operation || 1) - 1] || 'Today';
 
     card.innerHTML = `
+      <!-- Card Header: Airline Pill + Callsign / FlightNum / Aircraft Badges -->
       <div class="fc-header">
-        <div class="fc-airline-pill ${badgeClass}">
-          ${escapeHtml(f.airline || 'Ryanair')}
+        <div class="fc-airline-pill ${badgeClass}" title="${escapeHtml(f.airline || 'Airline')}">
+          ${escapeHtml(f.airline || 'Airline')}
         </div>
-        <div class="fc-identifiers-group">
-          <div class="fc-identifiers-row">
-            <span class="badge day-badge" title="Operating Day">${escapeHtml(getDayShortName(f.day_of_operation))}</span>
-            <span class="badge homebase-badge" title="Homebase Airport">Base: ${escapeHtml(f.homebase || f.dep_icao)}</span>
+        <div class="fc-badges-group">
+          <span class="fc-badge callsign" title="ATC Callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
+          ${f.flight_number && f.flight_number !== f.callsign ? `<span class="fc-badge flightnum" title="Commercial Flight Number">${escapeHtml(f.flight_number)}</span>` : ''}
+          <span class="fc-badge aircraft" title="Aircraft ICAO Type">${escapeHtml(f.aircraft_type || 'B738')}</span>
+        </div>
+      </div>
+
+      <!-- Card Route & Times: Clean 3-column Grid (UTC Primary, Local Subtitle, Route Info) -->
+      <div class="fc-route-grid">
+        <!-- Departure Column -->
+        <div class="fc-col dep">
+          <div class="fc-main-time">
+            ${escapeHtml(f.dep_time_utc || '00:00')}
+            <span class="fc-tz-tag">UTC</span>
           </div>
-          <div class="fc-identifiers-row">
-            <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
-            ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge flightnum">${escapeHtml(f.flight_number)}</span>` : ''}
-            <span class="badge aircraft-badge">${escapeHtml(f.aircraft_type || 'B738')}</span>
+          <div class="fc-sub-loc">
+            <span class="fc-icao-code">${escapeHtml(f.dep_icao)}</span>
+            ${f.dep_iata ? `<span>(${escapeHtml(f.dep_iata)})</span>` : ''}
+            <span>• ${escapeHtml(f.dep_time_local || '00:00')} Loc</span>
+          </div>
+          <div class="fc-city-name" title="${escapeHtml(f.dep_city || '')}">
+            ${escapeHtml(f.dep_city || '')}
+          </div>
+        </div>
+
+        <!-- Center Trajectory & Duration Column -->
+        <div class="fc-divider-col">
+          <span class="fc-dur-label">${durStr}</span>
+          <div class="fc-flight-line">
+            <span class="fc-plane-icon">✈</span>
+          </div>
+          <span class="fc-dist-label">${f.distance_nm || '—'} NM</span>
+        </div>
+
+        <!-- Arrival Column -->
+        <div class="fc-col arr">
+          <div class="fc-main-time">
+            ${escapeHtml(f.arr_time_utc || '00:00')}
+            <span class="fc-tz-tag">UTC</span>
+          </div>
+          <div class="fc-sub-loc">
+            <span>${escapeHtml(f.arr_time_local || '00:00')} Loc •</span>
+            ${f.arr_iata ? `<span>(${escapeHtml(f.arr_iata)})</span>` : ''}
+            <span class="fc-icao-code">${escapeHtml(f.arr_icao)}</span>
+          </div>
+          <div class="fc-city-name" title="${escapeHtml(f.arr_city || '')}">
+            ${escapeHtml(f.arr_city || '')}
           </div>
         </div>
       </div>
 
-      <div class="fc-route">
-        <div class="fc-airport fc-dep">
-          <span class="fc-time">${escapeHtml(f.dep_time_utc || '06:00')} <small style="font-size: 0.65em; font-weight: normal; opacity: 0.85;">UTC</small></span>
-          <span class="fc-utc">${escapeHtml(f.dep_time_local || '08:00')} Local</span>
-          <span class="fc-code">${escapeHtml(f.dep_icao)} ${f.dep_iata ? '(' + escapeHtml(f.dep_iata) + ')' : ''}</span>
-          <span class="fc-city">${escapeHtml(f.dep_city || '')}</span>
-        </div>
-
-        <div class="fc-arrow">➔</div>
-
-        <div class="fc-airport fc-arr">
-          <span class="fc-time">${escapeHtml(f.arr_time_utc || '08:00')} <small style="font-size: 0.65em; font-weight: normal; opacity: 0.85;">UTC</small></span>
-          <span class="fc-utc">${escapeHtml(f.arr_time_local || '10:00')} Local</span>
-          <span class="fc-code">${escapeHtml(f.arr_icao)} ${f.arr_iata ? '(' + escapeHtml(f.arr_iata) + ')' : ''}</span>
-          <span class="fc-city">${escapeHtml(f.arr_city || '')}</span>
-        </div>
-      </div>
-
+      <!-- Card Footer: Base Airport + 7-Day Calendar Dots -->
       <div class="fc-footer">
-        <div class="fc-meta">
-          <span>🕒 ${durStr}</span>
-          <span>• ${f.distance_nm || '—'} NM</span>
+        <div class="fc-base-tag">
+          <span>Base: <strong class="fc-base-code">${escapeHtml(f.homebase || f.dep_icao)}</strong></span>
+          <span>• ${dayFullName}</span>
         </div>
         <div class="fc-days">
           ${[1,2,3,4,5,6,7].map(d => {
