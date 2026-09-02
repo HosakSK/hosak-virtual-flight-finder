@@ -1153,6 +1153,12 @@ async function openFlightModal(flight) {
   const callsign = flight.callsign || flight.flight_number || 'N/A';
   document.getElementById('m-callsign-header').textContent = callsign;
   document.getElementById('m-flight-number-sub').textContent = flight.flight_number ? `Flight: ${flight.flight_number} • ${flight.airline}` : flight.airline;
+  
+  const acBadge = document.getElementById('m-aircraft-badge');
+  if (acBadge) {
+    acBadge.textContent = flight.aircraft_type || 'A320';
+  }
+
   document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || flight.dep_city || '---'})`;
   document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || flight.arr_city || '---'})`;
 
