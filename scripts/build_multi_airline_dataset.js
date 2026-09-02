@@ -37,6 +37,17 @@ function minsToTime(m) {
   return h + ':' + min;
 }
 
+function getRealisticTurnaround(aircraftType, distNm) {
+  const widebodies = ['A388', 'B744', 'B748', 'A351', 'A359', 'B77W', 'B772', 'B789', 'B788', 'B78X', 'A332', 'A333', 'A343', 'B763'];
+  if (widebodies.includes(aircraftType) || distNm > 2000) {
+    return 135; // 2h 15m for widebodies / long-hauls
+  }
+  if (distNm > 1000) {
+    return 60; // 1 hour for medium-distance flights
+  }
+  return 45; // 45 mins standard for narrowbodies
+}
+
 // 1. Process Ryanair flights with strict deduplication by callsign + dep + arr + day
 let rawRyanair = [];
 if (fs.existsSync(ryanairPath)) {
@@ -50,21 +61,20 @@ if (fs.existsSync(ryanairPath)) {
 const ryanairMap = new Map();
 
 for (const f of rawRyanair) {
-  if (f.airline && f.airline !== 'Ryanair') continue;
   const depIcao = f.departure_icao || f.dep_icao || 'LZIB';
   const arrIcao = f.arrival_icao || f.arr_icao || 'EGSS';
-  const callsign = f.callsign || f.flight_number || 'RYR2315';
+  const dayOp = f.day_of_operation || 1;
+  const callsign = f.callsign || ('RYR' + (f.flight_number ? f.flight_number.replace(/\D/g, '') : '2315'));
   
-  const days = f.days_of_operation || f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
-  let dayOp = f.day_of_operation;
-  if (dayOp === 0) dayOp = 7;
-  if (!dayOp) dayOp = days[0] || 1;
+  const key = `${callsign}_${depIcao}_${arrIcao}_${dayOp}`;
+  if (ryanairMap.has(key)) continue;
 
-  const key = callsign + '_' + depIcao + '_' + arrIcao + '_' + dayOp;
-  if (ryanairMap.has(key)) continue; // skip duplicates
+  const depApt = airports[depIcao] || { lat: 48.1702, lon: 17.2127, tz: 1, city: 'Bratislava', country: 'Slovakia', iata: 'BTS' };
+  const arrApt = airports[arrIcao] || { lat: 51.8860, lon: 0.2389, tz: 0, city: 'London', country: 'United Kingdom', iata: 'STN' };
 
-  const depApt = airports[depIcao] || {};
-  const arrApt = airports[arrIcao] || {};
+  const days = Array.isArray(f.days_of_week) && f.days_of_week.length > 0 
+    ? f.days_of_week 
+    : (Array.isArray(f.days_of_operation) && f.days_of_operation.length > 0 ? f.days_of_operation : [dayOp]);
 
   const depLat = f.departure_lat ?? f.dep_lat ?? depApt.lat ?? 48.17;
   const depLon = f.departure_lon ?? f.dep_lon ?? depApt.lon ?? 17.21;
@@ -153,7 +163,8 @@ for (const cfg of routes) {
   const arrOutUtcMins = depOutUtcMins + duration;
   const arrOutMins = arrOutUtcMins + (arrApt.tz * 60);
 
-  const depInMins = cfg.depTimeInLocal ? timeToMins(cfg.depTimeInLocal) : (arrOutMins + (cfg.turnaroundMins || 120));
+  const turnaround = cfg.turnaroundMins || getRealisticTurnaround(cfg.aircraft_type, distNm);
+  const depInMins = cfg.depTimeInLocal ? timeToMins(cfg.depTimeInLocal) : (arrOutMins + turnaround);
   const depInUtcMins = depInMins - (arrApt.tz * 60);
   const arrInUtcMins = depInUtcMins + duration;
   const arrInMins = arrInUtcMins + (depApt.tz * 60);
