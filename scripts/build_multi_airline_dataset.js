@@ -153,8 +153,7 @@ for (const cfg of routes) {
   const arrOutUtcMins = depOutUtcMins + duration;
   const arrOutMins = arrOutUtcMins + (arrApt.tz * 60);
 
-  const turnaround = cfg.turnaroundMins || 50;
-  const depInMins = arrOutMins + turnaround;
+  const depInMins = cfg.depTimeInLocal ? timeToMins(cfg.depTimeInLocal) : (arrOutMins + (cfg.turnaroundMins || 120));
   const depInUtcMins = depInMins - (arrApt.tz * 60);
   const arrInUtcMins = depInUtcMins + duration;
   const arrInMins = arrInUtcMins + (depApt.tz * 60);

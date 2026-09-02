@@ -1557,7 +1557,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:10"
   },
   {
     "airline": "Emirates",
@@ -1579,7 +1580,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "22:45"
   },
   {
     "airline": "Qatar Airways",
@@ -1601,7 +1603,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:05"
   },
   {
     "airline": "Qatar Airways",
@@ -3119,7 +3122,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:55"
   },
   {
     "airline": "Qatar Airways",
@@ -3141,7 +3145,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:10"
   },
   {
     "airline": "Wizz Air",
@@ -3625,7 +3630,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "Qatar Airways",
@@ -3647,7 +3653,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:50"
   },
   {
     "airline": "Ryanair",
@@ -4967,7 +4974,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:20"
   },
   {
     "airline": "Emirates",
@@ -4989,7 +4997,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:05"
   },
   {
     "airline": "Emirates",
@@ -5011,7 +5020,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:40"
   },
   {
     "airline": "Emirates",
@@ -5033,7 +5043,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "21:45"
   },
   {
     "airline": "Emirates",
@@ -5055,7 +5066,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:15"
   },
   {
     "airline": "Emirates",
@@ -5077,7 +5089,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "21:35"
   },
   {
     "airline": "Emirates",
@@ -5099,7 +5112,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:40"
   },
   {
     "airline": "Emirates",
@@ -5121,7 +5135,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:20"
   },
   {
     "airline": "Emirates",
@@ -5143,7 +5158,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:35"
   },
   {
     "airline": "Emirates",
@@ -5165,7 +5181,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:55"
   },
   {
     "airline": "Emirates",
@@ -5187,7 +5204,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:10"
   },
   {
     "airline": "Emirates",
@@ -5209,7 +5227,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:25"
   },
   {
     "airline": "Emirates",
@@ -5231,7 +5250,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:20"
   },
   {
     "airline": "Emirates",
@@ -5253,7 +5273,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:30"
   },
   {
     "airline": "Emirates",
@@ -5275,7 +5296,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Qatar Airways",
@@ -5297,7 +5319,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:05"
   },
   {
     "airline": "Qatar Airways",
@@ -5363,7 +5386,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:15"
   },
   {
     "airline": "Qatar Airways",
@@ -5385,7 +5409,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "Qatar Airways",
@@ -5407,7 +5432,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:10"
   },
   {
     "airline": "Qatar Airways",
@@ -5429,7 +5455,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Qatar Airways",
@@ -5780,7 +5807,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Lufthansa",
@@ -5803,7 +5831,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:05"
   },
   {
     "airline": "Lufthansa",
@@ -5826,7 +5855,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:10"
   },
   {
     "airline": "Lufthansa",
@@ -5849,7 +5879,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:05"
   },
   {
     "airline": "Lufthansa",
@@ -5869,7 +5900,8 @@
       3,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:55"
   },
   {
     "airline": "Lufthansa",
@@ -5892,7 +5924,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:55"
   },
   {
     "airline": "Lufthansa",
@@ -5915,7 +5948,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:35"
   },
   {
     "airline": "Lufthansa",
@@ -5961,7 +5995,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:55"
   },
   {
     "airline": "Lufthansa",
@@ -6145,7 +6180,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:15"
   },
   {
     "airline": "KLM",
@@ -6168,7 +6204,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:00"
   },
   {
     "airline": "KLM",
@@ -6280,7 +6317,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:35"
   },
   {
     "airline": "Austrian Airlines",
@@ -6326,7 +6364,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "Austrian Airlines",
