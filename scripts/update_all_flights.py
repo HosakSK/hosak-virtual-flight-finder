@@ -9,6 +9,7 @@ from datetime import datetime, timedelta, timezone
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AIRPORTS_PATH = os.path.join(ROOT_DIR, 'scripts', 'airports.json')
 OUTPUT_PATH = os.path.join(ROOT_DIR, 'flights.json')
+METADATA_PATH = os.path.join(ROOT_DIR, 'metadata.json')
 
 with open(AIRPORTS_PATH, 'r', encoding='utf-8') as f:
     airports = json.load(f)
@@ -19,61 +20,55 @@ for icao, apt in airports.items():
     if iata:
         iata_to_icao[iata] = icao
 
-# Complete List of Core Hubs & Dedicated Bases for All Requested Airlines
-HUB_ICAOS = [
-    # 1. Domestic & Regional (Smartwings, Ryanair, Wizz Air, Austrian, LOT)
-    'LZIB', # Bratislava (BTS)
-    'LZKZ', # Kosice (KSC - Smartwings, Ryanair, Wizz)
-    'LOWW', # Vienna (VIE - Austrian HQ, Wizz Air base, Ryanair base)
-    'LKPR', # Prague (PRG - Smartwings HQ, easyJet, Ryanair)
-    'LKTB', # Brno (BRQ - Smartwings, Ryanair)
-    'LKMT', # Ostrava (OSR - Smartwings, LOT)
-    'LHBP', # Budapest (BUD - Wizz Air HQ, Smartwings base, Ryanair)
-    'EPWA', # Warsaw Chopin (WAW - LOT, Smartwings, Wizz)
-    'EPKK', # Krakow (KRK - Ryanair base, Wizz Air base)
-    'EPKT', # Katowice (KTW - Wizz Air main base, Smartwings base)
-    'EPGD', # Gdansk (GDN - Wizz Air base, Ryanair base)
+# Raw list of all primary & secondary global hubs
+RAW_HUB_ICAOS = [
+    # 1. Domestic & Regional Bases (Smartwings, Ryanair, Wizz Air, Austrian, LOT)
+    'LZIB', 'LZKZ', 'LOWW', 'LKPR', 'LKTB', 'LKMT', 'LHBP', 'EPWA', 'EPKK', 'EPKT', 'EPGD',
     
-    # 2. Wizz Air & easyJet Core European Megahubs
-    'EGGW', # London Luton (LTN - #1 Wizz Air & easyJet UK HQ)
-    'EGKK', # London Gatwick (LGW - #1 easyJet Mega-Hub)
-    'EGSS', # London Stansted (STN - #1 Ryanair Mega-Hub)
-    'EGLL', # London Heathrow (LHR - British Airways)
-    'EGCC', # Manchester (MAN - easyJet, Ryanair)
-    'EGPH', # Edinburgh (EDI - easyJet, Ryanair)
-    'LSGG', # Geneva (GVA - #1 easyJet Switzerland Hub)
-    'LFSB', # Basel (BSL - easyJet Switzerland Hub)
-    'LIMC', # Milan Malpensa (MXP - #1 easyJet EU Mega-Base & Wizz)
-    'LIME', # Milan Bergamo (BGY - #1 Ryanair EU Mega-Base, Wizz Air)
-    'EDDB', # Berlin Brandenburg (BER - easyJet Hub, Eurowings)
-    'LFMN', # Nice (NCE - easyJet Hub)
-    'LROP', # Bucharest (OTP - #1 Wizz Air Mega-Base)
-    'LATI', # Tirana (TIA - Wizz Air Mega-Base)
-    'LWSK', # Skopje (SKP - Wizz Air Mega-Base)
-    'OMAA', # Abu Dhabi (AUH - Wizz Air Abu Dhabi Hub)
-    
-    # 3. Legacy Megahubs (Lufthansa, KLM, Swiss, Air France, Iberia)
-    'EDDF', # Frankfurt (FRA - Lufthansa Global Hub)
-    'EDDM', # Munich (MUC - Lufthansa Global Hub)
-    'EHAM', # Amsterdam (AMS - KLM Global Hub)
-    'LFPG', # Paris CDG (CDG - Air France Hub, easyJet)
-    'LSZH', # Zurich (ZRH - Swiss Global Hub)
-    'LIRF', # Rome Fiumicino (FCO - ITA Airways Hub, Wizz, Ryanair)
-    'LEMD', # Madrid (MAD - Iberia Global Hub, Ryanair)
-    'LEBL', # Barcelona (BCN - Vueling Hub, easyJet, Ryanair)
-    
-    # 4. Smartwings, Ryanair & Wizz Holiday Charter Hubs
-    'LEPA', # Palma de Mallorca (PMI)
-    'LTAI', # Antalya (AYT - Smartwings, SunExpress, Corendon)
-    'HEGN', # Hurghada (HRG - Smartwings, Wizz, easyJet)
-    'LGIR', # Heraklion (HER - Smartwings, easyJet, Wizz)
-    'LGRP', # Rhodes (RHO - Smartwings, Ryanair)
-    'LBBG', # Burgas (BOJ - Smartwings, Wizz, Ryanair)
-    
-    # 5. Global Intercontinental Hubs
-    'OMDB', # Dubai (DXB - Emirates Global Hub, flydubai)
-    'OTHH'  # Doha (DOH - Qatar Airways Global Hub)
+    # 2. Wizz Air, easyJet & Ryanair Core European Hubs & Bases
+    'EGGW', 'EGKK', 'EGSS', 'EGLL', 'EGLC', 'EGCC', 'EGPH', 'EGGD', 'EGAA',
+    'EIDW', 'EICK', 'EINN',
+    'LSGG', 'LSZH', 'LFSB',
+    'LIMC', 'LIME', 'LIML', 'LIRF', 'LIRA',
+    'EDDB', 'EDDF', 'EDDM', 'EDDL', 'EDDK', 'EDDH', 'EDDS',
+    'EHAM', 'EHEH', 'EHRD', 'EBBR', 'EBCI',
+    'LFPG', 'LFPO', 'LFMN', 'LFLL', 'LFML', 'LFBO',
+    'LEMD', 'LEBL', 'LEPA', 'LEMG', 'LEAL', 'LEBB', 'LEZL', 'LEVC',
+    'LPPT', 'LPPR',
+    'LROP', 'LRCL', 'LRIA', 'LATI', 'LWSK', 'LBSF', 'LBBG', 'UGKO',
+    'EKCH', 'ESSA', 'ENGM', 'EFHK',
+    'LTFM', 'LTFJ', 'LTAC', 'LTAI', 'LTBJ',
+    'LGIR', 'LGRP', 'HEGN',
+
+    # 3. Top Global Dedicated Cargo Hubs
+    'KMEM', 'KSDF', 'EDDP', 'EBLG', 'ELLX', 'PANC', 'VHHH', 'RKSI', 'OMDW', 'UBBB',
+    'KIND', 'KOAK', 'KAFW', 'KONT', 'KRFD', 'KCVG', 'EGNX', 'EHBK', 'ZHCC',
+
+    # 4. USA & Canada Passenger Megahubs
+    'KATL', 'KORD', 'KDFW', 'KJFK', 'KEWR', 'KLGA', 'KLAX', 'KMIA', 'KSFO', 'KDEN',
+    'KIAH', 'KCLT', 'KPHL', 'KPHX', 'KMSP', 'KDTW', 'KSLC', 'KSEA', 'KBOS', 'KIAD',
+    'KDCA', 'KDAL', 'KLAS', 'KMDW', 'KBWI', 'KMCO', 'KFLL', 'KPDX',
+    'CYYZ', 'CYUL', 'CYVR', 'CYYC',
+
+    # 5. Middle East & Africa Hubs
+    'OMDB', 'OTHH', 'OMAA', 'OMSJ', 'OERK', 'OEJN', 'OEDF', 'OEMA',
+    'OBBI', 'OOMS', 'OKBK', 'HECA', 'HAAB', 'FAOR', 'FACT', 'GMMN',
+
+    # 6. Asia & Pacific Hubs
+    'WSSS', 'RJTT', 'RJAA', 'RJBB', 'RJOO', 'RJFF', 'RJCC', 'RJGG',
+    'RKSS', 'RKPK', 'RCTP', 'RCKH',
+    'ZBAA', 'ZBAD', 'ZSPD', 'ZSSS', 'ZGGG', 'ZGSZ', 'ZUTF', 'ZPPP',
+    'VTBS', 'VTBD', 'VTSP', 'WMKK', 'WIII', 'WADD', 'VVNB', 'VVTS', 'RPLL',
+    'VIDP', 'VABB', 'VOBL', 'VOHS', 'VMAA', 'VECC',
+    'YSSY', 'YMML', 'YBBN', 'YPPH', 'YPAD', 'NZAA', 'NZCH',
+
+    # 7. Latin America Hubs
+    'SBGR', 'SBSP', 'SBKP', 'SBGL', 'SBBR', 'SCEL', 'SPJC', 'SKBO',
+    'MPTO', 'MMMX', 'MMGL', 'MMMY', 'MMUN', 'MSLP'
 ]
+
+# Strictly deduplicate hubs while preserving order
+HUB_ICAOS = list(dict.fromkeys(RAW_HUB_ICAOS))
 
 def haversine_nm(lat1, lon1, lat2, lon2):
     if not lat1 or not lon1 or not lat2 or not lon2:
@@ -98,12 +93,15 @@ def normalize_aircraft(code):
         '738': 'B738', '73H': 'B738', '73W': 'B737', '737': 'B737',
         '739': 'B739', '73J': 'B739', '7M8': 'B38M', '7M9': 'B39M',
         '388': 'A388', 'A388': 'A388',
-        '77W': 'B77W', '773': 'B77W', '772': 'B772', '77L': 'B772',
-        '748': 'B748', '74H': 'B748', '744': 'B744',
+        '77W': 'B77W', '773': 'B77W', '772': 'B772', '77L': 'B772', '77F': 'B77L',
+        '748': 'B748', '74H': 'B748', '744': 'B744', '74F': 'B744', '74N': 'B744', '74Y': 'B744',
         '789': 'B789', '788': 'B788', '781': 'B78X', '78X': 'B78X',
         '359': 'A359', '351': 'A351', '35K': 'A351',
-        '332': 'A332', '333': 'A333', '339': 'A339',
+        '332': 'A332', '333': 'A333', '339': 'A339', '33F': 'A332',
         '343': 'A343', '346': 'A346',
+        '763': 'B763', '76F': 'B763', '76X': 'B763', '762': 'B762', '764': 'B764',
+        '752': 'B752', '753': 'B753', '75F': 'B752',
+        'MD1': 'MD11', 'M1F': 'MD11',
         'E90': 'E190', 'E190': 'E190', 'E95': 'E195', 'E195': 'E195',
         'E75': 'E175', 'E175': 'E175', 'E70': 'E170', '223': 'BCS3', '221': 'BCS1'
     }
@@ -119,6 +117,7 @@ def normalize_airline(name, iata, icao, fn_raw):
     icao_str = (icao or '').upper()
     fn_str = (fn_raw or '').upper()
     
+    # Low-Cost & European
     if icao_str == 'RYR' or iata_str == 'FR' or fn_str.startswith('FR') or 'RYANAIR' in name_str:
         return 'Ryanair', 'RYR', 'FR'
     if icao_str == 'WZZ' or iata_str == 'W6' or fn_str.startswith('W6') or 'WIZZ' in name_str:
@@ -131,10 +130,6 @@ def normalize_airline(name, iata, icao, fn_raw):
         return 'British Airways', 'BAW', 'BA'
     if icao_str == 'KLM' or iata_str == 'KL' or fn_str.startswith('KL') or 'KLM' in name_str:
         return 'KLM', 'KLM', 'KL'
-    if icao_str == 'UAE' or iata_str == 'EK' or fn_str.startswith('EK') or 'EMIRATES' in name_str:
-        return 'Emirates', 'UAE', 'EK'
-    if icao_str == 'QTR' or iata_str == 'QR' or fn_str.startswith('QR') or 'QATAR' in name_str:
-        return 'Qatar Airways', 'QTR', 'QR'
     if icao_str in ['TVS', 'TVQ', 'TRA', 'TVP'] or iata_str in ['QS', '6D', '3Z'] or fn_str.startswith('QS') or fn_str.startswith('6D') or fn_str.startswith('3Z') or 'SMARTWINGS' in name_str or 'TRAVEL SERVICE' in name_str:
         return 'Smartwings', 'TVS', 'QS'
     if icao_str == 'EZY' or iata_str == 'U2' or fn_str.startswith('U2') or fn_str.startswith('EZY') or 'EASYJET' in name_str:
@@ -153,13 +148,68 @@ def normalize_airline(name, iata, icao, fn_raw):
         return 'TAP Air Portugal', 'TAP', 'TP'
     if icao_str == 'THY' or iata_str == 'TK' or fn_str.startswith('TK') or 'TURKISH' in name_str:
         return 'Turkish Airlines', 'THY', 'TK'
+    
+    # Global Cargo Airlines
+    if icao_str == 'FDX' or iata_str == 'FX' or fn_str.startswith('FX') or 'FEDEX' in name_str:
+        return 'FedEx Express', 'FDX', 'FX'
+    if icao_str == 'UPS' or iata_str == '5X' or fn_str.startswith('5X') or 'UNITED PARCEL' in name_str:
+        return 'UPS Airlines', 'UPS', '5X'
+    if icao_str in ['BCS', 'BOX', 'DHK', 'DHX'] or iata_str in ['QY', 'D0'] or 'DHL' in name_str or 'EUROPEAN AIR TRANSPORT' in name_str:
+        return 'DHL Aviation', 'BCS', 'QY'
+    if icao_str == 'CLX' or iata_str == 'CV' or fn_str.startswith('CV') or 'CARGOLUX' in name_str:
+        return 'Cargolux', 'CLX', 'CV'
+    if icao_str == 'GTI' or iata_str == '5Y' or fn_str.startswith('5Y') or 'ATLAS AIR' in name_str:
+        return 'Atlas Air', 'GTI', '5Y'
+    if icao_str == 'AZG' or iata_str == '7L' or 'SILK WAY' in name_str:
+        return 'Silk Way West', 'AZG', '7L'
+    if icao_str == 'PAC' or iata_str == 'PO' or 'POLAR AIR' in name_str:
+        return 'Polar Air Cargo', 'PAC', 'PO'
+
+    # Global Major Passenger Airlines
+    if icao_str == 'UAE' or iata_str == 'EK' or fn_str.startswith('EK') or 'EMIRATES' in name_str:
+        return 'Emirates', 'UAE', 'EK'
+    if icao_str == 'QTR' or iata_str == 'QR' or fn_str.startswith('QR') or 'QATAR' in name_str:
+        return 'Qatar Airways', 'QTR', 'QR'
+    if icao_str == 'DAL' or iata_str == 'DL' or fn_str.startswith('DL') or 'DELTA' in name_str:
+        return 'Delta Air Lines', 'DAL', 'DL'
+    if icao_str == 'UAL' or iata_str == 'UA' or fn_str.startswith('UA') or 'UNITED' in name_str:
+        return 'United Airlines', 'UAL', 'UA'
+    if icao_str == 'AAL' or iata_str == 'AA' or fn_str.startswith('AA') or 'AMERICAN' in name_str:
+        return 'American Airlines', 'AAL', 'AA'
+    if icao_str == 'SIA' or iata_str == 'SQ' or fn_str.startswith('SQ') or 'SINGAPORE' in name_str:
+        return 'Singapore Airlines', 'SIA', 'SQ'
+    if icao_str == 'ANA' or iata_str == 'NH' or fn_str.startswith('NH') or 'ALL NIPPON' in name_str:
+        return 'All Nippon Airways', 'ANA', 'NH'
+    if icao_str == 'JAL' or iata_str == 'JL' or fn_str.startswith('JL') or 'JAPAN AIRLINES' in name_str:
+        return 'Japan Airlines', 'JAL', 'JL'
+    if icao_str == 'QFA' or iata_str == 'QF' or fn_str.startswith('QF') or 'QANTAS' in name_str:
+        return 'Qantas', 'QFA', 'QF'
+    if icao_str == 'ACA' or iata_str == 'AC' or fn_str.startswith('AC') or 'AIR CANADA' in name_str:
+        return 'Air Canada', 'ACA', 'AC'
+    if icao_str == 'ETD' or iata_str == 'EY' or fn_str.startswith('EY') or 'ETIHAD' in name_str:
+        return 'Etihad Airways', 'ETD', 'EY'
+    if icao_str == 'SVA' or iata_str == 'SV' or fn_str.startswith('SV') or 'SAUDIA' in name_str:
+        return 'Saudia', 'SVA', 'SV'
+    if icao_str == 'ETH' or iata_str == 'ET' or fn_str.startswith('ET') or 'ETHIOPIAN' in name_str:
+        return 'Ethiopian Airlines', 'ETH', 'ET'
+    if icao_str == 'CPA' or iata_str == 'CX' or fn_str.startswith('CX') or 'CATHAY' in name_str:
+        return 'Cathay Pacific', 'CPA', 'CX'
+    if icao_str == 'KAL' or iata_str == 'KE' or fn_str.startswith('KE') or 'KOREAN AIR' in name_str:
+        return 'Korean Air', 'KAL', 'KE'
+    
     return clean_name or 'Airline', icao or 'UNK', iata or 'XX'
 
 def clean_flight_number(fn_raw, airline_iata, airline_icao):
     if not fn_raw:
         return ''
     clean_str = fn_raw.strip()
-    prefixes = [airline_iata, airline_icao, '3Z', '6D', 'W6', 'FR', 'OS', 'LH', 'KL', 'BA', 'EK', 'QR', 'QS', 'U2', 'LX', 'LO', 'AF', 'IB', 'TK', 'TO', 'HV', 'EW', 'TVP', 'TVQ', 'TVS']
+    prefixes = [
+        airline_iata, airline_icao, '3Z', '6D', 'W6', 'FR', 'OS', 'LH', 'KL', 'BA', 'EK', 'QR',
+        'QS', 'U2', 'LX', 'LO', 'AF', 'IB', 'TK', 'TO', 'HV', 'EW', 'TVP', 'TVQ', 'TVS',
+        'FX', 'FDX', '5X', 'UPS', 'QY', 'BCS', 'CV', 'CLX', '5Y', 'GTI', 'DL', 'DAL', 'UA', 'UAL',
+        'AA', 'AAL', 'SQ', 'SIA', 'NH', 'ANA', 'JL', 'JAL', 'QF', 'QFA', 'AC', 'ACA', 'EY', 'ETD',
+        'SV', 'SVA', 'ET', 'ETH', 'CX', 'CPA', 'KE', 'KAL'
+    ]
     for p in prefixes:
         if p and clean_str.upper().startswith(p.upper()):
             clean_str = clean_str[len(p):].strip()
@@ -187,10 +237,26 @@ def fetch_airport_schedule(iata_code, mode='departures'):
             time.sleep(1.0)
     return []
 
-print(f"Starting unified timetable scraper for {len(HUB_ICAOS)} major European & global hubs...")
+print(f"Starting rolling timetable scraper for {len(HUB_ICAOS)} unique global passenger & cargo hubs...")
 
+# 1. Load existing dataset so all 7 days of the week are preserved and cumulatively updated
 all_flights_map = {}
+if os.path.exists(OUTPUT_PATH):
+    try:
+        with open(OUTPUT_PATH, 'r', encoding='utf-8') as f:
+            existing_flights = json.load(f)
+            for f_item in existing_flights:
+                cs = f_item.get('callsign') or f_item.get('flight_number')
+                dep = f_item.get('dep_icao') or f_item.get('departure_icao')
+                arr = f_item.get('arr_icao') or f_item.get('arrival_icao')
+                day = f_item.get('day_of_operation', 1)
+                k = f"{cs}_{dep}_{arr}_{day}"
+                all_flights_map[k] = f_item
+        print(f"Loaded {len(all_flights_map)} existing flights from previous rolling updates.")
+    except Exception as e:
+        print(f"Note: Starting fresh database: {e}")
 
+# 2. Scrape each global hub
 for icao in HUB_ICAOS:
     hub_apt = airports.get(icao)
     if not hub_apt or not hub_apt.get('iata'):
@@ -198,10 +264,10 @@ for icao in HUB_ICAOS:
     hub_iata = hub_apt['iata']
     print(f"\nScraping authentic departures & arrivals for {icao} ({hub_iata} - {hub_apt['city']})...")
     
-    # 1. Departures from Hub
+    # A. Departures from Hub
     deps = fetch_airport_schedule(hub_iata, mode='departures')
     print(f"  Retrieved {len(deps)} departures.")
-    time.sleep(1.0)
+    time.sleep(0.6)
     
     for item in deps:
         f_info = (item.get('flight') or {}) if isinstance(item, dict) else {}
@@ -343,10 +409,10 @@ for icao in HUB_ICAOS:
             'days_of_week': [day_of_week]
         }
 
-    # 2. Arrivals into Hub
+    # B. Arrivals into Hub
     arrs = fetch_airport_schedule(hub_iata, mode='arrivals')
     print(f"  Retrieved {len(arrs)} arrivals.")
-    time.sleep(1.0)
+    time.sleep(0.6)
     
     for item in arrs:
         f_info = (item.get('flight') or {}) if isinstance(item, dict) else {}
@@ -492,7 +558,7 @@ with open(AIRPORTS_PATH, 'w', encoding='utf-8') as f:
     json.dump(airports, f, indent=2, ensure_ascii=False)
 
 flights_list = list(all_flights_map.values())
-print(f"\nSuccessfully compiled {len(flights_list)} 100% authentic, verified real-world flights.")
+print(f"\nSuccessfully compiled {len(flights_list)} 100% authentic, verified real-world flights across cumulative rolling days.")
 
 with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
     json.dump(flights_list, f, indent=2, ensure_ascii=False)
@@ -501,11 +567,10 @@ print(f"Pristine flights.json written successfully to {OUTPUT_PATH}!")
 
 # Update metadata.json with exact date and time
 now_utc = datetime.now(timezone.utc)
-meta_path = os.path.join(ROOT_DIR, 'metadata.json')
 meta_data = {
     'last_updated_iso': now_utc.isoformat(),
     'last_updated_formatted': now_utc.strftime('%B %d, %Y, %H:%M UTC')
 }
-with open(meta_path, 'w', encoding='utf-8') as f:
+with open(METADATA_PATH, 'w', encoding='utf-8') as f:
     json.dump(meta_data, f, indent=2, ensure_ascii=False)
 print(f"Updated metadata.json with timestamp: {meta_data['last_updated_formatted']}")

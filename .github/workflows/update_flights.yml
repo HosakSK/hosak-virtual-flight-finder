@@ -1,8 +1,8 @@
-name: Weekly Real Flights Timetable Sync
+name: Daily Real Flights Timetable Sync
 
 on:
   schedule:
-    - cron: '0 2 * * 0' # Every Sunday at 02:00 UTC
+    - cron: '0 2 * * *' # Every night at 02:00 UTC (Rolling 7-day schedule sync)
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
 jobs:
@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run unified real-world scraper
+      - name: Run global real-world rolling scraper
         run: |
           python scripts/update_all_flights.py
 
@@ -25,5 +25,5 @@ jobs:
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add flights.json scripts/airports.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m 'chore(data): weekly automated flight schedule sync' && git push)
+          git add flights.json metadata.json scripts/airports.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m 'chore(data): daily automated global flight schedule sync' && git push)
