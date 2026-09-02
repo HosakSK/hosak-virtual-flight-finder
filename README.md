@@ -77,7 +77,7 @@ The flight dataset (`ryanair_flights_lzib.json`) is generated from real flight s
 
 ### 1. Install Python Dependencies
 ```bash
-pip install -r requirements.txt
+pip install -r scripts/requirements.txt
 ```
 
 ### 2. Run the Update Pipeline
@@ -118,7 +118,7 @@ Virtual-Flight-Finder/
 ├── icons.svg                    # SVG icon sprite
 ├── server.js                    # Lightweight Node.js static server & API proxy
 ├── package.json                 # Project configuration & npm scripts
-├── requirements.txt             # Python dependencies for scraper/update tools
+│   ├── requirements.txt             # Python dependencies for scraper/update tools
 ├── scripts/
 │   ├── update_flights.py        # Ryanair API schedule scraper
 │   ├── fix_homebase.py          # Turnaround homebase correction script
