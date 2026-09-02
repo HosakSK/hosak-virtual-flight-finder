@@ -8,7 +8,7 @@ let filteredFlights = [];
 let selectedAirlines = [];
 let selectedAircraft = [];
 let currentDay = 'all';
-let currentFlightType = 'all';
+let maxDurationMins = 360;
 let currentPage = 1;
 const PAGE_SIZE = 100;
 let leafletMap = null;
@@ -59,26 +59,29 @@ const AIRCRAFT_DEFINITIONS = [
   { code: 'E295', name: 'Embraer E195-E2' }
 ];
 
-// DOM Elements
-const searchAirport = document.getElementById('search-airport');
-const filterDep = document.getElementById('filter-dep');
-const filterArr = document.getElementById('filter-arr');
-const filterHomebase = document.getElementById('filter-homebase');
-const filterFlightType = document.getElementById('filter-flight-type');
+// DOM Elements synchronized with index.html
+const searchDep = document.getElementById('search-dep');
+const searchArr = document.getElementById('search-arr');
+const btnSwapRoute = document.getElementById('btn-swap-route');
+const filterCallsign = document.getElementById('filter-callsign');
+const filterDuration = document.getElementById('filter-duration');
+const durationLabel = document.getElementById('duration-label');
 const sortBy = document.getElementById('sort-by');
 const resetBtn = document.getElementById('reset-filters');
-const flightsList = document.getElementById('flights-list');
-const flightCount = document.getElementById('flight-count');
+const resultsCount = document.getElementById('results-count');
+const flightsGrid = document.getElementById('flights-grid') || document.getElementById('flights-list');
 const paginationContainer = document.getElementById('pagination-container');
+
+// Multi-select containers
+const msAirline = document.getElementById('ms-airline');
+const msAircraft = document.getElementById('ms-aircraft');
+
+// Buttons & Modals
 const btnThemeToggle = document.getElementById('btn-theme-toggle');
 const btnGlobeMap = document.getElementById('btn-globe-map');
 const globeModal = document.getElementById('globe-modal');
 const globeModalClose = document.getElementById('globe-modal-close');
 const globeRoutesCount = document.getElementById('globe-routes-count');
-
-// Multi-select containers
-const msAirline = document.getElementById('ms-airline');
-const msAircraft = document.getElementById('ms-aircraft');
 
 // Flight Detail Modal
 const flightModal = document.getElementById('flight-modal');
@@ -399,70 +402,45 @@ async function loadFlights() {
     const res = await fetch('./flights.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     allFlights = await res.json();
-    populateSelectFilters();
     applyFilters();
   } catch (err) {
     console.error('Failed to load flights.json:', err);
-    if (flightsList) {
-      flightsList.innerHTML = `<div class="no-results" style="grid-column: 1 / -1; color: var(--color-danger);">Failed to load flight schedule. Please try refreshing.</div>`;
+    if (flightsGrid) {
+      flightsGrid.innerHTML = `<div class="no-results" style="grid-column: 1 / -1; color: var(--color-danger);">Failed to load flight schedule. Please try refreshing.</div>`;
     }
+    if (resultsCount) resultsCount.textContent = '0 flights';
   }
-}
-
-function populateSelectFilters() {
-  const depAirports = new Set();
-  const arrAirports = new Set();
-  const homebases = new Set();
-
-  allFlights.forEach(f => {
-    if (f.dep_icao) depAirports.add(f.dep_icao);
-    if (f.arr_icao) arrAirports.add(f.arr_icao);
-    if (f.homebase) homebases.add(f.homebase);
-  });
-
-  function populateSelect(selectEl, setValues) {
-    if (!selectEl) return;
-    const sorted = Array.from(setValues).sort();
-    const currentVal = selectEl.value;
-    selectEl.innerHTML = '<option value="">All Airports</option>' +
-      sorted.map(code => `<option value="${code}">${code}</option>`).join('');
-    selectEl.value = currentVal;
-  }
-
-  populateSelect(filterDep, depAirports);
-  populateSelect(filterArr, arrAirports);
-  populateSelect(filterHomebase, homebases);
 }
 
 function applyFilters() {
-  const searchQ = (searchAirport ? searchAirport.value : '').toLowerCase().trim();
-  const depVal = filterDep ? filterDep.value : '';
-  const arrVal = filterArr ? filterArr.value : '';
-  const homebaseVal = filterHomebase ? filterHomebase.value : '';
-  const flightTypeVal = filterFlightType ? filterFlightType.value : 'all';
+  const depQ = (searchDep ? searchDep.value : '').toLowerCase().trim();
+  const arrQ = (searchArr ? searchArr.value : '').toLowerCase().trim();
+  const callsignQ = (filterCallsign ? filterCallsign.value : '').toLowerCase().trim();
   const sortOption = sortBy ? sortBy.value : 'upcoming';
 
   filteredFlights = allFlights.filter(f => {
-    // Search Query across flight number, callsign, cities, ICAOs, IATAs
-    if (searchQ) {
-      const matchText = [
-        f.callsign, f.flight_number, f.airline,
-        f.dep_icao, f.dep_iata, f.dep_city, f.dep_country,
-        f.arr_icao, f.arr_iata, f.arr_city, f.arr_country,
-        f.aircraft_type
-      ].filter(Boolean).join(' ').toLowerCase();
-
-      if (!matchText.includes(searchQ)) return false;
+    // Departure filter
+    if (depQ) {
+      const depText = [f.dep_icao, f.dep_iata, f.dep_city, f.dep_country].filter(Boolean).join(' ').toLowerCase();
+      if (!depText.includes(depQ)) return false;
     }
 
-    // Departure Airport
-    if (depVal && f.dep_icao !== depVal) return false;
+    // Arrival filter
+    if (arrQ) {
+      const arrText = [f.arr_icao, f.arr_iata, f.arr_city, f.arr_country].filter(Boolean).join(' ').toLowerCase();
+      if (!arrText.includes(arrQ)) return false;
+    }
 
-    // Arrival Airport
-    if (arrVal && f.arr_icao !== arrVal) return false;
+    // Callsign / Flight number filter
+    if (callsignQ) {
+      const csText = [f.callsign, f.flight_number, f.airline].filter(Boolean).join(' ').toLowerCase();
+      if (!csText.includes(callsignQ)) return false;
+    }
 
-    // Homebase
-    if (homebaseVal && f.homebase !== homebaseVal) return false;
+    // Max Duration slider
+    if (maxDurationMins && f.duration_minutes > maxDurationMins) {
+      return false;
+    }
 
     // Airlines Multi-Select
     if (selectedAirlines.length > 0) {
@@ -482,13 +460,6 @@ function applyFilters() {
         const days = (f.days_of_week || f.days_of_operation || []).map(d => d === 0 ? 7 : d);
         if (!days.includes(targetDay)) return false;
       }
-    }
-
-    // Flight Type (Outbound vs Inbound vs All)
-    if (flightTypeVal !== 'all') {
-      const isOutbound = (f.dep_icao === 'LZIB' || f.homebase === f.dep_icao);
-      if (flightTypeVal === 'outbound' && !isOutbound) return false;
-      if (flightTypeVal === 'inbound' && isOutbound) return false;
     }
 
     return true;
@@ -524,7 +495,7 @@ function applyFilters() {
   } else if (sortOption === 'time') {
     filteredFlights.sort((a, b) => (a.dep_time_local || '99:99').localeCompare(b.dep_time_local || '99:99'));
   } else {
-    // Default 'upcoming' Live Schedule relative to current day and time
+    // Default 'upcoming' Live Schedule
     filteredFlights.sort((a, b) => getUpcomingOffsetMins(a) - getUpcomingOffsetMins(b));
   }
 
@@ -537,18 +508,18 @@ function applyFilters() {
 // Flight Cards Rendering
 // ----------------------------------------------------
 function renderFlights() {
-  if (!flightsList) return;
-  flightsList.innerHTML = '';
+  if (!flightsGrid) return;
+  flightsGrid.innerHTML = '';
 
-  if (flightCount) {
-    flightCount.textContent = filteredFlights.length.toLocaleString();
+  if (resultsCount) {
+    resultsCount.textContent = `${filteredFlights.length.toLocaleString()} flights`;
   }
 
   if (filteredFlights.length === 0) {
-    flightsList.innerHTML = `
-      <div class="no-results" style="grid-column: 1 / -1;">
-        <h3>No flights found</h3>
-        <p>Try clearing filters or searching for different airport codes.</p>
+    flightsGrid.innerHTML = `
+      <div class="no-results" style="grid-column: 1 / -1; padding: 3rem; text-align: center;">
+        <h3 style="margin-bottom: 0.5rem;">No flights found</h3>
+        <p style="color: var(--text-muted);">Try resetting filters or adjusting search queries.</p>
       </div>
     `;
     return;
@@ -622,7 +593,7 @@ function renderFlights() {
     `;
 
     card.addEventListener('click', () => openFlightModal(f));
-    flightsList.appendChild(card);
+    flightsGrid.appendChild(card);
   });
 }
 
@@ -670,12 +641,41 @@ function renderPagination() {
 // Event Listeners Setup
 // ----------------------------------------------------
 function initEventListeners() {
-  if (searchAirport) searchAirport.addEventListener('input', debounce(applyFilters, 300));
-  if (filterDep) filterDep.addEventListener('change', applyFilters);
-  if (filterArr) filterArr.addEventListener('change', applyFilters);
-  if (filterHomebase) filterHomebase.addEventListener('change', applyFilters);
-  if (filterFlightType) filterFlightType.addEventListener('change', applyFilters);
+  if (searchDep) searchDep.addEventListener('input', debounce(applyFilters, 300));
+  if (searchArr) searchArr.addEventListener('input', debounce(applyFilters, 300));
+  if (filterCallsign) filterCallsign.addEventListener('input', debounce(applyFilters, 300));
   if (sortBy) sortBy.addEventListener('change', applyFilters);
+
+  // Swap Route Button
+  if (btnSwapRoute) {
+    btnSwapRoute.addEventListener('click', () => {
+      if (searchDep && searchArr) {
+        const tmp = searchDep.value;
+        searchDep.value = searchArr.value;
+        searchArr.value = tmp;
+        applyFilters();
+      }
+    });
+  }
+
+  // Duration Slider
+  if (filterDuration) {
+    filterDuration.addEventListener('input', (e) => {
+      const val = parseInt(e.target.value, 10);
+      maxDurationMins = val;
+      if (durationLabel) {
+        if (val >= 360) {
+          durationLabel.textContent = 'Any duration';
+          maxDurationMins = null;
+        } else {
+          const h = Math.floor(val / 60);
+          const m = val % 60;
+          durationLabel.textContent = `≤ ${h}h ${m > 0 ? m + 'm' : ''}`;
+        }
+      }
+      applyFilters();
+    });
+  }
 
   // Day Filter Buttons
   document.querySelectorAll('.vff-day-btn').forEach(btn => {
@@ -691,11 +691,14 @@ function initEventListeners() {
   // Reset Filters
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      if (searchAirport) searchAirport.value = '';
-      if (filterDep) filterDep.value = '';
-      if (filterArr) filterArr.value = '';
-      if (filterHomebase) filterHomebase.value = '';
-      if (filterFlightType) filterFlightType.value = 'all';
+      if (searchDep) searchDep.value = '';
+      if (searchArr) searchArr.value = '';
+      if (filterCallsign) filterCallsign.value = '';
+      if (filterDuration) {
+        filterDuration.value = '360';
+        maxDurationMins = null;
+        if (durationLabel) durationLabel.textContent = 'Any duration';
+      }
       if (sortBy) sortBy.value = 'upcoming';
 
       selectedAirlines = [];
