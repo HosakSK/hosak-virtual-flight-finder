@@ -1622,3 +1622,105 @@ h1 {
 .leaflet-container {
   background: var(--bg-main) !important;
 }
+
+/* Light & Crisp Day Mode Modal + Bounded Scrollbar */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.45) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  padding: 1.5rem;
+}
+
+[data-theme="dark"] .modal-overlay,
+.theme-dark .modal-overlay {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.modal-content {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 950px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.18) !important;
+  padding: 2.2rem;
+  color: #1E293B !important;
+}
+
+[data-theme="dark"] .modal-content,
+.theme-dark .modal-content {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F3F4F6 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* Bounded Custom Scrollbar inside modal (Never protruding) */
+.modal-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 1.5rem 0;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.3);
+  border-radius: 999px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Day Mode Modal Sections and Cards */
+.modal-section {
+  background: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+[data-theme="dark"] .modal-section,
+.theme-dark .modal-section {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.time-card, .route-info-box, .fstat {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .time-card,
+[data-theme="dark"] .route-info-box,
+[data-theme="dark"] .fstat,
+.theme-dark .time-card,
+.theme-dark .route-info-box,
+.theme-dark .fstat {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.atc-item {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+[data-theme="dark"] .atc-item,
+.theme-dark .atc-item {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
