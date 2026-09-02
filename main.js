@@ -218,10 +218,11 @@ function renderAirlineMultiSelect(searchQuery = '') {
         <input type="text" id="ms-airline-search" placeholder="Search airline..." value="${escapeHtml(searchQuery)}" autocomplete="off" />
       </div>
       <div class="ms-actions">
-        <button type="button" class="ms-btn-action" id="ms-airline-all">Select All</button>
+        <button type="button" class="ms-btn-action" id="ms-airline-all">${q ? 'Select Filtered (' + filtered.length + ')' : 'Select All'}</button>
         <button type="button" class="ms-btn-action" id="ms-airline-clear">Clear</button>
       </div>
-      <div class="ms-options-list">
+      <div class="ms-options-list" id="ms-airline-list">
+        ${filtered.length === 0 ? '<div style="padding: 0.8rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No matching airlines</div>' : ''}
         ${filtered.map(a => {
           const checked = selectedAirlines.includes(a.id) ? 'checked' : '';
           return `
@@ -238,6 +239,12 @@ function renderAirlineMultiSelect(searchQuery = '') {
   const trigger = msAirline.querySelector('#ms-airline-trigger');
   const dropdown = msAirline.querySelector('#ms-airline-dropdown');
   const searchInput = msAirline.querySelector('#ms-airline-search');
+  const listContainer = msAirline.querySelector('#ms-airline-list');
+
+  // Prevent dropdown from closing when clicking inside
+  dropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -248,46 +255,116 @@ function renderAirlineMultiSelect(searchQuery = '') {
     }
   });
 
-  searchInput.addEventListener('input', (e) => {
-    renderAirlineMultiSelect(e.target.value);
-    const newDropdown = msAirline.querySelector('#ms-airline-dropdown');
-    newDropdown.classList.remove('hidden');
-    const newSearch = msAirline.querySelector('#ms-airline-search');
-    newSearch.focus();
+  function updateAirlineList() {
+    const curQ = searchInput.value.toLowerCase().trim();
+    const curAllowed = getAvailableAirlineIds();
+    const curFiltered = AIRLINE_DEFINITIONS.filter(a => {
+      if (!curAllowed.includes(a.id)) return false;
+      if (!curQ) return true;
+      return a.name.toLowerCase().includes(curQ) ||
+             a.icao.toLowerCase().includes(curQ) ||
+             a.iata.toLowerCase().includes(curQ) ||
+             a.id.toLowerCase().includes(curQ);
+    });
+
+    const btnAll = msAirline.querySelector('#ms-airline-all');
+    if (btnAll) btnAll.textContent = curQ ? 'Select Filtered (' + curFiltered.length + ')' : 'Select All';
+
+    if (curFiltered.length === 0) {
+      listContainer.innerHTML = '<div style="padding: 0.8rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No matching airlines</div>';
+    } else {
+      listContainer.innerHTML = curFiltered.map(a => {
+        const checked = selectedAirlines.includes(a.id) ? 'checked' : '';
+        return `
+          <div class="ms-option-item ${checked ? 'selected' : ''}" data-id="${escapeHtml(a.id)}">
+            <input type="checkbox" ${checked} />
+            <span class="ms-option-label">${escapeHtml(a.name)} (${a.icao})</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    bindAirlineItemEvents();
+  }
+
+  function bindAirlineItemEvents() {
+    listContainer.querySelectorAll('.ms-option-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = item.getAttribute('data-id');
+        if (selectedAirlines.includes(id)) {
+          selectedAirlines = selectedAirlines.filter(x => x !== id);
+        } else {
+          selectedAirlines.push(id);
+        }
+        syncAircraftAvailability();
+        updateAirlineTriggerLabel();
+        updateAirlineList();
+        applyFilters();
+      });
+    });
+  }
+
+  function updateAirlineTriggerLabel() {
+    const curAllowed = getAvailableAirlineIds();
+    const label = selectedAirlines.length === 0 
+      ? 'All Airlines (' + curAllowed.length + ')' 
+      : (selectedAirlines.length === 1 ? selectedAirlines[0] : selectedAirlines.length + ' Airlines Selected');
+    const triggerText = msAirline.querySelector('.ms-trigger-text');
+    if (triggerText) triggerText.textContent = label;
+  }
+
+  searchInput.addEventListener('input', () => {
+    updateAirlineList();
   });
 
   const btnAll = msAirline.querySelector('#ms-airline-all');
   btnAll.addEventListener('click', (e) => {
     e.stopPropagation();
-    selectedAirlines = [...allowed];
+    const curQ = searchInput.value.toLowerCase().trim();
+    const curAllowed = getAvailableAirlineIds();
+    const curFiltered = AIRLINE_DEFINITIONS.filter(a => {
+      if (!curAllowed.includes(a.id)) return false;
+      if (!curQ) return true;
+      return a.name.toLowerCase().includes(curQ) ||
+             a.icao.toLowerCase().includes(curQ) ||
+             a.iata.toLowerCase().includes(curQ) ||
+             a.id.toLowerCase().includes(curQ);
+    });
+
+    const idsToAdd = curFiltered.map(a => a.id);
+    selectedAirlines = Array.from(new Set([...selectedAirlines, ...idsToAdd]));
     syncAircraftAvailability();
-    renderAirlineMultiSelect(searchInput.value);
+    updateAirlineTriggerLabel();
+    updateAirlineList();
     applyFilters();
   });
 
   const btnClear = msAirline.querySelector('#ms-airline-clear');
   btnClear.addEventListener('click', (e) => {
     e.stopPropagation();
-    selectedAirlines = [];
+    const curQ = searchInput.value.toLowerCase().trim();
+    if (curQ) {
+      const curAllowed = getAvailableAirlineIds();
+      const curFiltered = AIRLINE_DEFINITIONS.filter(a => {
+        if (!curAllowed.includes(a.id)) return false;
+        return a.name.toLowerCase().includes(curQ) ||
+               a.icao.toLowerCase().includes(curQ) ||
+               a.iata.toLowerCase().includes(curQ) ||
+               a.id.toLowerCase().includes(curQ);
+      });
+      const idsToRemove = curFiltered.map(a => a.id);
+      selectedAirlines = selectedAirlines.filter(id => !idsToRemove.includes(id));
+    } else {
+      selectedAirlines = [];
+    }
     syncAircraftAvailability();
-    renderAirlineMultiSelect(searchInput.value);
+    updateAirlineTriggerLabel();
+    updateAirlineList();
     applyFilters();
   });
 
-  msAirline.querySelectorAll('.ms-option-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const id = item.getAttribute('data-id');
-      if (selectedAirlines.includes(id)) {
-        selectedAirlines = selectedAirlines.filter(x => x !== id);
-      } else {
-        selectedAirlines.push(id);
-      }
-      syncAircraftAvailability();
-      renderAirlineMultiSelect(searchInput.value);
-      applyFilters();
-    });
-  });
+  bindAirlineItemEvents();
 }
 
 function renderAircraftMultiSelect(searchQuery = '') {
@@ -312,33 +389,14 @@ function renderAircraftMultiSelect(searchQuery = '') {
     </button>
     <div class="ms-dropdown hidden" id="ms-aircraft-dropdown">
       <div class="ms-search-box">
-        <input type="text" id="ms-aircraft-search" placeholder="Search aircraft (e.g. B738, A320)..." value="${escapeHtml(searchQuery)}" autocomplete="off" />
+        <input type="text" id="ms-aircraft-search" placeholder="Search aircraft (e.g. 737, A320)..." value="${escapeHtml(searchQuery)}" autocomplete="off" />
       </div>
       <div class="ms-actions">
-        <button type="button" class="ms-btn-action" id="ms-aircraft-all">Select All</button>
+        <button type="button" class="ms-btn-action" id="ms-aircraft-all">${q ? 'Select Filtered (' + filtered.length + ')' : 'Select All'}</button>
         <button type="button" class="ms-btn-action" id="ms-aircraft-clear">Clear</button>
       </div>
-      <div class="ms-options-list">
-        ${(() => {
-          const categories = ['Boeing Narrowbody', 'Airbus Narrowbody', 'Widebody Long-Haul', 'Regional Jets'];
-          let html = '';
-          categories.forEach(cat => {
-            const catItems = filtered.filter(a => a.category === cat);
-            if (catItems.length > 0) {
-              html += `<div class="ms-category-header">${escapeHtml(cat)}</div>`;
-              catItems.forEach(a => {
-                const checked = selectedAircraft.includes(a.code) ? 'checked' : '';
-                html += `
-                  <div class="ms-option-item ${checked ? 'selected' : ''}" data-code="${escapeHtml(a.code)}">
-                    <input type="checkbox" ${checked} />
-                    <span class="ms-option-label"><strong>${escapeHtml(a.code)}</strong> - ${escapeHtml(a.name)}</span>
-                  </div>
-                `;
-              });
-            }
-          });
-          return html;
-        })()}
+      <div class="ms-options-list" id="ms-aircraft-list">
+        ${renderAircraftOptionsHtml(filtered)}
       </div>
     </div>
   `;
@@ -346,6 +404,12 @@ function renderAircraftMultiSelect(searchQuery = '') {
   const trigger = msAircraft.querySelector('#ms-aircraft-trigger');
   const dropdown = msAircraft.querySelector('#ms-aircraft-dropdown');
   const searchInput = msAircraft.querySelector('#ms-aircraft-search');
+  const listContainer = msAircraft.querySelector('#ms-aircraft-list');
+
+  // Prevent dropdown from closing when clicking inside
+  dropdown.addEventListener('click', (e) => {
+    e.stopPropagation();
+  });
 
   trigger.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -356,46 +420,119 @@ function renderAircraftMultiSelect(searchQuery = '') {
     }
   });
 
-  searchInput.addEventListener('input', (e) => {
-    renderAircraftMultiSelect(e.target.value);
-    const newDropdown = msAircraft.querySelector('#ms-aircraft-dropdown');
-    newDropdown.classList.remove('hidden');
-    const newSearch = msAircraft.querySelector('#ms-aircraft-search');
-    newSearch.focus();
+  function renderAircraftOptionsHtml(items) {
+    if (items.length === 0) {
+      return '<div style="padding: 0.8rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No matching aircraft</div>';
+    }
+    const categories = ['Boeing Narrowbody', 'Airbus Narrowbody', 'Widebody Long-Haul', 'Regional Jets'];
+    let html = '';
+    categories.forEach(cat => {
+      const catItems = items.filter(a => a.category === cat);
+      if (catItems.length > 0) {
+        html += `<div class="ms-category-header">${escapeHtml(cat)}</div>`;
+        catItems.forEach(a => {
+          const checked = selectedAircraft.includes(a.code) ? 'checked' : '';
+          html += `
+            <div class="ms-option-item ${checked ? 'selected' : ''}" data-code="${escapeHtml(a.code)}">
+              <input type="checkbox" ${checked} />
+              <span class="ms-option-label"><strong>${escapeHtml(a.code)}</strong> - ${escapeHtml(a.name)}</span>
+            </div>
+          `;
+        });
+      }
+    });
+    return html;
+  }
+
+  function updateAircraftList() {
+    const curQ = searchInput.value.toLowerCase().trim();
+    const curAllowed = getAvailableAircraftCodes();
+    const curFiltered = AIRCRAFT_DEFINITIONS.filter(a => {
+      if (!curAllowed.includes(a.code)) return false;
+      if (!curQ) return true;
+      return a.code.toLowerCase().includes(curQ) || a.name.toLowerCase().includes(curQ);
+    });
+
+    const btnAll = msAircraft.querySelector('#ms-aircraft-all');
+    if (btnAll) btnAll.textContent = curQ ? 'Select Filtered (' + curFiltered.length + ')' : 'Select All';
+
+    listContainer.innerHTML = renderAircraftOptionsHtml(curFiltered);
+    bindAircraftItemEvents();
+  }
+
+  function bindAircraftItemEvents() {
+    listContainer.querySelectorAll('.ms-option-item').forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const code = item.getAttribute('data-code');
+        if (selectedAircraft.includes(code)) {
+          selectedAircraft = selectedAircraft.filter(x => x !== code);
+        } else {
+          selectedAircraft.push(code);
+        }
+        syncAirlineAvailability();
+        updateAircraftTriggerLabel();
+        updateAircraftList();
+        applyFilters();
+      });
+    });
+  }
+
+  function updateAircraftTriggerLabel() {
+    const curAllowed = getAvailableAircraftCodes();
+    const label = selectedAircraft.length === 0
+      ? 'All Aircraft (' + curAllowed.length + ')'
+      : (selectedAircraft.length === 1 ? selectedAircraft[0] : selectedAircraft.length + ' Aircraft Selected');
+    const triggerText = msAircraft.querySelector('.ms-trigger-text');
+    if (triggerText) triggerText.textContent = label;
+  }
+
+  searchInput.addEventListener('input', () => {
+    updateAircraftList();
   });
 
   const btnAll = msAircraft.querySelector('#ms-aircraft-all');
   btnAll.addEventListener('click', (e) => {
     e.stopPropagation();
-    selectedAircraft = [...allowed];
+    const curQ = searchInput.value.toLowerCase().trim();
+    const curAllowed = getAvailableAircraftCodes();
+    const curFiltered = AIRCRAFT_DEFINITIONS.filter(a => {
+      if (!curAllowed.includes(a.code)) return false;
+      if (!curQ) return true;
+      return a.code.toLowerCase().includes(curQ) || a.name.toLowerCase().includes(curQ);
+    });
+
+    // Select ONLY visible / search-filtered aircraft (e.g. 737 only!)
+    const codesToAdd = curFiltered.map(a => a.code);
+    selectedAircraft = Array.from(new Set([...selectedAircraft, ...codesToAdd]));
     syncAirlineAvailability();
-    renderAircraftMultiSelect(searchInput.value);
+    updateAircraftTriggerLabel();
+    updateAircraftList();
     applyFilters();
   });
 
   const btnClear = msAircraft.querySelector('#ms-aircraft-clear');
   btnClear.addEventListener('click', (e) => {
     e.stopPropagation();
-    selectedAircraft = [];
+    const curQ = searchInput.value.toLowerCase().trim();
+    if (curQ) {
+      const curAllowed = getAvailableAircraftCodes();
+      const curFiltered = AIRCRAFT_DEFINITIONS.filter(a => {
+        if (!curAllowed.includes(a.code)) return false;
+        return a.code.toLowerCase().includes(curQ) || a.name.toLowerCase().includes(curQ);
+      });
+      const codesToRemove = curFiltered.map(a => a.code);
+      selectedAircraft = selectedAircraft.filter(c => !codesToRemove.includes(c));
+    } else {
+      selectedAircraft = [];
+    }
     syncAirlineAvailability();
-    renderAircraftMultiSelect(searchInput.value);
+    updateAircraftTriggerLabel();
+    updateAircraftList();
     applyFilters();
   });
 
-  msAircraft.querySelectorAll('.ms-option-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const code = item.getAttribute('data-code');
-      if (selectedAircraft.includes(code)) {
-        selectedAircraft = selectedAircraft.filter(x => x !== code);
-      } else {
-        selectedAircraft.push(code);
-      }
-      syncAirlineAvailability();
-      renderAircraftMultiSelect(searchInput.value);
-      applyFilters();
-    });
-  });
+  bindAircraftItemEvents();
 }
 
 function closeAllDropdowns(except = null) {
