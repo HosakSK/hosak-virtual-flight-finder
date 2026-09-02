@@ -186,17 +186,38 @@ function getAvailableAircraftCodes() {
   return Array.from(allowed);
 }
 
+function getAvailableAirlineIds() {
+  if (selectedAircraft.length === 0) {
+    return AIRLINE_DEFINITIONS.map(a => a.id);
+  }
+  const allowed = new Set();
+  AIRLINE_DEFINITIONS.forEach(def => {
+    if (def.aircraft && def.aircraft.some(ac => selectedAircraft.includes(ac))) {
+      allowed.add(def.id);
+    }
+  });
+  return Array.from(allowed);
+}
+
 function syncAircraftAvailability() {
   const allowed = getAvailableAircraftCodes();
   selectedAircraft = selectedAircraft.filter(ac => allowed.includes(ac));
   renderAircraftMultiSelect();
 }
 
+function syncAirlineAvailability() {
+  const allowed = getAvailableAirlineIds();
+  selectedAirlines = selectedAirlines.filter(id => allowed.includes(id));
+  renderAirlineMultiSelect();
+}
+
 function renderAirlineMultiSelect(searchQuery = '') {
   if (!msAirline) return;
   const q = searchQuery.toLowerCase().trim();
+  const allowed = getAvailableAirlineIds();
   
   const filtered = AIRLINE_DEFINITIONS.filter(a => {
+    if (!allowed.includes(a.id)) return false;
     if (!q) return true;
     return a.name.toLowerCase().includes(q) ||
            a.icao.toLowerCase().includes(q) ||
@@ -205,7 +226,7 @@ function renderAirlineMultiSelect(searchQuery = '') {
   });
 
   const triggerLabel = selectedAirlines.length === 0 
-    ? 'All Airlines (' + AIRLINE_DEFINITIONS.length + ')' 
+    ? 'All Airlines (' + allowed.length + ')' 
     : (selectedAirlines.length === 1 ? selectedAirlines[0] : selectedAirlines.length + ' Airlines Selected');
 
   msAirline.innerHTML = `
@@ -374,6 +395,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
   btnAll.addEventListener('click', (e) => {
     e.stopPropagation();
     selectedAircraft = [...allowed];
+    syncAirlineAvailability();
     renderAircraftMultiSelect(searchInput.value);
     applyFilters();
   });
@@ -382,6 +404,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
   btnClear.addEventListener('click', (e) => {
     e.stopPropagation();
     selectedAircraft = [];
+    syncAirlineAvailability();
     renderAircraftMultiSelect(searchInput.value);
     applyFilters();
   });
@@ -395,6 +418,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
       } else {
         selectedAircraft.push(code);
       }
+      syncAirlineAvailability();
       renderAircraftMultiSelect(searchInput.value);
       applyFilters();
     });
