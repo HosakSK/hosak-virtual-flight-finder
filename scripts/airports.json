@@ -986,5 +986,2821 @@
     "lat": 18.041,
     "lon": -63.1089,
     "tz": -4
+  },
+  "EHEH": {
+    "lat": 51.45013,
+    "lon": 5.374528,
+    "tz": 2,
+    "city": "Eindhoven",
+    "country": "Netherlands",
+    "iata": "EIN"
+  },
+  "LIEA": {
+    "lat": 40.63213,
+    "lon": 8.290772,
+    "tz": 2,
+    "city": "Alghero",
+    "country": "Italy",
+    "iata": "AHO"
+  },
+  "LLBG": {
+    "lat": 32.011379,
+    "lon": 34.886662,
+    "tz": 2,
+    "city": "Tel Aviv",
+    "country": "Israel",
+    "iata": "TLV"
+  },
+  "DTMB": {
+    "lat": 35.758049,
+    "lon": 10.75472,
+    "tz": 2,
+    "city": "Monastir",
+    "country": "Tunisia",
+    "iata": "MIR"
+  },
+  "LYPG": {
+    "lat": 42.35939,
+    "lon": 19.25189,
+    "tz": 2,
+    "city": "Podgorica",
+    "country": "Montenegro",
+    "iata": "TGD"
+  },
+  "HEMM": {
+    "lat": 31.32535,
+    "lon": 27.22168,
+    "tz": 2,
+    "city": "Mersa Matruh",
+    "country": "Egypt",
+    "iata": "MUH"
+  },
+  "EPMO": {
+    "lat": 52.451111,
+    "lon": 20.651667,
+    "tz": 2,
+    "city": "Warsaw",
+    "country": "Poland",
+    "iata": "WMI"
+  },
+  "LICA": {
+    "lat": 38.905392,
+    "lon": 16.24226,
+    "tz": 2,
+    "city": "Lamezia Terme",
+    "country": "Italy",
+    "iata": "SUF"
+  },
+  "LATI": {
+    "lat": 41.414742,
+    "lon": 19.72056,
+    "tz": 2,
+    "city": "Tirana",
+    "country": "Albania",
+    "iata": "TIA"
+  },
+  "LUKK": {
+    "lat": 46.927738,
+    "lon": 28.930969,
+    "tz": 2,
+    "city": "Chisinau",
+    "country": "Moldova",
+    "iata": "RMO"
+  },
+  "LTBJ": {
+    "lat": 38.292389,
+    "lon": 27.15695,
+    "tz": 2,
+    "city": "Izmir",
+    "country": "Turkey",
+    "iata": "ADB"
+  },
+  "LGKF": {
+    "lat": 38.12006,
+    "lon": 20.500481,
+    "tz": 2,
+    "city": "Kefalonia",
+    "country": "Greece",
+    "iata": "EFL"
+  },
+  "BKPR": {
+    "lat": 42.572769,
+    "lon": 21.03583,
+    "tz": 2,
+    "city": "Pristina",
+    "country": "Kosovo",
+    "iata": "PRN"
+  },
+  "EGNM": {
+    "lat": 53.865891,
+    "lon": -1.66056,
+    "tz": 2,
+    "city": "Leeds",
+    "country": "United Kingdom",
+    "iata": "LBA"
+  },
+  "UDYZ": {
+    "lat": 40.14727,
+    "lon": 44.395882,
+    "tz": 2,
+    "city": "Yerevan",
+    "country": "Armenia",
+    "iata": "EVN"
+  },
+  "LIRA": {
+    "lat": 41.799358,
+    "lon": 12.59493,
+    "tz": 2,
+    "city": "Rome",
+    "country": "Italy",
+    "iata": "CIA"
+  },
+  "LWOH": {
+    "lat": 41.179951,
+    "lon": 20.742319,
+    "tz": 2,
+    "city": "Ohrid",
+    "country": "North Macedonia",
+    "iata": "OHD"
+  },
+  "HEAL": {
+    "lat": 30.924444,
+    "lon": 28.46139,
+    "tz": 2,
+    "city": "El Alamein",
+    "country": "Egypt",
+    "iata": "DBB"
+  },
+  "LQTZ": {
+    "lat": 44.458649,
+    "lon": 18.724779,
+    "tz": 2,
+    "city": "Tuzla",
+    "country": "Bosnia And Herzegovina",
+    "iata": "TZL"
+  },
+  "LIRP": {
+    "lat": 43.68391,
+    "lon": 10.39275,
+    "tz": 2,
+    "city": "Pisa",
+    "country": "Italy",
+    "iata": "PSA"
+  },
+  "LIEO": {
+    "lat": 40.898659,
+    "lon": 9.517628,
+    "tz": 2,
+    "city": "Olbia",
+    "country": "Italy",
+    "iata": "OLB"
+  },
+  "LGKV": {
+    "lat": 40.9133,
+    "lon": 24.619221,
+    "tz": 2,
+    "city": "Kavala",
+    "country": "Greece",
+    "iata": "KVA"
+  },
+  "LDZD": {
+    "lat": 44.108261,
+    "lon": 15.34669,
+    "tz": 2,
+    "city": "Zadar",
+    "country": "Croatia",
+    "iata": "ZAD"
+  },
+  "LTFE": {
+    "lat": 37.25061,
+    "lon": 27.66431,
+    "tz": 2,
+    "city": "Bodrum",
+    "country": "Turkey",
+    "iata": "BJV"
+  },
+  "LGRX": {
+    "lat": 38.151112,
+    "lon": 21.42555,
+    "tz": 2,
+    "city": "Patras",
+    "country": "Greece",
+    "iata": "GPA"
+  },
+  "LQMO": {
+    "lat": 43.282902,
+    "lon": 17.845869,
+    "tz": 2,
+    "city": "Mostar",
+    "country": "Bosnia And Herzegovina",
+    "iata": "OMO"
+  },
+  "EDDP": {
+    "lat": 51.432442,
+    "lon": 12.24163,
+    "tz": 2,
+    "city": "Leipzig",
+    "country": "Germany",
+    "iata": "LEJ"
+  },
+  "ENBR": {
+    "lat": 60.293381,
+    "lon": 5.218142,
+    "tz": 2,
+    "city": "Bergen",
+    "country": "Norway",
+    "iata": "BGO"
+  },
+  "EDXW": {
+    "lat": 54.91325,
+    "lon": 8.340472,
+    "tz": 2,
+    "city": "Sylt",
+    "country": "Germany",
+    "iata": "GWT"
+  },
+  "EBBR": {
+    "lat": 50.901379,
+    "lon": 4.484444,
+    "tz": 2,
+    "city": "Brussels",
+    "country": "Belgium",
+    "iata": "BRU"
+  },
+  "LIML": {
+    "lat": 45.445099,
+    "lon": 9.276739,
+    "tz": 2,
+    "city": "Milan",
+    "country": "Italy",
+    "iata": "LIN"
+  },
+  "OERK": {
+    "lat": 24.95764,
+    "lon": 46.698769,
+    "tz": 2,
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "iata": "RUH"
+  },
+  "ELLX": {
+    "lat": 49.623329,
+    "lon": 6.204444,
+    "tz": 2,
+    "city": "Luxembourg",
+    "country": "Luxembourg",
+    "iata": "LUX"
+  },
+  "LIPE": {
+    "lat": 44.535439,
+    "lon": 11.28866,
+    "tz": 2,
+    "city": "Bologna",
+    "country": "Italy",
+    "iata": "BLQ"
+  },
+  "EDDW": {
+    "lat": 53.046844,
+    "lon": 8.786646,
+    "tz": 2,
+    "city": "Bremen",
+    "country": "Germany",
+    "iata": "BRE"
+  },
+  "LFML": {
+    "lat": 43.436661,
+    "lon": 5.215,
+    "tz": 2,
+    "city": "Marseille",
+    "country": "France",
+    "iata": "MRS"
+  },
+  "LGMK": {
+    "lat": 37.43512,
+    "lon": 25.348101,
+    "tz": 2,
+    "city": "Mykonos",
+    "country": "Greece",
+    "iata": "JMK"
+  },
+  "LEMH": {
+    "lat": 39.862591,
+    "lon": 4.218647,
+    "tz": 2,
+    "city": "Mahon",
+    "country": "Spain",
+    "iata": "MAH"
+  },
+  "HEMA": {
+    "lat": 25.55711,
+    "lon": 34.58371,
+    "tz": 2,
+    "city": "Marsa Alam",
+    "country": "Egypt",
+    "iata": "RMF"
+  },
+  "EDDV": {
+    "lat": 52.461964,
+    "lon": 9.687095,
+    "tz": 2,
+    "city": "Hannover",
+    "country": "Germany",
+    "iata": "HAJ"
+  },
+  "CYYZ": {
+    "lat": 43.680634,
+    "lon": -79.627007,
+    "tz": 2,
+    "city": "Toronto",
+    "country": "Canada",
+    "iata": "YYZ"
+  },
+  "RKSI": {
+    "lat": 37.46907,
+    "lon": 126.4505,
+    "tz": 2,
+    "city": "Seoul",
+    "country": "South Korea",
+    "iata": "ICN"
+  },
+  "LSZR": {
+    "lat": 47.485031,
+    "lon": 9.560775,
+    "tz": 2,
+    "city": "St. Gallen",
+    "country": "Switzerland",
+    "iata": "ACH"
+  },
+  "LKKV": {
+    "lat": 50.202969,
+    "lon": 12.91498,
+    "tz": 2,
+    "city": "Karlovy Vary",
+    "country": "Czechia",
+    "iata": "KLV"
+  },
+  "LOWK": {
+    "lat": 46.642509,
+    "lon": 14.33773,
+    "tz": 2,
+    "city": "Klagenfurt",
+    "country": "Austria",
+    "iata": "KLU"
+  },
+  "LQSA": {
+    "lat": 43.824581,
+    "lon": 18.331461,
+    "tz": 2,
+    "city": "Sarajevo",
+    "country": "Bosnia And Herzegovina",
+    "iata": "SJJ"
+  },
+  "LIRQ": {
+    "lat": 43.809952,
+    "lon": 11.2051,
+    "tz": 2,
+    "city": "Florence",
+    "country": "Italy",
+    "iata": "FLR"
+  },
+  "LRIA": {
+    "lat": 47.17849,
+    "lon": 27.62063,
+    "tz": 2,
+    "city": "Iasi",
+    "country": "Romania",
+    "iata": "IAS"
+  },
+  "LGPZ": {
+    "lat": 38.925461,
+    "lon": 20.76531,
+    "tz": 2,
+    "city": "Preveza",
+    "country": "Greece",
+    "iata": "PVK"
+  },
+  "RJAA": {
+    "lat": 35.764721,
+    "lon": 140.386307,
+    "tz": 2,
+    "city": "Tokyo",
+    "country": "Japan",
+    "iata": "NRT"
+  },
+  "LGSA": {
+    "lat": 35.531738,
+    "lon": 24.14967,
+    "tz": 2,
+    "city": "Chania",
+    "country": "Greece",
+    "iata": "CHQ"
+  },
+  "HECA": {
+    "lat": 30.121941,
+    "lon": 31.40555,
+    "tz": 2,
+    "city": "Cairo",
+    "country": "Egypt",
+    "iata": "CAI"
+  },
+  "EDVE": {
+    "lat": 52.31916,
+    "lon": 10.55611,
+    "tz": 2,
+    "city": "Braunschweig",
+    "country": "Germany",
+    "iata": "BWE"
+  },
+  "LEVC": {
+    "lat": 39.489311,
+    "lon": -0.48162,
+    "tz": 2,
+    "city": "Valencia",
+    "country": "Spain",
+    "iata": "VLC"
+  },
+  "LEBB": {
+    "lat": 43.30109,
+    "lon": -2.9106,
+    "tz": 2,
+    "city": "Bilbao",
+    "country": "Spain",
+    "iata": "BIO"
+  },
+  "EBCI": {
+    "lat": 50.459972,
+    "lon": 4.453121,
+    "tz": 2,
+    "city": "Brussels",
+    "country": "Belgium",
+    "iata": "CRL"
+  },
+  "OMSJ": {
+    "lat": 25.328569,
+    "lon": 55.517151,
+    "tz": 2,
+    "city": "Sharjah",
+    "country": "United Arab Emirates",
+    "iata": "SHJ"
+  },
+  "LGSM": {
+    "lat": 37.689991,
+    "lon": 26.911659,
+    "tz": 2,
+    "city": "Samos",
+    "country": "Greece",
+    "iata": "SMI"
+  },
+  "LGSK": {
+    "lat": 39.177101,
+    "lon": 23.50367,
+    "tz": 2,
+    "city": "Skiathos",
+    "country": "Greece",
+    "iata": "JSI"
+  },
+  "LFPB": {
+    "lat": 48.958801,
+    "lon": 2.4336,
+    "tz": 2,
+    "city": "Paris",
+    "country": "France",
+    "iata": "LBG"
+  },
+  "LFBO": {
+    "lat": 43.628101,
+    "lon": 1.367263,
+    "tz": 2,
+    "city": "Toulouse",
+    "country": "France",
+    "iata": "TLS"
+  },
+  "UGTB": {
+    "lat": 41.668774,
+    "lon": 44.951672,
+    "tz": 2,
+    "city": "Tbilisi",
+    "country": "Georgia",
+    "iata": "TBS"
+  },
+  "LIPH": {
+    "lat": 45.648399,
+    "lon": 12.19442,
+    "tz": 2,
+    "city": "Venice",
+    "country": "Italy",
+    "iata": "TSF"
+  },
+  "EGGP": {
+    "lat": 53.333611,
+    "lon": -2.84972,
+    "tz": 2,
+    "city": "Liverpool",
+    "country": "United Kingdom",
+    "iata": "LPL"
+  },
+  "LIBR": {
+    "lat": 40.657631,
+    "lon": 17.947029,
+    "tz": 2,
+    "city": "Brindisi",
+    "country": "Italy",
+    "iata": "BDS"
+  },
+  "LPMA": {
+    "lat": 32.69788,
+    "lon": -16.774401,
+    "tz": 2,
+    "city": "Funchal",
+    "country": "Portugal",
+    "iata": "FNC"
+  },
+  "ZUTF": {
+    "lat": 30.319,
+    "lon": 104.445,
+    "tz": 2,
+    "city": "Chengdu",
+    "country": "China",
+    "iata": "TFU"
+  },
+  "LRTM": {
+    "lat": 46.467709,
+    "lon": 24.412519,
+    "tz": 2,
+    "city": "Targu Mures",
+    "country": "Romania",
+    "iata": "TGM"
+  },
+  "DAAG": {
+    "lat": 36.69101,
+    "lon": 3.215408,
+    "tz": 2,
+    "city": "Algiers",
+    "country": "Algeria",
+    "iata": "ALG"
+  },
+  "LIMF": {
+    "lat": 45.20076,
+    "lon": 7.649631,
+    "tz": 2,
+    "city": "Turin",
+    "country": "Italy",
+    "iata": "TRN"
+  },
+  "ESGG": {
+    "lat": 57.665951,
+    "lon": 12.282685,
+    "tz": 2,
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "iata": "GOT"
+  },
+  "UBBB": {
+    "lat": 40.467499,
+    "lon": 50.046661,
+    "tz": 2,
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "iata": "GYD"
+  },
+  "LIEE": {
+    "lat": 39.251461,
+    "lon": 9.054283,
+    "tz": 2,
+    "city": "Cagliari",
+    "country": "Italy",
+    "iata": "CAG"
+  },
+  "UAKK": {
+    "lat": 49.67083,
+    "lon": 73.334442,
+    "tz": 2,
+    "city": "Karaganda",
+    "country": "Kazakhstan",
+    "iata": "KGF"
+  },
+  "LRBV": {
+    "lat": 45.706043,
+    "lon": 25.52339,
+    "tz": 2,
+    "city": "Brasov",
+    "country": "Romania",
+    "iata": "GHV"
+  },
+  "LFOB": {
+    "lat": 49.453465,
+    "lon": 2.115138,
+    "tz": 2,
+    "city": "Paris",
+    "country": "France",
+    "iata": "BVA"
+  },
+  "LRCL": {
+    "lat": 46.785091,
+    "lon": 23.68611,
+    "tz": 2,
+    "city": "Cluj-Napoca",
+    "country": "Romania",
+    "iata": "CLJ"
+  },
+  "EPRZ": {
+    "lat": 50.109951,
+    "lon": 22.018999,
+    "tz": 2,
+    "city": "Rzeszow",
+    "country": "Poland",
+    "iata": "RZE"
+  },
+  "LFLL": {
+    "lat": 45.719643,
+    "lon": 5.089108,
+    "tz": 2,
+    "city": "Lyon",
+    "country": "France",
+    "iata": "LYS"
+  },
+  "UZTT": {
+    "lat": 41.258503,
+    "lon": 69.282295,
+    "tz": 2,
+    "city": "Tashkent",
+    "country": "Uzbekistan",
+    "iata": "TAS"
+  },
+  "EKBI": {
+    "lat": 55.740318,
+    "lon": 9.151778,
+    "tz": 2,
+    "city": "Billund",
+    "country": "Denmark",
+    "iata": "BLL"
+  },
+  "LEZL": {
+    "lat": 37.41795,
+    "lon": -5.892757,
+    "tz": 2,
+    "city": "Seville",
+    "country": "Spain",
+    "iata": "SVQ"
+  },
+  "LRBS": {
+    "lat": 44.503189,
+    "lon": 26.10211,
+    "tz": 2,
+    "city": "Bucharest",
+    "country": "Romania",
+    "iata": "BBU"
+  },
+  "EPSC": {
+    "lat": 53.584728,
+    "lon": 14.9022,
+    "tz": 2,
+    "city": "Szczecin",
+    "country": "Poland",
+    "iata": "SZZ"
+  },
+  "EPZG": {
+    "lat": 52.138512,
+    "lon": 15.79855,
+    "tz": 2,
+    "city": "Zielona Gora",
+    "country": "Poland",
+    "iata": "IEG"
+  },
+  "LJLJ": {
+    "lat": 46.223679,
+    "lon": 14.45761,
+    "tz": 2,
+    "city": "Ljubljana",
+    "country": "Slovenia",
+    "iata": "LJU"
+  },
+  "EDLW": {
+    "lat": 51.518311,
+    "lon": 7.612242,
+    "tz": 2,
+    "city": "Dortmund",
+    "country": "Germany",
+    "iata": "DTM"
+  },
+  "EPLB": {
+    "lat": 51.240002,
+    "lon": 22.713333,
+    "tz": 2,
+    "city": "Lublin",
+    "country": "Poland",
+    "iata": "LUZ"
+  },
+  "LICZ": {
+    "lat": 37.401661,
+    "lon": 14.92235,
+    "tz": 2,
+    "city": "Sigonella",
+    "country": "Italy",
+    "iata": "NSY"
+  },
+  "ENTO": {
+    "lat": 59.186699,
+    "lon": 10.25862,
+    "tz": 2,
+    "city": "Oslo",
+    "country": "Norway",
+    "iata": "TRF"
+  },
+  "EGPD": {
+    "lat": 57.201939,
+    "lon": -2.19777,
+    "tz": 2,
+    "city": "Aberdeen",
+    "country": "United Kingdom",
+    "iata": "ABZ"
+  },
+  "LIPY": {
+    "lat": 43.616341,
+    "lon": 13.36231,
+    "tz": 2,
+    "city": "Ancona",
+    "country": "Italy",
+    "iata": "AOI"
+  },
+  "EGNX": {
+    "lat": 52.831108,
+    "lon": -1.32805,
+    "tz": 2,
+    "city": "Nottingham",
+    "country": "United Kingdom",
+    "iata": "EMA"
+  },
+  "EGAA": {
+    "lat": 54.657501,
+    "lon": -6.21583,
+    "tz": 2,
+    "city": "Belfast",
+    "country": "United Kingdom",
+    "iata": "BFS"
+  },
+  "LIMJ": {
+    "lat": 44.41333,
+    "lon": 8.8375,
+    "tz": 2,
+    "city": "Genoa",
+    "country": "Italy",
+    "iata": "GOA"
+  },
+  "GCFV": {
+    "lat": 28.452709,
+    "lon": -13.8637,
+    "tz": 2,
+    "city": "Fuerteventura",
+    "country": "Spain",
+    "iata": "FUE"
+  },
+  "LFBT": {
+    "lat": 43.185551,
+    "lon": -0.00277,
+    "tz": 2,
+    "city": "Tarbes",
+    "country": "France",
+    "iata": "LDE"
+  },
+  "LEGE": {
+    "lat": 41.900959,
+    "lon": 2.760547,
+    "tz": 2,
+    "city": "Girona",
+    "country": "Spain",
+    "iata": "GRO"
+  },
+  "LECH": {
+    "lat": 40.209721,
+    "lon": 0.069722,
+    "tz": 2,
+    "city": "Castellon",
+    "country": "Spain",
+    "iata": "CDT"
+  },
+  "OMAA": {
+    "lat": 24.442856,
+    "lon": 54.651474,
+    "tz": 2,
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "iata": "AUH"
+  },
+  "LIPR": {
+    "lat": 44.02029,
+    "lon": 12.61174,
+    "tz": 2,
+    "city": "Rimini",
+    "country": "Italy",
+    "iata": "RMI"
+  },
+  "LIPQ": {
+    "lat": 45.827499,
+    "lon": 13.47222,
+    "tz": 2,
+    "city": "Trieste",
+    "country": "Italy",
+    "iata": "TRS"
+  },
+  "ENZV": {
+    "lat": 58.87677,
+    "lon": 5.637856,
+    "tz": 2,
+    "city": "Stavanger",
+    "country": "Norway",
+    "iata": "SVG"
+  },
+  "LGSR": {
+    "lat": 36.399158,
+    "lon": 25.47933,
+    "tz": 2,
+    "city": "Santorini",
+    "country": "Greece",
+    "iata": "JTR"
+  },
+  "LTFG": {
+    "lat": 36.299,
+    "lon": 32.299999,
+    "tz": 2,
+    "city": "Gazipasa",
+    "country": "Turkey",
+    "iata": "GZP"
+  },
+  "OKKK": {
+    "lat": 29.226561,
+    "lon": 47.968922,
+    "tz": 2,
+    "city": "Kuwait City",
+    "country": "Kuwait",
+    "iata": "KWI"
+  },
+  "MDPC": {
+    "lat": 18.56736,
+    "lon": -68.363403,
+    "tz": 2,
+    "city": "Punta Cana",
+    "country": "Dominican Republic",
+    "iata": "PUJ"
+  },
+  "OJAI": {
+    "lat": 31.722549,
+    "lon": 35.99321,
+    "tz": 2,
+    "city": "Amman",
+    "country": "Jordan",
+    "iata": "AMM"
+  },
+  "MMSM": {
+    "lat": 19.755301,
+    "lon": -99.016403,
+    "tz": 2,
+    "city": "Mexico City",
+    "country": "Mexico",
+    "iata": "NLU"
+  },
+  "VCBI": {
+    "lat": 7.181139,
+    "lon": 79.883789,
+    "tz": 2,
+    "city": "Colombo",
+    "country": "Sri Lanka",
+    "iata": "CMB"
+  },
+  "UTAA": {
+    "lat": 37.986809,
+    "lon": 58.360958,
+    "tz": 2,
+    "city": "Ashgabat",
+    "country": "Turkmenistan",
+    "iata": "ASB"
+  },
+  "LFKB": {
+    "lat": 42.549999,
+    "lon": 9.484722,
+    "tz": 2,
+    "city": "Bastia",
+    "country": "France",
+    "iata": "BIA"
+  },
+  "KATL": {
+    "lat": 33.636719,
+    "lon": -84.428001,
+    "tz": 2,
+    "city": "Atlanta",
+    "country": "United States",
+    "iata": "ATL"
+  },
+  "FIMP": {
+    "lat": -20.430281,
+    "lon": 57.683731,
+    "tz": 2,
+    "city": "Mauritius",
+    "country": "Mauritius",
+    "iata": "MRU"
+  },
+  "EDDC": {
+    "lat": 51.133728,
+    "lon": 13.767246,
+    "tz": 2,
+    "city": "Dresden",
+    "country": "Germany",
+    "iata": "DRS"
+  },
+  "KIAD": {
+    "lat": 38.947441,
+    "lon": -77.4599,
+    "tz": 2,
+    "city": "Washington",
+    "country": "United States",
+    "iata": "IAD"
+  },
+  "EDDN": {
+    "lat": 49.498783,
+    "lon": 11.076632,
+    "tz": 2,
+    "city": "Nuremberg",
+    "country": "Germany",
+    "iata": "NUE"
+  },
+  "LIPX": {
+    "lat": 45.395699,
+    "lon": 10.88853,
+    "tz": 2,
+    "city": "Verona",
+    "country": "Italy",
+    "iata": "VRN"
+  },
+  "HTZA": {
+    "lat": -6.22202,
+    "lon": 39.22488,
+    "tz": 2,
+    "city": "Zanzibar",
+    "country": "Tanzania",
+    "iata": "ZNZ"
+  },
+  "KDFW": {
+    "lat": 32.89682,
+    "lon": -97.037903,
+    "tz": 2,
+    "city": "Dallas",
+    "country": "United States",
+    "iata": "DFW"
+  },
+  "GMMN": {
+    "lat": 33.367458,
+    "lon": -7.58996,
+    "tz": 2,
+    "city": "Casablanca",
+    "country": "Morocco",
+    "iata": "CMN"
+  },
+  "MUHG": {
+    "lat": 20.78558,
+    "lon": -76.315102,
+    "tz": 2,
+    "city": "Holguin",
+    "country": "Cuba",
+    "iata": "HOG"
+  },
+  "UACC": {
+    "lat": 51.022221,
+    "lon": 71.466942,
+    "tz": 2,
+    "city": "Astana",
+    "country": "Kazakhstan",
+    "iata": "NQZ"
+  },
+  "OMDW": {
+    "lat": 24.88611,
+    "lon": 55.172222,
+    "tz": 2,
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "iata": "DWC"
+  },
+  "MMMY": {
+    "lat": 25.778481,
+    "lon": -100.106003,
+    "tz": 2,
+    "city": "Monterrey",
+    "country": "Mexico",
+    "iata": "MTY"
+  },
+  "LDPL": {
+    "lat": 44.893532,
+    "lon": 13.92219,
+    "tz": 2,
+    "city": "Pula",
+    "country": "Croatia",
+    "iata": "PUY"
+  },
+  "EDDG": {
+    "lat": 52.13464,
+    "lon": 7.684831,
+    "tz": 2,
+    "city": "Munster",
+    "country": "Germany",
+    "iata": "FMO"
+  },
+  "LFRS": {
+    "lat": 47.15694,
+    "lon": -1.60777,
+    "tz": 2,
+    "city": "Nantes",
+    "country": "France",
+    "iata": "NTE"
+  },
+  "CYVR": {
+    "lat": 49.193684,
+    "lon": -123.189323,
+    "tz": 2,
+    "city": "Vancouver",
+    "country": "Canada",
+    "iata": "YVR"
+  },
+  "EGJJ": {
+    "lat": 49.207939,
+    "lon": -2.1955,
+    "tz": 2,
+    "city": "Jersey",
+    "country": "Jersey",
+    "iata": "JER"
+  },
+  "KDEN": {
+    "lat": 39.858784,
+    "lon": -104.673882,
+    "tz": 2,
+    "city": "Denver",
+    "country": "United States",
+    "iata": "DEN"
+  },
+  "MMMX": {
+    "lat": 19.4363,
+    "lon": -99.071999,
+    "tz": 2,
+    "city": "Mexico City",
+    "country": "Mexico",
+    "iata": "MEX"
+  },
+  "CYUL": {
+    "lat": 45.469166,
+    "lon": -73.750412,
+    "tz": 2,
+    "city": "Montreal",
+    "country": "Canada",
+    "iata": "YUL"
+  },
+  "RJBB": {
+    "lat": 34.427299,
+    "lon": 135.244003,
+    "tz": 2,
+    "city": "Osaka",
+    "country": "Japan",
+    "iata": "KIX"
+  },
+  "ENEV": {
+    "lat": 68.491302,
+    "lon": 16.678101,
+    "tz": 2,
+    "city": "Harstad",
+    "country": "Norway",
+    "iata": "EVE"
+  },
+  "LHDC": {
+    "lat": 47.488911,
+    "lon": 21.61533,
+    "tz": 2,
+    "city": "Debrecen",
+    "country": "Hungary",
+    "iata": "DEB"
+  },
+  "DGAA": {
+    "lat": 5.605186,
+    "lon": -0.16678,
+    "tz": 2,
+    "city": "Accra",
+    "country": "Ghana",
+    "iata": "ACC"
+  },
+  "ESSL": {
+    "lat": 58.406151,
+    "lon": 15.6805,
+    "tz": 2,
+    "city": "Linkoping",
+    "country": "Sweden",
+    "iata": "LPI"
+  },
+  "EICK": {
+    "lat": 51.841381,
+    "lon": -8.49111,
+    "tz": 2,
+    "city": "Cork",
+    "country": "Ireland",
+    "iata": "ORK"
+  },
+  "ENCN": {
+    "lat": 58.204208,
+    "lon": 8.085369,
+    "tz": 2,
+    "city": "Kristiansand",
+    "country": "Norway",
+    "iata": "KRS"
+  },
+  "EGTE": {
+    "lat": 50.73444,
+    "lon": -3.41388,
+    "tz": 2,
+    "city": "Exeter",
+    "country": "United Kingdom",
+    "iata": "EXT"
+  },
+  "EGAC": {
+    "lat": 54.61805,
+    "lon": -5.8725,
+    "tz": 2,
+    "city": "Belfast",
+    "country": "United Kingdom",
+    "iata": "BHD"
+  },
+  "EGFF": {
+    "lat": 51.396469,
+    "lon": -3.33753,
+    "tz": 2,
+    "city": "Cardiff",
+    "country": "United Kingdom",
+    "iata": "CWL"
+  },
+  "EKYT": {
+    "lat": 57.095112,
+    "lon": 9.855172,
+    "tz": 2,
+    "city": "Aalborg",
+    "country": "Denmark",
+    "iata": "AAL"
+  },
+  "ZGGG": {
+    "lat": 23.392429,
+    "lon": 113.298698,
+    "tz": 2,
+    "city": "Guangzhou",
+    "country": "China",
+    "iata": "CAN"
+  },
+  "EGHI": {
+    "lat": 50.95026,
+    "lon": -1.3568,
+    "tz": 2,
+    "city": "Southampton",
+    "country": "United Kingdom",
+    "iata": "SOU"
+  },
+  "KLAS": {
+    "lat": 36.080051,
+    "lon": -115.152,
+    "tz": 2,
+    "city": "Las Vegas",
+    "country": "United States",
+    "iata": "LAS"
+  },
+  "EGNV": {
+    "lat": 54.509178,
+    "lon": -1.4294,
+    "tz": 2,
+    "city": "Teesside",
+    "country": "United Kingdom",
+    "iata": "MME"
+  },
+  "EGNJ": {
+    "lat": 53.57444,
+    "lon": -0.35083,
+    "tz": 2,
+    "city": "Humberside",
+    "country": "United Kingdom",
+    "iata": "HUY"
+  },
+  "VOBL": {
+    "lat": 13.198889,
+    "lon": 77.705559,
+    "tz": 2,
+    "city": "Bengaluru",
+    "country": "India",
+    "iata": "BLR"
+  },
+  "EGPE": {
+    "lat": 57.5425,
+    "lon": -4.0475,
+    "tz": 2,
+    "city": "Inverness",
+    "country": "United Kingdom",
+    "iata": "INV"
+  },
+  "LFRN": {
+    "lat": 48.071941,
+    "lon": -1.73222,
+    "tz": 2,
+    "city": "Rennes",
+    "country": "France",
+    "iata": "RNS"
+  },
+  "EGSH": {
+    "lat": 52.675831,
+    "lon": 1.282778,
+    "tz": 2,
+    "city": "Norwich",
+    "country": "United Kingdom",
+    "iata": "NWI"
+  },
+  "EGNT": {
+    "lat": 55.037498,
+    "lon": -1.69166,
+    "tz": 2,
+    "city": "Newcastle",
+    "country": "United Kingdom",
+    "iata": "NCL"
+  },
+  "LTBS": {
+    "lat": 36.713051,
+    "lon": 28.7925,
+    "tz": 2,
+    "city": "Dalaman",
+    "country": "Turkey",
+    "iata": "DLM"
+  },
+  "HKJK": {
+    "lat": -1.31924,
+    "lon": 36.927769,
+    "tz": 2,
+    "city": "Nairobi",
+    "country": "Kenya",
+    "iata": "NBO"
+  },
+  "KBWI": {
+    "lat": 39.175362,
+    "lon": -76.668297,
+    "tz": 2,
+    "city": "Baltimore",
+    "country": "United States",
+    "iata": "BWI"
+  },
+  "EGNS": {
+    "lat": 54.083328,
+    "lon": -4.62388,
+    "tz": 2,
+    "city": "Isle of Man",
+    "country": "Isle Of Man",
+    "iata": "IOM"
+  },
+  "ZSAM": {
+    "lat": 24.544029,
+    "lon": 118.127701,
+    "tz": 2,
+    "city": "Xiamen",
+    "country": "China",
+    "iata": "XMN"
+  },
+  "CYOW": {
+    "lat": 45.316071,
+    "lon": -75.665108,
+    "tz": 2,
+    "city": "Ottawa",
+    "country": "Canada",
+    "iata": "YOW"
+  },
+  "CYYC": {
+    "lat": 51.121101,
+    "lon": -114.021286,
+    "tz": 2,
+    "city": "Calgary",
+    "country": "Canada",
+    "iata": "YYC"
+  },
+  "TXKF": {
+    "lat": 32.36404,
+    "lon": -64.678703,
+    "tz": 2,
+    "city": "Bermuda",
+    "country": "Bermuda",
+    "iata": "BDA"
+  },
+  "KSAN": {
+    "lat": 32.733551,
+    "lon": -117.189003,
+    "tz": 2,
+    "city": "San Diego",
+    "country": "United States",
+    "iata": "SAN"
+  },
+  "OEJN": {
+    "lat": 21.67956,
+    "lon": 39.156528,
+    "tz": 2,
+    "city": "Jeddah",
+    "country": "Saudi Arabia",
+    "iata": "JED"
+  },
+  "EINN": {
+    "lat": 52.701969,
+    "lon": -8.92481,
+    "tz": 2,
+    "city": "Shannon",
+    "country": "Ireland",
+    "iata": "SNN"
+  },
+  "KIAH": {
+    "lat": 29.98443,
+    "lon": -95.3414,
+    "tz": 2,
+    "city": "Houston",
+    "country": "United States",
+    "iata": "IAH"
+  },
+  "KCLT": {
+    "lat": 35.214001,
+    "lon": -80.9431,
+    "tz": 2,
+    "city": "Charlotte",
+    "country": "United States",
+    "iata": "CLT"
+  },
+  "KBNA": {
+    "lat": 36.12447,
+    "lon": -86.678101,
+    "tz": 2,
+    "city": "Nashville",
+    "country": "United States",
+    "iata": "BNA"
+  },
+  "VOHS": {
+    "lat": 17.23,
+    "lon": 78.431946,
+    "tz": 2,
+    "city": "Hyderabad",
+    "country": "India",
+    "iata": "HYD"
+  },
+  "KPDX": {
+    "lat": 45.588718,
+    "lon": -122.597,
+    "tz": 2,
+    "city": "Portland",
+    "country": "United States",
+    "iata": "PDX"
+  },
+  "KCVG": {
+    "lat": 39.048828,
+    "lon": -84.667801,
+    "tz": 2,
+    "city": "Cincinnati",
+    "country": "United States",
+    "iata": "CVG"
+  },
+  "KMCO": {
+    "lat": 28.42939,
+    "lon": -81.308899,
+    "tz": 2,
+    "city": "Orlando",
+    "country": "United States",
+    "iata": "MCO"
+  },
+  "KMSY": {
+    "lat": 29.99338,
+    "lon": -90.258003,
+    "tz": 2,
+    "city": "New Orleans",
+    "country": "United States",
+    "iata": "MSY"
+  },
+  "KAUS": {
+    "lat": 30.194521,
+    "lon": -97.6698,
+    "tz": 2,
+    "city": "Austin",
+    "country": "United States",
+    "iata": "AUS"
+  },
+  "LXGB": {
+    "lat": 36.151211,
+    "lon": -5.34966,
+    "tz": 2,
+    "city": "Gibraltar",
+    "country": "Gibraltar",
+    "iata": "GIB"
+  },
+  "MKJS": {
+    "lat": 18.50371,
+    "lon": -77.9133,
+    "tz": 2,
+    "city": "Montego Bay",
+    "country": "Jamaica",
+    "iata": "MBJ"
+  },
+  "DNAA": {
+    "lat": 9.006792,
+    "lon": 7.263172,
+    "tz": 2,
+    "city": "Abuja",
+    "country": "Nigeria",
+    "iata": "ABV"
+  },
+  "EIKN": {
+    "lat": 53.91029,
+    "lon": -8.81849,
+    "tz": 2,
+    "city": "Knock",
+    "country": "Ireland",
+    "iata": "NOC"
+  },
+  "EGJB": {
+    "lat": 49.434952,
+    "lon": -2.60196,
+    "tz": 2,
+    "city": "Guernsey",
+    "country": "Guernsey",
+    "iata": "GCI"
+  },
+  "KPHX": {
+    "lat": 33.434269,
+    "lon": -112.011002,
+    "tz": 2,
+    "city": "Phoenix",
+    "country": "United States",
+    "iata": "PHX"
+  },
+  "OBBI": {
+    "lat": 26.27083,
+    "lon": 50.63361,
+    "tz": 2,
+    "city": "Bahrain",
+    "country": "Bahrain",
+    "iata": "BAH"
+  },
+  "EGAE": {
+    "lat": 55.04277,
+    "lon": -7.16111,
+    "tz": 2,
+    "city": "Derry",
+    "country": "United Kingdom",
+    "iata": "LDY"
+  },
+  "SKBO": {
+    "lat": 4.703056,
+    "lon": -74.138298,
+    "tz": 2,
+    "city": "Bogota",
+    "country": "Colombia",
+    "iata": "BOG"
+  },
+  "VGSY": {
+    "lat": 24.96324,
+    "lon": 91.866783,
+    "tz": 2,
+    "city": "Sylhet",
+    "country": "Bangladesh",
+    "iata": "ZYL"
+  },
+  "OPIS": {
+    "lat": 33.549084,
+    "lon": 72.825653,
+    "tz": 2,
+    "city": "Islamabad",
+    "country": "Pakistan",
+    "iata": "ISB"
+  },
+  "ZHHH": {
+    "lat": 30.783751,
+    "lon": 114.208099,
+    "tz": 2,
+    "city": "Wuhan",
+    "country": "China",
+    "iata": "WUH"
+  },
+  "EIKY": {
+    "lat": 52.18087,
+    "lon": -9.52378,
+    "tz": 2,
+    "city": "Kerry",
+    "country": "Ireland",
+    "iata": "KIR"
+  },
+  "LBPD": {
+    "lat": 42.067799,
+    "lon": 24.85083,
+    "tz": 2,
+    "city": "Plovdiv",
+    "country": "Bulgaria",
+    "iata": "PDV"
+  },
+  "LGKL": {
+    "lat": 37.06831,
+    "lon": 22.02552,
+    "tz": 2,
+    "city": "Kalamata",
+    "country": "Greece",
+    "iata": "KLX"
+  },
+  "GMMI": {
+    "lat": 31.397499,
+    "lon": -9.681667,
+    "tz": 2,
+    "city": "Essaouira",
+    "country": "Morocco",
+    "iata": "ESU"
+  },
+  "GMMX": {
+    "lat": 31.60688,
+    "lon": -8.0363,
+    "tz": 2,
+    "city": "Marrakesh",
+    "country": "Morocco",
+    "iata": "RAK"
+  },
+  "LEMI": {
+    "lat": 37.803268,
+    "lon": -1.124536,
+    "tz": 2,
+    "city": "Murcia",
+    "country": "Spain",
+    "iata": "RMU"
+  },
+  "GMAD": {
+    "lat": 30.324989,
+    "lon": -9.41306,
+    "tz": 2,
+    "city": "Agadir",
+    "country": "Morocco",
+    "iata": "AGA"
+  },
+  "LERS": {
+    "lat": 41.147388,
+    "lon": 1.167172,
+    "tz": 2,
+    "city": "Reus",
+    "country": "Spain",
+    "iata": "REU"
+  },
+  "EYPA": {
+    "lat": 55.973221,
+    "lon": 21.093849,
+    "tz": 2,
+    "city": "Palanga",
+    "country": "Lithuania",
+    "iata": "PLQ"
+  },
+  "LIBP": {
+    "lat": 42.431648,
+    "lon": 14.18106,
+    "tz": 2,
+    "city": "Pescara",
+    "country": "Italy",
+    "iata": "PSR"
+  },
+  "EDSB": {
+    "lat": 48.77935,
+    "lon": 8.0805,
+    "tz": 2,
+    "city": "Karlsruhe / Baden-Baden",
+    "country": "Germany",
+    "iata": "FKB"
+  },
+  "LTAU": {
+    "lat": 38.770378,
+    "lon": 35.495419,
+    "tz": 2,
+    "city": "Kayseri",
+    "country": "Turkey",
+    "iata": "ASR"
+  },
+  "LFMP": {
+    "lat": 42.740829,
+    "lon": 2.869722,
+    "tz": 2,
+    "city": "Perpignan",
+    "country": "France",
+    "iata": "PGF"
+  },
+  "LGMT": {
+    "lat": 39.057144,
+    "lon": 26.599037,
+    "tz": 2,
+    "city": "Mytilene",
+    "country": "Greece",
+    "iata": "MJT"
+  },
+  "EKAH": {
+    "lat": 56.303295,
+    "lon": 10.619129,
+    "tz": 2,
+    "city": "Aarhus",
+    "country": "Denmark",
+    "iata": "AAR"
+  },
+  "EGHQ": {
+    "lat": 50.440552,
+    "lon": -4.9954,
+    "tz": 2,
+    "city": "Newquay",
+    "country": "United Kingdom",
+    "iata": "NQY"
+  },
+  "LFBH": {
+    "lat": 46.17918,
+    "lon": -1.19523,
+    "tz": 2,
+    "city": "La Rochelle",
+    "country": "France",
+    "iata": "LRH"
+  },
+  "LFMK": {
+    "lat": 43.215809,
+    "lon": 2.308544,
+    "tz": 2,
+    "city": "Carcassonne",
+    "country": "France",
+    "iata": "CCF"
+  },
+  "LFOT": {
+    "lat": 47.431938,
+    "lon": 0.723056,
+    "tz": 2,
+    "city": "Tours",
+    "country": "France",
+    "iata": "TUF"
+  },
+  "LFBE": {
+    "lat": 44.824429,
+    "lon": 0.520525,
+    "tz": 2,
+    "city": "Bergerac",
+    "country": "France",
+    "iata": "EGC"
+  },
+  "LFBZ": {
+    "lat": 43.468391,
+    "lon": -1.523171,
+    "tz": 2,
+    "city": "Biarritz",
+    "country": "France",
+    "iata": "BIQ"
+  },
+  "KMEM": {
+    "lat": 35.042412,
+    "lon": -89.976601,
+    "tz": 2,
+    "city": "Memphis",
+    "country": "United States",
+    "iata": "MEM"
+  },
+  "HESH": {
+    "lat": 27.97728,
+    "lon": 34.394951,
+    "tz": 2,
+    "city": "Sharm el-Sheikh",
+    "country": "Egypt",
+    "iata": "SSH"
+  },
+  "GMME": {
+    "lat": 34.05146,
+    "lon": -6.75151,
+    "tz": 2,
+    "city": "Rabat",
+    "country": "Morocco",
+    "iata": "RBA"
+  },
+  "DTNH": {
+    "lat": 36.091946,
+    "lon": 10.413889,
+    "tz": 2,
+    "city": "Enfidha",
+    "country": "Tunisia",
+    "iata": "NBE"
+  },
+  "LIPB": {
+    "lat": 46.46019,
+    "lon": 11.32638,
+    "tz": 2,
+    "city": "Bolzano",
+    "country": "Italy",
+    "iata": "BZO"
+  },
+  "DAOI": {
+    "lat": 36.212223,
+    "lon": 1.331667,
+    "tz": 2,
+    "city": "Chlef",
+    "country": "Algeria",
+    "iata": "CFK"
+  },
+  "ZHEC": {
+    "lat": 30.341,
+    "lon": 115.039101,
+    "tz": 2,
+    "city": "Ezhou",
+    "country": "China",
+    "iata": "EHU"
+  },
+  "TFFR": {
+    "lat": 16.26416,
+    "lon": -61.525799,
+    "tz": 2,
+    "city": "Pointe-a-Pitre",
+    "country": "Guadeloupe",
+    "iata": "PTP"
+  },
+  "DBBB": {
+    "lat": 6.357228,
+    "lon": 2.384353,
+    "tz": 2,
+    "city": "Cotonou",
+    "country": "Benin",
+    "iata": "COO"
+  },
+  "DNMM": {
+    "lat": 6.577369,
+    "lon": 3.321156,
+    "tz": 2,
+    "city": "Lagos",
+    "country": "Nigeria",
+    "iata": "LOS"
+  },
+  "KDTW": {
+    "lat": 42.21244,
+    "lon": -83.353302,
+    "tz": 2,
+    "city": "Detroit",
+    "country": "United States",
+    "iata": "DTW"
+  },
+  "LFMT": {
+    "lat": 43.58028,
+    "lon": 3.96744,
+    "tz": 2,
+    "city": "Montpellier",
+    "country": "France",
+    "iata": "MPL"
+  },
+  "GOBD": {
+    "lat": 14.671111,
+    "lon": -17.066944,
+    "tz": 2,
+    "city": "Dakar",
+    "country": "Senegal",
+    "iata": "DSS"
+  },
+  "LFRB": {
+    "lat": 48.44722,
+    "lon": -4.42166,
+    "tz": 2,
+    "city": "Brest",
+    "country": "France",
+    "iata": "BES"
+  },
+  "LFBD": {
+    "lat": 44.828609,
+    "lon": -0.71527,
+    "tz": 2,
+    "city": "Bordeaux",
+    "country": "France",
+    "iata": "BOD"
+  },
+  "LFLC": {
+    "lat": 45.785831,
+    "lon": 3.1625,
+    "tz": 2,
+    "city": "Clermont-Ferrand",
+    "country": "France",
+    "iata": "CFE"
+  },
+  "LFBP": {
+    "lat": 43.380001,
+    "lon": -0.41861,
+    "tz": 2,
+    "city": "Pau",
+    "country": "France",
+    "iata": "PUF"
+  },
+  "MPTO": {
+    "lat": 9.071364,
+    "lon": -79.3834,
+    "tz": 2,
+    "city": "Panama City",
+    "country": "Panama",
+    "iata": "PTY"
+  },
+  "DAAE": {
+    "lat": 36.71199,
+    "lon": 5.069922,
+    "tz": 2,
+    "city": "Bejaia",
+    "country": "Algeria",
+    "iata": "BJA"
+  },
+  "LFRU": {
+    "lat": 48.600739,
+    "lon": -3.81666,
+    "tz": 2,
+    "city": "Morlaix",
+    "country": "France",
+    "iata": "MXN"
+  },
+  "LFKJ": {
+    "lat": 41.923882,
+    "lon": 8.8025,
+    "tz": 2,
+    "city": "Ajaccio",
+    "country": "France",
+    "iata": "AJA"
+  },
+  "EKVG": {
+    "lat": 62.063622,
+    "lon": -7.27721,
+    "tz": 2,
+    "city": "Vagar",
+    "country": "Faroe Islands",
+    "iata": "FAE"
+  },
+  "OLBA": {
+    "lat": 33.82093,
+    "lon": 35.48838,
+    "tz": 2,
+    "city": "Beirut",
+    "country": "Lebanon",
+    "iata": "BEY"
+  },
+  "DABC": {
+    "lat": 36.27602,
+    "lon": 6.620386,
+    "tz": 2,
+    "city": "Constantine",
+    "country": "Algeria",
+    "iata": "CZL"
+  },
+  "VVTS": {
+    "lat": 10.81879,
+    "lon": 106.651802,
+    "tz": 2,
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "iata": "SGN"
+  },
+  "LPCS": {
+    "lat": 38.725555,
+    "lon": -9.355278,
+    "tz": 2,
+    "city": "Cascais",
+    "country": "Portugal",
+    "iata": "CAT"
+  },
+  "LFRJ": {
+    "lat": 48.530441,
+    "lon": -4.150868,
+    "tz": 2,
+    "city": "Landivisiau",
+    "country": "France",
+    "iata": "LDV"
+  },
+  "LSZB": {
+    "lat": 46.914101,
+    "lon": 7.497153,
+    "tz": 2,
+    "city": "Bern",
+    "country": "Switzerland",
+    "iata": "BRN"
+  },
+  "ETNG": {
+    "lat": 50.960865,
+    "lon": 6.042386,
+    "tz": 2,
+    "city": "Geilenkirchen",
+    "country": "Germany",
+    "iata": "GKE"
+  },
+  "LICD": {
+    "lat": 35.49791,
+    "lon": 12.61808,
+    "tz": 2,
+    "city": "Lampedusa",
+    "country": "Italy",
+    "iata": "LMP"
+  },
+  "LICT": {
+    "lat": 37.9114,
+    "lon": 12.48796,
+    "tz": 2,
+    "city": "Trapani",
+    "country": "Italy",
+    "iata": "TPS"
+  },
+  "LIBC": {
+    "lat": 38.997219,
+    "lon": 17.08016,
+    "tz": 2,
+    "city": "Crotone",
+    "country": "Italy",
+    "iata": "CRV"
+  },
+  "LROD": {
+    "lat": 47.025269,
+    "lon": 21.9025,
+    "tz": 2,
+    "city": "Oradea",
+    "country": "Romania",
+    "iata": "OMR"
+  },
+  "LICR": {
+    "lat": 38.071201,
+    "lon": 15.65155,
+    "tz": 2,
+    "city": "Reggio Calabria",
+    "country": "Italy",
+    "iata": "REG"
+  },
+  "LECO": {
+    "lat": 43.302059,
+    "lon": -8.37725,
+    "tz": 2,
+    "city": "A Coruna",
+    "country": "Spain",
+    "iata": "LCG"
+  },
+  "GCXO": {
+    "lat": 28.482651,
+    "lon": -16.341499,
+    "tz": 2,
+    "city": "Tenerife",
+    "country": "Spain",
+    "iata": "TFN"
+  },
+  "MUHA": {
+    "lat": 22.989149,
+    "lon": -82.408997,
+    "tz": 2,
+    "city": "Havana",
+    "country": "Cuba",
+    "iata": "HAV"
+  },
+  "LFST": {
+    "lat": 48.538326,
+    "lon": 7.628381,
+    "tz": 2,
+    "city": "Strasbourg",
+    "country": "France",
+    "iata": "SXB"
+  },
+  "KPHL": {
+    "lat": 39.871941,
+    "lon": -75.241096,
+    "tz": 2,
+    "city": "Philadelphia",
+    "country": "United States",
+    "iata": "PHL"
+  },
+  "SKRG": {
+    "lat": 6.164444,
+    "lon": -75.422997,
+    "tz": 2,
+    "city": "Medellin",
+    "country": "Colombia",
+    "iata": "MDE"
+  },
+  "LEVX": {
+    "lat": 42.2318,
+    "lon": -8.62677,
+    "tz": 2,
+    "city": "Vigo",
+    "country": "Spain",
+    "iata": "VGO"
+  },
+  "LEAS": {
+    "lat": 43.56356,
+    "lon": -6.03462,
+    "tz": 2,
+    "city": "Asturias",
+    "country": "Spain",
+    "iata": "OVD"
+  },
+  "LEAM": {
+    "lat": 36.843929,
+    "lon": -2.37009,
+    "tz": 2,
+    "city": "Almeria",
+    "country": "Spain",
+    "iata": "LEI"
+  },
+  "LEXJ": {
+    "lat": 43.427059,
+    "lon": -3.82,
+    "tz": 2,
+    "city": "Santander",
+    "country": "Spain",
+    "iata": "SDR"
+  },
+  "MDSD": {
+    "lat": 18.429661,
+    "lon": -69.6689,
+    "tz": 2,
+    "city": "Santo Domingo",
+    "country": "Dominican Republic",
+    "iata": "SDQ"
+  },
+  "GCLA": {
+    "lat": 28.626471,
+    "lon": -17.7556,
+    "tz": 2,
+    "city": "La Palma",
+    "country": "Spain",
+    "iata": "SPC"
+  },
+  "GVAC": {
+    "lat": 16.741381,
+    "lon": -22.9494,
+    "tz": 2,
+    "city": "Espargos",
+    "country": "Cape Verde",
+    "iata": "SID"
+  },
+  "MMQT": {
+    "lat": 20.617279,
+    "lon": -100.184998,
+    "tz": 2,
+    "city": "Queretaro",
+    "country": "Mexico",
+    "iata": "QRO"
+  },
+  "LEPP": {
+    "lat": 42.770031,
+    "lon": -1.64633,
+    "tz": 2,
+    "city": "Pamplona",
+    "country": "Spain",
+    "iata": "PNA"
+  },
+  "LEST": {
+    "lat": 42.896332,
+    "lon": -8.41514,
+    "tz": 2,
+    "city": "Santiago de Compostela",
+    "country": "Spain",
+    "iata": "SCQ"
+  },
+  "LEJR": {
+    "lat": 36.744621,
+    "lon": -6.06011,
+    "tz": 2,
+    "city": "Jerez",
+    "country": "Spain",
+    "iata": "XRY"
+  },
+  "SKCL": {
+    "lat": 3.543056,
+    "lon": -76.381599,
+    "tz": 2,
+    "city": "Cali",
+    "country": "Colombia",
+    "iata": "CLO"
+  },
+  "LPPD": {
+    "lat": 37.741928,
+    "lon": -25.697542,
+    "tz": 2,
+    "city": "Ponta Delgada",
+    "country": "Portugal",
+    "iata": "PDL"
+  },
+  "SCEL": {
+    "lat": -33.392899,
+    "lon": -70.785797,
+    "tz": 2,
+    "city": "Santiago",
+    "country": "Chile",
+    "iata": "SCL"
+  },
+  "GEML": {
+    "lat": 35.279812,
+    "lon": -2.95625,
+    "tz": 2,
+    "city": "Melilla",
+    "country": "Spain",
+    "iata": "MLN"
+  },
+  "SPJC": {
+    "lat": -12.0218,
+    "lon": -77.114304,
+    "tz": 2,
+    "city": "Lima",
+    "country": "Peru",
+    "iata": "LIM"
+  },
+  "LRCV": {
+    "lat": 44.31813,
+    "lon": 23.888611,
+    "tz": 2,
+    "city": "Craiova",
+    "country": "Romania",
+    "iata": "CRA"
+  },
+  "SBSG": {
+    "lat": -5.769593,
+    "lon": -35.368515,
+    "tz": 2,
+    "city": "Natal",
+    "country": "Brazil",
+    "iata": "NAT"
+  },
+  "MSLP": {
+    "lat": 13.44094,
+    "lon": -89.055702,
+    "tz": 2,
+    "city": "San Salvador",
+    "country": "El Salvador",
+    "iata": "SAL"
+  },
+  "EYKA": {
+    "lat": 54.963909,
+    "lon": 24.08477,
+    "tz": 2,
+    "city": "Kaunas",
+    "country": "Lithuania",
+    "iata": "KUN"
+  },
+  "MHPR": {
+    "lat": 14.3824,
+    "lon": -87.621201,
+    "tz": 2,
+    "city": "Tegucigalpa",
+    "country": "Honduras",
+    "iata": "XPL"
+  },
+  "LFBI": {
+    "lat": 46.587502,
+    "lon": 0.306667,
+    "tz": 2,
+    "city": "Poitiers",
+    "country": "France",
+    "iata": "PIS"
+  },
+  "LESO": {
+    "lat": 43.35651,
+    "lon": -1.79061,
+    "tz": 2,
+    "city": "San Sebastian",
+    "country": "Spain",
+    "iata": "EAS"
+  },
+  "LRTR": {
+    "lat": 45.80986,
+    "lon": 21.33786,
+    "tz": 2,
+    "city": "Timisoara",
+    "country": "Romania",
+    "iata": "TSR"
+  },
+  "LEGR": {
+    "lat": 37.188728,
+    "lon": -3.77735,
+    "tz": 2,
+    "city": "Granada",
+    "country": "Spain",
+    "iata": "GRX"
+  },
+  "GMMW": {
+    "lat": 34.988888,
+    "lon": -3.028333,
+    "tz": 2,
+    "city": "Nador",
+    "country": "Morocco",
+    "iata": "NDR"
+  },
+  "EGPK": {
+    "lat": 55.507862,
+    "lon": -4.590222,
+    "tz": 2,
+    "city": "Prestwick",
+    "country": "United Kingdom",
+    "iata": "PIK"
+  },
+  "GMTT": {
+    "lat": 35.72691,
+    "lon": -5.91688,
+    "tz": 2,
+    "city": "Tangier",
+    "country": "Morocco",
+    "iata": "TNG"
+  },
+  "LECU": {
+    "lat": 40.370556,
+    "lon": -3.785,
+    "tz": 2,
+    "city": "Madrid",
+    "country": "Spain",
+    "iata": "QYU"
+  },
+  "EDNY": {
+    "lat": 47.67131,
+    "lon": 9.511486,
+    "tz": 2,
+    "city": "Friedrichshafen",
+    "country": "Germany",
+    "iata": "FDH"
+  },
+  "EDFH": {
+    "lat": 49.948669,
+    "lon": 7.263892,
+    "tz": 2,
+    "city": "Frankfurt",
+    "country": "Germany",
+    "iata": "HHN"
+  },
+  "LEZG": {
+    "lat": 41.666241,
+    "lon": -1.04155,
+    "tz": 2,
+    "city": "Zaragoza",
+    "country": "Spain",
+    "iata": "ZAZ"
+  },
+  "EDLV": {
+    "lat": 51.602409,
+    "lon": 6.142172,
+    "tz": 2,
+    "city": "Weeze",
+    "country": "Germany",
+    "iata": "NRN"
+  },
+  "EDJA": {
+    "lat": 47.988609,
+    "lon": 10.239444,
+    "tz": 2,
+    "city": "Memmingen",
+    "country": "Germany",
+    "iata": "FMM"
+  },
+  "LEVT": {
+    "lat": 42.882832,
+    "lon": -2.72446,
+    "tz": 2,
+    "city": "Vitoria",
+    "country": "Spain",
+    "iata": "VIT"
+  },
+  "LFQQ": {
+    "lat": 50.563332,
+    "lon": 3.086944,
+    "tz": 2,
+    "city": "Lille",
+    "country": "France",
+    "iata": "LIL"
+  },
+  "RPLL": {
+    "lat": 14.50864,
+    "lon": 121.019501,
+    "tz": 2,
+    "city": "Manila",
+    "country": "Philippines",
+    "iata": "MNL"
+  },
+  "HEAX": {
+    "lat": 30.91766,
+    "lon": 29.6964,
+    "tz": 2,
+    "city": "Alexandria",
+    "country": "Egypt",
+    "iata": "HBE"
+  },
+  "VOTR": {
+    "lat": 10.76536,
+    "lon": 78.709717,
+    "tz": 2,
+    "city": "Tiruchirapalli",
+    "country": "India",
+    "iata": "TRZ"
+  },
+  "VOML": {
+    "lat": 12.955112,
+    "lon": 74.887695,
+    "tz": 2,
+    "city": "Mangaluru",
+    "country": "India",
+    "iata": "IXE"
+  },
+  "OIKQ": {
+    "lat": 26.757778,
+    "lon": 55.905277,
+    "tz": 2,
+    "city": "Qeshm Island",
+    "country": "Iran",
+    "iata": "GSM"
+  },
+  "HAAB": {
+    "lat": 8.977889,
+    "lon": 38.799309,
+    "tz": 2,
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "iata": "ADD"
+  },
+  "OOMS": {
+    "lat": 23.593269,
+    "lon": 58.284439,
+    "tz": 2,
+    "city": "Muscat",
+    "country": "Oman",
+    "iata": "MCT"
+  },
+  "UMMS": {
+    "lat": 53.882462,
+    "lon": 28.030729,
+    "tz": 2,
+    "city": "Minsk",
+    "country": "Belarus",
+    "iata": "MSQ"
+  },
+  "OPLA": {
+    "lat": 31.521561,
+    "lon": 74.403587,
+    "tz": 2,
+    "city": "Lahore",
+    "country": "Pakistan",
+    "iata": "LHE"
+  },
+  "UUWW": {
+    "lat": 55.59153,
+    "lon": 37.261478,
+    "tz": 2,
+    "city": "Moscow",
+    "country": "Russia",
+    "iata": "VKO"
+  },
+  "VNKT": {
+    "lat": 27.696581,
+    "lon": 85.3591,
+    "tz": 2,
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "iata": "KTM"
+  },
+  "ULLI": {
+    "lat": 59.800289,
+    "lon": 30.262501,
+    "tz": 2,
+    "city": "St. Petersburg",
+    "country": "Russia",
+    "iata": "LED"
+  },
+  "VAPO": {
+    "lat": 18.582109,
+    "lon": 73.919693,
+    "tz": 2,
+    "city": "Pune",
+    "country": "India",
+    "iata": "PNQ"
+  },
+  "OPKC": {
+    "lat": 24.90654,
+    "lon": 67.160789,
+    "tz": 2,
+    "city": "Karachi",
+    "country": "Pakistan",
+    "iata": "KHI"
+  },
+  "OEDF": {
+    "lat": 26.471161,
+    "lon": 49.79789,
+    "tz": 2,
+    "city": "Dammam",
+    "country": "Saudi Arabia",
+    "iata": "DMM"
+  },
+  "USSS": {
+    "lat": 56.743099,
+    "lon": 60.802719,
+    "tz": 2,
+    "city": "Yekaterinburg",
+    "country": "Russia",
+    "iata": "SVX"
+  },
+  "VECC": {
+    "lat": 22.65473,
+    "lon": 88.446716,
+    "tz": 2,
+    "city": "Kolkata",
+    "country": "India",
+    "iata": "CCU"
+  },
+  "UUEE": {
+    "lat": 55.972641,
+    "lon": 37.414581,
+    "tz": 2,
+    "city": "Moscow",
+    "country": "Russia",
+    "iata": "SVO"
+  },
+  "OSDI": {
+    "lat": 33.410629,
+    "lon": 36.514259,
+    "tz": 2,
+    "city": "Damascus",
+    "country": "Syria",
+    "iata": "DAM"
+  },
+  "UNNT": {
+    "lat": 55.012619,
+    "lon": 82.65065,
+    "tz": 2,
+    "city": "Novosibirsk",
+    "country": "Russia",
+    "iata": "OVB"
+  },
+  "HHAS": {
+    "lat": 15.29185,
+    "lon": 38.91066,
+    "tz": 2,
+    "city": "Asmara",
+    "country": "Eritrea",
+    "iata": "ASM"
+  },
+  "VOTV": {
+    "lat": 8.48174,
+    "lon": 76.920395,
+    "tz": 2,
+    "city": "Thiruvananthapuram",
+    "country": "India",
+    "iata": "TRV"
+  },
+  "UWKD": {
+    "lat": 55.606178,
+    "lon": 49.278721,
+    "tz": 2,
+    "city": "Kazan",
+    "country": "Russia",
+    "iata": "KZN"
+  },
+  "UWUU": {
+    "lat": 54.55751,
+    "lon": 55.874409,
+    "tz": 2,
+    "city": "Ufa",
+    "country": "Russia",
+    "iata": "UFA"
+  },
+  "VOMM": {
+    "lat": 12.99441,
+    "lon": 80.180511,
+    "tz": 2,
+    "city": "Chennai",
+    "country": "India",
+    "iata": "MAA"
+  },
+  "UAAA": {
+    "lat": 43.354755,
+    "lon": 77.044792,
+    "tz": 2,
+    "city": "Almaty",
+    "country": "Kazakhstan",
+    "iata": "ALA"
+  },
+  "WMKK": {
+    "lat": 2.745578,
+    "lon": 101.7099,
+    "tz": 2,
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "iata": "KUL"
+  },
+  "VOCI": {
+    "lat": 10.151124,
+    "lon": 76.401924,
+    "tz": 2,
+    "city": "Cochin",
+    "country": "India",
+    "iata": "COK"
+  },
+  "HESX": {
+    "lat": 30.109722,
+    "lon": 30.894444,
+    "tz": 2,
+    "city": "Giza",
+    "country": "Egypt",
+    "iata": "SPX"
+  },
+  "OPMT": {
+    "lat": 30.20322,
+    "lon": 71.419113,
+    "tz": 2,
+    "city": "Multan",
+    "country": "Pakistan",
+    "iata": "MUX"
+  },
+  "UCFM": {
+    "lat": 43.061298,
+    "lon": 74.477547,
+    "tz": 2,
+    "city": "Bishkek",
+    "country": "Kyrgyzstan",
+    "iata": "BSZ"
+  },
+  "OIIE": {
+    "lat": 35.416111,
+    "lon": 51.152222,
+    "tz": 2,
+    "city": "Tehran",
+    "country": "Iran",
+    "iata": "IKA"
+  },
+  "ORBI": {
+    "lat": 33.262501,
+    "lon": 44.234444,
+    "tz": 2,
+    "city": "Baghdad",
+    "country": "Iraq",
+    "iata": "BGW"
+  },
+  "OEAB": {
+    "lat": 18.24036,
+    "lon": 42.65662,
+    "tz": 2,
+    "city": "Abha",
+    "country": "Saudi Arabia",
+    "iata": "AHB"
+  },
+  "VTBD": {
+    "lat": 13.9125,
+    "lon": 100.606697,
+    "tz": 2,
+    "city": "Bangkok",
+    "country": "Thailand",
+    "iata": "DMK"
+  },
+  "URKK": {
+    "lat": 45.034679,
+    "lon": 39.170528,
+    "tz": 2,
+    "city": "Krasnodar",
+    "country": "Russia",
+    "iata": "KRR"
+  },
+  "UUDD": {
+    "lat": 55.408779,
+    "lon": 37.906311,
+    "tz": 2,
+    "city": "Moscow",
+    "country": "Russia",
+    "iata": "DME"
+  },
+  "OOSA": {
+    "lat": 17.03871,
+    "lon": 54.09129,
+    "tz": 2,
+    "city": "Salalah",
+    "country": "Oman",
+    "iata": "SLL"
+  },
+  "OEGS": {
+    "lat": 26.30282,
+    "lon": 43.773911,
+    "tz": 2,
+    "city": "Al-Qassim",
+    "country": "Saudi Arabia",
+    "iata": "ELQ"
+  },
+  "OAKB": {
+    "lat": 34.565842,
+    "lon": 69.21241,
+    "tz": 2,
+    "city": "Kabul",
+    "country": "Afghanistan",
+    "iata": "KBL"
+  },
+  "VICG": {
+    "lat": 30.67346,
+    "lon": 76.788544,
+    "tz": 2,
+    "city": "Chandigarh",
+    "country": "India",
+    "iata": "IXC"
+  },
+  "VIJP": {
+    "lat": 26.82419,
+    "lon": 75.812157,
+    "tz": 2,
+    "city": "Jaipur",
+    "country": "India",
+    "iata": "JAI"
+  },
+  "URSS": {
+    "lat": 43.449921,
+    "lon": 39.956581,
+    "tz": 2,
+    "city": "Sochi",
+    "country": "Russia",
+    "iata": "AER"
+  },
+  "ORMM": {
+    "lat": 30.549061,
+    "lon": 47.66214,
+    "tz": 2,
+    "city": "Basra",
+    "country": "Iraq",
+    "iata": "BSR"
+  },
+  "HLLB": {
+    "lat": 32.095215,
+    "lon": 20.26874,
+    "tz": 2,
+    "city": "Benghazi",
+    "country": "Libya",
+    "iata": "BEN"
+  },
+  "HKMO": {
+    "lat": -4.03483,
+    "lon": 39.59425,
+    "tz": 2,
+    "city": "Mombasa",
+    "country": "Kenya",
+    "iata": "MBA"
+  },
+  "VOCL": {
+    "lat": 11.13785,
+    "lon": 75.950905,
+    "tz": 2,
+    "city": "Kozhikode",
+    "country": "India",
+    "iata": "CCJ"
+  },
+  "OEMA": {
+    "lat": 24.555058,
+    "lon": 39.707764,
+    "tz": 2,
+    "city": "Medina",
+    "country": "Saudi Arabia",
+    "iata": "MED"
+  },
+  "ORER": {
+    "lat": 36.240482,
+    "lon": 43.946671,
+    "tz": 2,
+    "city": "Erbil",
+    "country": "Iraq",
+    "iata": "EBL"
+  },
+  "VRMM": {
+    "lat": 4.191833,
+    "lon": 73.529121,
+    "tz": 2,
+    "city": "Male",
+    "country": "Maldives",
+    "iata": "MLE"
+  },
+  "VGHS": {
+    "lat": 23.84333,
+    "lon": 90.397781,
+    "tz": 2,
+    "city": "Dhaka",
+    "country": "Bangladesh",
+    "iata": "DAC"
+  },
+  "WIII": {
+    "lat": -6.12556,
+    "lon": 106.6558,
+    "tz": 2,
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "iata": "CGK"
+  },
+  "YPAD": {
+    "lat": -34.947392,
+    "lon": 138.533417,
+    "tz": 2,
+    "city": "Adelaide",
+    "country": "Australia",
+    "iata": "ADL"
+  },
+  "VAAH": {
+    "lat": 23.07724,
+    "lon": 72.634651,
+    "tz": 2,
+    "city": "Ahmedabad",
+    "country": "India",
+    "iata": "AMD"
+  },
+  "YSSY": {
+    "lat": -33.946098,
+    "lon": 151.1772,
+    "tz": 2,
+    "city": "Sydney",
+    "country": "Australia",
+    "iata": "SYD"
+  },
+  "VOGA": {
+    "lat": 15.744402,
+    "lon": 73.860626,
+    "tz": 2,
+    "city": "Goa",
+    "country": "India",
+    "iata": "GOX"
+  },
+  "VIAR": {
+    "lat": 31.709591,
+    "lon": 74.797256,
+    "tz": 2,
+    "city": "Amritsar",
+    "country": "India",
+    "iata": "ATQ"
+  },
+  "VVNB": {
+    "lat": 21.221189,
+    "lon": 105.807098,
+    "tz": 2,
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "iata": "HAN"
+  },
+  "VANP": {
+    "lat": 21.09219,
+    "lon": 79.04718,
+    "tz": 2,
+    "city": "Nagpur",
+    "country": "India",
+    "iata": "NAG"
+  },
+  "YMML": {
+    "lat": -37.665794,
+    "lon": 144.837296,
+    "tz": 2,
+    "city": "Melbourne",
+    "country": "Australia",
+    "iata": "MEL"
+  },
+  "YBBN": {
+    "lat": -27.388636,
+    "lon": 153.126251,
+    "tz": 2,
+    "city": "Brisbane",
+    "country": "Australia",
+    "iata": "BNE"
+  },
+  "OPST": {
+    "lat": 32.535557,
+    "lon": 74.363892,
+    "tz": 2,
+    "city": "Sialkot",
+    "country": "Pakistan",
+    "iata": "SKT"
+  },
+  "VTSP": {
+    "lat": 8.1132,
+    "lon": 98.316872,
+    "tz": 2,
+    "city": "Phuket",
+    "country": "Thailand",
+    "iata": "HKT"
+  },
+  "OPPS": {
+    "lat": 33.993912,
+    "lon": 71.51458,
+    "tz": 2,
+    "city": "Peshawar",
+    "country": "Pakistan",
+    "iata": "PEW"
+  },
+  "VOKN": {
+    "lat": 11.918396,
+    "lon": 75.547485,
+    "tz": 2,
+    "city": "Kannur",
+    "country": "India",
+    "iata": "CNN"
+  },
+  "VGEG": {
+    "lat": 22.249611,
+    "lon": 91.813278,
+    "tz": 2,
+    "city": "Chittagong",
+    "country": "Bangladesh",
+    "iata": "CGP"
+  },
+  "HTDA": {
+    "lat": -6.87811,
+    "lon": 39.202621,
+    "tz": 2,
+    "city": "Dar-es-Salaam",
+    "country": "Tanzania",
+    "iata": "DAR"
+  },
+  "EBLG": {
+    "lat": 50.636379,
+    "lon": 5.442778,
+    "tz": 2,
+    "city": "Liege",
+    "country": "Belgium",
+    "iata": "LGG"
+  },
+  "HSPN": {
+    "lat": 19.43363,
+    "lon": 37.23407,
+    "tz": 2,
+    "city": "Port Sudan",
+    "country": "Sudan",
+    "iata": "PZU"
   }
 }
