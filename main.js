@@ -1194,7 +1194,7 @@ async function openFlightModal(flight) {
   // SimBrief & SkyVector Links (Prefilled Airline, Callsign, Aircraft, Exact UTC Date & Time, Auto-computed Route)
   const simbriefBtn = document.getElementById('m-simbrief-btn');
   if (simbriefBtn) {
-    const rawFltNum = flight.flight_number ? flight.flight_number.replace(/\D/g, '') : '';
+    const rawFltNum = flight.flight_number ? flight.flight_number.replace(/\s+/g, '') : (callsign || '');
     const airlineIcao = flight.airline_icao || (flight.callsign ? flight.callsign.substring(0, 3) : '');
     
     // Compute exact upcoming departure Date & Time in UTC for SimBrief
