@@ -13,7 +13,7 @@
     "iata": "KSC",
     "lat": 48.6631,
     "lon": 21.2411,
-    "tz": 1
+    "tz": 2
   },
   "LOWW": {
     "city": "Vienna",
@@ -69,7 +69,7 @@
     "iata": "HAM",
     "lat": 53.6304,
     "lon": 9.9882,
-    "tz": 1
+    "tz": 2
   },
   "EGLL": {
     "city": "London",
@@ -93,7 +93,7 @@
     "iata": "LTN",
     "lat": 51.8747,
     "lon": -0.3683,
-    "tz": 0
+    "tz": 1
   },
   "EGLC": {
     "city": "London City",
@@ -101,7 +101,7 @@
     "iata": "LCY",
     "lat": 51.5053,
     "lon": 0.0553,
-    "tz": 0
+    "tz": 1
   },
   "EIDW": {
     "city": "Dublin",
@@ -149,7 +149,7 @@
     "iata": "ZRH",
     "lat": 47.4582,
     "lon": 8.5555,
-    "tz": 1
+    "tz": 2
   },
   "LSGG": {
     "city": "Geneva",
@@ -157,7 +157,7 @@
     "iata": "GVA",
     "lat": 46.237,
     "lon": 6.1092,
-    "tz": 1
+    "tz": 2
   },
   "LIRF": {
     "city": "Rome Fiumicino",
@@ -165,7 +165,7 @@
     "iata": "FCO",
     "lat": 41.8003,
     "lon": 12.2389,
-    "tz": 1
+    "tz": 2
   },
   "LIMC": {
     "city": "Milan Malpensa",
@@ -173,7 +173,7 @@
     "iata": "MXP",
     "lat": 45.6301,
     "lon": 8.7255,
-    "tz": 1
+    "tz": 2
   },
   "LIPZ": {
     "city": "Venice",
@@ -181,7 +181,7 @@
     "iata": "VCE",
     "lat": 45.5053,
     "lon": 12.3519,
-    "tz": 1
+    "tz": 2
   },
   "LEMD": {
     "city": "Madrid",
@@ -205,7 +205,7 @@
     "iata": "PMI",
     "lat": 39.5517,
     "lon": 2.7388,
-    "tz": 1
+    "tz": 2
   },
   "LEMG": {
     "city": "Malaga",
@@ -213,7 +213,7 @@
     "iata": "AGP",
     "lat": 36.6749,
     "lon": -4.4991,
-    "tz": 1
+    "tz": 2
   },
   "GCTS": {
     "city": "Tenerife South",
@@ -221,7 +221,7 @@
     "iata": "TFS",
     "lat": 28.0445,
     "lon": -16.5725,
-    "tz": 0
+    "tz": 2
   },
   "EPWA": {
     "city": "Warsaw",
@@ -229,7 +229,7 @@
     "iata": "WAW",
     "lat": 52.1657,
     "lon": 20.9671,
-    "tz": 1
+    "tz": 2
   },
   "EKCH": {
     "city": "Copenhagen",
@@ -237,7 +237,7 @@
     "iata": "CPH",
     "lat": 55.618,
     "lon": 12.6508,
-    "tz": 1
+    "tz": 2
   },
   "LGAV": {
     "city": "Athens",
@@ -245,7 +245,7 @@
     "iata": "ATH",
     "lat": 37.9364,
     "lon": 23.9445,
-    "tz": 2
+    "tz": 3
   },
   "LGIR": {
     "city": "Heraklion",
@@ -253,7 +253,7 @@
     "iata": "HER",
     "lat": 35.3397,
     "lon": 25.1803,
-    "tz": 2
+    "tz": 3
   },
   "LGRP": {
     "city": "Rhodes",
@@ -261,7 +261,7 @@
     "iata": "RHO",
     "lat": 36.4054,
     "lon": 28.0862,
-    "tz": 2
+    "tz": 3
   },
   "LGKR": {
     "city": "Corfu",
@@ -269,7 +269,7 @@
     "iata": "CFU",
     "lat": 39.6019,
     "lon": 19.9117,
-    "tz": 2
+    "tz": 3
   },
   "LCLK": {
     "city": "Larnaca",
@@ -277,7 +277,7 @@
     "iata": "LCA",
     "lat": 34.8751,
     "lon": 33.6249,
-    "tz": 2
+    "tz": 3
   },
   "LBSF": {
     "city": "Sofia",
@@ -285,7 +285,7 @@
     "iata": "SOF",
     "lat": 42.6951,
     "lon": 23.4061,
-    "tz": 2
+    "tz": 3
   },
   "LBBG": {
     "city": "Burgas",
@@ -293,7 +293,7 @@
     "iata": "BOJ",
     "lat": 42.5696,
     "lon": 27.5152,
-    "tz": 2
+    "tz": 3
   },
   "LDDU": {
     "city": "Dubrovnik",
@@ -301,7 +301,7 @@
     "iata": "DBV",
     "lat": 42.5614,
     "lon": 18.2682,
-    "tz": 1
+    "tz": 2
   },
   "LDSP": {
     "city": "Split",
@@ -309,7 +309,7 @@
     "iata": "SPU",
     "lat": 43.5389,
     "lon": 16.298,
-    "tz": 1
+    "tz": 2
   },
   "LDZA": {
     "city": "Zagreb",
@@ -317,7 +317,7 @@
     "iata": "ZAG",
     "lat": 45.7429,
     "lon": 16.0688,
-    "tz": 1
+    "tz": 2
   },
   "LTAI": {
     "city": "Antalya",
@@ -373,7 +373,7 @@
     "iata": "GDN",
     "lat": 54.3776,
     "lon": 18.4662,
-    "tz": 1
+    "tz": 2
   },
   "EPKK": {
     "city": "Krakow",
@@ -381,7 +381,7 @@
     "iata": "KRK",
     "lat": 50.0777,
     "lon": 19.7848,
-    "tz": 1
+    "tz": 2
   },
   "EPKT": {
     "city": "Katowice",
@@ -389,7 +389,7 @@
     "iata": "KTW",
     "lat": 50.4743,
     "lon": 19.08,
-    "tz": 1
+    "tz": 2
   },
   "EPWR": {
     "city": "Wroclaw",
@@ -397,7 +397,7 @@
     "iata": "WRO",
     "lat": 51.1028,
     "lon": 16.8858,
-    "tz": 1
+    "tz": 2
   },
   "EPPO": {
     "city": "Poznan",
@@ -405,7 +405,7 @@
     "iata": "POZ",
     "lat": 52.421,
     "lon": 16.826,
-    "tz": 1
+    "tz": 2
   },
   "EDDK": {
     "city": "Cologne / Bonn",
@@ -413,7 +413,7 @@
     "iata": "CGN",
     "lat": 50.8659,
     "lon": 7.1427,
-    "tz": 1
+    "tz": 2
   },
   "EDDL": {
     "city": "Dusseldorf",
@@ -421,7 +421,7 @@
     "iata": "DUS",
     "lat": 51.2895,
     "lon": 6.7668,
-    "tz": 1
+    "tz": 2
   },
   "EDDS": {
     "city": "Stuttgart",
@@ -429,7 +429,7 @@
     "iata": "STR",
     "lat": 48.6899,
     "lon": 9.222,
-    "tz": 1
+    "tz": 2
   },
   "EGCC": {
     "city": "Manchester",
@@ -437,7 +437,7 @@
     "iata": "MAN",
     "lat": 53.3537,
     "lon": -2.275,
-    "tz": 0
+    "tz": 1
   },
   "EGPH": {
     "city": "Edinburgh",
@@ -445,7 +445,7 @@
     "iata": "EDI",
     "lat": 55.9508,
     "lon": -3.3725,
-    "tz": 0
+    "tz": 1
   },
   "EGPF": {
     "city": "Glasgow",
@@ -453,7 +453,7 @@
     "iata": "GLA",
     "lat": 55.8719,
     "lon": -4.4331,
-    "tz": 0
+    "tz": 1
   },
   "EGSS": {
     "city": "London Stansted",
@@ -461,7 +461,7 @@
     "iata": "STN",
     "lat": 51.886,
     "lon": 0.2389,
-    "tz": 0
+    "tz": 1
   },
   "EGBB": {
     "city": "Birmingham",
@@ -469,7 +469,7 @@
     "iata": "BHX",
     "lat": 52.4539,
     "lon": -1.748,
-    "tz": 0
+    "tz": 1
   },
   "EGGD": {
     "city": "Bristol",
@@ -477,7 +477,7 @@
     "iata": "BRS",
     "lat": 51.3827,
     "lon": -2.7191,
-    "tz": 0
+    "tz": 1
   },
   "LEAL": {
     "city": "Alicante",
@@ -485,7 +485,7 @@
     "iata": "ALC",
     "lat": 38.2822,
     "lon": -0.5582,
-    "tz": 1
+    "tz": 2
   },
   "LEIB": {
     "city": "Ibiza",
@@ -493,7 +493,7 @@
     "iata": "IBZ",
     "lat": 38.8729,
     "lon": 1.3731,
-    "tz": 1
+    "tz": 2
   },
   "GCLP": {
     "city": "Gran Canaria",
@@ -501,7 +501,7 @@
     "iata": "LPA",
     "lat": 27.9319,
     "lon": -15.3866,
-    "tz": 0
+    "tz": 2
   },
   "GCRR": {
     "city": "Lanzarote",
@@ -509,7 +509,7 @@
     "iata": "ACE",
     "lat": 28.9455,
     "lon": -13.6052,
-    "tz": 0
+    "tz": 2
   },
   "LPPT": {
     "city": "Lisbon",
@@ -517,7 +517,7 @@
     "iata": "LIS",
     "lat": 38.7742,
     "lon": -9.1342,
-    "tz": 0
+    "tz": 1
   },
   "LPPR": {
     "city": "Porto",
@@ -525,7 +525,7 @@
     "iata": "OPO",
     "lat": 41.2481,
     "lon": -8.6814,
-    "tz": 0
+    "tz": 1
   },
   "LPFR": {
     "city": "Faro",
@@ -533,7 +533,7 @@
     "iata": "FAO",
     "lat": 37.0144,
     "lon": -7.9659,
-    "tz": 0
+    "tz": 1
   },
   "LGTS": {
     "city": "Thessaloniki",
@@ -541,7 +541,7 @@
     "iata": "SKG",
     "lat": 40.5197,
     "lon": 22.9709,
-    "tz": 2
+    "tz": 3
   },
   "LGKO": {
     "city": "Kos",
@@ -549,7 +549,7 @@
     "iata": "KGS",
     "lat": 36.7933,
     "lon": 27.0917,
-    "tz": 2
+    "tz": 3
   },
   "LGZA": {
     "city": "Zakynthos",
@@ -557,7 +557,7 @@
     "iata": "ZTH",
     "lat": 37.7509,
     "lon": 20.8843,
-    "tz": 2
+    "tz": 3
   },
   "LCPH": {
     "city": "Paphos",
@@ -565,7 +565,7 @@
     "iata": "PFO",
     "lat": 34.718,
     "lon": 32.4857,
-    "tz": 2
+    "tz": 3
   },
   "LTAC": {
     "city": "Ankara",
@@ -621,7 +621,7 @@
     "iata": "SKP",
     "lat": 41.9616,
     "lon": 21.6214,
-    "tz": 1
+    "tz": 2
   },
   "LYBE": {
     "city": "Belgrade",
@@ -629,7 +629,7 @@
     "iata": "BEG",
     "lat": 44.8184,
     "lon": 20.3091,
-    "tz": 1
+    "tz": 2
   },
   "LBWN": {
     "city": "Varna",
@@ -637,7 +637,7 @@
     "iata": "VAR",
     "lat": 43.2321,
     "lon": 27.8251,
-    "tz": 2
+    "tz": 3
   },
   "LROP": {
     "city": "Bucharest",
@@ -645,7 +645,7 @@
     "iata": "OTP",
     "lat": 44.5711,
     "lon": 26.085,
-    "tz": 2
+    "tz": 3
   },
   "ESSA": {
     "city": "Stockholm Arlanda",
@@ -653,7 +653,7 @@
     "iata": "ARN",
     "lat": 59.6519,
     "lon": 17.9186,
-    "tz": 1
+    "tz": 2
   },
   "ENGM": {
     "city": "Oslo Gardermoen",
@@ -661,7 +661,7 @@
     "iata": "OSL",
     "lat": 60.1976,
     "lon": 11.1004,
-    "tz": 1
+    "tz": 2
   },
   "EFHK": {
     "city": "Helsinki",
@@ -669,7 +669,7 @@
     "iata": "HEL",
     "lat": 60.3172,
     "lon": 24.9633,
-    "tz": 2
+    "tz": 3
   },
   "EYVI": {
     "city": "Vilnius",
@@ -677,7 +677,7 @@
     "iata": "VNO",
     "lat": 54.6341,
     "lon": 25.2858,
-    "tz": 2
+    "tz": 3
   },
   "EVRA": {
     "city": "Riga",
@@ -685,7 +685,7 @@
     "iata": "RIX",
     "lat": 56.9236,
     "lon": 23.9711,
-    "tz": 2
+    "tz": 3
   },
   "EETN": {
     "city": "Tallinn",
@@ -693,7 +693,7 @@
     "iata": "TLL",
     "lat": 59.4133,
     "lon": 24.8328,
-    "tz": 2
+    "tz": 3
   },
   "LIME": {
     "city": "Milan Bergamo",
@@ -701,7 +701,7 @@
     "iata": "BGY",
     "lat": 45.6739,
     "lon": 9.7042,
-    "tz": 1
+    "tz": 2
   },
   "LIRN": {
     "city": "Naples",
@@ -709,7 +709,7 @@
     "iata": "NAP",
     "lat": 40.886,
     "lon": 14.2908,
-    "tz": 1
+    "tz": 2
   },
   "LIBD": {
     "city": "Bari",
@@ -717,7 +717,7 @@
     "iata": "BRI",
     "lat": 41.1389,
     "lon": 16.7606,
-    "tz": 1
+    "tz": 2
   },
   "LICJ": {
     "city": "Palermo",
@@ -725,7 +725,7 @@
     "iata": "PMO",
     "lat": 38.176,
     "lon": 13.091,
-    "tz": 1
+    "tz": 2
   },
   "LICC": {
     "city": "Catania",
@@ -733,7 +733,7 @@
     "iata": "CTA",
     "lat": 37.4668,
     "lon": 15.0664,
-    "tz": 1
+    "tz": 2
   },
   "LMML": {
     "city": "Malta",
@@ -741,7 +741,7 @@
     "iata": "MLA",
     "lat": 35.8575,
     "lon": 14.4775,
-    "tz": 1
+    "tz": 2
   },
   "LFSB": {
     "city": "Basel / Mulhouse",
@@ -749,7 +749,7 @@
     "iata": "BSL",
     "lat": 47.5896,
     "lon": 7.5299,
-    "tz": 1
+    "tz": 2
   },
   "LOWS": {
     "city": "Salzburg",
@@ -757,7 +757,7 @@
     "iata": "SZG",
     "lat": 47.7933,
     "lon": 13.0044,
-    "tz": 1
+    "tz": 2
   },
   "LOWI": {
     "city": "Innsbruck",
@@ -765,7 +765,7 @@
     "iata": "INN",
     "lat": 47.2602,
     "lon": 11.344,
-    "tz": 1
+    "tz": 2
   },
   "LOWG": {
     "city": "Graz",
@@ -773,7 +773,7 @@
     "iata": "GRZ",
     "lat": 46.9911,
     "lon": 15.4396,
-    "tz": 1
+    "tz": 2
   },
   "LOWL": {
     "city": "Linz",
@@ -781,7 +781,7 @@
     "iata": "LNZ",
     "lat": 48.2332,
     "lon": 14.1875,
-    "tz": 1
+    "tz": 2
   },
   "LZTT": {
     "city": "Poprad-Tatry",
@@ -789,7 +789,7 @@
     "iata": "TAT",
     "lat": 49.0736,
     "lon": 20.2411,
-    "tz": 1
+    "tz": 2
   },
   "LKTB": {
     "city": "Brno",
@@ -814,7 +814,7 @@
     "iata": "JFK",
     "lat": 40.6413,
     "lon": -73.7781,
-    "tz": -5
+    "tz": -4
   },
   "KEWR": {
     "name": "Newark Liberty International",
@@ -823,7 +823,7 @@
     "iata": "EWR",
     "lat": 40.6895,
     "lon": -74.1745,
-    "tz": -5
+    "tz": -4
   },
   "KBOS": {
     "name": "Boston Logan International",
@@ -832,7 +832,7 @@
     "iata": "BOS",
     "lat": 42.3656,
     "lon": -71.0096,
-    "tz": -5
+    "tz": -4
   },
   "KORD": {
     "name": "Chicago O'Hare International",
@@ -841,7 +841,7 @@
     "iata": "ORD",
     "lat": 41.9742,
     "lon": -87.9073,
-    "tz": -6
+    "tz": -5
   },
   "KLAX": {
     "name": "Los Angeles International",
@@ -850,7 +850,7 @@
     "iata": "LAX",
     "lat": 33.9416,
     "lon": -118.4085,
-    "tz": -8
+    "tz": -7
   },
   "KSFO": {
     "name": "San Francisco International",
@@ -859,7 +859,7 @@
     "iata": "SFO",
     "lat": 37.6213,
     "lon": -122.379,
-    "tz": -8
+    "tz": -7
   },
   "KSEA": {
     "name": "Seattle-Tacoma International",
@@ -868,7 +868,7 @@
     "iata": "SEA",
     "lat": 47.4502,
     "lon": -122.3088,
-    "tz": -8
+    "tz": -7
   },
   "KMIA": {
     "name": "Miami International",
@@ -877,7 +877,7 @@
     "iata": "MIA",
     "lat": 25.7959,
     "lon": -80.287,
-    "tz": -5
+    "tz": -4
   },
   "RJTT": {
     "name": "Tokyo Haneda International",
