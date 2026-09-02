@@ -1559,6 +1559,11 @@ input[type="range"]:focus {
    CUSTOM SEARCHABLE MULTI-SELECT COMPONENT
    ========================================= */
 
+
+/* =========================================
+   SEARCHABLE MULTI-SELECT FILTER (100% SOLID OPAQUE)
+   ========================================= */
+
 .custom-multiselect-group {
   position: relative;
 }
@@ -1589,7 +1594,7 @@ input[type="range"]:focus {
 .ms-trigger:hover, .ms-trigger:focus {
   border-color: var(--color-accent);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.2);
+  box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.25);
 }
 
 .ms-trigger-label {
@@ -1609,22 +1614,28 @@ input[type="range"]:focus {
   transform: rotate(180deg);
 }
 
+/* 100% SOLID OPAQUE DROPDOWN (NO TRANSPARENCY) */
 .ms-dropdown {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
   width: 100%;
-  min-width: 260px;
-  background: var(--panel-bg);
-  backdrop-filter: blur(16px);
-  border: 1px solid var(--panel-border);
+  min-width: 270px;
+  background-color: #FFFFFF !important; /* 100% solid white in Light Mode */
+  border: 1px solid #D1D5DB !important;
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   max-height: 340px;
   overflow: hidden;
+}
+
+[data-theme="dark"] .ms-dropdown {
+  background-color: #2D3032 !important; /* 100% solid dark charcoal in Dark Mode */
+  border: 1px solid #4F5354 !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7) !important;
 }
 
 .ms-dropdown.hidden {
@@ -1633,8 +1644,13 @@ input[type="range"]:focus {
 
 .ms-search-box {
   padding: 0.6rem;
-  border-bottom: 1px solid var(--panel-border);
-  background: rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #E5E7EB;
+  background-color: #F9FAFB !important; /* 100% solid */
+}
+
+[data-theme="dark"] .ms-search-box {
+  border-bottom: 1px solid #3F4345;
+  background-color: #242627 !important; /* 100% solid */
 }
 
 .ms-search-input {
@@ -1657,8 +1673,13 @@ input[type="range"]:focus {
   align-items: center;
   justify-content: space-between;
   padding: 0.4rem 0.8rem;
-  border-bottom: 1px solid var(--panel-border);
-  background: rgba(var(--color-surface-rgb), 0.2);
+  border-bottom: 1px solid #E5E7EB;
+  background-color: #F3F4F6 !important; /* 100% solid */
+}
+
+[data-theme="dark"] .ms-actions {
+  border-bottom: 1px solid #3F4345;
+  background-color: #292B2D !important; /* 100% solid */
 }
 
 .ms-btn-link {
@@ -1684,6 +1705,11 @@ input[type="range"]:focus {
   flex-direction: column;
   gap: 0.2rem;
   max-height: 220px;
+  background-color: #FFFFFF !important; /* 100% solid */
+}
+
+[data-theme="dark"] .ms-options-list {
+  background-color: #2D3032 !important; /* 100% solid */
 }
 
 .ms-category-header {
@@ -1694,8 +1720,13 @@ input[type="range"]:focus {
   color: var(--text-muted);
   padding: 0.4rem 0.5rem 0.2rem 0.5rem;
   margin-top: 0.2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid #E5E7EB;
 }
+
+[data-theme="dark"] .ms-category-header {
+  border-top: 1px solid #3F4345;
+}
+
 .ms-category-header:first-child {
   border-top: none;
   margin-top: 0;
@@ -1705,21 +1736,27 @@ input[type="range"]:focus {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.4rem 0.6rem;
+  padding: 0.45rem 0.6rem;
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
   transition: background 0.15s;
   font-size: 0.82rem;
   color: var(--text-main);
+  background-color: transparent;
 }
 
 .ms-option-item:hover {
-  background: var(--bg-hover);
+  background-color: #F3F4F6 !important;
+}
+
+[data-theme="dark"] .ms-option-item:hover {
+  background-color: #383B3D !important;
 }
 
 .ms-option-item.selected {
-  background: rgba(var(--color-accent-rgb), 0.12);
+  background-color: rgba(var(--color-accent-rgb), 0.15) !important;
+  font-weight: 600;
 }
 
 .ms-option-item.disabled {
@@ -1747,14 +1784,93 @@ input[type="range"]:focus {
   font-weight: 700;
   padding: 0.1rem 0.4rem;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-muted);
+  background: #E5E7EB;
+  color: #374151;
+}
+
+[data-theme="dark"] .ms-option-tag {
+  background: #3F4345;
+  color: #D1D5DB;
 }
 
 /* =========================================
-   AIRLINE BADGES & CARDS STYLING (DAY & NIGHT CONTRAST)
+   PAGINATION CONTROLS (FAST 100/PAGE)
    ========================================= */
+
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin: 2rem 0 3rem 0;
+  padding: 1.2rem;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-info {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-page {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 0.6rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-page:hover:not(:disabled) {
+  border-color: var(--color-accent);
+  background: rgba(var(--color-accent-rgb), 0.1);
+  color: var(--color-accent);
+}
+
+.btn-page.active {
+  background: var(--color-accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-accent) !important;
+}
+
+.btn-page:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-numbers {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.page-ellipsis {
+  padding: 0 0.3rem;
+  color: var(--text-muted);
+  font-weight: 700;
+  user-select: none;
+}
 
 .fc-airline-pill {
   display: inline-flex;
