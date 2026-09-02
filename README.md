@@ -1,4 +1,4 @@
-﻿# ✈️ Virtual Flight Finder
+# ✈️ Virtual Flight Finder
 
 > **Ultimate Flight Schedule, Dispatch & Weather Tool for Virtual Aviators (VATSIM, IVAO, X-Plane, MSFS, Prepar3D)**
 

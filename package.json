@@ -1,5 +1,5 @@
-﻿{
-  "name": "virtual-flight-finder",
+{
+  "name": "hosak-virtual-flight-finder",
   "version": "1.0.0",
   "description": "Virtual Flight Finder - Flight schedule search and dispatch tool for virtual aviators (VATSIM, IVAO, X-Plane, MSFS)",
   "main": "server.js",
@@ -27,7 +27,7 @@
   "author": "Jakub Hostacny <hostacny@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/HosakSK/Virtual-Flight-Finder.git"
+    "url": "https://github.com/HosakSK/hosak-virtual-flight-finder.git"
   },
   "license": "MIT"
 }

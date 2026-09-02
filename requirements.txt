@@ -1,3 +1,3 @@
-﻿ryanair-py>=2.3.0
+ryanair-py>=2.3.0
 airportsdata>=20241001
 FlightRadarAPI>=1.3.0
