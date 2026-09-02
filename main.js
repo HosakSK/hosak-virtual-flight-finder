@@ -3,10 +3,7 @@
 
 let allFlights = [];
 let filteredFlights = [];
-let simbriefAircraftCache = null;
 let currentDay = new Date().getDay(); // 0 = Sun, 1 = Mon, ..., 6 = Sat
-let currentMetarUnit = 'hpa'; // 'hpa' | 'inhg'
-let currentMetarIcao = null;
 let leafletMap = null;
 let globeMap = null;
 let globePolylines = [];
@@ -54,7 +51,6 @@ const flightModal = document.getElementById('flight-modal');
 const modalClose = document.getElementById('modal-close');
 const modalLoading = document.getElementById('modal-loading');
 const modalBody = document.getElementById('modal-body');
-const toast = document.getElementById('toast');
 
 // Theme Switcher
 const themeToggle = document.getElementById('theme-toggle');
@@ -97,6 +93,18 @@ const AIRCRAFT_DEFINITIONS = [
   { code: 'B744', name: 'Boeing 747-400', category: 'Super Heavy & Jumbo', searchKeywords: '747 744 b744 queen jumbo heavy' }
 ];
 
+// Helper: Haversine distance NM
+function calcDistanceNm(lat1, lon1, lat2, lon2) {
+  if (!lat1 || !lon1 || !lat2 || !lon2) return 0;
+  const R = 3440.065;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+            Math.sin(dLon/2) * Math.sin(dLon/2);
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
   setupTheme();
@@ -117,6 +125,9 @@ function setupTheme() {
       const next = current === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
+      if (globeMap) {
+        initGlobeMap();
+      }
     });
   }
 }
@@ -174,7 +185,6 @@ function toggleMultiSelect(container) {
   if (container.classList.contains('open')) {
     closeMultiSelect(container);
   } else {
-    // Close others first
     if (msAirline && msAirline !== container) closeMultiSelect(msAirline);
     if (msAircraft && msAircraft !== container) closeMultiSelect(msAircraft);
     openMultiSelect(container);
@@ -433,14 +443,60 @@ async function loadFlights() {
     resultsCount.textContent = 'Loading flights dataset...';
     const res = await fetch('./flights.json');
     if (!res.ok) throw new Error('Failed to load flights.json: ' + res.status);
-    allFlights = await res.json();
+    const rawFlights = await res.json();
     
-    // Normalize properties
-    allFlights.forEach(f => {
-      if (!f.airline) f.airline = 'Ryanair';
-      if (!f.airline_icao) f.airline_icao = 'RYR';
-      if (!f.airline_iata) f.airline_iata = 'FR';
-      if (!f.aircraft_type) f.aircraft_type = 'B738';
+    // Normalize properties for 100% data consistency
+    allFlights = rawFlights.map(f => {
+      const depIcao = f.dep_icao || f.departure_icao || 'LZIB';
+      const arrIcao = f.arr_icao || f.arrival_icao || 'EGSS';
+      const depCity = f.dep_city || f.departure_city || depIcao;
+      const arrCity = f.arr_city || f.arrival_city || arrIcao;
+      const depCountry = f.dep_country || f.departure_country || '';
+      const arrCountry = f.arr_country || f.arrival_country || '';
+      const depTime = f.dep_time_local || f.departure_time || '08:00';
+      const arrTime = f.arr_time_local || f.arrival_time || '10:00';
+      const depUtc = f.departure_time_utc || f.dep_time_utc || depTime;
+      const arrUtc = f.arrival_time_utc || f.arr_time_utc || arrTime;
+      const depLat = f.dep_lat ?? f.departure_lat ?? 48.17;
+      const depLon = f.dep_lon ?? f.departure_lon ?? 17.21;
+      const arrLat = f.arr_lat ?? f.arrival_lat ?? 51.88;
+      const arrLon = f.arr_lon ?? f.arrival_lon ?? 0.23;
+      const dist = f.distance_nm || calcDistanceNm(depLat, depLon, arrLat, arrLon);
+      const days = f.days_of_week || f.days_of_operation || [1, 2, 3, 4, 5, 6, 7];
+
+      return {
+        ...f,
+        airline: f.airline || 'Ryanair',
+        airline_icao: f.airline_icao || 'RYR',
+        airline_iata: f.airline_iata || 'FR',
+        aircraft_type: f.aircraft_type || 'B738',
+        flight_number: f.flight_number || (f.airline_iata ? f.airline_iata + ' ' + (f.callsign || '2315') : 'FR 2315'),
+        callsign: f.callsign || f.flight_number || 'RYR2315',
+        dep_icao: depIcao,
+        departure_icao: depIcao,
+        arr_icao: arrIcao,
+        arrival_icao: arrIcao,
+        dep_iata: f.dep_iata || f.departure_iata || '',
+        arr_iata: f.arr_iata || f.arrival_iata || '',
+        dep_city: depCity,
+        departure_city: depCity,
+        arr_city: arrCity,
+        arrival_city: arrCity,
+        dep_country: depCountry,
+        arr_country: arrCountry,
+        dep_time_local: depTime,
+        arr_time_local: arrTime,
+        dep_time_utc: depUtc,
+        arr_time_utc: arrUtc,
+        dep_lat: depLat,
+        dep_lon: depLon,
+        arr_lat: arrLat,
+        arr_lon: arrLon,
+        distance_nm: dist,
+        duration_minutes: f.duration_minutes || 90,
+        days_of_week: days,
+        days_of_operation: days
+      };
     });
 
     applyFilters();
@@ -577,7 +633,7 @@ function applyFilters() {
 
     // Dep / Arr Airport Search (supports ICAO, IATA, City, Country)
     if (depTerm) {
-      const depMatch = f.dep_icao.includes(depTerm) || 
+      const depMatch = (f.dep_icao && f.dep_icao.includes(depTerm)) || 
                        (f.dep_iata && f.dep_iata.includes(depTerm)) ||
                        (f.dep_city && f.dep_city.toUpperCase().includes(depTerm)) ||
                        (f.dep_country && f.dep_country.toUpperCase().includes(depTerm));
@@ -585,7 +641,7 @@ function applyFilters() {
     }
 
     if (arrTerm) {
-      const arrMatch = f.arr_icao.includes(arrTerm) || 
+      const arrMatch = (f.arr_icao && f.arr_icao.includes(arrTerm)) || 
                        (f.arr_iata && f.arr_iata.includes(arrTerm)) ||
                        (f.arr_city && f.arr_city.toUpperCase().includes(arrTerm)) ||
                        (f.arr_country && f.arr_country.toUpperCase().includes(arrTerm));
@@ -599,7 +655,7 @@ function applyFilters() {
 
     // Homebase
     if (homebaseTerm) {
-      const baseMatch = f.dep_icao.includes(homebaseTerm) || f.arr_icao.includes(homebaseTerm);
+      const baseMatch = (f.dep_icao && f.dep_icao.includes(homebaseTerm)) || (f.arr_icao && f.arr_icao.includes(homebaseTerm));
       if (!baseMatch) return false;
     }
 
@@ -724,7 +780,8 @@ function renderFlights() {
 
   pageFlights.forEach(f => {
     const card = document.createElement('div');
-    card.className = 'flight-card';
+    const airlineSlug = (f.airline || 'ryanair').toLowerCase().replace(/\s+/g, '-');
+    card.className = `flight-card airline-${airlineSlug}`;
     card.setAttribute('data-id', f.id || `${f.callsign}-${f.dep_icao}-${f.arr_icao}`);
 
     const durH = Math.floor(f.duration_minutes / 60);
@@ -738,35 +795,49 @@ function renderFlights() {
         <div class="fc-airline-pill ${airlineClass}">
           ${escapeHtml(f.airline || 'Ryanair')}
         </div>
-        <div class="fc-aircraft-badge">${escapeHtml(f.aircraft_type || 'B738')}</div>
-      </div>
-
-      <div class="fc-callsign-row">
-        <span class="fc-callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
-        ${f.flight_number && f.flight_number !== f.callsign ? `<span class="fc-flt-num">${escapeHtml(f.flight_number)}</span>` : ''}
+        <div class="fc-identifiers">
+          <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
+          ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
+          <span class="badge" style="background: rgba(var(--color-accent-rgb), 0.12); color: var(--color-accent); font-weight:700;">${escapeHtml(f.aircraft_type || 'B738')}</span>
+        </div>
       </div>
 
       <div class="fc-route">
-        <div class="fc-endpoint fc-dep">
-          <span class="fc-icao">${escapeHtml(f.dep_icao)}</span>
-          <span class="fc-iata">${escapeHtml(f.dep_iata || '')}</span>
-          <span class="fc-city">${escapeHtml(f.dep_city || '')}</span>
-          <span class="fc-time">${escapeHtml(f.dep_time_local || '--:--')}</span>
+        <div class="fc-point">
+          <div class="fc-time">${escapeHtml(f.dep_time_local || '--:--')}</div>
+          <div class="fc-time-sub">${escapeHtml(f.dep_time_utc || '--:--')} UTC</div>
+          <div class="fc-icao">${escapeHtml(f.dep_icao)} ${f.dep_iata ? `(${escapeHtml(f.dep_iata)})` : ''}</div>
+          <div class="fc-city" title="${escapeHtml(f.dep_city)}, ${escapeHtml(f.dep_country)}">${escapeHtml(f.dep_city || '')}</div>
         </div>
 
-        <div class="fc-route-visual">
-          <span class="fc-duration">${durStr}</span>
-          <div class="fc-line">
-            <span class="fc-plane-icon">✈</span>
-          </div>
-          <span class="fc-distance">${f.distance_nm || '—'} NM</span>
+        <div class="fc-divider">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
         </div>
 
-        <div class="fc-endpoint fc-arr">
-          <span class="fc-icao">${escapeHtml(f.arr_icao)}</span>
-          <span class="fc-iata">${escapeHtml(f.arr_iata || '')}</span>
-          <span class="fc-city">${escapeHtml(f.arr_city || '')}</span>
-          <span class="fc-time">${escapeHtml(f.arr_time_local || '--:--')}</span>
+        <div class="fc-point right">
+          <div class="fc-time">${escapeHtml(f.arr_time_local || '--:--')}</div>
+          <div class="fc-time-sub">${escapeHtml(f.arr_time_utc || '--:--')} UTC</div>
+          <div class="fc-icao">${escapeHtml(f.arr_icao)} ${f.arr_iata ? `(${escapeHtml(f.arr_iata)})` : ''}</div>
+          <div class="fc-city" title="${escapeHtml(f.arr_city)}, ${escapeHtml(f.arr_country)}">${escapeHtml(f.arr_city || '')}</div>
+        </div>
+      </div>
+
+      <div class="fc-footer">
+        <div class="fc-duration">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>${durStr} • ${f.distance_nm || '—'} NM</span>
+        </div>
+        <div class="fc-days">
+          ${[1,2,3,4,5,6,7].map(d => {
+            const active = (f.days_of_week || []).includes(d);
+            const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+            return `<span class="day-dot ${active ? 'active active-primary' : ''}">${labels[d-1]}</span>`;
+          }).join('')}
         </div>
       </div>
     `;
@@ -834,7 +905,7 @@ function initGlobeMap() {
       : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 
     L.tileLayer(tileUrl, {
-      attribution: '&copy; <a href="https://carto.com/">CARTO</a>, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      attribution: '&copy; CARTO, &copy; OpenStreetMap',
       maxZoom: 19
     }).addTo(globeMap);
   } else {
@@ -847,16 +918,21 @@ function initGlobeMap() {
 
   // Render ALL filtered flight lines across the globe
   filteredFlights.forEach(f => {
-    if (f.dep_lat && f.dep_lon && f.arr_lat && f.arr_lon) {
+    const depLat = f.dep_lat || f.departure_lat;
+    const depLon = f.dep_lon || f.departure_lon;
+    const arrLat = f.arr_lat || f.arrival_lat;
+    const arrLon = f.arr_lon || f.arrival_lon;
+
+    if (depLat && depLon && arrLat && arrLon) {
       const color = getAirlineColor(f.airline_icao);
-      const line = L.polyline([[f.dep_lat, f.dep_lon], [f.arr_lat, f.arr_lon]], {
+      const line = L.polyline([[depLat, depLon], [arrLat, arrLon]], {
         color: color,
         weight: 2,
         opacity: 0.65,
         smoothFactor: 1
       });
 
-      line.bindTooltip(`<strong>${escapeHtml(f.callsign || f.flight_number)}</strong> (${escapeHtml(f.airline)})<br>${escapeHtml(f.dep_icao)} ➔ ${escapeHtml(f.arr_icao)}<br>Aircraft: ${escapeHtml(f.aircraft_type || 'B738')}`, {
+      line.bindTooltip(`<strong>${escapeHtml(f.callsign || f.flight_number)}</strong> (${escapeHtml(f.airline)})<br>${escapeHtml(f.dep_icao)} (${escapeHtml(f.dep_city)}) ➔ ${escapeHtml(f.arr_icao)} (${escapeHtml(f.arr_city)})<br>Aircraft: ${escapeHtml(f.aircraft_type || 'B738')}`, {
         sticky: true
       });
 
@@ -897,13 +973,13 @@ async function openFlightModal(flight) {
   modalLoading.classList.remove('hidden');
   modalBody.classList.add('hidden');
 
-  document.getElementById('m-callsign-header').textContent = flight.callsign || flight.flight_number || 'N/A';
+  const callsign = flight.callsign || flight.flight_number || 'N/A';
+  document.getElementById('m-callsign-header').textContent = callsign;
   document.getElementById('m-flight-number-sub').textContent = flight.flight_number ? `Flight: ${flight.flight_number} • ${flight.airline}` : flight.airline;
-  document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || '---'})`;
-  document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || '---'})`;
+  document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || flight.dep_city || '---'})`;
+  document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || flight.arr_city || '---'})`;
 
   // Search links
-  const callsign = flight.callsign || flight.flight_number;
   document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
   document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
   document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
@@ -961,11 +1037,16 @@ function renderModalRouteMap(flight) {
     leafletMap = null;
   }
 
-  if (flight.dep_lat && flight.dep_lon && flight.arr_lat && flight.arr_lon) {
+  const depLat = flight.dep_lat || flight.departure_lat;
+  const depLon = flight.dep_lon || flight.departure_lon;
+  const arrLat = flight.arr_lat || flight.arrival_lat;
+  const arrLon = flight.arr_lon || flight.arrival_lon;
+
+  if (depLat && depLon && arrLat && arrLon) {
     leafletMap = L.map('m-route-map').fitBounds([
-      [flight.dep_lat, flight.dep_lon],
-      [flight.arr_lat, flight.arr_lon]
-    ], { padding: [30, 30] });
+      [depLat, depLon],
+      [arrLat, arrLon]
+    ], { padding: [40, 40] });
 
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const tileUrl = isDark 
@@ -974,10 +1055,10 @@ function renderModalRouteMap(flight) {
 
     L.tileLayer(tileUrl, { maxZoom: 18 }).addTo(leafletMap);
 
-    L.marker([flight.dep_lat, flight.dep_lon]).addTo(leafletMap).bindPopup(`<strong>${flight.dep_icao}</strong> (${flight.dep_city || ''})`);
-    L.marker([flight.arr_lat, flight.arr_lon]).addTo(leafletMap).bindPopup(`<strong>${flight.arr_icao}</strong> (${flight.arr_city || ''})`);
+    L.marker([depLat, depLon]).addTo(leafletMap).bindPopup(`<strong>${flight.dep_icao}</strong> (${flight.dep_city || ''})`);
+    L.marker([arrLat, arrLon]).addTo(leafletMap).bindPopup(`<strong>${flight.arr_icao}</strong> (${flight.arr_city || ''})`);
 
-    const polyline = L.polyline([[flight.dep_lat, flight.dep_lon], [flight.arr_lat, flight.arr_lon]], {
+    L.polyline([[depLat, depLon], [arrLat, arrLon]], {
       color: '#00BDB1',
       weight: 3,
       dashArray: '6, 6'

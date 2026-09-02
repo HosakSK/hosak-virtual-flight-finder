@@ -9,23 +9,25 @@ const flightsOutPath = path.join(__dirname, '..', 'flights.json');
 const airports = JSON.parse(fs.readFileSync(airportsPath, 'utf8'));
 const routes = JSON.parse(fs.readFileSync(routesPath, 'utf8'));
 
-function haversineDistance(lat1, lon1, lat2, lon2) {
-  const R = 6371;
+function haversineDistanceNm(lat1, lon1, lat2, lon2) {
+  if (!lat1 || !lon1 || !lat2 || !lon2) return 0;
+  const R = 3440.065;
   const dLat = (lat2 - lat1) * Math.PI / 180;
   const dLon = (lon2 - lon1) * Math.PI / 180;
   const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
             Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
             Math.sin(dLon/2) * Math.sin(dLon/2);
-  return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
 }
 
-function calculateDuration(distKm) {
-  return Math.round((distKm / 840) * 60 + 30);
+function calculateDuration(distNm) {
+  return Math.round((distNm / 440) * 60 + 25);
 }
 
 function timeToMins(tStr) {
+  if (!tStr) return 480;
   const [h, m] = tStr.split(':').map(Number);
-  return h * 60 + m;
+  return (h || 0) * 60 + (m || 0);
 }
 
 function minsToTime(m) {
@@ -44,13 +46,75 @@ if (fs.existsSync(ryanairPath)) {
   }
 }
 
-const ryanairEnriched = rawRyanair.filter(f => f.airline === 'Ryanair' || !f.airline).map(f => ({
-  ...f,
-  airline: 'Ryanair',
-  airline_icao: 'RYR',
-  airline_iata: 'FR',
-  aircraft_type: f.aircraft_type || 'B738'
-}));
+const ryanairEnriched = rawRyanair.filter(f => f.airline === 'Ryanair' || !f.airline).map(f => {
+  const depIcao = f.departure_icao || f.dep_icao || 'LZIB';
+  const arrIcao = f.arrival_icao || f.arr_icao || 'EGSS';
+  const depApt = airports[depIcao] || {};
+  const arrApt = airports[arrIcao] || {};
+
+  const depLat = f.departure_lat ?? f.dep_lat ?? depApt.lat ?? 48.17;
+  const depLon = f.departure_lon ?? f.dep_lon ?? depApt.lon ?? 17.21;
+  const arrLat = f.arrival_lat ?? f.arr_lat ?? arrApt.lat ?? 51.88;
+  const arrLon = f.arrival_lon ?? f.arr_lon ?? arrApt.lon ?? 0.23;
+
+  const distNm = f.distance_nm || haversineDistanceNm(depLat, depLon, arrLat, arrLon);
+  const durMins = f.duration_minutes || calculateDuration(distNm);
+
+  const depTime = f.departure_time || f.dep_time_local || '08:00';
+  const arrTime = f.arrival_time || f.arr_time_local || minsToTime(timeToMins(depTime) + durMins);
+  const depTz = depApt.tz !== undefined ? depApt.tz : 1;
+  const arrTz = arrApt.tz !== undefined ? arrApt.tz : 1;
+
+  const depUtc = f.departure_time_utc || minsToTime(timeToMins(depTime) - depTz * 60);
+  const arrUtc = f.arrival_time_utc || minsToTime(timeToMins(arrTime) - arrTz * 60);
+
+  const days = f.days_of_operation || f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
+
+  return {
+    airline: 'Ryanair',
+    airline_icao: 'RYR',
+    airline_iata: 'FR',
+    aircraft_type: f.aircraft_type || 'B738',
+    flight_number: f.flight_number || ('FR ' + (f.callsign ? f.callsign.replace('RYR', '') : '2315')),
+    callsign: f.callsign || ('RYR' + (f.flight_number ? f.flight_number.replace(/\\D/g, '') : '2315')),
+    departure_icao: depIcao,
+    dep_icao: depIcao,
+    departure_iata: f.departure_iata || f.dep_iata || depApt.iata || '',
+    dep_iata: f.departure_iata || f.dep_iata || depApt.iata || '',
+    departure_city: f.departure_city || f.dep_city || depApt.city || 'Bratislava',
+    dep_city: f.departure_city || f.dep_city || depApt.city || 'Bratislava',
+    departure_country: f.departure_country || f.dep_country || depApt.country || 'Slovakia',
+    dep_country: f.departure_country || f.dep_country || depApt.country || 'Slovakia',
+    arrival_icao: arrIcao,
+    arr_icao: arrIcao,
+    arrival_iata: f.arrival_iata || f.arr_iata || arrApt.iata || '',
+    arr_iata: f.arrival_iata || f.arr_iata || arrApt.iata || '',
+    arrival_city: f.arrival_city || f.arr_city || arrApt.city || '',
+    arr_city: f.arrival_city || f.arr_city || arrApt.city || '',
+    arrival_country: f.arrival_country || f.arr_country || arrApt.country || '',
+    arr_country: f.arrival_country || f.arr_country || arrApt.country || '',
+    departure_time: depTime,
+    dep_time_local: depTime,
+    departure_time_utc: depUtc,
+    arrival_time: arrTime,
+    arr_time_local: arrTime,
+    arrival_time_utc: arrUtc,
+    duration_minutes: durMins,
+    day_of_operation: f.day_of_operation || days[0] || 1,
+    homebase: depIcao,
+    departure_lat: depLat,
+    dep_lat: depLat,
+    departure_lon: depLon,
+    dep_lon: depLon,
+    arrival_lat: arrLat,
+    arr_lat: arrLat,
+    arrival_lon: arrLon,
+    arr_lon: arrLon,
+    distance_nm: distNm,
+    days_of_operation: days,
+    days_of_week: days
+  };
+});
 
 const newFlights = [];
 for (const cfg of routes) {
@@ -60,15 +124,15 @@ for (const cfg of routes) {
     console.warn('Unknown airport in route:', cfg.fromIcao, cfg.toIcao);
     continue;
   }
-  const dist = haversineDistance(depApt.lat, depApt.lon, arrApt.lat, arrApt.lon);
-  const duration = calculateDuration(dist);
+  const distNm = haversineDistanceNm(depApt.lat, depApt.lon, arrApt.lat, arrApt.lon);
+  const duration = calculateDuration(distNm);
 
   const depOutMins = timeToMins(cfg.depTimeOutLocal);
   const depOutUtcMins = depOutMins - (depApt.tz * 60);
   const arrOutUtcMins = depOutUtcMins + duration;
   const arrOutMins = arrOutUtcMins + (arrApt.tz * 60);
 
-  const turnaround = cfg.turnaroundMins || 60;
+  const turnaround = cfg.turnaroundMins || 50;
   const depInMins = arrOutMins + turnaround;
   const depInUtcMins = depInMins - (arrApt.tz * 60);
   const arrInUtcMins = depInUtcMins + duration;
@@ -80,26 +144,44 @@ for (const cfg of routes) {
       airline_icao: cfg.airline_icao,
       airline_iata: cfg.airline_iata,
       aircraft_type: cfg.aircraft_type,
-      departure_icao: cfg.fromIcao,
-      departure_city: depApt.city,
-      departure_country: depApt.country,
-      arrival_icao: cfg.toIcao,
-      arrival_city: arrApt.city,
-      arrival_country: arrApt.country,
       flight_number: cfg.airline_iata + ' ' + cfg.flightNumOut,
       callsign: cfg.callsignOut || (cfg.airline_icao + cfg.flightNumOut),
+      departure_icao: cfg.fromIcao,
+      dep_icao: cfg.fromIcao,
+      departure_iata: depApt.iata || '',
+      dep_iata: depApt.iata || '',
+      departure_city: depApt.city,
+      dep_city: depApt.city,
+      departure_country: depApt.country,
+      dep_country: depApt.country,
+      arrival_icao: cfg.toIcao,
+      arr_icao: cfg.toIcao,
+      arrival_iata: arrApt.iata || '',
+      arr_iata: arrApt.iata || '',
+      arrival_city: arrApt.city,
+      arr_city: arrApt.city,
+      arrival_country: arrApt.country,
+      arr_country: arrApt.country,
       departure_time: minsToTime(depOutMins),
+      dep_time_local: minsToTime(depOutMins),
       departure_time_utc: minsToTime(depOutUtcMins),
       arrival_time: minsToTime(arrOutMins),
+      arr_time_local: minsToTime(arrOutMins),
       arrival_time_utc: minsToTime(arrOutUtcMins),
       duration_minutes: duration,
       day_of_operation: day,
       homebase: cfg.fromIcao,
       departure_lat: depApt.lat,
+      dep_lat: depApt.lat,
       departure_lon: depApt.lon,
+      dep_lon: depApt.lon,
       arrival_lat: arrApt.lat,
+      arr_lat: arrApt.lat,
       arrival_lon: arrApt.lon,
-      days_of_operation: cfg.daysOfWeek
+      arr_lon: arrApt.lon,
+      distance_nm: distNm,
+      days_of_operation: cfg.daysOfWeek,
+      days_of_week: cfg.daysOfWeek
     });
 
     newFlights.push({
@@ -107,32 +189,50 @@ for (const cfg of routes) {
       airline_icao: cfg.airline_icao,
       airline_iata: cfg.airline_iata,
       aircraft_type: cfg.aircraft_type,
-      departure_icao: cfg.toIcao,
-      departure_city: arrApt.city,
-      departure_country: arrApt.country,
-      arrival_icao: cfg.fromIcao,
-      arrival_city: depApt.city,
-      arrival_country: depApt.country,
       flight_number: cfg.airline_iata + ' ' + cfg.flightNumIn,
       callsign: cfg.callsignIn || (cfg.airline_icao + cfg.flightNumIn),
+      departure_icao: cfg.toIcao,
+      dep_icao: cfg.toIcao,
+      departure_iata: arrApt.iata || '',
+      dep_iata: arrApt.iata || '',
+      departure_city: arrApt.city,
+      dep_city: arrApt.city,
+      departure_country: arrApt.country,
+      dep_country: arrApt.country,
+      arrival_icao: cfg.fromIcao,
+      arr_icao: cfg.fromIcao,
+      arrival_iata: depApt.iata || '',
+      arr_iata: depApt.iata || '',
+      arrival_city: depApt.city,
+      arr_city: depApt.city,
+      arrival_country: depApt.country,
+      arr_country: depApt.country,
       departure_time: minsToTime(depInMins),
+      dep_time_local: minsToTime(depInMins),
       departure_time_utc: minsToTime(depInUtcMins),
       arrival_time: minsToTime(arrInMins),
+      arr_time_local: minsToTime(arrInMins),
       arrival_time_utc: minsToTime(arrInUtcMins),
       duration_minutes: duration,
       day_of_operation: day,
       homebase: cfg.fromIcao,
       departure_lat: arrApt.lat,
+      dep_lat: arrApt.lat,
       departure_lon: arrApt.lon,
+      dep_lon: arrApt.lon,
       arrival_lat: depApt.lat,
+      arr_lat: depApt.lat,
       arrival_lon: depApt.lon,
-      days_of_operation: cfg.daysOfWeek
+      arr_lon: depApt.lon,
+      distance_nm: distNm,
+      days_of_operation: cfg.daysOfWeek,
+      days_of_week: cfg.daysOfWeek
     });
   }
 }
 
 const allFlights = [...ryanairEnriched, ...newFlights];
-console.log(`Compiled ${allFlights.length} total flights across all airlines.`);
+console.log(`Compiled ${allFlights.length} fully synchronized flights across all airlines.`);
 
 fs.writeFileSync(flightsOutPath, JSON.stringify(allFlights, null, 2) + '\n', 'utf8');
 fs.writeFileSync(ryanairPath, JSON.stringify(allFlights, null, 2) + '\n', 'utf8');
