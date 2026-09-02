@@ -1,0 +1,354 @@
+{
+  "LZIB": {
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "iata": "BTS",
+    "lat": 48.1702,
+    "lon": 17.2127,
+    "tz": 2
+  },
+  "LZKZ": {
+    "city": "Košice",
+    "country": "Slovakia",
+    "iata": "KSC",
+    "lat": 48.6631,
+    "lon": 21.2411,
+    "tz": 2
+  },
+  "LOWW": {
+    "city": "Vienna",
+    "country": "Austria",
+    "iata": "VIE",
+    "lat": 48.1103,
+    "lon": 16.5697,
+    "tz": 2
+  },
+  "LKPR": {
+    "city": "Prague",
+    "country": "Czech Republic",
+    "iata": "PRG",
+    "lat": 50.1008,
+    "lon": 14.26,
+    "tz": 2
+  },
+  "LHBP": {
+    "city": "Budapest",
+    "country": "Hungary",
+    "iata": "BUD",
+    "lat": 47.4369,
+    "lon": 19.2556,
+    "tz": 2
+  },
+  "EDDF": {
+    "city": "Frankfurt",
+    "country": "Germany",
+    "iata": "FRA",
+    "lat": 50.0379,
+    "lon": 8.5622,
+    "tz": 2
+  },
+  "EDDM": {
+    "city": "Munich",
+    "country": "Germany",
+    "iata": "MUC",
+    "lat": 48.3538,
+    "lon": 11.7861,
+    "tz": 2
+  },
+  "EDDB": {
+    "city": "Berlin",
+    "country": "Germany",
+    "iata": "BER",
+    "lat": 52.3667,
+    "lon": 13.5033,
+    "tz": 2
+  },
+  "EDDH": {
+    "city": "Hamburg",
+    "country": "Germany",
+    "iata": "HAM",
+    "lat": 53.6304,
+    "lon": 9.9882,
+    "tz": 2
+  },
+  "EGLL": {
+    "city": "London",
+    "country": "United Kingdom",
+    "iata": "LHR",
+    "lat": 51.47,
+    "lon": -0.4543,
+    "tz": 1
+  },
+  "EGKK": {
+    "city": "London",
+    "country": "United Kingdom",
+    "iata": "LGW",
+    "lat": 51.1481,
+    "lon": -0.1903,
+    "tz": 1
+  },
+  "EGGW": {
+    "city": "London",
+    "country": "United Kingdom",
+    "iata": "LTN",
+    "lat": 51.8747,
+    "lon": -0.3683,
+    "tz": 1
+  },
+  "EGLC": {
+    "city": "London",
+    "country": "United Kingdom",
+    "iata": "LCY",
+    "lat": 51.5053,
+    "lon": 0.0553,
+    "tz": 1
+  },
+  "EIDW": {
+    "city": "Dublin",
+    "country": "Ireland",
+    "iata": "DUB",
+    "lat": 53.4213,
+    "lon": -6.2701,
+    "tz": 1
+  },
+  "EHAM": {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "iata": "AMS",
+    "lat": 52.3086,
+    "lon": 4.7639,
+    "tz": 2
+  },
+  "LFPG": {
+    "city": "Paris",
+    "country": "France",
+    "iata": "CDG",
+    "lat": 49.0097,
+    "lon": 2.5479,
+    "tz": 2
+  },
+  "LFPO": {
+    "city": "Paris",
+    "country": "France",
+    "iata": "ORY",
+    "lat": 48.7233,
+    "lon": 2.3794,
+    "tz": 2
+  },
+  "LFMN": {
+    "city": "Nice",
+    "country": "France",
+    "iata": "NCE",
+    "lat": 43.6584,
+    "lon": 7.2159,
+    "tz": 2
+  },
+  "LSZH": {
+    "city": "Zurich",
+    "country": "Switzerland",
+    "iata": "ZRH",
+    "lat": 47.4647,
+    "lon": 8.5492,
+    "tz": 2
+  },
+  "LSGG": {
+    "city": "Geneva",
+    "country": "Switzerland",
+    "iata": "GVA",
+    "lat": 46.2381,
+    "lon": 6.1089,
+    "tz": 2
+  },
+  "LIRF": {
+    "city": "Rome",
+    "country": "Italy",
+    "iata": "FCO",
+    "lat": 41.8003,
+    "lon": 12.2389,
+    "tz": 2
+  },
+  "LIMC": {
+    "city": "Milan",
+    "country": "Italy",
+    "iata": "MXP",
+    "lat": 45.6306,
+    "lon": 8.7281,
+    "tz": 2
+  },
+  "LIPZ": {
+    "city": "Venice",
+    "country": "Italy",
+    "iata": "VCE",
+    "lat": 45.5053,
+    "lon": 12.3519,
+    "tz": 2
+  },
+  "LEMD": {
+    "city": "Madrid",
+    "country": "Spain",
+    "iata": "MAD",
+    "lat": 40.4719,
+    "lon": -3.5626,
+    "tz": 2
+  },
+  "LEBL": {
+    "city": "Barcelona",
+    "country": "Spain",
+    "iata": "BCN",
+    "lat": 41.2971,
+    "lon": 2.0785,
+    "tz": 2
+  },
+  "LEPA": {
+    "city": "Palma de Mallorca",
+    "country": "Spain",
+    "iata": "PMI",
+    "lat": 39.5517,
+    "lon": 2.7388,
+    "tz": 2
+  },
+  "LEMG": {
+    "city": "Málaga",
+    "country": "Spain",
+    "iata": "AGP",
+    "lat": 36.6749,
+    "lon": -4.4991,
+    "tz": 2
+  },
+  "GCTS": {
+    "city": "Tenerife",
+    "country": "Spain",
+    "iata": "TFS",
+    "lat": 28.0445,
+    "lon": -16.5725,
+    "tz": 1
+  },
+  "EPWA": {
+    "city": "Warsaw",
+    "country": "Poland",
+    "iata": "WAW",
+    "lat": 52.1657,
+    "lon": 20.9671,
+    "tz": 2
+  },
+  "EKCH": {
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "iata": "CPH",
+    "lat": 55.6179,
+    "lon": 12.656,
+    "tz": 2
+  },
+  "LGAV": {
+    "city": "Athens",
+    "country": "Greece",
+    "iata": "ATH",
+    "lat": 37.9364,
+    "lon": 23.9445,
+    "tz": 3
+  },
+  "LGIR": {
+    "city": "Heraklion",
+    "country": "Greece",
+    "iata": "HER",
+    "lat": 35.3397,
+    "lon": 25.1803,
+    "tz": 3
+  },
+  "LGRP": {
+    "city": "Rhodes",
+    "country": "Greece",
+    "iata": "RHO",
+    "lat": 36.4054,
+    "lon": 28.0862,
+    "tz": 3
+  },
+  "LGKR": {
+    "city": "Corfu",
+    "country": "Greece",
+    "iata": "CFU",
+    "lat": 39.6019,
+    "lon": 19.9117,
+    "tz": 3
+  },
+  "LCLK": {
+    "city": "Larnaca",
+    "country": "Cyprus",
+    "iata": "LCA",
+    "lat": 34.8751,
+    "lon": 33.6249,
+    "tz": 3
+  },
+  "LBSF": {
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "iata": "SOF",
+    "lat": 42.6951,
+    "lon": 23.4061,
+    "tz": 3
+  },
+  "LBBG": {
+    "city": "Burgas",
+    "country": "Bulgaria",
+    "iata": "BOJ",
+    "lat": 42.5696,
+    "lon": 27.5152,
+    "tz": 3
+  },
+  "LDDU": {
+    "city": "Dubrovnik",
+    "country": "Croatia",
+    "iata": "DBV",
+    "lat": 42.5614,
+    "lon": 18.2682,
+    "tz": 2
+  },
+  "LDSP": {
+    "city": "Split",
+    "country": "Croatia",
+    "iata": "SPU",
+    "lat": 43.5389,
+    "lon": 16.298,
+    "tz": 2
+  },
+  "LDZA": {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "iata": "ZAG",
+    "lat": 45.7429,
+    "lon": 16.0688,
+    "tz": 2
+  },
+  "LTAI": {
+    "city": "Antalya",
+    "country": "Turkey",
+    "iata": "AYT",
+    "lat": 36.8987,
+    "lon": 30.8005,
+    "tz": 3
+  },
+  "HEGN": {
+    "city": "Hurghada",
+    "country": "Egypt",
+    "iata": "HRG",
+    "lat": 27.1783,
+    "lon": 33.7994,
+    "tz": 3
+  },
+  "OMDB": {
+    "city": "Dubai",
+    "country": "UAE",
+    "iata": "DXB",
+    "lat": 25.2528,
+    "lon": 55.3644,
+    "tz": 4
+  },
+  "UGKO": {
+    "city": "Kutaisi",
+    "country": "Georgia",
+    "iata": "KUT",
+    "lat": 42.1764,
+    "lon": 42.4828,
+    "tz": 4
+  }
+}

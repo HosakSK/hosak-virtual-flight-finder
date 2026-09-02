@@ -31,7 +31,7 @@ const DOM = {
 async function init() {
   initTheme();
   try {
-    const res = await fetch('./ryanair_flights_lzib.json').catch(() => fetch('/ryanair_flights_lzib.json')).catch(() => fetch('/finder/ryanair_flights_lzib.json'));
+    const res = await fetch('./flights.json').catch(() => fetch('/flights.json')).catch(() => fetch('./ryanair_flights_lzib.json')).catch(() => fetch('/finder/ryanair_flights_lzib.json'));
     allFlights = await res.json();
     setupListeners();
     applyFilters();
@@ -902,7 +902,10 @@ async function openFlightModal(flight) {
     // Populate Route Links
     const callsignVal = flight.callsign || `RYR${fn}`;
     // Route is displayed informatively only – not pushed into SimBrief URL so the pilot can edit it freely
-    let simbriefUrl = `https://dispatch.simbrief.com/options/custom?orig=${flight.departure_icao}&dest=${flight.arrival_icao}&airline=RYR&fltnum=${fn}&callsign=${callsignVal}&type=B738`;
+    const airlineIcao = flight.airline_icao || 'RYR';
+    const acType = flight.aircraft_type || 'B738';
+    const cleanFltNum = fn.replace(/^[A-Za-z]+/, '');
+    let simbriefUrl = `https://dispatch.simbrief.com/options/custom?orig=${flight.departure_icao}&dest=${flight.arrival_icao}&airline=${encodeURIComponent(airlineIcao)}&fltnum=${encodeURIComponent(cleanFltNum)}&callsign=${encodeURIComponent(callsignVal)}&type=${encodeURIComponent(acType)}`;
     if (flight.departure_time_utc && flight.departure_time_utc !== '--:--') {
       const [deph, depm] = flight.departure_time_utc.split(':');
       simbriefUrl += `&deph=${deph}&depm=${depm}`;

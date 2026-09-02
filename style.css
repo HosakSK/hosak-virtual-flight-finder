@@ -1527,3 +1527,105 @@ input[type="range"]:focus {
     background: rgba(var(--color-accent-rgb), 0.05);
   }
 }
+
+
+/* =========================================
+   AIRLINE BADGES & CARDS STYLING
+   ========================================= */
+
+.fc-airline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: var(--bg-hover);
+  border: 1px solid var(--panel-border);
+}
+
+.fc-ac-type {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.25);
+}
+
+/* Airline Specific Accents */
+.airline-ryanair {
+  border-left: 3px solid #f1c40f !important;
+}
+.airline-ryanair .fc-airline-pill {
+  background: rgba(13, 37, 112, 0.2);
+  color: #f1c40f;
+  border-color: rgba(241, 196, 15, 0.4);
+}
+
+.airline-wizz-air {
+  border-left: 3px solid #c6007e !important;
+}
+.airline-wizz-air .fc-airline-pill {
+  background: rgba(198, 0, 126, 0.18);
+  color: #ff66cc;
+  border-color: rgba(198, 0, 126, 0.4);
+}
+
+.airline-easyjet {
+  border-left: 3px solid #ff6600 !important;
+}
+.airline-easyjet .fc-airline-pill {
+  background: rgba(255, 102, 0, 0.18);
+  color: #ff944d;
+  border-color: rgba(255, 102, 0, 0.4);
+}
+
+.airline-lufthansa {
+  border-left: 3px solid #ffba00 !important;
+}
+.airline-lufthansa .fc-airline-pill {
+  background: rgba(5, 22, 77, 0.25);
+  color: #ffba00;
+  border-color: rgba(255, 186, 0, 0.4);
+}
+
+.airline-british-airways {
+  border-left: 3px solid #eb2226 !important;
+}
+.airline-british-airways .fc-airline-pill {
+  background: rgba(7, 90, 170, 0.2);
+  color: #5dade2;
+  border-color: rgba(235, 34, 38, 0.4);
+}
+
+.airline-klm {
+  border-left: 3px solid #00a1de !important;
+}
+.airline-klm .fc-airline-pill {
+  background: rgba(0, 161, 222, 0.18);
+  color: #00d2ff;
+  border-color: rgba(0, 161, 222, 0.4);
+}
+
+.airline-smartwings {
+  border-left: 3px solid #f36f21 !important;
+}
+.airline-smartwings .fc-airline-pill {
+  background: rgba(243, 111, 33, 0.18);
+  color: #ff9955;
+  border-color: rgba(243, 111, 33, 0.4);
+}
+
+.airline-austrian-airlines {
+  border-left: 3px solid #cc0000 !important;
+}
+.airline-austrian-airlines .fc-airline-pill {
+  background: rgba(204, 0, 0, 0.18);
+  color: #ff5555;
+  border-color: rgba(204, 0, 0, 0.4);
+}
