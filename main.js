@@ -1191,16 +1191,47 @@ async function openFlightModal(flight) {
   document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
   document.getElementById('m-adsb-search-btn').href = `https://globe.adsbexchange.com/?callsign=${encodeURIComponent(callsign)}`;
 
-  // SimBrief & SkyVector Links
+  // SimBrief & SkyVector Links (Prefilled Airline, Callsign, Aircraft, Exact UTC Date & Time, Auto-computed Route)
   const simbriefBtn = document.getElementById('m-simbrief-btn');
   if (simbriefBtn) {
-    const params = new URLSearchParams({
-      orig: flight.dep_icao,
-      dest: flight.arr_icao,
-      type: flight.aircraft_type || 'B738',
-      callsign: callsign,
-      fltnum: flight.flight_number ? flight.flight_number.replace(/\D/g, '') : ''
-    });
+    const rawFltNum = flight.flight_number ? flight.flight_number.replace(/\D/g, '') : '';
+    const airlineIcao = flight.airline_icao || (flight.callsign ? flight.callsign.substring(0, 3) : '');
+    
+    // Compute exact upcoming departure Date & Time in UTC for SimBrief
+    const monthNames = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    const now = new Date();
+    const currentUtcDay = now.getUTCDay() === 0 ? 7 : now.getUTCDay();
+    const flightDay = flight.day_of_operation === 0 ? 7 : (flight.day_of_operation || currentUtcDay);
+    
+    const [dH, dM] = (flight.dep_time_utc || '12:00').split(':').map(Number);
+    const nowUtcMins = now.getUTCHours() * 60 + now.getUTCMinutes();
+    const flightUtcMins = (dH || 0) * 60 + (dM || 0);
+
+    let daysDiff = (flightDay - currentUtcDay + 7) % 7;
+    if (daysDiff === 0 && flightUtcMins < nowUtcMins) {
+      daysDiff = 7;
+    }
+
+    const targetDate = new Date(now.getTime() + daysDiff * 86400000);
+    const dayStr = targetDate.getUTCDate().toString().padStart(2, '0');
+    const monthStr = monthNames[targetDate.getUTCMonth()];
+    const yearStr = targetDate.getUTCFullYear().toString().slice(-2);
+    const dateFormatted = `${dayStr}${monthStr}${yearStr}`; // e.g. '02SEP26'
+    const dephStr = (dH || 0).toString().padStart(2, '0');
+    const depmStr = (dM || 0).toString().padStart(2, '0');
+
+    const params = new URLSearchParams();
+    if (flight.dep_icao) params.set('orig', flight.dep_icao);
+    if (flight.arr_icao) params.set('dest', flight.arr_icao);
+    if (flight.aircraft_type) params.set('type', flight.aircraft_type);
+    if (airlineIcao) params.set('airline', airlineIcao);
+    if (rawFltNum) params.set('fltnum', rawFltNum);
+    if (callsign) params.set('callsign', callsign);
+    params.set('date', dateFormatted);
+    params.set('deph', dephStr);
+    params.set('depm', depmStr);
+    
+    // Note: 'route' parameter is intentionally omitted so SimBrief automatically calculates the optimal real-world AIRAC route!
     simbriefBtn.href = `https://dispatch.simbrief.com/options/custom?${params.toString()}`;
   }
 
