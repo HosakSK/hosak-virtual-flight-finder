@@ -5,6 +5,9 @@ on:
     - cron: '0 2 * * *' # Every night at 02:00 UTC (Rolling 7-day schedule sync)
   workflow_dispatch: # Allows manual trigger from GitHub Actions tab
 
+permissions:
+  contents: write
+
 jobs:
   update-flights:
     runs-on: ubuntu-latest
