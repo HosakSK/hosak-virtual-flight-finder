@@ -611,7 +611,7 @@ function applyFilters() {
     }
 
     // Max Duration slider
-    if (maxDurationMins !== Infinity && f.duration_minutes > maxDurationMins) {
+    if (typeof maxDurationMins === 'number' && isFinite(maxDurationMins) && f.duration_minutes > maxDurationMins) {
       return false;
     }
 
@@ -832,16 +832,15 @@ function initEventListeners() {
   if (filterDuration) {
     filterDuration.addEventListener('input', (e) => {
       const val = parseInt(e.target.value, 10);
-      maxDurationMins = val;
-      if (durationLabel) {
-        if (val >= 360) {
-          durationLabel.textContent = 'Any duration';
-          maxDurationMins = null;
-        } else {
-          const h = Math.floor(val / 60);
-          const m = val % 60;
-          durationLabel.textContent = `≤ ${h}h ${m > 0 ? m + 'm' : ''}`;
-        }
+      const maxVal = parseInt(filterDuration.max, 10) || 960;
+      if (val >= maxVal) {
+        maxDurationMins = Infinity;
+        if (durationLabel) durationLabel.textContent = 'Any';
+      } else {
+        maxDurationMins = val;
+        const h = Math.floor(val / 60);
+        const m = val % 60;
+        if (durationLabel) durationLabel.textContent = `≤ ${h}h ${m > 0 ? m + 'm' : ''}`;
       }
       applyFilters();
     });
