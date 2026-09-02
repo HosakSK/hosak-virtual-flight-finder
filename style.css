@@ -2063,3 +2063,38 @@ h1 {
   position: relative !important;
   z-index: 10 !important;
 }
+
+/* Map Route Tooltips & Interactivity */
+.map-route-tooltip {
+  background: rgba(15, 23, 42, 0.92) !important;
+  color: #F8FAFC !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  border-radius: 8px !important;
+  padding: 0.5rem 0.75rem !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+  font-family: inherit !important;
+  font-size: 0.82rem !important;
+  line-height: 1.4 !important;
+  pointer-events: none !important;
+}
+
+.map-route-tooltip::before {
+  border-top-color: rgba(15, 23, 42, 0.92) !important;
+}
+
+[data-theme="light"] .map-route-tooltip,
+.theme-light .map-route-tooltip {
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-theme="light"] .map-route-tooltip::before,
+.theme-light .map-route-tooltip::before {
+  border-top-color: rgba(255, 255, 255, 0.96) !important;
+}
+
+.leaflet-interactive {
+  cursor: pointer !important;
+}

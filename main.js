@@ -962,10 +962,37 @@ function initGlobeMap() {
       bounds.push([depLat, depLon], [arrLat, arrLon]);
       const line = L.polyline([[depLat, depLon], [arrLat, arrLon]], {
         color: '#f97316',
-        weight: 1.8,
-        opacity: 0.6
+        weight: 2,
+        opacity: 0.65,
+        className: 'route-polyline'
       });
-      line.bindPopup(`<strong>${escapeHtml(f.airline)}</strong>: ${f.dep_icao} (${f.dep_city || ''}) ➔ ${f.arr_icao} (${f.arr_city || ''})<br><span style="font-size:0.75rem; color:#888;">${f.aircraft_type || 'B738'} • ${f.distance_nm || '—'} NM</span>`);
+
+      const tooltipContent = `
+        <div style="font-weight: 700; color: #38bdf8; margin-bottom: 2px;">${escapeHtml(f.airline)} (${escapeHtml(f.callsign || f.flight_number || '')})</div>
+        <div style="font-size: 0.85rem; font-weight: 600;">${f.dep_icao} (${f.dep_city || ''}) ➔ ${f.arr_icao} (${f.arr_city || ''})</div>
+        <div style="font-size: 0.74rem; color: #94a3b8; margin-top: 3px;">${f.aircraft_type || 'B738'} • ${f.distance_nm || '—'} NM • ${Math.floor(f.duration_minutes / 60)}h ${f.duration_minutes % 60}m</div>
+        <div style="font-size: 0.7rem; color: #f59e0b; margin-top: 4px; font-weight: 600;">Click route to open flight details ➔</div>
+      `;
+
+      line.bindTooltip(tooltipContent, {
+        sticky: true,
+        className: 'map-route-tooltip',
+        direction: 'top',
+        offset: [0, -10]
+      });
+
+      line.on('mouseover', function () {
+        this.setStyle({ color: '#38bdf8', weight: 4, opacity: 1 });
+      });
+
+      line.on('mouseout', function () {
+        this.setStyle({ color: '#f97316', weight: 2, opacity: 0.65 });
+      });
+
+      line.on('click', () => {
+        openFlightModal(f);
+      });
+
       line.addTo(globeMap);
       globePolylines.push(line);
     }
