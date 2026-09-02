@@ -1647,3 +1647,120 @@ input[type="range"]:focus {
   color: #e598b9;
   border-color: rgba(197, 160, 89, 0.5);
 }
+
+
+/* =========================================
+   GLOBE MODAL & WORLD MAP
+   ========================================= */
+
+.globe-modal-content {
+  width: 92vw !important;
+  max-width: 1400px !important;
+  height: 85vh !important;
+  max-height: 900px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 1.5rem !important;
+  overflow: hidden !important;
+}
+
+.globe-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-right: 2.5rem;
+}
+
+.globe-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-accent);
+}
+
+.globe-modal-title h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-main);
+}
+
+.globe-routes-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg-hover);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--panel-border);
+}
+
+.globe-map-container {
+  flex: 1;
+  width: 100%;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--panel-border);
+  overflow: hidden;
+  background: var(--bg-app);
+}
+
+.globe-modal-footer {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================================
+   APP FOOTER
+   ========================================= */
+
+.app-footer {
+  margin-top: 3rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--panel-border);
+  background: rgba(var(--color-surface-rgb), 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.footer-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.status-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 8px #2ecc71;
+  display: inline-block;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.footer-note {
+  font-size: 0.78rem;
+  opacity: 0.75;
+}

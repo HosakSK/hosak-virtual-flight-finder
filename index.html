@@ -359,6 +359,44 @@
       </div>
     </div>
 
+    <!-- Globe / World Route Map Modal -->
+    <div id="globe-modal" class="modal-overlay hidden">
+      <div class="modal-content glass globe-modal-content">
+        <button id="globe-modal-close" class="modal-close" aria-label="Close modal">&times;</button>
+        
+        <div class="globe-modal-header">
+          <div class="globe-modal-title">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <h2>World Route Map</h2>
+          </div>
+          <div id="globe-routes-count" class="globe-routes-count">Showing 2014 routes</div>
+        </div>
+        
+        <div id="globe-map" class="globe-map-container"></div>
+        
+        <div class="globe-modal-footer">
+          <span>💡 <strong>Tip:</strong> Click on any flight line to open its dispatch details.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <div class="footer-status">
+          <span class="status-pulse"></span>
+          <span id="last-updated-text">Last updated: September 2, 2026, 07:56 UTC</span>
+        </div>
+        <div class="footer-note">
+          <span>Virtual Flight Finder • VATSIM &amp; Flight Simulators</span>
+        </div>
+      </div>
+    </footer>
+
     <!-- Toast Notification -->
     <div id="toast" class="toast hidden">Copied to clipboard!</div>
 

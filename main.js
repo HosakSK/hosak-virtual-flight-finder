@@ -1,9 +1,13 @@
 let allFlights = [];
 let lastRenderedFlights = [];
+let globeMapInstance = null;
+let globeLayerGroup = null;
 
 const DOM = {
   grid: document.getElementById('flights-grid'),
   count: document.getElementById('results-count'),
+  filterAirline: document.getElementById('filter-airline'),
+  filterAircraft: document.getElementById('filter-aircraft'),
   filterOrigin: document.getElementById('filter-origin'),
   filterDest: document.getElementById('filter-dest'),
   btnSwap: document.getElementById('btn-swap-route'),
@@ -24,16 +28,49 @@ const DOM = {
   resetBtn: document.getElementById('reset-filters'),
   showUtc: document.getElementById('show-utc'),
   toast: document.getElementById('toast'),
-  btnTheme: document.getElementById('theme-toggle')
+  btnTheme: document.getElementById('theme-toggle'),
+  btnGlobe: document.getElementById('btn-globe-map'),
+  globeModal: document.getElementById('globe-modal'),
+  globeModalClose: document.getElementById('globe-modal-close'),
+  globeMap: document.getElementById('globe-map'),
+  globeRoutesCount: document.getElementById('globe-routes-count'),
+  lastUpdatedText: document.getElementById('last-updated-text')
 };
 
+const AIRLINE_COLORS = {
+  'Ryanair': '#f1c40f',
+  'Wizz Air': '#ff66cc',
+  'easyJet': '#ff6600',
+  'Lufthansa': '#ffba00',
+  'British Airways': '#5dade2',
+  'KLM': '#00d2ff',
+  'Smartwings': '#ff9955',
+  'Austrian Airlines': '#ff5555',
+  'Emirates': '#d71921',
+  'Qatar Airways': '#a61d62'
+};
 
 async function init() {
   initTheme();
   try {
     const res = await fetch('./flights.json').catch(() => fetch('/flights.json')).catch(() => fetch('./ryanair_flights_lzib.json')).catch(() => fetch('/finder/ryanair_flights_lzib.json'));
     allFlights = await res.json();
+
+    // Fetch last updated timestamp
+    try {
+      const metaRes = await fetch('./metadata.json').catch(() => fetch('/metadata.json'));
+      if (metaRes.ok) {
+        const meta = await metaRes.json();
+        if (DOM.lastUpdatedText && meta.last_updated_formatted) {
+          DOM.lastUpdatedText.textContent = `Last updated: ${meta.last_updated_formatted}`;
+        }
+      }
+    } catch (e) {
+      console.log('Using default metadata timestamp');
+    }
+
     setupListeners();
+    setupGlobeModal();
     applyFilters();
   } catch (err) {
     DOM.count.textContent = 'Error loading flights data.';
@@ -89,6 +126,7 @@ function toggleTheme() {
 
 function setupListeners() {
   const inputs = [
+    DOM.filterAirline, DOM.filterAircraft,
     DOM.filterOrigin, DOM.filterDest,
     DOM.filterDay, DOM.filterTimeFrom, DOM.filterTimeTo,
     DOM.filterHours, DOM.filterDuration, DOM.filterDurationMin, DOM.filterHomebase,
@@ -98,6 +136,7 @@ function setupListeners() {
   inputs.forEach(el => {
     if (el) {
       el.addEventListener('input', applyFilters);
+      el.addEventListener('change', applyFilters);
     }
   });
 
@@ -159,6 +198,7 @@ function setupListeners() {
 
   DOM.resetBtn.addEventListener('click', () => {
     inputs.forEach(el => {
+      if (!el) return;
       if (el.tagName === 'SELECT') el.selectedIndex = 0;
       else if (el.type === 'range') {
         if (el.id === 'filter-hours') el.value = 168;
@@ -256,6 +296,9 @@ function getOffsetString(localTime, utcTime) {
 }
 
 function applyFilters() {
+  const selectedAirline = (DOM.filterAirline ? DOM.filterAirline.value : '').toLowerCase().trim();
+  const selectedAircraft = (DOM.filterAircraft ? DOM.filterAircraft.value : '').toUpperCase().trim();
+
   const originStr = DOM.filterOrigin.value.toLowerCase();
   const origins = originStr ? originStr.split(',').map(s => s.trim()).filter(Boolean) : [];
   
@@ -269,6 +312,18 @@ function applyFilters() {
   const hVal = parseInt(DOM.filterHours.value);
   
   let results = allFlights.filter(f => {
+    // 1. Airline Filter
+    if (selectedAirline) {
+      const aVal = (f.airline || '').toLowerCase();
+      if (!aVal.includes(selectedAirline)) return false;
+    }
+
+    // 2. Aircraft Type Filter
+    if (selectedAircraft) {
+      const acVal = (f.aircraft_type || 'B738').toUpperCase();
+      if (acVal !== selectedAircraft) return false;
+    }
+
     if (origins.length > 0) {
       const match = origins.some(o => 
         f.departure_icao.toLowerCase().includes(o) || 
@@ -321,16 +376,19 @@ function applyFilters() {
     return true;
   });
 
-  const sortVal = DOM.sortBy.value;
+  // Sort
+  const sortMode = DOM.sortBy.value;
   results.sort((a, b) => {
-    if (sortVal === 'duration-asc') return a.duration_minutes - b.duration_minutes;
-    if (sortVal === 'duration-desc') return b.duration_minutes - a.duration_minutes;
-    
-    // Sort by absolute next departure wait time to make sorting reliable
-    return (a._liveWait || 0) - (b._liveWait || 0);
+    if (sortMode === 'duration-asc') return a.duration_minutes - b.duration_minutes;
+    if (sortMode === 'duration-desc') return b.duration_minutes - a.duration_minutes;
+    // Default time sort
+    return parseTime(a.departure_time_utc) - parseTime(b.departure_time_utc);
   });
 
   render(results);
+  if (DOM.globeModal && !DOM.globeModal.classList.contains('hidden')) {
+    renderGlobeRoutes(results);
+  }
 }
 
 function render(flights) {
@@ -377,11 +435,17 @@ function render(flights) {
       : `UTC: ${arrUtc} <span style="opacity: 0.6">(${arrOffset})</span>`;
     
     const fnClean = (f.flight_number || '').replace(/\s+/g, '');
+    const airlineClass = 'airline-' + (f.airline || 'ryanair').toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const acType = f.aircraft_type || 'B738';
 
     return `
-      <div class="flight-card" data-flight-index="${index}">
+      <div class="flight-card ${airlineClass}" data-flight-index="${index}">
         <div class="fc-header">
-          <div class="fc-airline">${f.airline || 'RYANAIR'} • ${f.homebase ? 'BASE: '+f.homebase : 'AWAY'}</div>
+          <div class="fc-airline" style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+            <span class="fc-airline-pill">${f.airline || 'RYANAIR'}</span>
+            <span class="fc-ac-type">${acType}</span>
+            <span style="opacity: 0.7; font-size: 0.72rem; margin-left: 0.2rem;">${f.homebase ? '• BASE: ' + f.homebase : ''}</span>
+          </div>
           <div class="fc-identifiers">
             <span class="badge copy-click" data-copy="${fnClean}" title="Click to copy">${fnClean}</span>
             ${f.callsign ? `<span class="badge callsign copy-click" data-copy="${f.callsign}" title="Click to copy">${f.callsign}</span>` : ''}
@@ -448,11 +512,134 @@ function render(flights) {
   lastRenderedFlights = flights;
 }
 
-init();
+// ==========================================
+// GLOBE / WORLD ROUTE MAP MODAL
+// ==========================================
+function setupGlobeModal() {
+  if (!DOM.btnGlobe || !DOM.globeModal) return;
+
+  DOM.btnGlobe.addEventListener('click', () => {
+    DOM.globeModal.classList.remove('hidden');
+    initOrUpdateGlobeMap();
+  });
+
+  if (DOM.globeModalClose) {
+    DOM.globeModalClose.addEventListener('click', () => {
+      DOM.globeModal.classList.add('hidden');
+    });
+  }
+
+  DOM.globeModal.addEventListener('click', (e) => {
+    if (e.target === DOM.globeModal) {
+      DOM.globeModal.classList.add('hidden');
+    }
+  });
+}
+
+function initOrUpdateGlobeMap() {
+  if (!window.L) return;
+
+  if (!globeMapInstance) {
+    globeMapInstance = L.map('globe-map', {
+      center: [48.0, 16.0],
+      zoom: 4,
+      minZoom: 2,
+      maxZoom: 12
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(globeMapInstance);
+
+    globeLayerGroup = L.layerGroup().addTo(globeMapInstance);
+  }
+
+  setTimeout(() => {
+    globeMapInstance.invalidateSize();
+    renderGlobeRoutes(lastRenderedFlights);
+  }, 100);
+}
+
+function renderGlobeRoutes(flights) {
+  if (!globeLayerGroup || !globeMapInstance) return;
+  globeLayerGroup.clearLayers();
+
+  const list = flights && flights.length > 0 ? flights : allFlights;
+  if (DOM.globeRoutesCount) {
+    DOM.globeRoutesCount.textContent = `Showing ${list.length} routes`;
+  }
+
+  const airportsMap = new Map();
+  const bounds = L.latLngBounds([]);
+
+  // Draw routes
+  list.forEach(f => {
+    if (!f.departure_lat || !f.departure_lon || !f.arrival_lat || !f.arrival_lon) return;
+
+    const depLatLng = [f.departure_lat, f.departure_lon];
+    const arrLatLng = [f.arrival_lat, f.arrival_lon];
+
+    bounds.extend(depLatLng);
+    bounds.extend(arrLatLng);
+
+    airportsMap.set(f.departure_icao, { name: f.departure_city, lat: f.departure_lat, lon: f.departure_lon });
+    airportsMap.set(f.arrival_icao, { name: f.arrival_city, lat: f.arrival_lat, lon: f.arrival_lon });
+
+    const color = AIRLINE_COLORS[f.airline] || '#38bdf8';
+
+    const polyline = L.polyline([depLatLng, arrLatLng], {
+      color: color,
+      weight: 2,
+      opacity: 0.65,
+      dashArray: null
+    }).addTo(globeLayerGroup);
+
+    const tooltipHtml = `
+      <div style="font-family: sans-serif; font-size: 12px; line-height: 1.4;">
+        <strong style="color: ${color}">${f.flight_number}</strong> (${f.airline})<br>
+        <strong>${f.departure_icao}</strong> (${f.departure_city}) ➔ <strong>${f.arrival_icao}</strong> (${f.arrival_city})<br>
+        Aircraft: <strong>${f.aircraft_type || 'B738'}</strong> • Duration: ${Math.floor(f.duration_minutes / 60)}h ${f.duration_minutes % 60}m<br>
+        <span style="font-size: 11px; opacity: 0.8; color: #38bdf8;">👉 Click to open flight dispatch</span>
+      </div>
+    `;
+    polyline.bindTooltip(tooltipHtml, { sticky: true, className: 'globe-route-tooltip' });
+
+    polyline.on('mouseover', () => {
+      polyline.setStyle({ weight: 4, opacity: 1 });
+    });
+    polyline.on('mouseout', () => {
+      polyline.setStyle({ weight: 2, opacity: 0.65 });
+    });
+
+    polyline.on('click', () => {
+      DOM.globeModal.classList.add('hidden');
+      openFlightModal(f);
+    });
+  });
+
+  // Draw airport node markers
+  airportsMap.forEach((apt, icao) => {
+    const marker = L.circleMarker([apt.lat, apt.lon], {
+      radius: 4,
+      fillColor: '#ffffff',
+      color: '#0b0f19',
+      weight: 1.5,
+      opacity: 0.9,
+      fillOpacity: 0.8
+    }).addTo(globeLayerGroup);
+
+    marker.bindTooltip(`<strong>${icao}</strong> - ${apt.name}`, { direction: 'top' });
+  });
+
+  if (bounds.isValid()) {
+    globeMapInstance.fitBounds(bounds, { padding: [30, 30] });
+  }
+}
 
 // --- EVENT DELEGATION: Single click handler on the grid ---
 DOM.grid.addEventListener('click', async (e) => {
-  // Ignore clicks on copy badges and links
   if (e.target.closest('.copy-click') || e.target.closest('a')) return;
   
   const card = e.target.closest('.flight-card');
@@ -467,6 +654,8 @@ DOM.grid.addEventListener('click', async (e) => {
     console.error('Error opening modal:', err);
   }
 });
+
+init();
 
 // --- FLIGHT MODAL LOGIC ---
 if (!document.getElementById('flight-modal')) {
