@@ -572,14 +572,18 @@ function applyFilters() {
   filteredFlights = allFlights.filter(f => {
     // Departure filter
     if (depQ) {
+      const qDepClean = depQ.replace(/[\s\-_]/g, '').toLowerCase();
       const depText = [f.dep_icao, f.dep_iata, f.dep_city, f.dep_country].filter(Boolean).join(' ').toLowerCase();
-      if (!depText.includes(depQ)) return false;
+      const depClean = depText.replace(/[\s\-_]/g, '');
+      if (!depClean.includes(qDepClean) && !depText.includes(depQ)) return false;
     }
 
     // Arrival filter
     if (arrQ) {
+      const qArrClean = arrQ.replace(/[\s\-_]/g, '').toLowerCase();
       const arrText = [f.arr_icao, f.arr_iata, f.arr_city, f.arr_country].filter(Boolean).join(' ').toLowerCase();
-      if (!arrText.includes(arrQ)) return false;
+      const arrClean = arrText.replace(/[\s\-_]/g, '');
+      if (!arrClean.includes(qArrClean) && !arrText.includes(arrQ)) return false;
     }
 
     // Callsign / Flight number / Aircraft search filter (Space & punctuation insensitive)
@@ -807,9 +811,9 @@ function renderPagination() {
 // Event Listeners Setup
 // ----------------------------------------------------
 function initEventListeners() {
-  if (searchDep) searchDep.addEventListener('input', debounce(applyFilters, 300));
-  if (searchArr) searchArr.addEventListener('input', debounce(applyFilters, 300));
-  if (filterCallsign) filterCallsign.addEventListener('input', debounce(applyFilters, 300));
+  if (searchDep) searchDep.addEventListener('input', debounce(applyFilters, 150));
+  if (searchArr) searchArr.addEventListener('input', debounce(applyFilters, 150));
+  if (filterCallsign) filterCallsign.addEventListener('input', debounce(applyFilters, 150));
   if (sortBy) sortBy.addEventListener('change', applyFilters);
 
   // Swap Route Button
