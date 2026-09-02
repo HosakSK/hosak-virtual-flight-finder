@@ -1729,3 +1729,100 @@ h1 {
   background: #17191A !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
+
+/* Premium Spacious Flight Stats & Route Box */
+.flight-stats-row {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 0.85rem !important;
+  margin: 1rem 0 !important;
+}
+
+@media (max-width: 768px) {
+  .flight-stats-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+.fstat {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  padding: 0.85rem 1rem !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  border-radius: 10px !important;
+  gap: 0.35rem !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="dark"] .fstat,
+.theme-dark .fstat {
+  background: #17191A !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}
+
+.fstat-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  color: var(--color-accent) !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.fstat-value {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 1.15rem !important;
+  font-weight: 800 !important;
+  color: var(--text-main) !important;
+  display: flex !important;
+  align-items: baseline !important;
+}
+
+.fstat-unit {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--text-muted) !important;
+  margin-left: 0.25rem !important;
+}
+
+.route-info-box {
+  background: transparent !important;
+  border: none !important;
+  margin: 1rem 0 !important;
+}
+
+.route-label {
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  color: var(--text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  display: block !important;
+  margin-bottom: 0.45rem !important;
+}
+
+.route-string-content {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.85rem !important;
+  line-height: 1.5 !important;
+  background: #FFFFFF !important;
+  color: var(--text-main) !important;
+  padding: 0.9rem 1.1rem !important;
+  border-radius: 10px !important;
+  border: 1px solid #E2E8F0 !important;
+  word-break: break-word !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="dark"] .route-string-content,
+.theme-dark .route-string-content {
+  background: #17191A !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) !important;
+}

@@ -284,27 +284,35 @@
             <div class="modal-section route-section m-route-box">
               <h3>Dispatch &amp; Routing</h3>
 
-              <!-- Flight Stats Row -->
+              <!-- Flight Stats Row (Spacious Metric Cards) -->
               <div id="m-flight-stats" class="flight-stats-row">
                 <div class="fstat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M3 12l4-4 4 4 4-8 4 4"/></svg>
-                  <span id="m-fstat-dist">—</span>
-                  <label>NM</label>
+                  <div class="fstat-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17h18M3 12l4-4 4 4 4-8 4 4"/></svg>
+                    <span>Distance</span>
+                  </div>
+                  <div class="fstat-value"><span id="m-fstat-dist">—</span> <span class="fstat-unit">NM</span></div>
                 </div>
                 <div class="fstat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.5c-.2.5.1 1 .6 1.1l8.5 2.2-2.5 2.5-3.5-.5c-.5-.1-.9.2-1.1.5L3 16.5c-.2.5.1 1 .6 1.1l4.6.8 2.5 2.5c.1.5.6.8 1.1.6l1.5-1.4c.3-.2.6-.6.5-1.1l-.5-3.5 2.5-2.5 2.2 8.5c.1.5.6.8 1.1.6l2.5-1.3c.3-.2.6-.6.5-1.1z"/></svg>
-                  <span id="m-fstat-fl">—</span>
-                  <label>FL cruise</label>
+                  <div class="fstat-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.5c-.2.5.1 1 .6 1.1l8.5 2.2-2.5 2.5-3.5-.5c-.5-.1-.9.2-1.1.5L3 16.5c-.2.5.1 1 .6 1.1l4.6.8 2.5 2.5c.1.5.6.8 1.1.6l1.5-1.4c.3-.2.6-.6.5-1.1l-.5-3.5 2.5-2.5 2.2 8.5c.1.5.6.8 1.1.6l2.5-1.3c.3-.2.6-.6.5-1.1z"/></svg>
+                    <span>Cruise Level</span>
+                  </div>
+                  <div class="fstat-value"><span id="m-fstat-fl">—</span></div>
                 </div>
                 <div class="fstat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span id="m-fstat-dur">—</span>
-                  <label>Estimated</label>
+                  <div class="fstat-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span>Est. Enroute</span>
+                  </div>
+                  <div class="fstat-value"><span id="m-fstat-dur">—</span></div>
                 </div>
                 <div class="fstat">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                  <span id="m-fstat-wpts">—</span>
-                  <label>Waypoints</label>
+                  <div class="fstat-header">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    <span>Waypoints</span>
+                  </div>
+                  <div class="fstat-value"><span id="m-fstat-wpts">—</span> <span class="fstat-unit">fixes</span></div>
                 </div>
               </div>
 
