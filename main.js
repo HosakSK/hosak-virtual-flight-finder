@@ -674,12 +674,38 @@ function applyFilters() {
   });
 
   // Sort
+  const now = new Date();
+  const jsDay = now.getDay();
+  const currentIsoDay = jsDay === 0 ? 7 : jsDay;
+  const currentTotalMins = now.getHours() * 60 + now.getMinutes();
+
+  function parseMins(timeStr) {
+    if (!timeStr) return 0;
+    const [h, m] = timeStr.split(':').map(Number);
+    return (h || 0) * 60 + (m || 0);
+  }
+
+  function getUpcomingOffsetMins(flight) {
+    const flightDay = flight.day_of_operation === 0 ? 7 : (flight.day_of_operation || currentIsoDay);
+    const flightMins = parseMins(flight.dep_time_local);
+    let daysDiff = (flightDay - currentIsoDay + 7) % 7;
+    
+    // If it's today but the departure time has already passed, schedule for next week
+    if (daysDiff === 0 && flightMins < currentTotalMins) {
+      daysDiff = 7;
+    }
+    return daysDiff * 1440 + flightMins;
+  }
+
   if (sortOption === 'duration-asc') {
     filteredFlights.sort((a, b) => a.duration_minutes - b.duration_minutes);
   } else if (sortOption === 'duration-desc') {
     filteredFlights.sort((a, b) => b.duration_minutes - a.duration_minutes);
-  } else {
+  } else if (sortOption === 'time') {
     filteredFlights.sort((a, b) => (a.dep_time_local || '99:99').localeCompare(b.dep_time_local || '99:99'));
+  } else {
+    // Default 'upcoming' Live Schedule relative to today & current time
+    filteredFlights.sort((a, b) => getUpcomingOffsetMins(a) - getUpcomingOffsetMins(b));
   }
 
   // Update Page & Render

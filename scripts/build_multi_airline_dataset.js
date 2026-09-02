@@ -37,7 +37,7 @@ function minsToTime(m) {
   return h + ':' + min;
 }
 
-// 1. Process Ryanair flights
+// 1. Process Ryanair flights with strict deduplication by callsign + dep + arr + day
 let rawRyanair = [];
 if (fs.existsSync(ryanairPath)) {
   try {
@@ -47,9 +47,22 @@ if (fs.existsSync(ryanairPath)) {
   }
 }
 
-const ryanairEnriched = rawRyanair.filter(f => f.airline === 'Ryanair' || !f.airline).map(f => {
+const ryanairMap = new Map();
+
+for (const f of rawRyanair) {
+  if (f.airline && f.airline !== 'Ryanair') continue;
   const depIcao = f.departure_icao || f.dep_icao || 'LZIB';
   const arrIcao = f.arrival_icao || f.arr_icao || 'EGSS';
+  const callsign = f.callsign || f.flight_number || 'RYR2315';
+  
+  const days = f.days_of_operation || f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
+  let dayOp = f.day_of_operation;
+  if (dayOp === 0) dayOp = 7;
+  if (!dayOp) dayOp = days[0] || 1;
+
+  const key = callsign + '_' + depIcao + '_' + arrIcao + '_' + dayOp;
+  if (ryanairMap.has(key)) continue; // skip duplicates
+
   const depApt = airports[depIcao] || {};
   const arrApt = airports[arrIcao] || {};
 
@@ -69,18 +82,13 @@ const ryanairEnriched = rawRyanair.filter(f => f.airline === 'Ryanair' || !f.air
   const depUtc = f.departure_time_utc || minsToTime(timeToMins(depTime) - depTz * 60);
   const arrUtc = f.arrival_time_utc || minsToTime(timeToMins(arrTime) - arrTz * 60);
 
-  const days = f.days_of_operation || f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
-  let dayOp = f.day_of_operation;
-  if (dayOp === 0) dayOp = 7;
-  if (!dayOp) dayOp = days[0] || 1;
-
-  return {
+  ryanairMap.set(key, {
     airline: 'Ryanair',
     airline_icao: 'RYR',
     airline_iata: 'FR',
     aircraft_type: f.aircraft_type || 'B738',
     flight_number: f.flight_number || ('FR ' + (f.callsign ? f.callsign.replace('RYR', '') : '2315')),
-    callsign: f.callsign || ('RYR' + (f.flight_number ? f.flight_number.replace(/\D/g, '') : '2315')),
+    callsign: callsign,
     departure_icao: depIcao,
     dep_icao: depIcao,
     departure_iata: f.departure_iata || f.dep_iata || depApt.iata || '',
@@ -117,11 +125,15 @@ const ryanairEnriched = rawRyanair.filter(f => f.airline === 'Ryanair' || !f.air
     distance_nm: distNm,
     days_of_operation: days,
     days_of_week: days
-  };
-});
+  });
+}
 
-// 2. Process Routes (One flight instance per scheduled day of operation)
+const ryanairEnriched = Array.from(ryanairMap.values());
+
+// 2. Process Routes (One flight per scheduled day of operation)
 const newFlights = [];
+const routesSeen = new Set();
+
 for (const cfg of routes) {
   const depApt = airports[cfg.fromIcao];
   const arrApt = airports[cfg.toIcao];
@@ -146,110 +158,112 @@ for (const cfg of routes) {
   for (const day of cfg.daysOfWeek) {
     const dayOp = day === 0 ? 7 : day;
     
-    // Outbound flight instance for this day
-    newFlights.push({
-      airline: cfg.airline,
-      airline_icao: cfg.airline_icao,
-      airline_iata: cfg.airline_iata,
-      aircraft_type: cfg.aircraft_type,
-      flight_number: cfg.airline_iata + ' ' + cfg.flightNumOut,
-      callsign: cfg.callsignOut || (cfg.airline_icao + cfg.flightNumOut),
-      departure_icao: cfg.fromIcao,
-      dep_icao: cfg.fromIcao,
-      departure_iata: depApt.iata || '',
-      dep_iata: depApt.iata || '',
-      departure_city: depApt.city,
-      dep_city: depApt.city,
-      departure_country: depApt.country,
-      dep_country: depApt.country,
-      arrival_icao: cfg.toIcao,
-      arr_icao: cfg.toIcao,
-      arrival_iata: arrApt.iata || '',
-      arr_iata: arrApt.iata || '',
-      arrival_city: arrApt.city,
-      arr_city: arrApt.city,
-      arrival_country: arrApt.country,
-      arr_country: arrApt.country,
-      departure_time: minsToTime(depOutMins),
-      dep_time_local: minsToTime(depOutMins),
-      departure_time_utc: minsToTime(depOutUtcMins),
-      arrival_time: minsToTime(arrOutMins),
-      arr_time_local: minsToTime(arrOutMins),
-      arrival_time_utc: minsToTime(arrOutUtcMins),
-      duration_minutes: duration,
-      day_of_operation: dayOp,
-      homebase: cfg.fromIcao,
-      departure_lat: depApt.lat,
-      dep_lat: depApt.lat,
-      departure_lon: depApt.lon,
-      dep_lon: depApt.lon,
-      arrival_lat: arrApt.lat,
-      arr_lat: arrApt.lat,
-      arrival_lon: arrApt.lon,
-      arr_lon: arrApt.lon,
-      distance_nm: distNm,
-      days_of_operation: cfg.daysOfWeek,
-      days_of_week: cfg.daysOfWeek
-    });
+    // Outbound
+    const outCallsign = cfg.callsignOut || (cfg.airline_icao + cfg.flightNumOut);
+    const outKey = outCallsign + '_' + cfg.fromIcao + '_' + cfg.toIcao + '_' + dayOp;
+    if (!routesSeen.has(outKey)) {
+      routesSeen.add(outKey);
+      newFlights.push({
+        airline: cfg.airline,
+        airline_icao: cfg.airline_icao,
+        airline_iata: cfg.airline_iata,
+        aircraft_type: cfg.aircraft_type,
+        flight_number: cfg.airline_iata + ' ' + cfg.flightNumOut,
+        callsign: outCallsign,
+        departure_icao: cfg.fromIcao,
+        dep_icao: cfg.fromIcao,
+        departure_iata: depApt.iata || '',
+        dep_iata: depApt.iata || '',
+        departure_city: depApt.city,
+        dep_city: depApt.city,
+        departure_country: depApt.country,
+        dep_country: depApt.country,
+        arrival_icao: cfg.toIcao,
+        arr_icao: cfg.toIcao,
+        arrival_iata: arrApt.iata || '',
+        arr_iata: arrApt.iata || '',
+        arrival_city: arrApt.city,
+        arr_city: arrApt.city,
+        arrival_country: arrApt.country,
+        arr_country: arrApt.country,
+        departure_time: minsToTime(depOutMins),
+        dep_time_local: minsToTime(depOutMins),
+        departure_time_utc: minsToTime(depOutUtcMins),
+        arrival_time: minsToTime(arrOutMins),
+        arr_time_local: minsToTime(arrOutMins),
+        arrival_time_utc: minsToTime(arrOutUtcMins),
+        duration_minutes: duration,
+        day_of_operation: dayOp,
+        homebase: cfg.fromIcao,
+        departure_lat: depApt.lat,
+        dep_lat: depApt.lat,
+        departure_lon: depApt.lon,
+        dep_lon: depApt.lon,
+        arrival_lat: arrApt.lat,
+        arr_lat: arrApt.lat,
+        arrival_lon: arrApt.lon,
+        arr_lon: arrApt.lon,
+        distance_nm: distNm,
+        days_of_operation: cfg.daysOfWeek,
+        days_of_week: cfg.daysOfWeek
+      });
+    }
 
-    // Inbound flight instance for this day
-    newFlights.push({
-      airline: cfg.airline,
-      airline_icao: cfg.airline_icao,
-      airline_iata: cfg.airline_iata,
-      aircraft_type: cfg.aircraft_type,
-      flight_number: cfg.airline_iata + ' ' + cfg.flightNumIn,
-      callsign: cfg.callsignIn || (cfg.airline_icao + cfg.flightNumIn),
-      departure_icao: cfg.toIcao,
-      dep_icao: cfg.toIcao,
-      departure_iata: arrApt.iata || '',
-      dep_iata: arrApt.iata || '',
-      departure_city: arrApt.city,
-      dep_city: arrApt.city,
-      departure_country: arrApt.country,
-      dep_country: arrApt.country,
-      arrival_icao: cfg.fromIcao,
-      arr_icao: cfg.fromIcao,
-      arrival_iata: depApt.iata || '',
-      arr_iata: depApt.iata || '',
-      arrival_city: depApt.city,
-      arr_city: depApt.city,
-      arrival_country: depApt.country,
-      arr_country: depApt.country,
-      departure_time: minsToTime(depInMins),
-      dep_time_local: minsToTime(depInMins),
-      departure_time_utc: minsToTime(depInUtcMins),
-      arrival_time: minsToTime(arrInMins),
-      arr_time_local: minsToTime(arrInMins),
-      arrival_time_utc: minsToTime(arrInUtcMins),
-      duration_minutes: duration,
-      day_of_operation: dayOp,
-      homebase: cfg.fromIcao,
-      departure_lat: arrApt.lat,
-      dep_lat: arrApt.lat,
-      departure_lon: arrApt.lon,
-      dep_lon: arrApt.lon,
-      arrival_lat: depApt.lat,
-      arr_lat: depApt.lat,
-      arrival_lon: depApt.lon,
-      arr_lon: depApt.lon,
-      distance_nm: distNm,
-      days_of_operation: cfg.daysOfWeek,
-      days_of_week: cfg.daysOfWeek
-    });
+    // Inbound
+    const inCallsign = cfg.callsignIn || (cfg.airline_icao + cfg.flightNumIn);
+    const inKey = inCallsign + '_' + cfg.toIcao + '_' + cfg.fromIcao + '_' + dayOp;
+    if (!routesSeen.has(inKey)) {
+      routesSeen.add(inKey);
+      newFlights.push({
+        airline: cfg.airline,
+        airline_icao: cfg.airline_icao,
+        airline_iata: cfg.airline_iata,
+        aircraft_type: cfg.aircraft_type,
+        flight_number: cfg.airline_iata + ' ' + cfg.flightNumIn,
+        callsign: inCallsign,
+        departure_icao: cfg.toIcao,
+        dep_icao: cfg.toIcao,
+        departure_iata: arrApt.iata || '',
+        dep_iata: arrApt.iata || '',
+        departure_city: arrApt.city,
+        dep_city: arrApt.city,
+        departure_country: arrApt.country,
+        dep_country: arrApt.country,
+        arrival_icao: cfg.fromIcao,
+        arr_icao: cfg.fromIcao,
+        arrival_iata: depApt.iata || '',
+        arr_iata: depApt.iata || '',
+        arrival_city: depApt.city,
+        arr_city: depApt.city,
+        arrival_country: depApt.country,
+        arr_country: depApt.country,
+        departure_time: minsToTime(depInMins),
+        dep_time_local: minsToTime(depInMins),
+        departure_time_utc: minsToTime(depInUtcMins),
+        arrival_time: minsToTime(arrInMins),
+        arr_time_local: minsToTime(arrInMins),
+        arrival_time_utc: minsToTime(arrInUtcMins),
+        duration_minutes: duration,
+        day_of_operation: dayOp,
+        homebase: cfg.fromIcao,
+        departure_lat: arrApt.lat,
+        dep_lat: arrApt.lat,
+        departure_lon: arrApt.lon,
+        dep_lon: arrApt.lon,
+        arrival_lat: depApt.lat,
+        arr_lat: depApt.lat,
+        arrival_lon: depApt.lon,
+        arr_lon: depApt.lon,
+        distance_nm: distNm,
+        days_of_operation: cfg.daysOfWeek,
+        days_of_week: cfg.daysOfWeek
+      });
+    }
   }
 }
 
 // Combine all flights
 const allFlights = [...ryanairEnriched, ...newFlights];
 
-// Sort primarily by day_of_operation (1 to 7), then by departure time
-allFlights.sort((a, b) => {
-  const dayA = a.day_of_operation || 1;
-  const dayB = b.day_of_operation || 1;
-  if (dayA !== dayB) return dayA - dayB;
-  return (a.departure_time || '00:00').localeCompare(b.departure_time || '00:00');
-});
-
 fs.writeFileSync(outputPath, JSON.stringify(allFlights, null, 2), 'utf8');
-console.log(`Successfully generated ${allFlights.length} flight schedules in flights.json`);
+console.log(`Successfully generated ${allFlights.length} unique daily flight schedules in flights.json`);
