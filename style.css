@@ -1623,11 +1623,11 @@ h1 {
   background: var(--bg-main) !important;
 }
 
-/* Light & Crisp Day Mode Modal + Bounded Scrollbar */
+/* Neutral Dark & Crisp Day Modal + Bounded Scrollbar */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(15, 23, 42, 0.45) !important;
+  background: rgba(0, 0, 0, 0.5) !important;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   display: flex;
@@ -1641,7 +1641,7 @@ h1 {
 
 [data-theme="dark"] .modal-overlay,
 .theme-dark .modal-overlay {
-  background: rgba(0, 0, 0, 0.8) !important;
+  background: rgba(0, 0, 0, 0.75) !important;
 }
 
 .modal-content {
@@ -1660,10 +1660,10 @@ h1 {
 
 [data-theme="dark"] .modal-content,
 .theme-dark .modal-content {
-  background: #111827 !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: #1A1D1E !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
   color: #F3F4F6 !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Bounded Custom Scrollbar inside modal (Never protruding) */
@@ -1681,11 +1681,16 @@ h1 {
   border-radius: 999px;
 }
 
+[data-theme="dark"] .modal-content::-webkit-scrollbar-thumb,
+.theme-dark .modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 .modal-content::-webkit-scrollbar-thumb:hover {
   background: var(--color-accent);
 }
 
-/* Day Mode Modal Sections and Cards */
+/* Modal Sections and Cards */
 .modal-section {
   background: #F8FAFC !important;
   border: 1px solid #E2E8F0 !important;
@@ -1695,8 +1700,8 @@ h1 {
 
 [data-theme="dark"] .modal-section,
 .theme-dark .modal-section {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #232728 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .time-card, .route-info-box, .fstat {
@@ -1710,8 +1715,8 @@ h1 {
 .theme-dark .time-card,
 .theme-dark .route-info-box,
 .theme-dark .fstat {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #17191A !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .atc-item {
@@ -1721,6 +1726,6 @@ h1 {
 
 [data-theme="dark"] .atc-item,
 .theme-dark .atc-item {
-  background: rgba(0, 0, 0, 0.3) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background: #17191A !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
