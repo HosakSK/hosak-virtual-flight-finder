@@ -830,10 +830,7 @@ function renderFlights() {
           <div class="fc-identifiers-row">
             <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
             ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge flightnum">${escapeHtml(f.flight_number)}</span>` : ''}
-            ${(() => {
-            const acInfo = getAircraftInfo(f.aircraft_type);
-            return `<span class="badge aircraft-badge" title="${escapeHtml(acInfo.name)} (${escapeHtml(acInfo.category)})">✈️ ${escapeHtml(f.aircraft_type || 'B738')} • ${escapeHtml(acInfo.name)}</span>`;
-          })()}
+            <span class="badge aircraft-badge">${escapeHtml(f.aircraft_type || 'B738')}</span>
           </div>
         </div>
       </div>
