@@ -1,3 +1,9 @@
+
+function getDayShortName(dayNum) {
+  const d = dayNum === 0 ? 7 : dayNum;
+  const names = ['', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  return names[d] || 'Daily';
+}
 // Virtual Flight Finder - Main Application Logic (Clean & Rich)
 
 let allFlights = [];
@@ -613,10 +619,14 @@ function applyFilters() {
   const sortOption = sortBy?.value || 'time';
 
   filteredFlights = allFlights.filter(f => {
-    // Operating Day
+    // Operating Day (1=Mon, 2=Tue, 3=Wed, 4=Thu, 5=Fri, 6=Sat, 7=Sun)
     if (currentDay !== 'all') {
-      const days = f.days_of_week || [1, 2, 3, 4, 5, 6, 7];
-      if (!days.includes(currentDay)) return false;
+      const targetDay = currentDay === 0 ? 7 : currentDay;
+      const flightDay = f.day_of_operation === 0 ? 7 : (f.day_of_operation || 1);
+      if (flightDay !== targetDay) {
+        const days = (f.days_of_week || f.days_of_operation || []).map(d => d === 0 ? 7 : d);
+        if (!days.includes(targetDay)) return false;
+      }
     }
 
     // Airlines Multi-Select
@@ -813,6 +823,7 @@ function renderFlights() {
           ${escapeHtml(f.airline || 'Ryanair')}
         </div>
         <div class="fc-identifiers">
+          <span class="badge day-badge" title="Operating Day">${escapeHtml(getDayShortName(f.day_of_operation))}</span>
           <span class="badge homebase-badge" title="Homebase Airport">Base: ${escapeHtml(f.homebase || f.dep_icao)}</span>
           <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
           ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
@@ -852,9 +863,12 @@ function renderFlights() {
         </div>
         <div class="fc-days">
           ${[1,2,3,4,5,6,7].map(d => {
-            const active = (f.days_of_week || []).includes(d);
+            const cardDay = f.day_of_operation === 0 ? 7 : (f.day_of_operation || 1);
+            const operates = (f.days_of_week || f.days_of_operation || []).map(x => x === 0 ? 7 : x).includes(d);
+            const isCurrentCardDay = (cardDay === d);
+            const dotClass = isCurrentCardDay ? 'active active-primary' : (operates ? 'active active-secondary' : '');
             const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-            return `<span class="day-dot ${active ? 'active' : ''}">${labels[d-1]}</span>`;
+            return `<span class="day-dot ${dotClass}" title="${labels[d-1]}: ${operates ? 'Operates' : 'No flight'}">${labels[d-1]}</span>`;
           }).join('')}
         </div>
       </div>

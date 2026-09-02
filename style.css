@@ -1483,3 +1483,42 @@ h1 {
   .vff-grid-primary { grid-template-columns: 1fr; }
   .flights-grid { grid-template-columns: 1fr; }
 }
+
+.day-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--badge-bg);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.day-dot.active {
+  background: var(--color-accent);
+  color: #FFFFFF;
+}
+
+.day-dot.active-primary {
+  background: var(--color-accent) !important;
+  color: #FFFFFF !important;
+  font-weight: 800;
+  box-shadow: 0 0 6px rgba(var(--color-accent-rgb), 0.5);
+}
+
+.day-dot.active-secondary {
+  background: rgba(var(--color-accent-rgb), 0.2) !important;
+  color: var(--text-main) !important;
+  border: 1px solid rgba(var(--color-accent-rgb), 0.4);
+}
+
+.badge.day-badge {
+  background: rgba(var(--color-accent-rgb), 0.12);
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
+  font-weight: 700;
+}

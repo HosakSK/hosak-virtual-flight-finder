@@ -3606,28 +3606,6 @@
     ]
   },
   {
-    "airline": "Austrian Airlines",
-    "airline_icao": "AUA",
-    "airline_iata": "OS",
-    "aircraft_type": "E195",
-    "fromIcao": "LOWW",
-    "toIcao": "EPWA",
-    "flightNumOut": "621",
-    "callsignOut": "AUA621",
-    "flightNumIn": "622",
-    "callsignIn": "AUA622",
-    "depTimeOutLocal": "08:50",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ]
-  },
-  {
     "airline": "Emirates",
     "airline_icao": "UAE",
     "airline_iata": "EK",
@@ -4885,28 +4863,6 @@
     "airline": "Wizz Air",
     "airline_icao": "WZZ",
     "airline_iata": "W6",
-    "aircraft_type": "A321",
-    "fromIcao": "EPWA",
-    "toIcao": "BIKF",
-    "flightNumOut": "1307",
-    "callsignOut": "WZZ1307",
-    "flightNumIn": "1308",
-    "callsignIn": "WZZ1308",
-    "depTimeOutLocal": "20:15",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ]
-  },
-  {
-    "airline": "Wizz Air",
-    "airline_icao": "WZZ",
-    "airline_iata": "W6",
     "aircraft_type": "A320",
     "fromIcao": "EPGD",
     "toIcao": "BIKF",
@@ -4981,28 +4937,6 @@
     "flightNumIn": "2502",
     "callsignIn": "WZZ2502",
     "depTimeOutLocal": "15:10",
-    "daysOfWeek": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7
-    ]
-  },
-  {
-    "airline": "Austrian Airlines",
-    "airline_icao": "AUA",
-    "airline_iata": "OS",
-    "aircraft_type": "A320",
-    "fromIcao": "LOWW",
-    "toIcao": "BIKF",
-    "flightNumOut": "861",
-    "callsignOut": "AUA861",
-    "flightNumIn": "862",
-    "callsignIn": "AUA862",
-    "depTimeOutLocal": "21:10",
     "daysOfWeek": [
       1,
       2,
