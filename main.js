@@ -929,213 +929,25 @@ function initGlobeMap() {
   const container = document.getElementById('globe-map');
   if (!container) return;
 
-  if (!globeMap) {
+    if (!globeMap) {
     globeMap = L.map('globe-map', {
-      center: [50.0, 15.0],
+      center: [48.17, 17.21],
       zoom: 4,
       minZoom: 2,
-      maxZoom: 10,
-      zoomControl: true
+      maxZoom: 16
     });
 
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const tileUrl = isDark 
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
+                   document.body.classList.contains('theme-dark');
+    
+    const tileUrl = isDark
+      ? 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
+      : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
 
     L.tileLayer(tileUrl, {
-      attribution: '&copy; CARTO, &copy; OpenStreetMap',
-      maxZoom: 19
-    }).addTo(globeMap);
-  } else {
-    globeMap.invalidateSize();
-  }
-
-  globePolylines.forEach(layer => globeMap.removeLayer(layer));
-  globePolylines = [];
-
-  filteredFlights.forEach(f => {
-    const depLat = f.dep_lat || f.departure_lat;
-    const depLon = f.dep_lon || f.departure_lon;
-    const arrLat = f.arr_lat || f.arrival_lat;
-    const arrLon = f.arr_lon || f.arrival_lon;
-
-    if (depLat && depLon && arrLat && arrLon) {
-      const color = getAirlineColor(f.airline_icao);
-      const line = L.polyline([[depLat, depLon], [arrLat, arrLon]], {
-        color: color,
-        weight: 2,
-        opacity: 0.65,
-        smoothFactor: 1
-      });
-
-      line.bindTooltip(`<strong>${escapeHtml(f.callsign || f.flight_number)}</strong> (${escapeHtml(f.airline)})<br>${escapeHtml(f.dep_icao)} (${escapeHtml(f.dep_city)}) ➔ ${escapeHtml(f.arr_icao)} (${escapeHtml(f.arr_city)})<br>Aircraft: ${escapeHtml(f.aircraft_type || 'B738')}`, {
-        sticky: true
-      });
-
-      line.on('click', () => {
-        closeGlobeModal();
-        openFlightModal(f);
-      });
-
-      line.addTo(globeMap);
-      globePolylines.push(line);
-    }
-  });
-}
-
-function getAirlineColor(icao) {
-  switch (icao) {
-    case 'RYR': return '#1e3a8a';
-    case 'WZZ': return '#ec4899';
-    case 'EZY': return '#f97316';
-    case 'DLH': return '#eab308';
-    case 'BAW': return '#ef4444';
-    case 'KLM': return '#06b6d4';
-    case 'TVS': return '#f97316';
-    case 'AUA': return '#ef4444';
-    case 'UAE': return '#dc2626';
-    case 'QTR': return '#a21caf';
-    default: return '#00BDB1';
-  }
-}
-
-// ORIGINAL RICH FLIGHT DETAIL MODAL (RESTORED COMPLETE)
-async function openFlightModal(flight) {
-  if (!flightModal) return;
-  flightModal.classList.remove('hidden');
-  if (modalLoading) modalLoading.classList.add('hidden');
-  if (modalBody) modalBody.classList.remove('hidden');
-
-  if (countdownTimer) {
-    clearInterval(countdownTimer);
-    countdownTimer = null;
-  }
-
-  const callsign = flight.callsign || flight.flight_number || 'N/A';
-  document.getElementById('m-callsign-header').textContent = callsign;
-  document.getElementById('m-flight-number-sub').textContent = flight.flight_number ? `Flight: ${flight.flight_number} • ${flight.airline}` : flight.airline;
-  document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || flight.dep_city || '---'})`;
-  document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || flight.arr_city || '---'})`;
-
-  // External Search Links
-  document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
-  document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
-  document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
-  document.getElementById('m-adsb-search-btn').href = `https://globe.adsbexchange.com/?callsign=${encodeURIComponent(callsign)}`;
-
-  // SimBrief & SkyVector Links
-  const simbriefBtn = document.getElementById('m-simbrief-btn');
-  if (simbriefBtn) {
-    const params = new URLSearchParams({
-      orig: flight.dep_icao,
-      dest: flight.arr_icao,
-      type: flight.aircraft_type || 'B738',
-      callsign: callsign,
-      fltnum: flight.flight_number ? flight.flight_number.replace(/\D/g, '') : ''
-    });
-    simbriefBtn.href = `https://dispatch.simbrief.com/options/custom?${params.toString()}`;
-  }
-
-  const skyvectorBtn = document.getElementById('m-skyvector-btn');
-  if (skyvectorBtn) {
-    skyvectorBtn.href = `https://skyvector.com/?fpl=${flight.dep_icao}+${flight.arr_icao}`;
-  }
-
-  // Departure & Arrival Times
-  const depLocal = flight.dep_time_local || '08:00';
-  const depUtc = flight.dep_time_utc || depLocal;
-  const arrLocal = flight.arr_time_local || '10:00';
-  const arrUtc = flight.arr_time_utc || arrLocal;
-
-  document.getElementById('m-dep-time-local').textContent = depLocal;
-  document.getElementById('m-dep-time-utc').textContent = depUtc + ' UTC';
-  document.getElementById('m-dep-time-your-local').textContent = depLocal;
-
-  document.getElementById('m-arr-time-local').textContent = arrLocal;
-  document.getElementById('m-arr-time-utc').textContent = arrUtc + ' UTC';
-  document.getElementById('m-arr-time-your-local').textContent = arrLocal;
-
-  // Countdown update function
-  function updateCountdowns() {
-    const now = new Date();
-    const [dH, dM] = depUtc.split(':').map(Number);
-    const depDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), dH, dM));
-    let diffMs = depDate.getTime() - now.getTime();
-    if (diffMs < 0) diffMs += 24 * 60 * 60 * 1000;
-
-    const diffH = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffM = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    const diffS = Math.floor((diffMs % (1000 * 60)) / 1000);
-
-    const depCountdownEl = document.getElementById('m-dep-countdown');
-    if (depCountdownEl) {
-      depCountdownEl.textContent = `in ${diffH}h ${diffM}m ${diffS}s`;
-    }
-
-    const arrCountdownEl = document.getElementById('m-arr-countdown');
-    if (arrCountdownEl) {
-      const arrMs = diffMs + (flight.duration_minutes || 90) * 60 * 1000;
-      const aH = Math.floor(arrMs / (1000 * 60 * 60));
-      const aM = Math.floor((arrMs % (1000 * 60 * 60)) / (1000 * 60));
-      arrCountdownEl.textContent = `in ${aH}h ${aM}m`;
-    }
-  }
-
-  updateCountdowns();
-  countdownTimer = setInterval(updateCountdowns, 1000);
-
-  // Dispatch & Stats
-  document.getElementById('m-fstat-dist').textContent = flight.distance_nm || '—';
-  document.getElementById('m-fstat-fl').textContent = flight.planned_fl || (flight.distance_nm > 500 ? 'FL360' : 'FL320');
-  const durH = Math.floor(flight.duration_minutes / 60);
-  const durM = flight.duration_minutes % 60;
-  document.getElementById('m-fstat-dur').textContent = `${durH}h ${durM < 10 ? '0' : ''}${durM}m`;
-  document.getElementById('m-fstat-wpts').textContent = flight.route_string ? flight.route_string.split(' ').length : 'DCT';
-  document.getElementById('m-route-string').textContent = flight.route_string || 'DCT';
-
-  // LiveATC links
-  document.getElementById('m-dep-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.dep_icao}`;
-  document.getElementById('m-arr-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.arr_icao}`;
-
-  modalLoading.classList.add('hidden');
-  modalBody.classList.remove('hidden');
-
-  setTimeout(() => {
-    renderModalRouteMap(flight);
-    fetchLiveWeather(flight.dep_icao, 'dep');
-    fetchLiveWeather(flight.arr_icao, 'arr');
-    fetchVatsimAtc(flight.dep_icao, 'dep');
-    fetchVatsimAtc(flight.arr_icao, 'arr');
-  }, 50);
-}
-
-function renderModalRouteMap(flight) {
-  const mapContainer = document.getElementById('m-route-map');
-  if (!mapContainer) return;
-
-  if (leafletMap) {
-    leafletMap.remove();
-    leafletMap = null;
-  }
-
-  const depLat = flight.dep_lat || flight.departure_lat;
-  const depLon = flight.dep_lon || flight.departure_lon;
-  const arrLat = flight.arr_lat || flight.arrival_lat;
-  const arrLon = flight.arr_lon || flight.arrival_lon;
-
-  if (depLat && depLon && arrLat && arrLon) {
-    leafletMap = L.map('m-route-map').fitBounds([
-      [depLat, depLon],
-      [arrLat, arrLon]
-    ], { padding: [40, 40] });
-
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const tileUrl = isDark 
-      ? 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
-      : 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
-
-    L.tileLayer(tileUrl, { maxZoom: 18 }).addTo(leafletMap);
+      attribution: '&copy; Esri, OpenStreetMap',
+      maxZoom: 16
+    }).addTo(leafletMap);
 
     L.marker([depLat, depLon]).addTo(leafletMap).bindPopup(`<strong>${flight.dep_icao}</strong> (${flight.dep_city || ''})`);
     L.marker([arrLat, arrLon]).addTo(leafletMap).bindPopup(`<strong>${flight.arr_icao}</strong> (${flight.arr_city || ''})`);

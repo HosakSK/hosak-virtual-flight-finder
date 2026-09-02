@@ -1,3 +1,29 @@
+
+/* Global Hidden Utility */
+.hidden {
+  display: none !important;
+}
+
+.modal-loading.hidden {
+  display: none !important;
+}
+
+/* Route Source Right Aligned */
+.route-source {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  text-align: right !important;
+  width: 100% !important;
+  margin-top: 0.35rem !important;
+  font-size: 0.72rem !important;
+  color: var(--text-muted) !important;
+}
+
+.route-source a {
+  color: var(--color-accent) !important;
+  text-decoration: underline !important;
+}
 /* ==========================================================================
    Virtual Flight Finder - Core Theme & Stylesheet (Clean Architecture)
    ========================================================================== */
