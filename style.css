@@ -1570,3 +1570,14 @@ h1 {
   border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   font-weight: 700;
 }
+
+/* Smooth Leaflet Map Day/Night Styling (Zero API Key & Zero Watermark) */
+[data-theme="dark"] .leaflet-tile,
+.theme-dark .leaflet-tile {
+  filter: brightness(0.65) invert(1) contrast(2.5) hue-rotate(200deg) saturate(0.35) !important;
+}
+
+[data-theme="dark"] .leaflet-container,
+.theme-dark .leaflet-container {
+  background: #0f172a !important;
+}

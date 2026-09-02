@@ -1004,8 +1004,8 @@ function getAirlineColor(icao) {
 async function openFlightModal(flight) {
   if (!flightModal) return;
   flightModal.classList.remove('hidden');
-  modalLoading.classList.remove('hidden');
-  modalBody.classList.add('hidden');
+  if (modalLoading) modalLoading.classList.add('hidden');
+  if (modalBody) modalBody.classList.remove('hidden');
 
   if (countdownTimer) {
     clearInterval(countdownTimer);
