@@ -1091,7 +1091,7 @@
     "callsignOut": "AUA707",
     "flightNumIn": "708",
     "callsignIn": "AUA708",
-    "depTimeOutLocal": "13:10",
+    "depTimeOutLocal": "14:35",
     "daysOfWeek": [
       1,
       2,
@@ -1101,7 +1101,7 @@
       6,
       7
     ],
-    "depTimeInLocal": "14:15"
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Austrian Airlines",
