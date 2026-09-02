@@ -2098,3 +2098,26 @@ h1 {
 .leaflet-interactive {
   cursor: pointer !important;
 }
+
+/* Flight Modal Superior Z-Index & Clean Focus Outline */
+#flight-modal {
+  z-index: 10050 !important;
+}
+
+#globe-modal {
+  z-index: 10000 !important;
+}
+
+/* Eliminate all browser focus outline boxes on Leaflet SVG paths */
+.leaflet-container :focus,
+.leaflet-interactive:focus,
+path.leaflet-interactive:focus,
+svg.leaflet-zoom-animated:focus,
+.leaflet-pane svg path:focus,
+.leaflet-layer svg path:focus,
+.leaflet-zoom-animated :focus,
+.route-polyline:focus,
+path:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

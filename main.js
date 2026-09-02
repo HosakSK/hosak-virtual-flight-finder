@@ -989,7 +989,11 @@ function initGlobeMap() {
         this.setStyle({ color: '#f97316', weight: 2, opacity: 0.65 });
       });
 
-      line.on('click', () => {
+      line.on('click', (e) => {
+        if (e && e.originalEvent) {
+          e.originalEvent.stopPropagation();
+          e.originalEvent.preventDefault();
+        }
         openFlightModal(f);
       });
 
