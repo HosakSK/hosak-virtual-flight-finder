@@ -1,0 +1,33 @@
+﻿{
+  "name": "virtual-flight-finder",
+  "version": "1.0.0",
+  "description": "Virtual Flight Finder - Flight schedule search and dispatch tool for virtual aviators (VATSIM, IVAO, X-Plane, MSFS)",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "update:flights": "python scripts/update_flights.py && python scripts/fix_homebase.py",
+    "update:callsigns": "python scripts/update_callsigns.py",
+    "update:homebase": "python scripts/fix_homebase.py"
+  },
+  "keywords": [
+    "aviation",
+    "flight-simulator",
+    "x-plane",
+    "msfs",
+    "vatsim",
+    "ivao",
+    "flight-finder",
+    "ryanair",
+    "simbrief",
+    "metar",
+    "taf"
+  ],
+  "author": "Jakub Hostacny <hostacny@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HosakSK/Virtual-Flight-Finder.git"
+  },
+  "license": "MIT"
+}

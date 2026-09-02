@@ -1,0 +1,323 @@
+﻿<!DOCTYPE html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f19" />
+    <title>Virtual Flight Finder | vATC & Flight Simulators</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header glass">
+        <div class="logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="plane-icon hidden"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.5c-.2.5.1 1 .6 1.1l8.5 2.2-2.5 2.5-3.5-.5c-.5-.1-.9.2-1.1.5L3 16.5c-.2.5.1 1 .6 1.1l4.6.8 2.5 2.5c.1.5.6.8 1.1.6l1.5-1.4c.3-.2.6-.6.5-1.1l-.5-3.5 2.5-2.5 2.2 8.5c.1.5.6.8 1.1.6l2.5-1.3c.3-.2.6-.6.5-1.1z"/></svg>
+          <div>
+            <h1>Virtual Flight Finder</h1>
+            <p class="subtitle">Ultimate Flight Schedule for Flight Simulators</p>
+          </div>
+        </div>
+        <button id="theme-toggle" class="btn-theme" title="Toggle Theme" aria-label="Toggle Theme">
+          <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="theme-icon-sun" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+      </header>
+
+      <main class="main-content">
+        <!-- Sidebar Filters -->
+        <aside class="filters-panel glass">
+          <h2>Filters</h2>
+          
+          <div class="filter-group">
+            <label for="filter-origin">ORIGIN (CITY / ICAO)</label>
+            <input type="text" id="filter-origin" placeholder="e.g. LZIB, Bratislava">
+          </div>
+          
+          <div class="filter-group">
+            <label for="filter-dest">DESTINATION (CITY / ICAO)</label>
+            <div class="input-with-button">
+              <input type="text" id="filter-dest" placeholder="e.g. Dublin, EIDW">
+              <button id="btn-swap-route" class="btn-swap" title="Swap Origin and Destination">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"/><path d="M7 20V4"/><path d="m21 8-4-4-4 4"/><path d="M17 4v16"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sim Mode Filters -->
+          <div id="sim-filters">
+            <div class="filter-group">
+              <label for="filter-day">Day of Week</label>
+              <select id="filter-day">
+                <option value="">Any Day</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+                <option value="7">Sunday</option>
+              </select>
+            </div>
+            <div class="time-range">
+              <div class="filter-group">
+                <label for="filter-time-from">Time From (UTC)</label>
+                <input type="time" id="filter-time-from">
+              </div>
+              <div class="filter-group">
+                <label for="filter-time-to">Time To (UTC)</label>
+                <input type="time" id="filter-time-to">
+              </div>
+            </div>
+          </div>
+
+          <!-- Live Mode Filters -->
+          <div id="live-filters">
+            <div class="filter-group">
+              <label for="filter-hours" id="hours-label">Departing: Any time</label>
+              <input type="range" id="filter-hours" min="1" max="168" value="168">
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label class="checkbox-label" style="margin-top: 0.5rem;">
+              <input type="checkbox" id="show-utc" checked>
+              <span>Show times in UTC</span>
+            </label>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-duration-min" id="duration-min-label">Min Duration: 0m</label>
+            <input type="range" id="filter-duration-min" min="0" max="360" step="30" value="0">
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-duration" id="duration-label">Max Duration: Any</label>
+            <input type="range" id="filter-duration" min="30" max="360" step="30" value="360">
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-homebase">Homebase</label>
+            <input type="text" id="filter-homebase" placeholder="e.g. LZIB">
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-callsign">Flight / Callsign</label>
+            <input type="text" id="filter-callsign" placeholder="e.g. FR3639 or RYR9HZ">
+          </div>
+
+          <div class="filter-group">
+            <label for="sort-by">Sort By</label>
+            <select id="sort-by">
+              <option value="time">Earliest Departure Time</option>
+              <option value="duration-asc">Duration (Shortest First)</option>
+              <option value="duration-desc">Duration (Longest First)</option>
+            </select>
+          </div>
+          
+          <button id="reset-filters" class="btn-secondary">Reset Filters</button>
+          
+          <div class="results-count-container">
+            <h2 id="results-count">Loading flights...</h2>
+          </div>
+        </aside>
+
+        <!-- Results Area -->
+        <section class="results-area">
+          <div id="flights-grid" class="flights-grid">
+            <!-- Flight cards will be injected here via JS -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Flight Detail Modal -->
+    <div id="flight-modal" class="modal-overlay hidden">
+      <div class="modal-content glass">
+        <button id="modal-close" class="modal-close">&times;</button>
+        
+        <div id="modal-loading" class="modal-loading">
+          <div class="spinner"></div>
+          <p>Fetching live aviation data...</p>
+        </div>
+
+        <div id="modal-body" class="modal-body hidden">
+          <div class="modal-header">
+            <div class="m-header-title">
+              <h2 id="m-callsign-header">--</h2>
+              <div id="m-flight-number-sub" class="flight-number-sub">--</div>
+            </div>
+            <div class="m-route">
+              <span id="m-dep">--</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <span id="m-arr">--</span>
+            </div>
+          </div>
+
+          <div class="modal-search-bar">
+            <span class="search-label">Track flight:</span>
+            <a id="m-google-search-btn" href="#" target="_blank" class="search-link" title="Search flight on Google">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <span>Google</span>
+            </a>
+            <a id="m-flightaware-search-btn" href="#" target="_blank" class="search-link" title="Search flight on FlightAware">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              <span>FlightAware</span>
+            </a>
+            <a id="m-flightradar-search-btn" href="#" target="_blank" class="search-link" title="Search flight on Flightradar24">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4"/></svg>
+              <span>FR24</span>
+            </a>
+            <a id="m-adsb-search-btn" href="#" target="_blank" class="search-link" title="Search flight on ADSB.fi">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>ADSB.fi</span>
+            </a>
+            <a id="m-edigla-search-btn" href="https://edi-gla.co.uk/" target="_blank" class="search-link" title="Search flight on EDI-GLA">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+              <span>EDI-GLA</span>
+            </a>
+          </div>
+
+          <div class="modal-grid">
+            <!-- Departure Weather -->
+            <div class="modal-section weather-section m-dep-wx">
+              <h3>Departure Weather <span id="m-dep-icao-lbl"></span></h3>
+              <div id="m-dep-metar-graphic" class="metar-graphic"></div>
+              <div class="raw-metar" id="m-dep-metar-raw">No METAR available</div>
+            </div>
+            
+            <!-- Arrival Weather -->
+            <div class="modal-section weather-section m-arr-wx">
+              <h3>Arrival Weather <span id="m-arr-icao-lbl"></span></h3>
+              <div id="m-arr-metar-graphic" class="metar-graphic"></div>
+              <div class="raw-metar" id="m-arr-metar-raw">No METAR available</div>
+            </div>
+
+            <!-- Departure Times -->
+            <div class="modal-section times-section m-dep-times">
+              <h3>Departure Times</h3>
+              <div class="modal-time-row">
+                <span class="time-label">Local Time:</span>
+                <span id="m-dep-time-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">UTC Time:</span>
+                <span id="m-dep-time-utc" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">Your Local:</span>
+                <span id="m-dep-time-your-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row" style="opacity: 0.8; font-size: 0.9em;">
+                <span class="time-label">Countdown:</span>
+                <span id="m-dep-countdown" class="time-value" style="color: var(--text-muted); font-weight: 300;">--:--</span>
+              </div>
+            </div>
+
+            <!-- Arrival Times -->
+            <div class="modal-section times-section m-arr-times">
+              <h3>Arrival Times</h3>
+              <div class="modal-time-row">
+                <span class="time-label">Local Time:</span>
+                <span id="m-arr-time-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">UTC Time:</span>
+                <span id="m-arr-time-utc" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">Your Local:</span>
+                <span id="m-arr-time-your-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row" style="opacity: 0.8; font-size: 0.9em;">
+                <span class="time-label">Countdown:</span>
+                <span id="m-arr-countdown" class="time-value" style="color: var(--text-muted); font-weight: 300;">--:--</span>
+              </div>
+            </div>
+
+            <!-- Dispatch & Routing (Spans 2 rows) -->
+            <div class="modal-section route-section m-route-box">
+              <h3>Dispatch &amp; Routing</h3>
+
+              <!-- Flight Stats Row -->
+              <div id="m-flight-stats" class="flight-stats-row">
+                <div class="fstat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17h18M3 12l4-4 4 4 4-8 4 4"/></svg>
+                  <span id="m-fstat-dist">—</span>
+                  <label>NM</label>
+                </div>
+                <div class="fstat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.2-1.1.5l-1.3 2.5c-.2.5.1 1 .6 1.1l8.5 2.2-2.5 2.5-3.5-.5c-.5-.1-.9.2-1.1.5L3 16.5c-.2.5.1 1 .6 1.1l4.6.8 2.5 2.5c.1.5.6.8 1.1.6l1.5-1.4c.3-.2.6-.6.5-1.1l-.5-3.5 2.5-2.5 2.2 8.5c.1.5.6.8 1.1.6l2.5-1.3c.3-.2.6-.6.5-1.1z"/></svg>
+                  <span id="m-fstat-fl">—</span>
+                  <label>FL cruise</label>
+                </div>
+                <div class="fstat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span id="m-fstat-dur">—</span>
+                  <label>Estimated</label>
+                </div>
+                <div class="fstat">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  <span id="m-fstat-wpts">—</span>
+                  <label>Waypoints</label>
+                </div>
+              </div>
+
+              <!-- Route String -->
+              <div class="route-info-box">
+                <span class="route-label">Route / Waypoints:</span>
+                <div id="m-route-string" class="route-string-content">DCT</div>
+              </div>
+
+              <!-- Route Map -->
+              <div id="m-route-map"></div>
+
+              <!-- Source Attribution -->
+              <div id="m-route-source" class="route-source hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Trasa z <a id="m-route-source-link" href="#" target="_blank">—</a>
+                <span id="m-route-source-cycle"></span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="route-buttons">
+                <a id="m-simbrief-btn" href="#" target="_blank" class="btn-primary simbrief-btn">Generate Route on SimBrief</a>
+                <a id="m-skyvector-btn" href="#" target="_blank" class="btn-secondary">View on SkyVector</a>
+              </div>
+            </div>
+
+            <!-- Departure VATSIM ATC -->
+            <div class="m-dep-atc-container">
+              <div class="modal-section vatsim-section" style="flex: 1; display: flex; flex-direction: column;">
+                <h3>Departure ATC</h3>
+                <div id="m-dep-vatsim-atc" class="vatsim-atc-list" style="flex: 1;"></div>
+                <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right; margin-top: 0.5rem; opacity: 0.7;">Data provided by VATSIM</div>
+              </div>
+              <a id="m-dep-liveatc-btn" href="#" target="_blank" class="btn-liveatc">Tune LiveATC</a>
+            </div>
+
+            <!-- Arrival VATSIM ATC -->
+            <div class="m-arr-atc-container">
+              <div class="modal-section vatsim-section" style="flex: 1; display: flex; flex-direction: column;">
+                <h3>Arrival ATC</h3>
+                <div id="m-arr-vatsim-atc" class="vatsim-atc-list" style="flex: 1;"></div>
+                <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right; margin-top: 0.5rem; opacity: 0.7;">Data provided by VATSIM</div>
+              </div>
+              <a id="m-arr-liveatc-btn" href="#" target="_blank" class="btn-liveatc">Tune LiveATC</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">Copied to clipboard!</div>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
