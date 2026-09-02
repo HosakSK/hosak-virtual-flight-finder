@@ -16,7 +16,8 @@
       3,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:55"
   },
   {
     "airline": "Ryanair",
@@ -38,7 +39,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:45"
   },
   {
     "airline": "Ryanair",
@@ -60,7 +62,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:55"
   },
   {
     "airline": "Ryanair",
@@ -79,7 +82,8 @@
       3,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:05"
   },
   {
     "airline": "Ryanair",
@@ -97,7 +101,8 @@
       2,
       4,
       6
-    ]
+    ],
+    "depTimeInLocal": "16:30"
   },
   {
     "airline": "Ryanair",
@@ -114,7 +119,8 @@
     "daysOfWeek": [
       2,
       6
-    ]
+    ],
+    "depTimeInLocal": "12:40"
   },
   {
     "airline": "Ryanair",
@@ -131,7 +137,8 @@
     "daysOfWeek": [
       3,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:55"
   },
   {
     "airline": "Ryanair",
@@ -148,7 +155,8 @@
     "daysOfWeek": [
       1,
       5
-    ]
+    ],
+    "depTimeInLocal": "14:45"
   },
   {
     "airline": "Ryanair",
@@ -165,7 +173,8 @@
     "daysOfWeek": [
       2,
       6
-    ]
+    ],
+    "depTimeInLocal": "19:40"
   },
   {
     "airline": "Ryanair",
@@ -182,7 +191,8 @@
     "daysOfWeek": [
       1,
       4
-    ]
+    ],
+    "depTimeInLocal": "11:30"
   },
   {
     "airline": "Ryanair",
@@ -195,11 +205,12 @@
     "callsignOut": "RYR2323",
     "flightNumIn": "2324",
     "callsignIn": "RYR2324",
-    "depTimeOutLocal": "10:15",
+    "depTimeOutLocal": "17:15",
     "daysOfWeek": [
       3,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:10"
   },
   {
     "airline": "Ryanair",
@@ -212,10 +223,11 @@
     "callsignOut": "RYR2325",
     "flightNumIn": "2326",
     "callsignIn": "RYR2326",
-    "depTimeOutLocal": "06:00",
+    "depTimeOutLocal": "10:40",
     "daysOfWeek": [
       6
-    ]
+    ],
+    "depTimeInLocal": "13:35"
   },
   {
     "airline": "Ryanair",
@@ -426,7 +438,7 @@
     "callsignOut": "AUA121",
     "flightNumIn": "122",
     "callsignIn": "AUA122",
-    "depTimeOutLocal": "07:00",
+    "depTimeOutLocal": "06:50",
     "daysOfWeek": [
       1,
       2,
@@ -435,7 +447,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -457,7 +470,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:25"
   },
   {
     "airline": "Austrian Airlines",
@@ -492,7 +506,7 @@
     "callsignOut": "AUA111",
     "flightNumIn": "112",
     "callsignIn": "AUA112",
-    "depTimeOutLocal": "08:20",
+    "depTimeOutLocal": "07:05",
     "daysOfWeek": [
       1,
       2,
@@ -501,7 +515,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:50"
   },
   {
     "airline": "Austrian Airlines",
@@ -514,7 +529,7 @@
     "callsignOut": "AUA115",
     "flightNumIn": "116",
     "callsignIn": "AUA116",
-    "depTimeOutLocal": "15:30",
+    "depTimeOutLocal": "17:30",
     "daysOfWeek": [
       1,
       2,
@@ -523,7 +538,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -536,7 +552,7 @@
     "callsignOut": "AUA451",
     "flightNumIn": "452",
     "callsignIn": "AUA452",
-    "depTimeOutLocal": "06:55",
+    "depTimeOutLocal": "06:45",
     "daysOfWeek": [
       1,
       2,
@@ -545,7 +561,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:50"
   },
   {
     "airline": "Austrian Airlines",
@@ -558,7 +575,7 @@
     "callsignOut": "AUA455",
     "flightNumIn": "456",
     "callsignIn": "AUA456",
-    "depTimeOutLocal": "13:00",
+    "depTimeOutLocal": "13:05",
     "daysOfWeek": [
       1,
       2,
@@ -567,7 +584,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:10"
   },
   {
     "airline": "Austrian Airlines",
@@ -580,7 +598,7 @@
     "callsignOut": "AUA457",
     "flightNumIn": "458",
     "callsignIn": "AUA458",
-    "depTimeOutLocal": "17:20",
+    "depTimeOutLocal": "17:15",
     "daysOfWeek": [
       1,
       2,
@@ -589,7 +607,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:25"
   },
   {
     "airline": "Austrian Airlines",
@@ -602,7 +621,7 @@
     "callsignOut": "AUA411",
     "flightNumIn": "412",
     "callsignIn": "AUA412",
-    "depTimeOutLocal": "07:10",
+    "depTimeOutLocal": "06:55",
     "daysOfWeek": [
       1,
       2,
@@ -611,7 +630,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:35"
   },
   {
     "airline": "Austrian Airlines",
@@ -624,7 +644,7 @@
     "callsignOut": "AUA415",
     "flightNumIn": "416",
     "callsignIn": "AUA416",
-    "depTimeOutLocal": "12:50",
+    "depTimeOutLocal": "17:20",
     "daysOfWeek": [
       1,
       2,
@@ -633,7 +653,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:00"
   },
   {
     "airline": "Austrian Airlines",
@@ -668,7 +689,7 @@
     "callsignOut": "AUA371",
     "flightNumIn": "372",
     "callsignIn": "AUA372",
-    "depTimeOutLocal": "07:05",
+    "depTimeOutLocal": "07:00",
     "daysOfWeek": [
       1,
       2,
@@ -677,7 +698,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:25"
   },
   {
     "airline": "Austrian Airlines",
@@ -690,7 +712,7 @@
     "callsignOut": "AUA375",
     "flightNumIn": "376",
     "callsignIn": "AUA376",
-    "depTimeOutLocal": "14:10",
+    "depTimeOutLocal": "17:25",
     "daysOfWeek": [
       1,
       2,
@@ -699,7 +721,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:50"
   },
   {
     "airline": "Austrian Airlines",
@@ -734,7 +757,7 @@
     "callsignOut": "AUA561",
     "flightNumIn": "562",
     "callsignIn": "AUA562",
-    "depTimeOutLocal": "07:25",
+    "depTimeOutLocal": "07:15",
     "daysOfWeek": [
       1,
       2,
@@ -743,7 +766,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:20"
   },
   {
     "airline": "Austrian Airlines",
@@ -756,7 +780,7 @@
     "callsignOut": "AUA565",
     "flightNumIn": "566",
     "callsignIn": "AUA566",
-    "depTimeOutLocal": "14:40",
+    "depTimeOutLocal": "17:30",
     "daysOfWeek": [
       1,
       2,
@@ -765,7 +789,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:35"
   },
   {
     "airline": "Austrian Airlines",
@@ -910,7 +935,7 @@
     "callsignOut": "AUA501",
     "flightNumIn": "502",
     "callsignIn": "AUA502",
-    "depTimeOutLocal": "07:55",
+    "depTimeOutLocal": "07:10",
     "daysOfWeek": [
       1,
       2,
@@ -919,7 +944,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -932,7 +958,7 @@
     "callsignOut": "AUA505",
     "flightNumIn": "506",
     "callsignIn": "AUA506",
-    "depTimeOutLocal": "16:40",
+    "depTimeOutLocal": "17:35",
     "daysOfWeek": [
       1,
       2,
@@ -941,7 +967,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:40"
   },
   {
     "airline": "Austrian Airlines",
@@ -1064,7 +1091,7 @@
     "callsignOut": "AUA707",
     "flightNumIn": "708",
     "callsignIn": "AUA708",
-    "depTimeOutLocal": "16:50",
+    "depTimeOutLocal": "13:10",
     "daysOfWeek": [
       1,
       2,
@@ -1073,7 +1100,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:15"
   },
   {
     "airline": "Austrian Airlines",
@@ -1108,7 +1136,7 @@
     "callsignOut": "AUA625",
     "flightNumIn": "626",
     "callsignIn": "AUA626",
-    "depTimeOutLocal": "17:10",
+    "depTimeOutLocal": "13:15",
     "daysOfWeek": [
       1,
       2,
@@ -1117,7 +1145,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:55"
   },
   {
     "airline": "Austrian Airlines",
@@ -1526,7 +1555,7 @@
     "callsignOut": "AUA65",
     "flightNumIn": "66",
     "callsignIn": "AUA66",
-    "depTimeOutLocal": "18:15",
+    "depTimeOutLocal": "10:50",
     "daysOfWeek": [
       1,
       2,
@@ -1535,7 +1564,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "Emirates",
@@ -1626,7 +1656,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "22:45"
   },
   {
     "airline": "Lufthansa",
@@ -2946,7 +2977,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:25"
   },
   {
     "airline": "easyJet",
@@ -3034,7 +3066,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "08:45"
   },
   {
     "airline": "Lufthansa",
@@ -3069,7 +3102,7 @@
     "callsignOut": "BAW854",
     "flightNumIn": "855",
     "callsignIn": "BAW855",
-    "depTimeOutLocal": "08:00",
+    "depTimeOutLocal": "07:30",
     "daysOfWeek": [
       1,
       2,
@@ -3078,7 +3111,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:15"
   },
   {
     "airline": "KLM",
@@ -3091,7 +3125,7 @@
     "callsignOut": "KLM1351",
     "flightNumIn": "1352",
     "callsignIn": "KLM1352",
-    "depTimeOutLocal": "09:10",
+    "depTimeOutLocal": "07:20",
     "daysOfWeek": [
       1,
       2,
@@ -3100,7 +3134,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:30"
   },
   {
     "airline": "Emirates",
@@ -3533,7 +3568,7 @@
     "callsignOut": "DLH1346",
     "flightNumIn": "1347",
     "callsignIn": "DLH1347",
-    "depTimeOutLocal": "07:05",
+    "depTimeOutLocal": "07:25",
     "daysOfWeek": [
       1,
       2,
@@ -3542,7 +3577,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:20"
   },
   {
     "airline": "Lufthansa",
@@ -3577,7 +3613,7 @@
     "callsignOut": "BAW846",
     "flightNumIn": "847",
     "callsignIn": "BAW847",
-    "depTimeOutLocal": "07:55",
+    "depTimeOutLocal": "07:10",
     "daysOfWeek": [
       1,
       2,
@@ -3586,7 +3622,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:40"
   },
   {
     "airline": "KLM",
@@ -3599,7 +3636,7 @@
     "callsignOut": "KLM1363",
     "flightNumIn": "1364",
     "callsignIn": "KLM1364",
-    "depTimeOutLocal": "09:20",
+    "depTimeOutLocal": "07:30",
     "daysOfWeek": [
       1,
       2,
@@ -3608,7 +3645,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "09:55"
   },
   {
     "airline": "Emirates",
@@ -3799,7 +3837,7 @@
     "callsignOut": "RYR403",
     "flightNumIn": "404",
     "callsignIn": "RYR404",
-    "depTimeOutLocal": "19:00",
+    "depTimeOutLocal": "09:50",
     "daysOfWeek": [
       1,
       2,
@@ -3808,7 +3846,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:40"
   },
   {
     "airline": "Ryanair",
@@ -3821,7 +3860,7 @@
     "callsignOut": "RYR405",
     "flightNumIn": "406",
     "callsignIn": "RYR406",
-    "depTimeOutLocal": "10:45",
+    "depTimeOutLocal": "14:20",
     "daysOfWeek": [
       1,
       2,
@@ -3830,7 +3869,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:30"
   },
   {
     "airline": "Ryanair",
@@ -4820,7 +4860,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "14:30"
   },
   {
     "airline": "KLM",
@@ -4952,7 +4993,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:29"
   },
   {
     "airline": "Emirates",
@@ -5342,7 +5384,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:10"
   },
   {
     "airline": "Qatar Airways",
@@ -5364,7 +5407,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "21:55"
   },
   {
     "airline": "Qatar Airways",
@@ -5478,7 +5522,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:15"
   },
   {
     "airline": "Qatar Airways",
@@ -5500,7 +5545,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:05"
   },
   {
     "airline": "Qatar Airways",
@@ -5522,7 +5568,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Qatar Airways",
@@ -5544,7 +5591,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:40"
   },
   {
     "airline": "Qatar Airways",
@@ -5566,7 +5614,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:00"
   },
   {
     "airline": "Lufthansa",
@@ -5601,11 +5650,12 @@
     "callsignOut": "DLH1158",
     "flightNumIn": "1159",
     "callsignIn": "DLH1159",
-    "depTimeOutLocal": "10:30",
+    "depTimeOutLocal": "09:40",
     "daysOfWeek": [
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "12:45"
   },
   {
     "airline": "Lufthansa",
@@ -5618,12 +5668,13 @@
     "callsignOut": "DLH918",
     "flightNumIn": "919",
     "callsignIn": "DLH919",
-    "depTimeOutLocal": "15:20",
+    "depTimeOutLocal": "16:00",
     "daysOfWeek": [
       1,
       3,
       5
-    ]
+    ],
+    "depTimeInLocal": "17:30"
   },
   {
     "airline": "Lufthansa",
@@ -5636,12 +5687,13 @@
     "callsignOut": "DLH2474",
     "flightNumIn": "2475",
     "callsignIn": "DLH2475",
-    "depTimeOutLocal": "16:00",
+    "depTimeOutLocal": "11:15",
     "daysOfWeek": [
       2,
       4,
       6
-    ]
+    ],
+    "depTimeInLocal": "12:55"
   },
   {
     "airline": "Lufthansa",
@@ -5654,7 +5706,7 @@
     "callsignOut": "DLH2304",
     "flightNumIn": "2305",
     "callsignIn": "DLH2305",
-    "depTimeOutLocal": "07:00",
+    "depTimeOutLocal": "08:50",
     "daysOfWeek": [
       1,
       2,
@@ -5663,7 +5715,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:45"
   },
   {
     "airline": "Lufthansa",
@@ -5676,12 +5729,13 @@
     "callsignOut": "DLH1060",
     "flightNumIn": "1061",
     "callsignIn": "DLH1061",
-    "depTimeOutLocal": "11:45",
+    "depTimeOutLocal": "08:45",
     "daysOfWeek": [
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "10:55"
   },
   {
     "airline": "British Airways",
@@ -5716,7 +5770,7 @@
     "callsignOut": "BAW462",
     "flightNumIn": "463",
     "callsignIn": "BAW463",
-    "depTimeOutLocal": "15:15",
+    "depTimeOutLocal": "12:00",
     "daysOfWeek": [
       1,
       2,
@@ -5725,7 +5779,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "16:20"
   },
   {
     "airline": "British Airways",
@@ -5738,13 +5793,14 @@
     "callsignOut": "BAW908",
     "flightNumIn": "909",
     "callsignIn": "BAW909",
-    "depTimeOutLocal": "11:10",
+    "depTimeOutLocal": "11:40",
     "daysOfWeek": [
       1,
       3,
       5,
       7
-    ]
+    ],
+    "depTimeInLocal": "15:00"
   },
   {
     "airline": "British Airways",
@@ -5757,12 +5813,13 @@
     "callsignOut": "BAW438",
     "flightNumIn": "439",
     "callsignIn": "BAW439",
-    "depTimeOutLocal": "13:00",
+    "depTimeOutLocal": "12:15",
     "daysOfWeek": [
       2,
       4,
       6
-    ]
+    ],
+    "depTimeInLocal": "15:10"
   },
   {
     "airline": "KLM",
@@ -5972,7 +6029,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "03:15"
   },
   {
     "airline": "Lufthansa",
@@ -6019,7 +6077,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:10"
   },
   {
     "airline": "Lufthansa",
@@ -6042,7 +6101,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:15"
   },
   {
     "airline": "Lufthansa",
@@ -6065,7 +6125,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:50"
   },
   {
     "airline": "Lufthansa",
@@ -6088,7 +6149,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:30"
   },
   {
     "airline": "Lufthansa",
@@ -6111,7 +6173,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "20:15"
   },
   {
     "airline": "Lufthansa",
@@ -6134,7 +6197,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:20"
   },
   {
     "airline": "Lufthansa",
@@ -6157,7 +6221,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "01:50"
   },
   {
     "airline": "KLM",
@@ -6228,7 +6293,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "11:00"
   },
   {
     "airline": "KLM",
@@ -6251,7 +6317,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "00:40"
   },
   {
     "airline": "KLM",
@@ -6274,7 +6341,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:55"
   },
   {
     "airline": "KLM",
@@ -6294,7 +6362,8 @@
       4,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:10"
   },
   {
     "airline": "Austrian Airlines",
@@ -6341,7 +6410,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:05"
   },
   {
     "airline": "Austrian Airlines",
@@ -6388,7 +6458,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "13:55"
   },
   {
     "airline": "British Airways",
@@ -6411,7 +6482,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "18:30"
   },
   {
     "airline": "British Airways",
@@ -6434,7 +6506,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "21:30"
   },
   {
     "airline": "British Airways",
@@ -6457,7 +6530,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "17:10"
   },
   {
     "airline": "British Airways",
@@ -6480,7 +6554,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:15"
   },
   {
     "airline": "British Airways",
@@ -6503,7 +6578,8 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "23:10"
   },
   {
     "airline": "British Airways",
@@ -6526,6 +6602,7 @@
       5,
       6,
       7
-    ]
+    ],
+    "depTimeInLocal": "19:20"
   }
 ]

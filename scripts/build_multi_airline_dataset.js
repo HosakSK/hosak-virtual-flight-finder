@@ -37,22 +37,18 @@ function minsToTime(m) {
   return h + ':' + min;
 }
 
-function getRealisticTurnaround(aircraftType, distNm) {
-  const widebodies = ['A388', 'B744', 'B748', 'A351', 'A359', 'B77W', 'B772', 'B789', 'B788', 'B78X', 'A332', 'A333', 'A343', 'B763'];
-  if (widebodies.includes(aircraftType) || distNm > 2000) {
-    return 135; // 2h 15m for widebodies / long-hauls
-  }
-  if (distNm > 1000) {
-    return 60; // 1 hour for medium-distance flights
-  }
-  return 45; // 45 mins standard for narrowbodies
-}
-
-// 1. Process Ryanair flights with strict deduplication by callsign + dep + arr + day
+// 1. Process Authentic Ryanair flights from LZIB
 let rawRyanair = [];
 if (fs.existsSync(ryanairPath)) {
   try {
-    rawRyanair = JSON.parse(fs.readFileSync(ryanairPath, 'utf8'));
+    const parsed = JSON.parse(fs.readFileSync(ryanairPath, 'utf8'));
+    rawRyanair = parsed.filter(f => {
+      const cs = (f.callsign || '').toUpperCase();
+      const fn = (f.flight_number || '').toUpperCase();
+      const al = (f.airline || '').toUpperCase();
+      const icao = (f.airline_icao || '').toUpperCase();
+      return cs.startsWith('RYR') || fn.startsWith('FR') || al === 'RYANAIR' || icao === 'RYR';
+    });
   } catch (e) {
     console.warn('Could not parse ryanair_flights_lzib.json:', e);
   }
@@ -144,7 +140,7 @@ for (const f of rawRyanair) {
 
 const ryanairEnriched = Array.from(ryanairMap.values());
 
-// 2. Process Routes (One flight per scheduled day of operation)
+// 2. Process Routes for All Airlines (with explicit real scheduled departure times)
 const newFlights = [];
 const routesSeen = new Set();
 
@@ -158,13 +154,14 @@ for (const cfg of routes) {
   const distNm = haversineDistanceNm(depApt.lat, depApt.lon, arrApt.lat, arrApt.lon);
   const duration = calculateDuration(distNm);
 
-  const depOutMins = timeToMins(cfg.depTimeOutLocal);
+  // Outbound schedule
+  const depOutMins = timeToMins(cfg.depTimeOutLocal || '08:00');
   const depOutUtcMins = depOutMins - (depApt.tz * 60);
   const arrOutUtcMins = depOutUtcMins + duration;
   const arrOutMins = arrOutUtcMins + (arrApt.tz * 60);
 
-  const turnaround = cfg.turnaroundMins || getRealisticTurnaround(cfg.aircraft_type, distNm);
-  const depInMins = cfg.depTimeInLocal ? timeToMins(cfg.depTimeInLocal) : (arrOutMins + turnaround);
+  // Inbound schedule (explicit published timetable departure)
+  const depInMins = timeToMins(cfg.depTimeInLocal || minsToTime(arrOutMins + 120));
   const depInUtcMins = depInMins - (arrApt.tz * 60);
   const arrInUtcMins = depInUtcMins + duration;
   const arrInMins = arrInUtcMins + (depApt.tz * 60);
@@ -172,9 +169,9 @@ for (const cfg of routes) {
   for (const day of cfg.daysOfWeek) {
     const dayOp = day === 0 ? 7 : day;
     
-    // Outbound
+    // Outbound Leg
     const outCallsign = cfg.callsignOut || (cfg.airline_icao + cfg.flightNumOut);
-    const outKey = outCallsign + '_' + cfg.fromIcao + '_' + cfg.toIcao + '_' + dayOp;
+    const outKey = `${outCallsign}_${cfg.fromIcao}_${cfg.toIcao}_${dayOp}`;
     if (!routesSeen.has(outKey)) {
       routesSeen.add(outKey);
       newFlights.push({
@@ -227,9 +224,9 @@ for (const cfg of routes) {
       });
     }
 
-    // Inbound
+    // Inbound Leg
     const inCallsign = cfg.callsignIn || (cfg.airline_icao + cfg.flightNumIn);
-    const inKey = inCallsign + '_' + cfg.toIcao + '_' + cfg.fromIcao + '_' + dayOp;
+    const inKey = `${inCallsign}_${cfg.toIcao}_${cfg.fromIcao}_${dayOp}`;
     if (!routesSeen.has(inKey)) {
       routesSeen.add(inKey);
       newFlights.push({
