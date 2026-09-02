@@ -1,4 +1,4 @@
-// Virtual Flight Finder - Main Application Logic (Clean Rewrite)
+// Virtual Flight Finder - Main Application Logic (Clean & Rich)
 
 let allFlights = [];
 let filteredFlights = [];
@@ -6,6 +6,7 @@ let currentDay = 'all';
 let leafletMap = null;
 let globeMap = null;
 let globePolylines = [];
+let countdownTimer = null;
 
 // Pagination State
 let currentPage = 1;
@@ -134,10 +135,7 @@ async function loadMetadata() {
   }
 }
 
-// =========================================================================
 // SEARCHABLE MULTI-SELECT FILTER ENGINE
-// =========================================================================
-
 function setupMultiSelects() {
   renderAirlineMultiSelect();
   renderAircraftMultiSelect();
@@ -403,10 +401,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
   });
 }
 
-// =========================================================================
-// DATA LOADING & CLEAN FILTER ENGINE
-// =========================================================================
-
+// DATA LOADING & FILTER ENGINE
 async function loadFlights() {
   try {
     resultsCount.textContent = 'Loading flights...';
@@ -457,6 +452,7 @@ async function loadFlights() {
         arr_time_local: arrTime,
         dep_time_utc: depUtc,
         arr_time_utc: arrUtc,
+        homebase: f.homebase || depIcao,
         dep_lat: depLat,
         dep_lon: depLon,
         arr_lat: arrLat,
@@ -569,11 +565,19 @@ function setupEventListeners() {
   }
 
   // Flight Modal Close
-  if (modalClose) modalClose.addEventListener('click', () => flightModal.classList.add('hidden'));
+  if (modalClose) modalClose.addEventListener('click', closeFlightModal);
   if (flightModal) {
     flightModal.addEventListener('click', (e) => {
-      if (e.target === flightModal) flightModal.classList.add('hidden');
+      if (e.target === flightModal) closeFlightModal();
     });
+  }
+}
+
+function closeFlightModal() {
+  if (flightModal) flightModal.classList.add('hidden');
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
   }
 }
 
@@ -719,6 +723,37 @@ function renderPagination() {
   }
 }
 
+function getAirlineCssClass(airlineName) {
+  const norm = (airlineName || '').toLowerCase();
+  if (norm.includes('ryanair')) return 'airline-ryanair';
+  if (norm.includes('wizz')) return 'airline-wizz-air';
+  if (norm.includes('easyjet')) return 'airline-easyjet';
+  if (norm.includes('lufthansa')) return 'airline-lufthansa';
+  if (norm.includes('british')) return 'airline-british-airways';
+  if (norm.includes('klm')) return 'airline-klm';
+  if (norm.includes('smartwings')) return 'airline-smartwings';
+  if (norm.includes('austrian')) return 'airline-austrian-airlines';
+  if (norm.includes('emirates')) return 'airline-emirates';
+  if (norm.includes('qatar')) return 'airline-qatar-airways';
+  return 'airline-ryanair';
+}
+
+function getBadgeColorClass(icao) {
+  switch (icao) {
+    case 'RYR': return 'badge-ryr';
+    case 'WZZ': return 'badge-wzz';
+    case 'EZY': return 'badge-ezy';
+    case 'DLH': return 'badge-dlh';
+    case 'BAW': return 'badge-baw';
+    case 'KLM': return 'badge-klm';
+    case 'TVS': return 'badge-tvs';
+    case 'AUA': return 'badge-aua';
+    case 'UAE': return 'badge-uae';
+    case 'QTR': return 'badge-qtr';
+    default: return 'badge-ryr';
+  }
+}
+
 function renderFlights() {
   if (!flightsGrid) return;
   flightsGrid.innerHTML = '';
@@ -739,20 +774,22 @@ function renderFlights() {
 
   pageFlights.forEach(f => {
     const card = document.createElement('div');
-    card.className = 'flight-card';
+    const airlineClass = getAirlineCssClass(f.airline);
+    const badgeClass = getBadgeColorClass(f.airline_icao);
+    card.className = `flight-card ${airlineClass}`;
     card.setAttribute('data-id', f.id || `${f.callsign}-${f.dep_icao}-${f.arr_icao}`);
 
     const durH = Math.floor(f.duration_minutes / 60);
     const durM = f.duration_minutes % 60;
     const durStr = `${durH}h ${durM < 10 ? '0' : ''}${durM}m`;
-    const airlineClass = getAirlineClass(f.airline_icao);
 
     card.innerHTML = `
       <div class="fc-header">
-        <div class="fc-airline-pill ${airlineClass}">
+        <div class="fc-airline-pill ${badgeClass}">
           ${escapeHtml(f.airline || 'Ryanair')}
         </div>
         <div class="fc-identifiers">
+          <span class="badge homebase-badge" title="Homebase Airport">Base: ${escapeHtml(f.homebase || f.dep_icao)}</span>
           <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
           ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
           <span class="badge" style="background: rgba(var(--color-accent-rgb), 0.15); color: var(--color-accent);">${escapeHtml(f.aircraft_type || 'B738')}</span>
@@ -806,26 +843,7 @@ function renderFlights() {
   flightsGrid.appendChild(fragment);
 }
 
-function getAirlineClass(icao) {
-  switch (icao) {
-    case 'RYR': return 'badge-ryr';
-    case 'WZZ': return 'badge-wzz';
-    case 'EZY': return 'badge-ezy';
-    case 'DLH': return 'badge-dlh';
-    case 'BAW': return 'badge-baw';
-    case 'KLM': return 'badge-klm';
-    case 'TVS': return 'badge-tvs';
-    case 'AUA': return 'badge-aua';
-    case 'UAE': return 'badge-uae';
-    case 'QTR': return 'badge-qtr';
-    default: return 'badge-ryr';
-  }
-}
-
-// =========================================================================
 // GLOBE / WORLD ROUTE MAP MODAL
-// =========================================================================
-
 function openGlobeModal() {
   if (!globeModal) return;
   globeModal.classList.remove('hidden');
@@ -900,29 +918,31 @@ function initGlobeMap() {
 
 function getAirlineColor(icao) {
   switch (icao) {
-    case 'RYR': return '#003580';
-    case 'WZZ': return '#C6007E';
-    case 'EZY': return '#FF6600';
-    case 'DLH': return '#EAB308';
-    case 'BAW': return '#075AAA';
-    case 'KLM': return '#00A1DE';
-    case 'TVS': return '#1D70B8';
-    case 'AUA': return '#D81E05';
-    case 'UAE': return '#D71921';
-    case 'QTR': return '#5C0632';
+    case 'RYR': return '#1e3a8a';
+    case 'WZZ': return '#ec4899';
+    case 'EZY': return '#f97316';
+    case 'DLH': return '#eab308';
+    case 'BAW': return '#ef4444';
+    case 'KLM': return '#06b6d4';
+    case 'TVS': return '#f97316';
+    case 'AUA': return '#ef4444';
+    case 'UAE': return '#dc2626';
+    case 'QTR': return '#a21caf';
     default: return '#00BDB1';
   }
 }
 
-// =========================================================================
-// FLIGHT DETAIL MODAL
-// =========================================================================
-
+// ORIGINAL RICH FLIGHT DETAIL MODAL (RESTORED COMPLETE)
 async function openFlightModal(flight) {
   if (!flightModal) return;
   flightModal.classList.remove('hidden');
   modalLoading.classList.remove('hidden');
   modalBody.classList.add('hidden');
+
+  if (countdownTimer) {
+    clearInterval(countdownTimer);
+    countdownTimer = null;
+  }
 
   const callsign = flight.callsign || flight.flight_number || 'N/A';
   document.getElementById('m-callsign-header').textContent = callsign;
@@ -930,11 +950,13 @@ async function openFlightModal(flight) {
   document.getElementById('m-dep').textContent = `${flight.dep_icao} (${flight.dep_iata || flight.dep_city || '---'})`;
   document.getElementById('m-arr').textContent = `${flight.arr_icao} (${flight.arr_iata || flight.arr_city || '---'})`;
 
+  // External Search Links
   document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
   document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
   document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent(flight.flight_number || callsign)}`;
   document.getElementById('m-adsb-search-btn').href = `https://globe.adsbexchange.com/?callsign=${encodeURIComponent(callsign)}`;
 
+  // SimBrief & SkyVector Links
   const simbriefBtn = document.getElementById('m-simbrief-btn');
   if (simbriefBtn) {
     const params = new URLSearchParams({
@@ -952,6 +974,50 @@ async function openFlightModal(flight) {
     skyvectorBtn.href = `https://skyvector.com/?fpl=${flight.dep_icao}+${flight.arr_icao}`;
   }
 
+  // Departure & Arrival Times
+  const depLocal = flight.dep_time_local || '08:00';
+  const depUtc = flight.dep_time_utc || depLocal;
+  const arrLocal = flight.arr_time_local || '10:00';
+  const arrUtc = flight.arr_time_utc || arrLocal;
+
+  document.getElementById('m-dep-time-local').textContent = depLocal;
+  document.getElementById('m-dep-time-utc').textContent = depUtc + ' UTC';
+  document.getElementById('m-dep-time-your-local').textContent = depLocal;
+
+  document.getElementById('m-arr-time-local').textContent = arrLocal;
+  document.getElementById('m-arr-time-utc').textContent = arrUtc + ' UTC';
+  document.getElementById('m-arr-time-your-local').textContent = arrLocal;
+
+  // Countdown update function
+  function updateCountdowns() {
+    const now = new Date();
+    const [dH, dM] = depUtc.split(':').map(Number);
+    const depDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), dH, dM));
+    let diffMs = depDate.getTime() - now.getTime();
+    if (diffMs < 0) diffMs += 24 * 60 * 60 * 1000;
+
+    const diffH = Math.floor(diffMs / (1000 * 60 * 60));
+    const diffM = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const diffS = Math.floor((diffMs % (1000 * 60)) / 1000);
+
+    const depCountdownEl = document.getElementById('m-dep-countdown');
+    if (depCountdownEl) {
+      depCountdownEl.textContent = `in ${diffH}h ${diffM}m ${diffS}s`;
+    }
+
+    const arrCountdownEl = document.getElementById('m-arr-countdown');
+    if (arrCountdownEl) {
+      const arrMs = diffMs + (flight.duration_minutes || 90) * 60 * 1000;
+      const aH = Math.floor(arrMs / (1000 * 60 * 60));
+      const aM = Math.floor((arrMs % (1000 * 60 * 60)) / (1000 * 60));
+      arrCountdownEl.textContent = `in ${aH}h ${aM}m`;
+    }
+  }
+
+  updateCountdowns();
+  countdownTimer = setInterval(updateCountdowns, 1000);
+
+  // Dispatch & Stats
   document.getElementById('m-fstat-dist').textContent = flight.distance_nm || '—';
   document.getElementById('m-fstat-fl').textContent = flight.planned_fl || (flight.distance_nm > 500 ? 'FL360' : 'FL320');
   const durH = Math.floor(flight.duration_minutes / 60);
@@ -960,6 +1026,7 @@ async function openFlightModal(flight) {
   document.getElementById('m-fstat-wpts').textContent = flight.route_string ? flight.route_string.split(' ').length : 'DCT';
   document.getElementById('m-route-string').textContent = flight.route_string || 'DCT';
 
+  // LiveATC links
   document.getElementById('m-dep-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.dep_icao}`;
   document.getElementById('m-arr-liveatc-btn').href = `https://www.liveatc.net/search/?icao=${flight.arr_icao}`;
 
@@ -970,6 +1037,8 @@ async function openFlightModal(flight) {
     renderModalRouteMap(flight);
     fetchLiveWeather(flight.dep_icao, 'dep');
     fetchLiveWeather(flight.arr_icao, 'arr');
+    fetchVatsimAtc(flight.dep_icao, 'dep');
+    fetchVatsimAtc(flight.arr_icao, 'arr');
   }, 50);
 }
 
@@ -1025,13 +1094,61 @@ async function fetchLiveWeather(icao, type) {
     if (res.ok) {
       const text = await res.text();
       if (text && text.trim()) {
-        if (rawEl) rawEl.textContent = text.trim();
+        const metar = text.trim();
+        if (rawEl) rawEl.textContent = metar;
+
+        if (graphicEl) {
+          const windMatch = metar.match(/(\d{3}|VRB)(\d{2,3})(G\d{2,3})?KT/);
+          const visMatch = metar.match(/\b(\d{4})\b/) || metar.match(/\b(CAVOK|9999)\b/);
+          const tempMatch = metar.match(/\b(M?\d{2})\/(M?\d{2})\b/);
+          const qnhMatch = metar.match(/\b(Q|A)(\d{4})\b/);
+
+          graphicEl.innerHTML = `
+            <div class="metar-bar-row">
+              <span>💨 Wind: <strong>${windMatch ? windMatch[0] : 'Calm / VRB'}</strong></span>
+              <span>👁️ Vis: <strong>${visMatch ? visMatch[0] : '10km+'}</strong></span>
+            </div>
+            <div class="metar-bar-row">
+              <span>🌡️ Temp: <strong>${tempMatch ? tempMatch[0] + '°C' : 'N/A'}</strong></span>
+              <span>🧭 QNH: <strong>${qnhMatch ? qnhMatch[0] : '1013'}</strong></span>
+            </div>
+          `;
+        }
         return;
       }
     }
     if (rawEl) rawEl.textContent = 'No active METAR reported.';
   } catch (e) {
     if (rawEl) rawEl.textContent = 'METAR service temporarily unavailable.';
+  }
+}
+
+async function fetchVatsimAtc(icao, type) {
+  const atcListEl = document.getElementById(type === 'dep' ? 'm-dep-vatsim-atc' : 'm-arr-vatsim-atc');
+  if (!atcListEl) return;
+  atcListEl.innerHTML = '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem;">Checking online controllers...</div>';
+
+  try {
+    const res = await fetch('https://data.vatsim.net/v3/vatsim-data.json');
+    if (res.ok) {
+      const data = await res.json();
+      const controllers = (data.controllers || []).filter(c => c.callsign && c.callsign.startsWith(icao));
+      
+      if (controllers.length > 0) {
+        atcListEl.innerHTML = controllers.map(c => `
+          <div class="atc-item">
+            <span class="atc-callsign">● ${escapeHtml(c.callsign)}</span>
+            <span class="atc-freq">${escapeHtml(c.frequency)} MHz</span>
+          </div>
+        `).join('');
+      } else {
+        atcListEl.innerHTML = '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem;">No active controllers online</div>';
+      }
+    } else {
+      atcListEl.innerHTML = '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem;">VATSIM status offline</div>';
+    }
+  } catch (e) {
+    atcListEl.innerHTML = '<div style="font-size: 0.75rem; color: var(--text-muted); padding: 0.2rem;">VATSIM feed unavailable</div>';
   }
 }
 

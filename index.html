@@ -49,7 +49,7 @@
         </div>
       </header>
 
-      <!-- BRAND NEW CLEAN FULL-WIDTH FILTER DASHBOARD -->
+      <!-- CLEAN FULL-WIDTH FILTER DASHBOARD -->
       <section class="vff-filters-dashboard glass">
         <!-- Dashboard Header / Status Bar -->
         <div class="vff-dashboard-header">
@@ -162,7 +162,7 @@
 
         <!-- Pagination Bar -->
         <div id="pagination-container" class="pagination-container">
-          <div class="pagination-info" id="pagination-info">Showing 1–100 of flights</div>
+          <div class="pagination-info" id="pagination-info">Showing flights</div>
           <div class="pagination-controls" id="pagination-controls">
             <button id="btn-page-first" class="btn-page" title="First page">⏮</button>
             <button id="btn-page-prev" class="btn-page" title="Previous page">◀ Prev</button>
@@ -174,14 +174,14 @@
       </main>
     </div>
 
-    <!-- Flight Detail Modal -->
+    <!-- ORIGINAL RICH FLIGHT DETAIL MODAL (RESTORED COMPLETE) -->
     <div id="flight-modal" class="modal-overlay hidden">
       <div class="modal-content glass">
-        <button id="modal-close" class="modal-close">&times;</button>
+        <button id="modal-close" class="modal-close" aria-label="Close modal">&times;</button>
         
         <div id="modal-loading" class="modal-loading">
           <div class="spinner"></div>
-          <p>Fetching live aviation data...</p>
+          <p>Načítavam podrobné informácie o lete...</p>
         </div>
 
         <div id="modal-body" class="modal-body hidden">
@@ -197,23 +197,28 @@
             </div>
           </div>
 
+          <!-- Flight Search Links Bar -->
           <div class="modal-search-bar">
-            <span class="search-label">Track flight:</span>
-            <a id="m-google-search-btn" href="#" target="_blank" class="search-link" title="Search flight on Google">
+            <span class="search-label">Vyhľadať let:</span>
+            <a id="m-google-search-btn" href="#" target="_blank" class="search-link" title="Hľadať na Google">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
               <span>Google</span>
             </a>
-            <a id="m-flightaware-search-btn" href="#" target="_blank" class="search-link" title="Search flight on FlightAware">
+            <a id="m-flightaware-search-btn" href="#" target="_blank" class="search-link" title="Hľadať na FlightAware">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
               <span>FlightAware</span>
             </a>
-            <a id="m-flightradar-search-btn" href="#" target="_blank" class="search-link" title="Search flight on Flightradar24">
+            <a id="m-flightradar-search-btn" href="#" target="_blank" class="search-link" title="Hľadať na Flightradar24">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M12 2v20"/><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4"/></svg>
-              <span>FR24</span>
+              <span>Flightradar24</span>
             </a>
-            <a id="m-adsb-search-btn" href="#" target="_blank" class="search-link" title="Search flight on ADSB.fi">
+            <a id="m-adsb-search-btn" href="#" target="_blank" class="search-link" title="Hľadať na ADSB.fi">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <span>ADSB.fi</span>
+            </a>
+            <a id="m-edigla-search-btn" href="https://edi-gla.co.uk" target="_blank" class="search-link" title="Databáza letových plánov EDI-GLA">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+              <span>EDI-GLA</span>
             </a>
           </div>
 
@@ -232,7 +237,49 @@
               <div class="raw-metar" id="m-arr-metar-raw">No METAR available</div>
             </div>
 
-            <!-- Route & Dispatch -->
+            <!-- Departure Times -->
+            <div class="modal-section times-section m-dep-times">
+              <h3>Departure Times</h3>
+              <div class="modal-time-row">
+                <span class="time-label">Local Time:</span>
+                <span id="m-dep-time-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">UTC Time:</span>
+                <span id="m-dep-time-utc" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">Your Local:</span>
+                <span id="m-dep-time-your-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row" style="opacity: 0.8; font-size: 0.9em;">
+                <span class="time-label">Countdown:</span>
+                <span id="m-dep-countdown" class="time-value" style="color: var(--text-muted); font-weight: 300;">--:--</span>
+              </div>
+            </div>
+
+            <!-- Arrival Times -->
+            <div class="modal-section times-section m-arr-times">
+              <h3>Arrival Times</h3>
+              <div class="modal-time-row">
+                <span class="time-label">Local Time:</span>
+                <span id="m-arr-time-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">UTC Time:</span>
+                <span id="m-arr-time-utc" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row">
+                <span class="time-label">Your Local:</span>
+                <span id="m-arr-time-your-local" class="time-value">--:--</span>
+              </div>
+              <div class="modal-time-row" style="opacity: 0.8; font-size: 0.9em;">
+                <span class="time-label">Countdown:</span>
+                <span id="m-arr-countdown" class="time-value" style="color: var(--text-muted); font-weight: 300;">--:--</span>
+              </div>
+            </div>
+
+            <!-- Dispatch & Routing (Spans 2 columns) -->
             <div class="modal-section route-section m-route-box">
               <h3>Dispatch &amp; Routing</h3>
 
@@ -269,6 +316,13 @@
               <!-- Route Map -->
               <div id="m-route-map"></div>
 
+              <!-- Source Attribution -->
+              <div id="m-route-source" class="route-source hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Trasa z <a id="m-route-source-link" href="#" target="_blank">—</a>
+                <span id="m-route-source-cycle"></span>
+              </div>
+
               <!-- Action Buttons -->
               <div class="route-buttons">
                 <a id="m-simbrief-btn" href="#" target="_blank" class="btn-primary simbrief-btn">Generate Route on SimBrief</a>
@@ -276,21 +330,21 @@
               </div>
             </div>
 
-            <!-- Departure ATC -->
+            <!-- Departure VATSIM ATC -->
             <div class="m-dep-atc-container">
-              <div class="modal-section vatsim-section">
+              <div class="modal-section vatsim-section" style="flex: 1; display: flex; flex-direction: column;">
                 <h3>Departure ATC</h3>
-                <div id="m-dep-vatsim-atc" class="vatsim-atc-list"></div>
+                <div id="m-dep-vatsim-atc" class="vatsim-atc-list" style="flex: 1;"></div>
                 <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right; margin-top: 0.5rem; opacity: 0.7;">Data provided by VATSIM</div>
               </div>
               <a id="m-dep-liveatc-btn" href="#" target="_blank" class="btn-liveatc">Tune LiveATC</a>
             </div>
 
-            <!-- Arrival ATC -->
+            <!-- Arrival VATSIM ATC -->
             <div class="m-arr-atc-container">
-              <div class="modal-section vatsim-section">
+              <div class="modal-section vatsim-section" style="flex: 1; display: flex; flex-direction: column;">
                 <h3>Arrival ATC</h3>
-                <div id="m-arr-vatsim-atc" class="vatsim-atc-list"></div>
+                <div id="m-arr-vatsim-atc" class="vatsim-atc-list" style="flex: 1;"></div>
                 <div style="font-size: 0.65rem; color: var(--text-muted); text-align: right; margin-top: 0.5rem; opacity: 0.7;">Data provided by VATSIM</div>
               </div>
               <a id="m-arr-liveatc-btn" href="#" target="_blank" class="btn-liveatc">Tune LiveATC</a>

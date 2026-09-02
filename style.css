@@ -15,14 +15,65 @@
   --color-accent-rgb: 0, 189, 177;
   --input-bg: #FFFFFF;
   --input-border: #D1D5DB;
-  --badge-bg: #E5E7EB;
+  --badge-bg: rgba(0, 0, 0, 0.06);
   --callsign-bg: rgba(0, 189, 177, 0.12);
   --callsign-color: #008B82;
   --callsign-border: rgba(0, 189, 177, 0.3);
   --card-bg: rgba(255, 255, 255, 0.9);
   --card-border: rgba(0, 0, 0, 0.08);
-  --card-hover-border: var(--color-accent);
+  --card-hover: rgba(255, 255, 255, 1);
   --border-radius: 12px;
+
+  /* --- LIGHT MODE (DAY) AIRLINE BADGES & STRIPS --- */
+  --badge-ryr-bg: #eff6ff;
+  --badge-ryr-color: #1e3a8a;
+  --badge-ryr-border: #3b82f6;
+  --badge-ryr-strip: #ca8a04;
+
+  --badge-wzz-bg: #fdf2f8;
+  --badge-wzz-color: #9d174d;
+  --badge-wzz-border: #ec4899;
+  --badge-wzz-strip: #db2777;
+
+  --badge-ezy-bg: #fff7ed;
+  --badge-ezy-color: #c2410c;
+  --badge-ezy-border: #f97316;
+  --badge-ezy-strip: #ea580c;
+
+  --badge-dlh-bg: #fefce8;
+  --badge-dlh-color: #854d0e;
+  --badge-dlh-border: #eab308;
+  --badge-dlh-strip: #ca8a04;
+
+  --badge-baw-bg: #eff6ff;
+  --badge-baw-color: #1e3a8a;
+  --badge-baw-border: #ef4444;
+  --badge-baw-strip: #dc2626;
+
+  --badge-klm-bg: #ecfeff;
+  --badge-klm-color: #0e7490;
+  --badge-klm-border: #06b6d4;
+  --badge-klm-strip: #0891b2;
+
+  --badge-tvs-bg: #fff7ed;
+  --badge-tvs-color: #9a3412;
+  --badge-tvs-border: #f97316;
+  --badge-tvs-strip: #ea580c;
+
+  --badge-aua-bg: #fef2f2;
+  --badge-aua-color: #991b1b;
+  --badge-aua-border: #ef4444;
+  --badge-aua-strip: #dc2626;
+
+  --badge-uae-bg: #fef2f2;
+  --badge-uae-color: #991b1b;
+  --badge-uae-border: #d97706;
+  --badge-uae-strip: #b45309;
+
+  --badge-qtr-bg: #fdf2f8;
+  --badge-qtr-color: #701a75;
+  --badge-qtr-border: #a21caf;
+  --badge-qtr-strip: #86198f;
 }
 
 [data-theme="dark"] {
@@ -38,13 +89,64 @@
   --color-accent-rgb: 255, 140, 0;
   --input-bg: #2D3032;
   --input-border: #4B5563;
-  --badge-bg: #374151;
+  --badge-bg: rgba(255, 255, 255, 0.08);
   --callsign-bg: rgba(255, 140, 0, 0.15);
   --callsign-color: #FFA726;
   --callsign-border: rgba(255, 140, 0, 0.35);
   --card-bg: rgba(36, 38, 39, 0.85);
   --card-border: rgba(255, 255, 255, 0.08);
-  --card-hover-border: var(--color-accent);
+  --card-hover: rgba(45, 48, 50, 0.95);
+
+  /* --- DARK MODE (NIGHT) AIRLINE BADGES & STRIPS --- */
+  --badge-ryr-bg: rgba(59, 130, 246, 0.18);
+  --badge-ryr-color: #93c5fd;
+  --badge-ryr-border: rgba(59, 130, 246, 0.45);
+  --badge-ryr-strip: #facc15;
+
+  --badge-wzz-bg: rgba(236, 72, 153, 0.18);
+  --badge-wzz-color: #f472b6;
+  --badge-wzz-border: rgba(236, 72, 153, 0.45);
+  --badge-wzz-strip: #ec4899;
+
+  --badge-ezy-bg: rgba(249, 115, 22, 0.18);
+  --badge-ezy-color: #fb923c;
+  --badge-ezy-border: rgba(249, 115, 22, 0.45);
+  --badge-ezy-strip: #f97316;
+
+  --badge-dlh-bg: rgba(254, 240, 138, 0.14);
+  --badge-dlh-color: #fde047;
+  --badge-dlh-border: rgba(250, 204, 21, 0.45);
+  --badge-dlh-strip: #eab308;
+
+  --badge-baw-bg: rgba(59, 130, 246, 0.18);
+  --badge-baw-color: #60a5fa;
+  --badge-baw-border: rgba(239, 68, 68, 0.45);
+  --badge-baw-strip: #ef4444;
+
+  --badge-klm-bg: rgba(6, 182, 212, 0.18);
+  --badge-klm-color: #22d3ee;
+  --badge-klm-border: rgba(6, 182, 212, 0.45);
+  --badge-klm-strip: #06b6d4;
+
+  --badge-tvs-bg: rgba(249, 115, 22, 0.18);
+  --badge-tvs-color: #fb923c;
+  --badge-tvs-border: rgba(249, 115, 22, 0.45);
+  --badge-tvs-strip: #f97316;
+
+  --badge-aua-bg: rgba(239, 68, 68, 0.18);
+  --badge-aua-color: #f87171;
+  --badge-aua-border: rgba(239, 68, 68, 0.45);
+  --badge-aua-strip: #ef4444;
+
+  --badge-uae-bg: rgba(220, 38, 38, 0.18);
+  --badge-uae-color: #fca5a5;
+  --badge-uae-border: rgba(217, 119, 6, 0.45);
+  --badge-uae-strip: #dc2626;
+
+  --badge-qtr-bg: rgba(162, 28, 175, 0.22);
+  --badge-qtr-color: #f0abfc;
+  --badge-qtr-border: rgba(162, 28, 175, 0.45);
+  --badge-qtr-strip: #a21caf;
 }
 
 * {
@@ -63,7 +165,7 @@ body {
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
-/* Scrollbar */
+/* Scrollbars */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -226,7 +328,7 @@ h1 {
   background: rgba(239, 68, 68, 0.08);
 }
 
-/* Rows and Grids */
+/* Filter Rows and Grids */
 .vff-filter-row {
   width: 100%;
 }
@@ -325,7 +427,7 @@ h1 {
   transform: rotate(180deg);
 }
 
-/* Days of Week */
+/* Operating Days */
 .vff-days-group {
   display: flex;
   gap: 0.35rem;
@@ -395,7 +497,7 @@ h1 {
   box-shadow: 0 0 0 2px rgba(var(--color-accent-rgb), 0.25);
 }
 
-/* Custom Multi-Select */
+/* Custom Searchable Multi-Select */
 .vff-select-wrap {
   position: relative;
   width: 100%;
@@ -617,7 +719,7 @@ h1 {
   color: #D1D5DB;
 }
 
-/* Main Results & Flight Grid */
+/* Flight Card & Airline Badges (Original Color Schemes) */
 .vff-main-content {
   width: 100%;
   display: flex;
@@ -636,20 +738,57 @@ h1 {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
-  padding: 1.25rem;
+  padding: 1.3rem;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s, border-color 0.2s;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
 }
 
 .flight-card:hover {
   transform: translateY(-3px);
-  border-color: var(--card-hover-border);
+  border-color: var(--color-accent);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
 }
+
+/* Airline Card Left Borders */
+.airline-ryanair { border-left: 4px solid var(--badge-ryr-strip) !important; }
+.airline-wizz-air { border-left: 4px solid var(--badge-wzz-strip) !important; }
+.airline-easyjet { border-left: 4px solid var(--badge-ezy-strip) !important; }
+.airline-lufthansa { border-left: 4px solid var(--badge-dlh-strip) !important; }
+.airline-british-airways { border-left: 4px solid var(--badge-baw-strip) !important; }
+.airline-klm { border-left: 4px solid var(--badge-klm-strip) !important; }
+.airline-smartwings { border-left: 4px solid var(--badge-tvs-strip) !important; }
+.airline-austrian-airlines { border-left: 4px solid var(--badge-aua-strip) !important; }
+.airline-emirates { border-left: 4px solid var(--badge-uae-strip) !important; }
+.airline-qatar-airways { border-left: 4px solid var(--badge-qtr-strip) !important; }
+
+/* Airline Pills */
+.fc-airline-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-ryr { background: var(--badge-ryr-bg); color: var(--badge-ryr-color); border: 1px solid var(--badge-ryr-border); }
+.badge-wzz { background: var(--badge-wzz-bg); color: var(--badge-wzz-color); border: 1px solid var(--badge-wzz-border); }
+.badge-ezy { background: var(--badge-ezy-bg); color: var(--badge-ezy-color); border: 1px solid var(--badge-ezy-border); }
+.badge-dlh { background: var(--badge-dlh-bg); color: var(--badge-dlh-color); border: 1px solid var(--badge-dlh-border); }
+.badge-baw { background: var(--badge-baw-bg); color: var(--badge-baw-color); border: 1px solid var(--badge-baw-border); }
+.badge-klm { background: var(--badge-klm-bg); color: var(--badge-klm-color); border: 1px solid var(--badge-klm-border); }
+.badge-tvs { background: var(--badge-tvs-bg); color: var(--badge-tvs-color); border: 1px solid var(--badge-tvs-border); }
+.badge-aua { background: var(--badge-aua-bg); color: var(--badge-aua-color); border: 1px solid var(--badge-aua-border); }
+.badge-uae { background: var(--badge-uae-bg); color: var(--badge-uae-color); border: 1px solid var(--badge-uae-border); }
+.badge-qtr { background: var(--badge-qtr-bg); color: var(--badge-qtr-color); border: 1px solid var(--badge-qtr-border); }
 
 .fc-header {
   display: flex;
@@ -660,14 +799,15 @@ h1 {
 .fc-identifiers {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .badge {
   background: var(--badge-bg);
   padding: 0.2rem 0.55rem;
   border-radius: 4px;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   color: var(--text-main);
@@ -677,6 +817,18 @@ h1 {
   background: var(--callsign-bg);
   color: var(--callsign-color);
   border: 1px solid var(--callsign-border);
+}
+
+.badge.homebase-badge {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-weight: 700;
+}
+
+[data-theme="dark"] .badge.homebase-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34D399;
 }
 
 .fc-route {
@@ -775,30 +927,6 @@ h1 {
   color: #FFFFFF;
 }
 
-/* Airline Badges */
-.fc-airline-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.badge-ryr { background: #003580; color: #FFFFFF; }
-.badge-wzz { background: #C6007E; color: #FFFFFF; }
-.badge-ezy { background: #FF6600; color: #FFFFFF; }
-.badge-dlh { background: #FEFCE8; color: #854D0E; border: 1px solid #EAB308; }
-[data-theme="dark"] .badge-dlh { background: #3B3814; color: #FDE047; border: 1px solid #FDE047; }
-.badge-baw { background: #075AAA; color: #FFFFFF; }
-.badge-klm { background: #00A1DE; color: #FFFFFF; }
-.badge-tvs { background: #1D70B8; color: #FFFFFF; }
-.badge-aua { background: #D81E05; color: #FFFFFF; }
-.badge-uae { background: #D71921; color: #FFFFFF; }
-.badge-qtr { background: #5C0632; color: #FFFFFF; }
-
 /* Pagination Bar */
 .pagination-container {
   display: flex;
@@ -873,29 +1001,42 @@ h1 {
   font-weight: 700;
 }
 
-/* Modals & Globe Map */
+/* ORIGINAL RICH FLIGHT MODAL (RESTORED COMPLETE) */
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
-  z-index: 9999;
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.3s ease;
   padding: 1.5rem;
 }
 
-.modal-overlay.hidden { display: none !important; }
+.modal-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  display: none !important;
+}
 
 .modal-content {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
   width: 100%;
-  max-width: 900px;
+  max-width: 950px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  padding: 2rem;
-  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  padding: 2.2rem;
+  color: var(--text-main);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .modal-close {
@@ -904,16 +1045,17 @@ h1 {
   right: 1.2rem;
   background: var(--input-bg);
   border: 1px solid var(--input-border);
+  color: var(--text-main);
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  color: var(--text-main);
-  font-size: 1.4rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s;
+  font-size: 1.4rem;
+  transition: all 0.2s ease;
+  z-index: 10;
 }
 
 .modal-close:hover {
@@ -922,11 +1064,334 @@ h1 {
   border-color: #EF4444;
 }
 
-.globe-modal-content {
-  max-width: 1200px;
-  height: 85vh;
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--panel-border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.m-header-title h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.flight-number-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.2rem;
+}
+
+.m-route {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Modal Search Bar */
+.modal-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.search-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.search-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.search-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Modal Grid */
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.modal-section {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--panel-border);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+[data-theme="dark"] .modal-section {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.modal-section h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-section h3 span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* METAR Graphics */
+.metar-graphic {
   display: flex;
   flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.metar-bar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.raw-metar {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  background: var(--input-bg);
+  padding: 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  color: var(--text-main);
+  word-break: break-all;
+}
+
+/* Modal Times Rows */
+.modal-time-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  background: var(--badge-bg);
+  border-radius: 6px;
+  margin-bottom: 0.4rem;
+  font-size: 0.84rem;
+}
+
+.modal-time-row .time-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.modal-time-row .time-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Dispatch & Routing Box */
+.m-route-box {
+  grid-column: span 2;
+}
+
+.flight-stats-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.fstat {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.fstat label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.route-info-box {
+  margin: 0.8rem 0;
+}
+
+.route-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.route-string-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  background: var(--input-bg);
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--input-border);
+  word-break: break-all;
+}
+
+#m-route-map {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  margin: 1rem 0;
+  border: 1px solid var(--panel-border);
+}
+
+.route-buttons {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.3rem;
+  background: var(--color-accent);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.3rem;
+  background: var(--input-bg);
+  color: var(--text-main);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* ATC Containers */
+.m-dep-atc-container, .m-arr-atc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vatsim-atc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.atc-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.45rem 0.6rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.atc-callsign { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #10B981; }
+.atc-freq { font-family: 'JetBrains Mono', monospace; color: var(--text-muted); }
+
+.btn-liveatc {
+  display: block;
+  text-align: center;
+  padding: 0.45rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-liveatc:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.modal-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(var(--color-accent-rgb), 0.2);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Globe Map Modal */
+.globe-modal-content {
+  width: 92vw !important;
+  max-width: 1300px !important;
+  height: 85vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 1.5rem !important;
 }
 
 .globe-modal-header {
@@ -964,205 +1429,7 @@ h1 {
   text-align: center;
 }
 
-/* Flight Modal Details */
-.m-header-title h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--color-accent);
-}
-
-.flight-number-sub {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.m-route {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin: 0.5rem 0 1rem 0;
-}
-
-.modal-search-bar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-}
-
-.search-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.search-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.35rem 0.75rem;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  color: var(--text-main);
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 600;
-  transition: all 0.2s;
-}
-
-.search-link:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.modal-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-}
-
-.modal-section {
-  padding: 1.2rem;
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--panel-border);
-  border-radius: 8px;
-}
-
-[data-theme="dark"] .modal-section {
-  background: rgba(0, 0, 0, 0.25);
-}
-
-.modal-section h3 {
-  font-size: 0.95rem;
-  color: var(--color-accent);
-  margin-bottom: 0.6rem;
-}
-
-.raw-metar {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--text-main);
-  background: var(--input-bg);
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid var(--input-border);
-  margin-top: 0.5rem;
-}
-
-.m-route-box {
-  grid-column: span 2;
-}
-
-.flight-stats-row {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.fstat {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-}
-
-.fstat label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 400;
-}
-
-.route-info-box {
-  margin: 0.8rem 0;
-}
-
-.route-string-content {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.82rem;
-  background: var(--input-bg);
-  padding: 0.6rem;
-  border-radius: 6px;
-  border: 1px solid var(--input-border);
-  word-break: break-all;
-}
-
-#m-route-map {
-  width: 100%;
-  height: 240px;
-  border-radius: 8px;
-  margin-top: 0.8rem;
-}
-
-.route-buttons {
-  display: flex;
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem 1.2rem;
-  background: var(--color-accent);
-  color: #FFFFFF;
-  border: none;
-  border-radius: 6px;
-  font-weight: 700;
-  font-size: 0.88rem;
-  text-decoration: none;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.btn-primary:hover { opacity: 0.9; }
-
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem 1.2rem;
-  background: var(--input-bg);
-  color: var(--text-main);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.88rem;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-.btn-liveatc {
-  display: block;
-  margin-top: 0.5rem;
-  text-align: center;
-  padding: 0.4rem;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 6px;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
-.btn-liveatc:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-}
-
-/* Footer & Toast */
+/* App Footer */
 .app-footer {
   margin-top: 2rem;
   padding: 1.2rem;
@@ -1204,13 +1471,9 @@ h1 {
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-  .vff-grid-primary {
-    grid-template-columns: 1fr 1fr;
-  }
+  .vff-grid-primary { grid-template-columns: 1fr 1fr; }
   .vff-field-swap { display: none; }
-  .vff-grid-secondary {
-    grid-template-columns: 1fr;
-  }
+  .vff-grid-secondary { grid-template-columns: 1fr; }
   .modal-grid { grid-template-columns: 1fr; }
   .m-route-box { grid-column: span 1; }
 }
