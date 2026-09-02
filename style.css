@@ -1607,3 +1607,18 @@ h1 {
 .theme-dark .leaflet-container {
   background: #0f172a !important;
 }
+
+/* Leaflet Map Day / Night Styling */
+[data-theme="dark"] .leaflet-tile,
+.theme-dark .leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.35) !important;
+}
+
+[data-theme="light"] .leaflet-tile,
+.theme-light .leaflet-tile {
+  filter: none !important;
+}
+
+.leaflet-container {
+  background: var(--bg-main) !important;
+}

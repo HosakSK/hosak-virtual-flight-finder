@@ -77,7 +77,7 @@ const msAirline = document.getElementById('ms-airline');
 const msAircraft = document.getElementById('ms-aircraft');
 
 // Buttons & Modals
-const btnThemeToggle = document.getElementById('btn-theme-toggle');
+const btnThemeToggle = document.getElementById('theme-toggle') || document.getElementById('btn-theme-toggle');
 const btnGlobeMap = document.getElementById('btn-globe-map');
 const globeModal = document.getElementById('globe-modal');
 const globeModalClose = document.getElementById('globe-modal-close');
@@ -768,30 +768,18 @@ function initGlobeMap() {
   const container = document.getElementById('globe-map');
   if (!container) return;
 
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                 document.body.classList.contains('theme-dark');
-  
-  const tileUrl = isDark
-    ? 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-    : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
-
   if (!globeMap) {
     globeMap = L.map('globe-map', {
       center: [48.17, 17.21],
       zoom: 4,
       minZoom: 2,
-      maxZoom: 16
+      maxZoom: 18
     });
 
-    L.tileLayer(tileUrl, {
-      attribution: '&copy; Esri, HERE, Garmin, OpenStreetMap',
-      maxZoom: 16
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 18
     }).addTo(globeMap);
-  } else {
-    globeMap.eachLayer(layer => {
-      if (layer instanceof L.TileLayer) globeMap.removeLayer(layer);
-    });
-    L.tileLayer(tileUrl, { maxZoom: 16 }).addTo(globeMap);
   }
 
   globeMap.invalidateSize();
@@ -800,24 +788,43 @@ function initGlobeMap() {
   globePolylines.forEach(layer => globeMap.removeLayer(layer));
   globePolylines = [];
 
-  // Add route lines for current filtered flights
-  filteredFlights.slice(0, 300).forEach(f => {
+  // Draw ALL unique route pairs to show full network coverage
+  const seenRoutes = new Map();
+  filteredFlights.forEach(f => {
+    const depIcao = f.dep_icao;
+    const arrIcao = f.arr_icao;
+    if (!depIcao || !arrIcao) return;
+    const key = depIcao < arrIcao ? depIcao + '_' + arrIcao : arrIcao + '_' + depIcao;
+    if (!seenRoutes.has(key)) {
+      seenRoutes.set(key, f);
+    }
+  });
+
+  const bounds = [];
+  seenRoutes.forEach(f => {
     const depLat = f.dep_lat || f.departure_lat;
     const depLon = f.dep_lon || f.departure_lon;
     const arrLat = f.arr_lat || f.arrival_lat;
     const arrLon = f.arr_lon || f.arrival_lon;
 
     if (depLat && depLon && arrLat && arrLon) {
+      bounds.push([depLat, depLon], [arrLat, arrLon]);
       const line = L.polyline([[depLat, depLon], [arrLat, arrLon]], {
-        color: '#00BDB1',
-        weight: 1.5,
-        opacity: 0.4
+        color: '#f97316',
+        weight: 1.8,
+        opacity: 0.6
       });
-      line.bindPopup(`<strong>${escapeHtml(f.callsign || f.flight_number)}</strong>: ${f.dep_icao} ➔ ${f.arr_icao} (${f.aircraft_type || 'B738'})`);
+      line.bindPopup(`<strong>${escapeHtml(f.airline)}</strong>: ${f.dep_icao} (${f.dep_city || ''}) ➔ ${f.arr_icao} (${f.arr_city || ''})<br><span style="font-size:0.75rem; color:#888;">${f.aircraft_type || 'B738'} • ${f.distance_nm || '—'} NM</span>`);
       line.addTo(globeMap);
       globePolylines.push(line);
     }
   });
+
+  if (bounds.length > 0) {
+    try {
+      globeMap.fitBounds(bounds, { padding: [40, 40] });
+    } catch(e) {}
+  }
 }
 
 // ----------------------------------------------------
@@ -952,16 +959,9 @@ function initRouteMap(flight) {
       [arrLat, arrLon]
     ], { padding: [30, 30] });
 
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                   document.body.classList.contains('theme-dark');
-    
-    const tileUrl = isDark
-      ? 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'
-      : 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}';
-
-    L.tileLayer(tileUrl, {
-      attribution: '&copy; Esri, OpenStreetMap',
-      maxZoom: 16
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 18
     }).addTo(leafletMap);
 
     L.marker([depLat, depLon]).addTo(leafletMap).bindPopup(`<strong>${flight.dep_icao}</strong> (${flight.dep_city || ''})`);
