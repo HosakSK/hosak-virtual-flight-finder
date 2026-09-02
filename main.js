@@ -744,11 +744,11 @@ function applyFilters() {
     return true;
   });
 
-  // Sort Calculations
+  // Sort Calculations strictly in UTC (aviation universal time)
   const now = new Date();
-  const jsDay = now.getDay();
-  const currentIsoDay = jsDay === 0 ? 7 : jsDay;
-  const currentTotalMins = now.getHours() * 60 + now.getMinutes();
+  const jsUtcDay = now.getUTCDay();
+  const currentIsoDay = jsUtcDay === 0 ? 7 : jsUtcDay;
+  const currentUtcMins = now.getUTCHours() * 60 + now.getUTCMinutes();
 
   function parseMins(timeStr) {
     if (!timeStr) return 0;
@@ -758,10 +758,10 @@ function applyFilters() {
 
   function getUpcomingOffsetMins(flight) {
     const flightDay = flight.day_of_operation === 0 ? 7 : (flight.day_of_operation || currentIsoDay);
-    const flightMins = parseMins(flight.dep_time_local);
+    const flightMins = parseMins(flight.dep_time_utc || flight.dep_time_local);
     let daysDiff = (flightDay - currentIsoDay + 7) % 7;
     
-    if (daysDiff === 0 && flightMins < currentTotalMins) {
+    if (daysDiff === 0 && flightMins < currentUtcMins) {
       daysDiff = 7;
     }
     return daysDiff * 1440 + flightMins;
@@ -772,7 +772,7 @@ function applyFilters() {
   } else if (sortOption === 'duration-desc') {
     filteredFlights.sort((a, b) => b.duration_minutes - a.duration_minutes);
   } else if (sortOption === 'time') {
-    filteredFlights.sort((a, b) => (a.dep_time_local || '99:99').localeCompare(b.dep_time_local || '99:99'));
+    filteredFlights.sort((a, b) => (a.dep_time_utc || a.dep_time_local || '99:99').localeCompare(b.dep_time_utc || b.dep_time_local || '99:99'));
   } else {
     // Default 'upcoming' Live Schedule
     filteredFlights.sort((a, b) => getUpcomingOffsetMins(a) - getUpcomingOffsetMins(b));
@@ -837,8 +837,8 @@ function renderFlights() {
 
       <div class="fc-route">
         <div class="fc-airport fc-dep">
-          <span class="fc-time">${escapeHtml(f.dep_time_local || '08:00')}</span>
-          <span class="fc-utc">${escapeHtml(f.dep_time_utc || '06:00')} UTC</span>
+          <span class="fc-time">${escapeHtml(f.dep_time_utc || '06:00')} <small style="font-size: 0.65em; font-weight: normal; opacity: 0.85;">UTC</small></span>
+          <span class="fc-utc">${escapeHtml(f.dep_time_local || '08:00')} Local</span>
           <span class="fc-code">${escapeHtml(f.dep_icao)} ${f.dep_iata ? '(' + escapeHtml(f.dep_iata) + ')' : ''}</span>
           <span class="fc-city">${escapeHtml(f.dep_city || '')}</span>
         </div>
@@ -846,8 +846,8 @@ function renderFlights() {
         <div class="fc-arrow">➔</div>
 
         <div class="fc-airport fc-arr">
-          <span class="fc-time">${escapeHtml(f.arr_time_local || '10:00')}</span>
-          <span class="fc-utc">${escapeHtml(f.arr_time_utc || '08:00')} UTC</span>
+          <span class="fc-time">${escapeHtml(f.arr_time_utc || '08:00')} <small style="font-size: 0.65em; font-weight: normal; opacity: 0.85;">UTC</small></span>
+          <span class="fc-utc">${escapeHtml(f.arr_time_local || '10:00')} Local</span>
           <span class="fc-code">${escapeHtml(f.arr_icao)} ${f.arr_iata ? '(' + escapeHtml(f.arr_iata) + ')' : ''}</span>
           <span class="fc-city">${escapeHtml(f.arr_city || '')}</span>
         </div>
