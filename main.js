@@ -848,12 +848,16 @@ function renderFlights() {
         <div class="fc-airline-pill ${badgeClass}">
           ${escapeHtml(f.airline || 'Ryanair')}
         </div>
-        <div class="fc-identifiers">
-          <span class="badge day-badge" title="Operating Day">${escapeHtml(getDayShortName(f.day_of_operation))}</span>
-          <span class="badge homebase-badge" title="Homebase Airport">Base: ${escapeHtml(f.homebase || f.dep_icao)}</span>
-          <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
-          ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
-          <span class="badge" style="background: rgba(var(--color-accent-rgb), 0.15); color: var(--color-accent);">${escapeHtml(f.aircraft_type || 'B738')}</span>
+        <div class="fc-identifiers-group">
+          <div class="fc-identifiers-row">
+            <span class="badge day-badge" title="Operating Day">${escapeHtml(getDayShortName(f.day_of_operation))}</span>
+            <span class="badge homebase-badge" title="Homebase Airport">Base: ${escapeHtml(f.homebase || f.dep_icao)}</span>
+          </div>
+          <div class="fc-identifiers-row">
+            <span class="badge callsign">${escapeHtml(f.callsign || f.flight_number)}</span>
+            ${f.flight_number && f.flight_number !== f.callsign ? `<span class="badge">${escapeHtml(f.flight_number)}</span>` : ''}
+            <span class="badge aircraft-badge">${escapeHtml(f.aircraft_type || 'B738')}</span>
+          </div>
         </div>
       </div>
 

@@ -1522,3 +1522,51 @@ h1 {
   border: 1px solid rgba(var(--color-accent-rgb), 0.3);
   font-weight: 700;
 }
+
+.fc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.fc-airline-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.35rem 0.75rem;
+  min-height: 52px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  max-width: 140px;
+  line-height: 1.25;
+  flex-shrink: 0;
+}
+
+.fc-identifiers-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 0.35rem;
+  min-height: 52px;
+}
+
+.fc-identifiers-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex-wrap: nowrap;
+}
+
+.badge.aircraft-badge {
+  background: rgba(var(--color-accent-rgb), 0.15);
+  color: var(--color-accent);
+  border: 1px solid rgba(var(--color-accent-rgb), 0.3);
+  font-weight: 700;
+}
