@@ -228,7 +228,8 @@ function renderAirlineMultiSelect(searchQuery = '') {
           return `
             <div class="ms-option-item ${checked ? 'selected' : ''}" data-id="${escapeHtml(a.id)}">
               <input type="checkbox" ${checked} />
-              <span class="ms-option-label">${escapeHtml(a.name)} (${a.icao})</span>
+              <span class="ms-option-label">${escapeHtml(a.name)} ${a.icao ? '(' + a.icao + ')' : ''}</span>
+              <span class="badge" style="font-size: 0.7rem; margin-left: auto; opacity: 0.7;">${a.count || ''}</span>
             </div>
           `;
         }).join('')}
