@@ -2413,3 +2413,50 @@ path:focus {
   color: #38bdf8;
   border-color: rgba(56, 189, 248, 0.3);
 }
+
+
+/* Clean Transparent Route / Waypoints Display (Zero Extra Dark Nested BG) */
+.route-info-box {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0.8rem 0 1.2rem 0 !important;
+  box-shadow: none !important;
+}
+
+[data-theme="dark"] .route-info-box,
+.theme-dark .route-info-box {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.route-label {
+  font-size: 0.76rem !important;
+  font-weight: 700 !important;
+  color: var(--color-primary, #0ea5e9) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  display: block !important;
+  margin-bottom: 0.35rem !important;
+}
+
+.route-string-content {
+  font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
+  font-size: 0.92rem !important;
+  line-height: 1.6 !important;
+  background: transparent !important;
+  color: var(--text-main) !important;
+  padding: 0.2rem 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  word-break: break-word !important;
+}
+
+[data-theme="dark"] .route-string-content,
+.theme-dark .route-string-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #f1f5f9 !important;
+}
