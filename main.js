@@ -16,51 +16,129 @@ let globeMap = null;
 let globePolylines = [];
 let countdownTimer = null;
 
-// Airline Definitions with Fleet data for cascading filter
-const AIRLINE_DEFINITIONS = [
-  { id: 'Ryanair', name: 'Ryanair', icao: 'RYR', iata: 'FR', aircraft: ['B738', 'B38M'] },
-  { id: 'Wizz Air', name: 'Wizz Air', icao: 'WZZ', iata: 'W6', aircraft: ['A320', 'A321', 'A21N'] },
-  { id: 'Lufthansa', name: 'Lufthansa', icao: 'DLH', iata: 'LH', aircraft: ['A319', 'A320', 'A321', 'A21N', 'A333', 'A343', 'A359', 'B744', 'B748', 'B789'] },
-  { id: 'Austrian Airlines', name: 'Austrian Airlines', icao: 'AUA', iata: 'OS', aircraft: ['A320', 'A321', 'A20N', 'B763', 'B772', 'B789'] },
-  { id: 'easyJet', name: 'easyJet', icao: 'EZY', iata: 'U2', aircraft: ['A319', 'A320', 'A321', 'A20N', 'A21N'] },
-  { id: 'British Airways', name: 'British Airways', icao: 'BAW', iata: 'BA', aircraft: ['A319', 'A320', 'A321', 'A20N', 'A21N', 'A351', 'A388', 'B772', 'B77W', 'B788', 'B789', 'B78X'] },
-  { id: 'KLM', name: 'KLM Royal Dutch Airlines', icao: 'KLM', iata: 'KL', aircraft: ['E190', 'E295', 'B737', 'B738', 'B739', 'A321', 'A21N', 'A332', 'A333', 'B772', 'B77W', 'B789', 'B78X'] },
-  { id: 'Smartwings', name: 'Smartwings', icao: 'TVS', iata: 'QS', aircraft: ['B737', 'B738', 'B739', 'B38M'] },
-  { id: 'Emirates', name: 'Emirates', icao: 'UAE', iata: 'EK', aircraft: ['A388', 'B772', 'B77W', 'A359'] },
-  { id: 'Qatar Airways', name: 'Qatar Airways', icao: 'QTR', iata: 'QR', aircraft: ['A320', 'A332', 'A333', 'A359', 'A351', 'A388', 'B772', 'B77W', 'B788', 'B789'] }
-];
+// Known Aircraft Metadata Catalog for standard categorization & aliases
+const AIRCRAFT_METADATA = {
+  // Boeing Narrowbody
+  'B737': { name: 'Boeing 737-700', category: 'Boeing Narrowbody', aliases: ['737', '737-700'] },
+  'B738': { name: 'Boeing 737-800', category: 'Boeing Narrowbody', aliases: ['737', '737-800', '800'] },
+  'B739': { name: 'Boeing 737-900', category: 'Boeing Narrowbody', aliases: ['737', '737-900', '900'] },
+  'B734': { name: 'Boeing 737-400', category: 'Boeing Narrowbody', aliases: ['737', '734'] },
+  'B733': { name: 'Boeing 737-300', category: 'Boeing Narrowbody', aliases: ['737', '733'] },
+  'B38M': { name: 'Boeing 737 MAX 8', category: 'Boeing Narrowbody', aliases: ['737', 'max', 'max 8', '738m', '7m8'] },
+  'B39M': { name: 'Boeing 737 MAX 9', category: 'Boeing Narrowbody', aliases: ['737', 'max', 'max 9', '739m', '7m9'] },
+  'B752': { name: 'Boeing 757-200', category: 'Boeing Narrowbody', aliases: ['757', '752'] },
+  'B753': { name: 'Boeing 757-300', category: 'Boeing Narrowbody', aliases: ['757', '753'] },
 
-// Complete Aircraft Definitions
-const AIRCRAFT_DEFINITIONS = [
-  { code: 'B737', name: 'Boeing 737-700', category: 'Boeing Narrowbody', aliases: ['737', '737-700'] },
-  { code: 'B738', name: 'Boeing 737-800', category: 'Boeing Narrowbody', aliases: ['737', '737-800'] },
-  { code: 'B739', name: 'Boeing 737-900', category: 'Boeing Narrowbody', aliases: ['737', '737-900'] },
-  { code: 'B38M', name: 'Boeing 737 MAX 8', category: 'Boeing Narrowbody', aliases: ['737', 'max', 'max 8', '738m'] },
+  // Airbus Narrowbody
+  'A318': { name: 'Airbus A318', category: 'Airbus Narrowbody', aliases: ['318'] },
+  'A319': { name: 'Airbus A319', category: 'Airbus Narrowbody', aliases: ['319'] },
+  'A320': { name: 'Airbus A320', category: 'Airbus Narrowbody', aliases: ['320'] },
+  'A321': { name: 'Airbus A321', category: 'Airbus Narrowbody', aliases: ['321'] },
+  'A20N': { name: 'Airbus A320neo', category: 'Airbus Narrowbody', aliases: ['320', 'neo', '320neo', 'a20n'] },
+  'A21N': { name: 'Airbus A321neo', category: 'Airbus Narrowbody', aliases: ['321', 'neo', '321neo', 'a21n'] },
+  'BCS1': { name: 'Airbus A220-100', category: 'Airbus Narrowbody', aliases: ['220', 'a220', 'bcs1', 'cseries'] },
+  'BCS3': { name: 'Airbus A220-300', category: 'Airbus Narrowbody', aliases: ['220', 'a220', 'bcs3', 'cseries'] },
 
-  { code: 'A319', name: 'Airbus A319', category: 'Airbus Narrowbody', aliases: ['319'] },
-  { code: 'A320', name: 'Airbus A320', category: 'Airbus Narrowbody', aliases: ['320'] },
-  { code: 'A321', name: 'Airbus A321', category: 'Airbus Narrowbody', aliases: ['321'] },
-  { code: 'A20N', name: 'Airbus A320neo', category: 'Airbus Narrowbody', aliases: ['320', 'neo', '320neo'] },
-  { code: 'A21N', name: 'Airbus A321neo', category: 'Airbus Narrowbody', aliases: ['321', 'neo', '321neo'] },
+  // Widebody Long-Haul
+  'A332': { name: 'Airbus A330-200', category: 'Widebody Long-Haul', aliases: ['330', '332'] },
+  'A333': { name: 'Airbus A330-300', category: 'Widebody Long-Haul', aliases: ['330', '333'] },
+  'A339': { name: 'Airbus A330-900neo', category: 'Widebody Long-Haul', aliases: ['330', '339', '330neo'] },
+  'A343': { name: 'Airbus A340-300', category: 'Widebody Long-Haul', aliases: ['340', '343'] },
+  'A346': { name: 'Airbus A340-600', category: 'Widebody Long-Haul', aliases: ['340', '346'] },
+  'A359': { name: 'Airbus A350-900', category: 'Widebody Long-Haul', aliases: ['350', '359', '350-900'] },
+  'A351': { name: 'Airbus A350-1000', category: 'Widebody Long-Haul', aliases: ['350', '351', '350-1000'] },
+  'A35K': { name: 'Airbus A350-1000', category: 'Widebody Long-Haul', aliases: ['350', '35k', '350-1000'] },
+  'A388': { name: 'Airbus A380-800', category: 'Widebody Long-Haul', aliases: ['380', 'a380', 'superjumbo'] },
+  'B744': { name: 'Boeing 747-400', category: 'Widebody Long-Haul', aliases: ['747', '747-400', 'queen'] },
+  'B748': { name: 'Boeing 747-8', category: 'Widebody Long-Haul', aliases: ['747', '747-8', 'queen'] },
+  'B763': { name: 'Boeing 767-300ER', category: 'Widebody Long-Haul', aliases: ['767', '763'] },
+  'B762': { name: 'Boeing 767-200', category: 'Widebody Long-Haul', aliases: ['767', '762'] },
+  'B764': { name: 'Boeing 767-400', category: 'Widebody Long-Haul', aliases: ['767', '764'] },
+  'B772': { name: 'Boeing 777-200ER', category: 'Widebody Long-Haul', aliases: ['777', '772'] },
+  'B773': { name: 'Boeing 777-300', category: 'Widebody Long-Haul', aliases: ['777', '773'] },
+  'B77W': { name: 'Boeing 777-300ER', category: 'Widebody Long-Haul', aliases: ['777', '77w', '773er'] },
+  'B77L': { name: 'Boeing 777-200LR / Cargo', category: 'Widebody Long-Haul', aliases: ['777', '77l'] },
+  'B788': { name: 'Boeing 787-8', category: 'Widebody Long-Haul', aliases: ['787', '788', 'dreamliner'] },
+  'B789': { name: 'Boeing 787-9', category: 'Widebody Long-Haul', aliases: ['787', '789', 'dreamliner'] },
+  'B78X': { name: 'Boeing 787-10', category: 'Widebody Long-Haul', aliases: ['787', '78x', '7810', 'dreamliner'] },
 
-  { code: 'A332', name: 'Airbus A330-200', category: 'Widebody Long-Haul', aliases: ['330', '332'] },
-  { code: 'A333', name: 'Airbus A330-300', category: 'Widebody Long-Haul', aliases: ['330', '333'] },
-  { code: 'A343', name: 'Airbus A340-300', category: 'Widebody Long-Haul', aliases: ['340', '343'] },
-  { code: 'A359', name: 'Airbus A350-900', category: 'Widebody Long-Haul', aliases: ['350', '359', '350-900'] },
-  { code: 'A351', name: 'Airbus A350-1000', category: 'Widebody Long-Haul', aliases: ['350', '351', '350-1000', 'a35k'] },
-  { code: 'A388', name: 'Airbus A380-800', category: 'Widebody Long-Haul', aliases: ['380', 'a380', 'superjumbo'] },
-  { code: 'B744', name: 'Boeing 747-400', category: 'Widebody Long-Haul', aliases: ['747', '747-400', 'queen'] },
-  { code: 'B748', name: 'Boeing 747-8', category: 'Widebody Long-Haul', aliases: ['747', '747-8', '748', 'queen'] },
-  { code: 'B763', name: 'Boeing 767-300ER', category: 'Widebody Long-Haul', aliases: ['767', '763'] },
-  { code: 'B772', name: 'Boeing 777-200ER', category: 'Widebody Long-Haul', aliases: ['777', '772'] },
-  { code: 'B77W', name: 'Boeing 777-300ER', category: 'Widebody Long-Haul', aliases: ['777', '77w', '773'] },
-  { code: 'B788', name: 'Boeing 787-8', category: 'Widebody Long-Haul', aliases: ['787', '788', 'dreamliner'] },
-  { code: 'B789', name: 'Boeing 787-9', category: 'Widebody Long-Haul', aliases: ['787', '789', 'dreamliner'] },
-  { code: 'B78X', name: 'Boeing 787-10', category: 'Widebody Long-Haul', aliases: ['787', '78x', '7810', 'dreamliner'] },
+  // Regional Jets & Turboprops
+  'E170': { name: 'Embraer E170', category: 'Regional Jets & Turboprops', aliases: ['170', 'e170', 'embraer'] },
+  'E175': { name: 'Embraer E175', category: 'Regional Jets & Turboprops', aliases: ['175', 'e175', 'embraer'] },
+  'E190': { name: 'Embraer E190', category: 'Regional Jets & Turboprops', aliases: ['190', 'e190', 'embraer'] },
+  'E195': { name: 'Embraer E195', category: 'Regional Jets & Turboprops', aliases: ['195', 'e195', 'embraer'] },
+  'E290': { name: 'Embraer E190-E2', category: 'Regional Jets & Turboprops', aliases: ['e2', 'e190-e2', 'embraer'] },
+  'E295': { name: 'Embraer E195-E2', category: 'Regional Jets & Turboprops', aliases: ['e2', 'e195-e2', 'embraer'] },
+  'CRJ2': { name: 'CRJ-200', category: 'Regional Jets & Turboprops', aliases: ['crj', 'crj2'] },
+  'CRJ9': { name: 'CRJ-900', category: 'Regional Jets & Turboprops', aliases: ['crj', 'crj9'] },
+  'CRJX': { name: 'CRJ-1000', category: 'Regional Jets & Turboprops', aliases: ['crj', 'crjx'] },
+  'AT72': { name: 'ATR 72', category: 'Regional Jets & Turboprops', aliases: ['atr', 'at72', 'atr72'] },
+  'AT76': { name: 'ATR 72-600', category: 'Regional Jets & Turboprops', aliases: ['atr', 'at76', 'atr72'] },
+  'AT45': { name: 'ATR 42-500', category: 'Regional Jets & Turboprops', aliases: ['atr', 'at45', 'atr42'] },
+  'DH8D': { name: 'De Havilland Dash 8-400', category: 'Regional Jets & Turboprops', aliases: ['q400', 'dash8', 'dh8d'] },
+  'D328': { name: 'Dornier 328', category: 'Regional Jets & Turboprops', aliases: ['dornier', 'd328'] }
+};
 
-  { code: 'E190', name: 'Embraer E190', category: 'Regional Jets', aliases: ['e190', 'embraer'] },
-  { code: 'E295', name: 'Embraer E195-E2', category: 'Regional Jets', aliases: ['e195', 'e2', 'e295', 'embraer'] }
-];
+// Dynamic Dataset-Driven Airline & Aircraft Definitions
+let AIRLINE_DEFINITIONS = [];
+let AIRCRAFT_DEFINITIONS = [];
+
+function buildDynamicDefinitions() {
+  // 1. Build Airlines dynamically from dataset
+  const airlineMap = new Map();
+  allFlights.forEach(f => {
+    const name = f.airline || 'Airline';
+    if (!airlineMap.has(name)) {
+      airlineMap.set(name, {
+        id: name,
+        name: name,
+        icao: f.airline_icao || '',
+        iata: f.airline_iata || '',
+        count: 0,
+        aircraft: new Set()
+      });
+    }
+    const a = airlineMap.get(name);
+    a.count++;
+    if (f.aircraft_type) a.aircraft.add(f.aircraft_type);
+  });
+
+  AIRLINE_DEFINITIONS = Array.from(airlineMap.values()).map(a => ({
+    id: a.id,
+    name: a.name,
+    icao: a.icao,
+    iata: a.iata,
+    count: a.count,
+    aircraft: Array.from(a.aircraft)
+  })).sort((a, b) => b.count - a.count);
+
+  // 2. Build Aircraft Definitions dynamically with categorization
+  const aircraftCounts = new Map();
+  allFlights.forEach(f => {
+    const ac = f.aircraft_type || 'A320';
+    aircraftCounts.set(ac, (aircraftCounts.get(ac) || 0) + 1);
+  });
+
+  AIRCRAFT_DEFINITIONS = Array.from(aircraftCounts.entries()).map(([code, count]) => {
+    const meta = AIRCRAFT_METADATA[code];
+    if (meta) {
+      return {
+        code: code,
+        name: meta.name,
+        category: meta.category,
+        aliases: meta.aliases || [code.toLowerCase()],
+        count: count
+      };
+    }
+    return {
+      code: code,
+      name: code,
+      category: 'Uncategorized / Other',
+      aliases: [code.toLowerCase(), code.toLowerCase().replace(/[^a-z0-9]/g, '')],
+      count: count
+    };
+  }).sort((a, b) => b.count - a.count);
+}
 
 // DOM Elements synchronized with index.html
 const searchDep = document.getElementById('search-dep');
@@ -279,7 +357,8 @@ function renderAirlineMultiSelect(searchQuery = '') {
         return `
           <div class="ms-option-item ${checked ? 'selected' : ''}" data-id="${escapeHtml(a.id)}">
             <input type="checkbox" ${checked} />
-            <span class="ms-option-label">${escapeHtml(a.name)} (${a.icao})</span>
+            <span class="ms-option-label">${escapeHtml(a.name)} ${a.icao ? '(' + a.icao + ')' : ''}</span>
+              <span class="badge" style="font-size: 0.7rem; margin-left: auto; opacity: 0.7;">${a.count || ''}</span>
           </div>
         `;
       }).join('');
@@ -425,10 +504,18 @@ function renderAircraftMultiSelect(searchQuery = '') {
     if (items.length === 0) {
       return '<div style="padding: 0.8rem; font-size: 0.8rem; color: var(--text-muted); text-align: center;">No matching aircraft</div>';
     }
-    const categories = ['Boeing Narrowbody', 'Airbus Narrowbody', 'Widebody Long-Haul', 'Regional Jets'];
+    const standardCategories = ['Boeing Narrowbody', 'Airbus Narrowbody', 'Widebody Long-Haul', 'Regional Jets & Turboprops'];
+    const presentCategories = Array.from(new Set(items.map(a => a.category || 'Uncategorized / Other')));
+    
+    // Sort standard categories first, then any other category (like Uncategorized / Other)
+    const sortedCategories = [
+      ...standardCategories.filter(c => presentCategories.includes(c)),
+      ...presentCategories.filter(c => !standardCategories.includes(c))
+    ];
+
     let html = '';
-    categories.forEach(cat => {
-      const catItems = items.filter(a => a.category === cat);
+    sortedCategories.forEach(cat => {
+      const catItems = items.filter(a => (a.category || 'Uncategorized / Other') === cat);
       if (catItems.length > 0) {
         html += `<div class="ms-category-header">${escapeHtml(cat)}</div>`;
         catItems.forEach(a => {
@@ -437,6 +524,7 @@ function renderAircraftMultiSelect(searchQuery = '') {
             <div class="ms-option-item ${checked ? 'selected' : ''}" data-code="${escapeHtml(a.code)}">
               <input type="checkbox" ${checked} />
               <span class="ms-option-label"><strong>${escapeHtml(a.code)}</strong> - ${escapeHtml(a.name)}</span>
+              <span class="badge" style="font-size: 0.7rem; margin-left: auto; opacity: 0.7;">${a.count || ''}</span>
             </div>
           `;
         });
