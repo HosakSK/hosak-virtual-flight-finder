@@ -110,7 +110,11 @@ def normalize_aircraft(code):
     return mapping.get(code, code)
 
 def normalize_airline(name, iata, icao, fn_raw):
-    name_str = (name or '').upper()
+    clean_name = name or ''
+    if '(' in clean_name:
+        clean_name = clean_name.split('(')[0].strip()
+    
+    name_str = clean_name.upper()
     iata_str = (iata or '').upper()
     icao_str = (icao or '').upper()
     fn_str = (fn_raw or '').upper()
@@ -131,7 +135,7 @@ def normalize_airline(name, iata, icao, fn_raw):
         return 'Emirates', 'UAE', 'EK'
     if icao_str == 'QTR' or iata_str == 'QR' or fn_str.startswith('QR') or 'QATAR' in name_str:
         return 'Qatar Airways', 'QTR', 'QR'
-    if icao_str in ['TVS', 'TVQ', 'TRA'] or iata_str in ['QS', '6D'] or fn_str.startswith('QS') or fn_str.startswith('6D') or 'SMARTWINGS' in name_str or 'TRAVEL SERVICE' in name_str:
+    if icao_str in ['TVS', 'TVQ', 'TRA', 'TVP'] or iata_str in ['QS', '6D', '3Z'] or fn_str.startswith('QS') or fn_str.startswith('6D') or fn_str.startswith('3Z') or 'SMARTWINGS' in name_str or 'TRAVEL SERVICE' in name_str:
         return 'Smartwings', 'TVS', 'QS'
     if icao_str == 'EZY' or iata_str == 'U2' or fn_str.startswith('U2') or fn_str.startswith('EZY') or 'EASYJET' in name_str:
         return 'easyJet', 'EZY', 'U2'
@@ -149,7 +153,19 @@ def normalize_airline(name, iata, icao, fn_raw):
         return 'TAP Air Portugal', 'TAP', 'TP'
     if icao_str == 'THY' or iata_str == 'TK' or fn_str.startswith('TK') or 'TURKISH' in name_str:
         return 'Turkish Airlines', 'THY', 'TK'
-    return name or 'Airline', icao or 'UNK', iata or 'XX'
+    return clean_name or 'Airline', icao or 'UNK', iata or 'XX'
+
+def clean_flight_number(fn_raw, airline_iata, airline_icao):
+    if not fn_raw:
+        return ''
+    clean_str = fn_raw.strip()
+    prefixes = [airline_iata, airline_icao, '3Z', '6D', 'W6', 'FR', 'OS', 'LH', 'KL', 'BA', 'EK', 'QR', 'QS', 'U2', 'LX', 'LO', 'AF', 'IB', 'TK', 'TO', 'HV', 'EW', 'TVP', 'TVQ', 'TVS']
+    for p in prefixes:
+        if p and clean_str.upper().startswith(p.upper()):
+            clean_str = clean_str[len(p):].strip()
+            break
+    digits = ''.join(c for c in clean_str if c.isdigit())
+    return digits or clean_str
 
 def fetch_airport_schedule(iata_code, mode='departures'):
     url = f"https://api.flightradar24.com/common/v1/airport.json?code={iata_code}&plugin[]=&plugin-setting[schedule][mode]={mode}&plugin-setting[schedule][timestamp]={int(time.time())}&page=1&limit=100"
@@ -157,15 +173,19 @@ def fetch_airport_schedule(iata_code, mode='departures'):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         'Accept': 'application/json'
     }
-    req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
-            data = json.loads(resp.read().decode('utf-8'))
-            plugin = (data.get('result', {}) or {}).get('response', {}).get('airport', {}).get('pluginData', {}) or {}
-            sched_data = (plugin.get('schedule', {}) or {}).get(mode, {}).get('data', []) or []
-            return sched_data
-    except Exception as e:
-        return []
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                data = json.loads(resp.read().decode('utf-8'))
+                plugin = (data.get('result', {}) or {}).get('response', {}).get('airport', {}).get('pluginData', {}) or {}
+                sched_data = (plugin.get('schedule', {}) or {}).get(mode, {}).get('data', []) or []
+                if sched_data or attempt == 2:
+                    return sched_data
+                time.sleep(1.0)
+        except Exception as e:
+            time.sleep(1.0)
+    return []
 
 print(f"Starting unified timetable scraper for {len(HUB_ICAOS)} major European & global hubs...")
 
@@ -181,12 +201,12 @@ for icao in HUB_ICAOS:
     # 1. Departures from Hub
     deps = fetch_airport_schedule(hub_iata, mode='departures')
     print(f"  Retrieved {len(deps)} departures.")
-    time.sleep(0.25)
+    time.sleep(1.0)
     
     for item in deps:
         f_info = (item.get('flight') or {}) if isinstance(item, dict) else {}
         ident = (f_info.get('identification') or {})
-        fn_raw = (ident.get('number') or {}).get('alternative') or (ident.get('number') or {}).get('default')
+        fn_raw = (ident.get('number') or {}).get('default') or (ident.get('number') or {}).get('alternative')
         callsign = ident.get('callsign')
         
         if not fn_raw:
@@ -268,9 +288,9 @@ for icao in HUB_ICAOS:
         aircraft_raw = (aircraft_dict.get('model') or {}).get('code')
         aircraft_type = normalize_aircraft(aircraft_raw)
         
-        clean_digits = ''.join(c for c in fn_raw if c.isdigit())
-        callsign_final = callsign or f"{airline_icao}{clean_digits}"
-        flight_num_final = f"{airline_iata} {clean_digits}"
+        clean_num = clean_flight_number(fn_raw, airline_iata, airline_icao)
+        callsign_final = callsign or f"{airline_icao}{clean_num}"
+        flight_num_final = f"{airline_iata} {clean_num}"
         
         key = f"{callsign_final}_{dep_icao}_{arr_icao}_{day_of_week}"
         
@@ -326,12 +346,12 @@ for icao in HUB_ICAOS:
     # 2. Arrivals into Hub
     arrs = fetch_airport_schedule(hub_iata, mode='arrivals')
     print(f"  Retrieved {len(arrs)} arrivals.")
-    time.sleep(0.25)
+    time.sleep(1.0)
     
     for item in arrs:
         f_info = (item.get('flight') or {}) if isinstance(item, dict) else {}
         ident = (f_info.get('identification') or {})
-        fn_raw = (ident.get('number') or {}).get('alternative') or (ident.get('number') or {}).get('default')
+        fn_raw = (ident.get('number') or {}).get('default') or (ident.get('number') or {}).get('alternative')
         callsign = ident.get('callsign')
         
         if not fn_raw:
@@ -413,9 +433,9 @@ for icao in HUB_ICAOS:
         aircraft_raw = (aircraft_dict.get('model') or {}).get('code')
         aircraft_type = normalize_aircraft(aircraft_raw)
         
-        clean_digits = ''.join(c for c in fn_raw if c.isdigit())
-        callsign_final = callsign or f"{airline_icao}{clean_digits}"
-        flight_num_final = f"{airline_iata} {clean_digits}"
+        clean_num = clean_flight_number(fn_raw, airline_iata, airline_icao)
+        callsign_final = callsign or f"{airline_icao}{clean_num}"
+        flight_num_final = f"{airline_iata} {clean_num}"
         
         key = f"{callsign_final}_{dep_icao}_{arr_icao}_{day_of_week}"
         
@@ -478,3 +498,14 @@ with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
     json.dump(flights_list, f, indent=2, ensure_ascii=False)
 
 print(f"Pristine flights.json written successfully to {OUTPUT_PATH}!")
+
+# Update metadata.json with exact date and time
+now_utc = datetime.now(timezone.utc)
+meta_path = os.path.join(ROOT_DIR, 'metadata.json')
+meta_data = {
+    'last_updated_iso': now_utc.isoformat(),
+    'last_updated_formatted': now_utc.strftime('%B %d, %Y, %H:%M UTC')
+}
+with open(meta_path, 'w', encoding='utf-8') as f:
+    json.dump(meta_data, f, indent=2, ensure_ascii=False)
+print(f"Updated metadata.json with timestamp: {meta_data['last_updated_formatted']}")

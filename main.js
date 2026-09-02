@@ -642,6 +642,9 @@ async function loadFlights() {
     const res = await fetch('./flights.json');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     allFlights = await res.json();
+    buildDynamicDefinitions();
+    syncAirlineAvailability();
+    syncAircraftAvailability();
     applyFilters();
   } catch (err) {
     console.error('Failed to load flights.json:', err);

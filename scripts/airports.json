@@ -4482,5 +4482,93 @@
     "city": "Oulu",
     "country": "Finland",
     "iata": "OUL"
+  },
+  "ESGT": {
+    "lat": 58.317936,
+    "lon": 12.344743,
+    "tz": 2,
+    "city": "Gothenburg",
+    "country": "Sweden",
+    "iata": "THN"
+  },
+  "KSTL": {
+    "lat": 38.748692,
+    "lon": -90.370003,
+    "tz": 2,
+    "city": "St. Louis",
+    "country": "United States",
+    "iata": "STL"
+  },
+  "KPIT": {
+    "lat": 40.49147,
+    "lon": -80.232803,
+    "tz": 2,
+    "city": "Pittsburgh",
+    "country": "United States",
+    "iata": "PIT"
+  },
+  "LIRZ": {
+    "lat": 43.095901,
+    "lon": 12.51322,
+    "tz": 2,
+    "city": "Perugia",
+    "country": "Italy",
+    "iata": "PEG"
+  },
+  "KSLC": {
+    "lat": 40.78838,
+    "lon": -111.976997,
+    "tz": 2,
+    "city": "Salt Lake City",
+    "country": "United States",
+    "iata": "SLC"
+  },
+  "DAOO": {
+    "lat": 35.623852,
+    "lon": -0.62118,
+    "tz": 2,
+    "city": "Oran",
+    "country": "Algeria",
+    "iata": "ORN"
+  },
+  "FMEE": {
+    "lat": -20.889999,
+    "lon": 55.51638,
+    "tz": 2,
+    "city": "Saint-Denis",
+    "country": "Reunion",
+    "iata": "RUN"
+  },
+  "MDST": {
+    "lat": 19.40609,
+    "lon": -70.604599,
+    "tz": 2,
+    "city": "Santiago de los Caballeros",
+    "country": "Dominican Republic",
+    "iata": "STI"
+  },
+  "LEBZ": {
+    "lat": 38.891251,
+    "lon": -6.82133,
+    "tz": 2,
+    "city": "Badajoz",
+    "country": "Spain",
+    "iata": "BJZ"
+  },
+  "LKCS": {
+    "lat": 48.946388,
+    "lon": 14.428056,
+    "tz": 2,
+    "city": "Ceske Budejovice",
+    "country": "Czechia",
+    "iata": "JCL"
+  },
+  "UWWW": {
+    "lat": 53.504848,
+    "lon": 50.16433,
+    "tz": 2,
+    "city": "Samara",
+    "country": "Russia",
+    "iata": "KUF"
   }
 }
