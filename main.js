@@ -582,13 +582,28 @@ function applyFilters() {
       if (!arrText.includes(arrQ)) return false;
     }
 
-    // Callsign / Flight number / Aircraft search filter
+    // Callsign / Flight number / Aircraft search filter (Space & punctuation insensitive)
     if (callsignQ) {
+      const qClean = callsignQ.replace(/[\s\-_]/g, '').toLowerCase();
       const acDef = AIRCRAFT_DEFINITIONS.find(a => a.code === f.aircraft_type);
       const acName = acDef ? acDef.name : '';
       const acAliases = acDef ? (acDef.aliases || []).join(' ') : '';
-      const csText = [f.callsign, f.flight_number, f.airline, f.aircraft_type, acName, acAliases].filter(Boolean).join(' ').toLowerCase();
-      if (!csText.includes(callsignQ)) return false;
+      
+      const csClean = (f.callsign || '').replace(/[\s\-_]/g, '').toLowerCase();
+      const fnClean = (f.flight_number || '').replace(/[\s\-_]/g, '').toLowerCase();
+      const airClean = (f.airline || '').replace(/[\s\-_]/g, '').toLowerCase();
+      const acClean = (f.aircraft_type || '').replace(/[\s\-_]/g, '').toLowerCase();
+      const acNameClean = acName.replace(/[\s\-_]/g, '').toLowerCase();
+      const acAliasesClean = acAliases.replace(/[\s\-_]/g, '').toLowerCase();
+
+      const matches = csClean.includes(qClean) ||
+                      fnClean.includes(qClean) ||
+                      airClean.includes(qClean) ||
+                      acClean.includes(qClean) ||
+                      acNameClean.includes(qClean) ||
+                      acAliasesClean.includes(qClean);
+
+      if (!matches) return false;
     }
 
     // Max Duration slider
@@ -846,9 +861,9 @@ function initEventListeners() {
       if (searchArr) searchArr.value = '';
       if (filterCallsign) filterCallsign.value = '';
       if (filterDuration) {
-        filterDuration.value = '360';
-        maxDurationMins = null;
-        if (durationLabel) durationLabel.textContent = 'Any duration';
+        filterDuration.value = '960';
+        maxDurationMins = Infinity;
+        if (durationLabel) durationLabel.textContent = 'Any';
       }
       if (sortBy) sortBy.value = 'upcoming';
 
@@ -1053,43 +1068,86 @@ async function openFlightModal(flight) {
     skyvectorBtn.href = `https://skyvector.com/?fpl=${flight.dep_icao}+${flight.arr_icao}`;
   }
 
-  // Departure & Arrival Times
-  const depLocal = flight.dep_time_local || '08:00';
-  const depUtc = flight.dep_time_utc || depLocal;
-  const arrLocal = flight.arr_time_local || '10:00';
-  const arrUtc = flight.arr_time_utc || arrLocal;
+  // Departure & Arrival Times (Local, UTC, and Your Browser Local)
+  const depLocal = flight.dep_time_local || flight.departure_time || '08:00';
+  const depUtc = flight.dep_time_utc || flight.departure_time_utc || depLocal;
+  const arrLocal = flight.arr_time_local || flight.arrival_time || '10:00';
+  const arrUtc = flight.arr_time_utc || flight.arrival_time_utc || arrLocal;
 
-  document.getElementById('m-dep-time-local').textContent = depLocal;
-  document.getElementById('m-dep-time-utc').textContent = depUtc + ' UTC';
-  document.getElementById('m-dep-time-your-local').textContent = depLocal;
+  function formatTimeWithTz(timeStr, tzOffset) {
+    if (!timeStr) return '--:--';
+    if (tzOffset === undefined || tzOffset === null) return timeStr;
+    const sign = tzOffset >= 0 ? '+' : '';
+    return `${timeStr} (UTC${sign}${tzOffset})`;
+  }
 
-  document.getElementById('m-arr-time-local').textContent = arrLocal;
-  document.getElementById('m-arr-time-utc').textContent = arrUtc + ' UTC';
-  document.getElementById('m-arr-time-your-local').textContent = arrLocal;
+  function utcToBrowserLocalTime(utcTimeStr) {
+    if (!utcTimeStr) return '--:--';
+    const [uH, uM] = utcTimeStr.split(':').map(Number);
+    const userOffsetMins = -new Date().getTimezoneOffset();
+    let totalMins = ((uH || 0) * 60 + (uM || 0) + userOffsetMins) % 1440;
+    if (totalMins < 0) totalMins += 1440;
+    const bH = Math.floor(totalMins / 60).toString().padStart(2, '0');
+    const bM = (totalMins % 60).toString().padStart(2, '0');
+    return `${bH}:${bM}`;
+  }
 
-  // Countdown update function
+  const userTzOffsetHours = -new Date().getTimezoneOffset() / 60;
+  const userTzSign = userTzOffsetHours >= 0 ? '+' : '';
+  const userTzLabel = `UTC${userTzSign}${userTzOffsetHours}`;
+
+  document.getElementById('m-dep-time-local').textContent = formatTimeWithTz(depLocal, flight.dep_tz);
+  document.getElementById('m-dep-time-utc').textContent = `${depUtc} UTC`;
+  document.getElementById('m-dep-time-your-local').textContent = `${utcToBrowserLocalTime(depUtc)} (${userTzLabel})`;
+
+  document.getElementById('m-arr-time-local').textContent = formatTimeWithTz(arrLocal, flight.arr_tz);
+  document.getElementById('m-arr-time-utc').textContent = `${arrUtc} UTC`;
+  document.getElementById('m-arr-time-your-local').textContent = `${utcToBrowserLocalTime(arrUtc)} (${userTzLabel})`;
+
+  // Real-time dynamic Countdown calculation to upcoming scheduled departure
   function updateCountdowns() {
     const now = new Date();
-    const [dH, dM] = depUtc.split(':').map(Number);
-    const depDate = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), dH, dM));
-    let diffMs = depDate.getTime() - now.getTime();
-    if (diffMs < 0) diffMs += 24 * 60 * 60 * 1000;
+    const nowDay = now.getUTCDay() === 0 ? 7 : now.getUTCDay();
+    const nowUtcMins = now.getUTCHours() * 60 + now.getUTCMinutes() + now.getUTCSeconds() / 60;
 
-    const diffH = Math.floor(diffMs / (1000 * 60 * 60));
-    const diffM = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    const diffS = Math.floor((diffMs % (1000 * 60)) / 1000);
+    const flightDay = flight.day_of_operation === 0 ? 7 : (flight.day_of_operation || nowDay);
+    const [dH, dM] = (depUtc || '12:00').split(':').map(Number);
+    const flightUtcMins = (dH || 0) * 60 + (dM || 0);
+
+    let daysDiff = (flightDay - nowDay + 7) % 7;
+    if (daysDiff === 0 && flightUtcMins < nowUtcMins) {
+      daysDiff = 7;
+    }
+
+    const diffMins = daysDiff * 1440 + (flightUtcMins - nowUtcMins);
+    const totalSec = Math.max(0, Math.floor(diffMins * 60));
+
+    const d = Math.floor(totalSec / 86400);
+    const h = Math.floor((totalSec % 86400) / 3600);
+    const m = Math.floor((totalSec % 3600) / 60);
+    const s = totalSec % 60;
+
+    let countdownStr = '';
+    if (d > 0) {
+      countdownStr = `in ${d}d ${h}h ${m}m`;
+    } else if (h > 0) {
+      countdownStr = `in ${h}h ${m}m ${s}s`;
+    } else {
+      countdownStr = `in ${m}m ${s}s`;
+    }
 
     const depCountdownEl = document.getElementById('m-dep-countdown');
     if (depCountdownEl) {
-      depCountdownEl.textContent = `in ${diffH}h ${diffM}m ${diffS}s`;
+      depCountdownEl.textContent = countdownStr;
     }
 
     const arrCountdownEl = document.getElementById('m-arr-countdown');
     if (arrCountdownEl) {
-      const arrMs = diffMs + (flight.duration_minutes || 90) * 60 * 1000;
-      const aH = Math.floor(arrMs / (1000 * 60 * 60));
-      const aM = Math.floor((arrMs % (1000 * 60 * 60)) / (1000 * 60));
-      arrCountdownEl.textContent = `in ${aH}h ${aM}m`;
+      const arrTotalSec = totalSec + (flight.duration_minutes || 90) * 60;
+      const ad = Math.floor(arrTotalSec / 86400);
+      const ah = Math.floor((arrTotalSec % 86400) / 3600);
+      const am = Math.floor((arrTotalSec % 3600) / 60);
+      arrCountdownEl.textContent = ad > 0 ? `in ${ad}d ${ah}h ${am}m` : `in ${ah}h ${am}m`;
     }
   }
 
