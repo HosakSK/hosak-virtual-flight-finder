@@ -561,7 +561,7 @@ flights_list = list(all_flights_map.values())
 print(f"\nSuccessfully compiled {len(flights_list)} 100% authentic, verified real-world flights across cumulative rolling days.")
 
 with open(OUTPUT_PATH, 'w', encoding='utf-8') as f:
-    json.dump(flights_list, f, indent=2, ensure_ascii=False)
+    json.dump(flights_list, f, separators=(',', ':'), ensure_ascii=False)
 
 print(f"Pristine flights.json written successfully to {OUTPUT_PATH}!")
 
