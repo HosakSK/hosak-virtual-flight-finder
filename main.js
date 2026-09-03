@@ -1026,9 +1026,17 @@ function renderPagination() {
   const totalPages = Math.ceil(filteredFlights.length / PAGE_SIZE);
   if (totalPages <= 1) return;
 
+  const startIdx = (currentPage - 1) * PAGE_SIZE + 1;
+  const endIdx = Math.min(currentPage * PAGE_SIZE, filteredFlights.length);
+
+  // Wrapper pill
+  const navWrap = document.createElement('div');
+  navWrap.className = 'modern-pagination-wrap';
+
+  // Prev Button
   const btnPrev = document.createElement('button');
-  btnPrev.className = 'btn-page';
-  btnPrev.textContent = '◀ Previous';
+  btnPrev.className = 'modern-page-btn prev-btn';
+  btnPrev.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg><span>Previous</span>`;
   btnPrev.disabled = currentPage === 1;
   btnPrev.addEventListener('click', () => {
     if (currentPage > 1) {
@@ -1038,16 +1046,18 @@ function renderPagination() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
-  paginationContainer.appendChild(btnPrev);
+  navWrap.appendChild(btnPrev);
 
-  const pageInfo = document.createElement('span');
-  pageInfo.className = 'page-info';
-  pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-  paginationContainer.appendChild(pageInfo);
+  // Page Indicator Pill
+  const pageBadge = document.createElement('div');
+  pageBadge.className = 'modern-page-badge';
+  pageBadge.innerHTML = `<span class="page-num-text">Page <strong>${currentPage}</strong> of <strong>${totalPages}</strong></span><span class="page-range-text">(${startIdx.toLocaleString()} – ${endIdx.toLocaleString()} of ${filteredFlights.length.toLocaleString()} flights)</span>`;
+  navWrap.appendChild(pageBadge);
 
+  // Next Button
   const btnNext = document.createElement('button');
-  btnNext.className = 'btn-page';
-  btnNext.textContent = 'Next ▶';
+  btnNext.className = 'modern-page-btn next-btn';
+  btnNext.innerHTML = `<span>Next</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
   btnNext.disabled = currentPage === totalPages;
   btnNext.addEventListener('click', () => {
     if (currentPage < totalPages) {
@@ -1057,7 +1067,9 @@ function renderPagination() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   });
-  paginationContainer.appendChild(btnNext);
+  navWrap.appendChild(btnNext);
+
+  paginationContainer.appendChild(navWrap);
 }
 
 // ----------------------------------------------------
@@ -1310,7 +1322,7 @@ async function openFlightModal(flight) {
   document.getElementById('m-google-search-btn').href = `https://www.google.com/search?q=${encodeURIComponent(callsign + ' flight')}`;
   document.getElementById('m-flightaware-search-btn').href = `https://www.flightaware.com/live/flight/${encodeURIComponent(callsign)}`;
   document.getElementById('m-flightradar-search-btn').href = `https://www.flightradar24.com/data/flights/${encodeURIComponent((flight.flight_number ? flight.flight_number.replace(/\s+/g, '') : callsign))}`;
-  document.getElementById('m-adsb-search-btn').href = `https://globe.adsb.fi/?callsign=${encodeURIComponent(callsign)}`;
+  document.getElementById('m-adsb-search-btn').href = `https://globe.adsb.fi/?filterCallSign=${encodeURIComponent(callsign)}`;
 
   // SimBrief & SkyVector Links (Prefilled Airline, Callsign, Aircraft, Exact UTC Date & Time, Auto-computed Route)
   const simbriefBtn = document.getElementById('m-simbrief-btn');
