@@ -654,9 +654,25 @@ document.addEventListener('click', () => {
 // ----------------------------------------------------
 // Data Loading & Filter Processing
 // ----------------------------------------------------
+async function loadMetadata() {
+  try {
+    const res = await fetch(`./metadata.json?v=${Date.now()}`);
+    if (res.ok) {
+      const data = await res.json();
+      const el = document.getElementById('last-updated-text');
+      if (el && data.last_updated_formatted) {
+        el.textContent = `Last updated: ${data.last_updated_formatted}`;
+      }
+    }
+  } catch (e) {
+    console.warn('Failed to load metadata.json:', e);
+  }
+}
+
 async function loadFlights() {
   try {
-    const res = await fetch('./flights.json');
+    loadMetadata();
+    const res = await fetch(`./flights.json?v=${Date.now()}`);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     allFlights = await res.json();
     buildDynamicDefinitions();
