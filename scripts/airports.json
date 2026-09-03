@@ -18868,5 +18868,101 @@
     "city": "Whakatane",
     "country": "New Zealand",
     "iata": "WHK"
+  },
+  "EDRY": {
+    "lat": 49.303154,
+    "lon": 8.452496,
+    "tz": 2,
+    "city": "Speyer",
+    "country": "Germany",
+    "iata": "QCS"
+  },
+  "EDHL": {
+    "lat": 53.805359,
+    "lon": 10.71922,
+    "tz": 2,
+    "city": "Lubeck",
+    "country": "Germany",
+    "iata": "LBC"
+  },
+  "LTAW": {
+    "lat": 40.321861,
+    "lon": 36.379726,
+    "tz": 2,
+    "city": "Tokat",
+    "country": "Turkey",
+    "iata": "TJK"
+  },
+  "KSUS": {
+    "lat": 38.66,
+    "lon": -90.650002,
+    "tz": 2,
+    "city": "St. Louis",
+    "country": "United States",
+    "iata": "SUS"
+  },
+  "KIPT": {
+    "lat": 41.241829,
+    "lon": -76.920998,
+    "tz": 2,
+    "city": "Williamsport",
+    "country": "United States",
+    "iata": "IPT"
+  },
+  "KTAD": {
+    "lat": 37.260162,
+    "lon": -104.336952,
+    "tz": 2,
+    "city": "Trinidad",
+    "country": "United States",
+    "iata": "TAD"
+  },
+  "KTYQ": {
+    "lat": 40.031082,
+    "lon": -86.251457,
+    "tz": 2,
+    "city": "Indianapolis",
+    "country": "United States",
+    "iata": "TYQ"
+  },
+  "ZLLN": {
+    "lat": 33.787998,
+    "lon": 105.796997,
+    "tz": 2,
+    "city": "Longnan",
+    "country": "China",
+    "iata": "LNL"
+  },
+  "ZYBS": {
+    "lat": 42.088055,
+    "lon": 127.548889,
+    "tz": 2,
+    "city": "Baishan",
+    "country": "China",
+    "iata": "NBS"
+  },
+  "ZSHZ": {
+    "lat": 35.212982,
+    "lon": 115.736923,
+    "tz": 2,
+    "city": "Heze",
+    "country": "China",
+    "iata": "HZA"
+  },
+  "ZWTS": {
+    "lat": 39.888268,
+    "lon": 79.234367,
+    "tz": 2,
+    "city": "Tumxuk",
+    "country": "China",
+    "iata": "TWC"
+  },
+  "ZWBL": {
+    "lat": 44.895,
+    "lon": 82.299721,
+    "tz": 2,
+    "city": "Bole",
+    "country": "China",
+    "iata": "BPL"
   }
 }
