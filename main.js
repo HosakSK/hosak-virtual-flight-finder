@@ -1087,45 +1087,81 @@ function renderPagination() {
   const startIdx = (currentPage - 1) * PAGE_SIZE + 1;
   const endIdx = Math.min(currentPage * PAGE_SIZE, filteredFlights.length);
 
-  // Wrapper pill
+  // Outer Wrapper
   const navWrap = document.createElement('div');
   navWrap.className = 'modern-pagination-wrap';
 
-  // Prev Button
+  const goToPage = (p) => {
+    const target = Math.max(1, Math.min(p, totalPages));
+    if (target !== currentPage) {
+      currentPage = target;
+      renderFlights();
+      renderPagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  // 1. First Page Button
+  const btnFirst = document.createElement('button');
+  btnFirst.className = 'modern-page-btn icon-only-btn';
+  btnFirst.title = 'Go to First Page (Page 1)';
+  btnFirst.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17-5-5 5-5"/><path d="m18 17-5-5 5-5"/></svg>`;
+  btnFirst.disabled = currentPage === 1;
+  btnFirst.addEventListener('click', () => goToPage(1));
+  navWrap.appendChild(btnFirst);
+
+  // 2. Previous Page Button
   const btnPrev = document.createElement('button');
   btnPrev.className = 'modern-page-btn prev-btn';
-  btnPrev.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg><span>Previous</span>`;
+  btnPrev.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg><span>Previous</span>`;
   btnPrev.disabled = currentPage === 1;
-  btnPrev.addEventListener('click', () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderFlights();
-      renderPagination();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
+  btnPrev.addEventListener('click', () => goToPage(currentPage - 1));
   navWrap.appendChild(btnPrev);
 
-  // Page Indicator Pill
+  // 3. Page Indicator & Jump To Page input
   const pageBadge = document.createElement('div');
   pageBadge.className = 'modern-page-badge';
-  pageBadge.innerHTML = `<span class="page-num-text">Page <strong>${currentPage}</strong> of <strong>${totalPages}</strong></span><span class="page-range-text">(${startIdx.toLocaleString()} – ${endIdx.toLocaleString()} of ${filteredFlights.length.toLocaleString()} flights)</span>`;
+  pageBadge.innerHTML = `
+    <span class="page-num-text">Page</span>
+    <form class="page-jump-form" onsubmit="return false;">
+      <input type="number" class="page-jump-input" min="1" max="${totalPages}" value="${currentPage}" title="Type a page number and press Enter" />
+    </form>
+    <span class="page-num-text">of <strong>${totalPages.toLocaleString()}</strong></span>
+    <span class="page-range-text">(${startIdx.toLocaleString()} – ${endIdx.toLocaleString()} of ${filteredFlights.length.toLocaleString()})</span>
+  `;
+
+  const jumpInput = pageBadge.querySelector('.page-jump-input');
+  if (jumpInput) {
+    const handleJump = () => {
+      const val = parseInt(jumpInput.value, 10);
+      if (!isNaN(val)) goToPage(val);
+    };
+    jumpInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleJump();
+      }
+    });
+    jumpInput.addEventListener('change', handleJump);
+  }
   navWrap.appendChild(pageBadge);
 
-  // Next Button
+  // 4. Next Page Button
   const btnNext = document.createElement('button');
   btnNext.className = 'modern-page-btn next-btn';
-  btnNext.innerHTML = `<span>Next</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
+  btnNext.innerHTML = `<span>Next</span><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
   btnNext.disabled = currentPage === totalPages;
-  btnNext.addEventListener('click', () => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      renderFlights();
-      renderPagination();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  });
+  btnNext.addEventListener('click', () => goToPage(currentPage + 1));
   navWrap.appendChild(btnNext);
+
+  // 5. Last Page Button
+  const btnLast = document.createElement('button');
+  btnLast.className = 'modern-page-btn icon-only-btn';
+  btnLast.title = `Go to Last Page (Page ${totalPages})`;
+  btnLast.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>`;
+  btnLast.disabled = currentPage === totalPages;
+  btnLast.addEventListener('click', () => goToPage(totalPages));
+  navWrap.appendChild(btnLast);
 
   paginationContainer.appendChild(navWrap);
 }

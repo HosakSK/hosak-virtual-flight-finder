@@ -2592,3 +2592,56 @@ path:focus {
   color: #0f172a !important;
   box-shadow: 0 2px 8px rgba(56, 189, 248, 0.6) !important;
 }
+
+
+/* First / Last Page Icon-Only Buttons */
+.modern-page-btn.icon-only-btn {
+  width: 38px;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Inline Jump-to-Page Input Form */
+.page-jump-form {
+  display: inline-flex;
+  margin: 0 0.15rem;
+}
+
+.page-jump-input {
+  width: 44px;
+  height: 28px;
+  padding: 0 0.35rem;
+  border-radius: 6px;
+  background: var(--input-bg, #ffffff);
+  border: 1.5px solid var(--panel-border, #cbd5e1);
+  color: var(--color-primary, #0ea5e9);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.page-jump-input::-webkit-outer-spin-button,
+.page-jump-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.page-jump-input:focus {
+  border-color: var(--color-primary, #0ea5e9);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.25);
+}
+
+[data-theme="dark"] .page-jump-input {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .page-jump-input:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+}
