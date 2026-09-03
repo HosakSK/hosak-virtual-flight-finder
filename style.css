@@ -2570,3 +2570,25 @@ path:focus {
     font-size: 0.78rem;
   }
 }
+
+
+/* Interactive Clickable Calendar Day Dots */
+.day-dot.clickable {
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.day-dot.clickable:hover {
+  transform: scale(1.28) !important;
+  background: var(--color-primary, #0ea5e9) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.5) !important;
+  border-color: #ffffff !important;
+  z-index: 2 !important;
+}
+
+[data-theme="dark"] .day-dot.clickable:hover {
+  background: #38bdf8 !important;
+  color: #0f172a !important;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.6) !important;
+}

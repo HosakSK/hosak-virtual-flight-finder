@@ -406,7 +406,8 @@ for icao in HUB_ICAOS:
             'arr_lon': arr_apt.get('lon', 14.26),
             'distance_nm': dist_nm,
             'days_of_operation': [day_of_week],
-            'days_of_week': [day_of_week]
+            'days_of_week': [day_of_week],
+            'last_seen': current_epoch
         }
 
     # B. Arrivals into Hub

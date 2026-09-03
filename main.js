@@ -83,7 +83,21 @@ const AIRCRAFT_METADATA = {
 let AIRLINE_DEFINITIONS = [];
 let AIRCRAFT_DEFINITIONS = [];
 
+let routeScheduleMap = new Map();
+
 function buildDynamicDefinitions() {
+  // Build Route Schedule Map (maps flightNumber + dep + arr to set of days of operation)
+  routeScheduleMap = new Map();
+  allFlights.forEach(f => {
+    const fn = (f.flight_number || f.callsign || '').replace(/\s+/g, '');
+    const key = `${fn}_${f.dep_icao}_${f.arr_icao}`;
+    if (!routeScheduleMap.has(key)) {
+      routeScheduleMap.set(key, new Set());
+    }
+    const day = f.day_of_operation === 0 ? 7 : (f.day_of_operation || 1);
+    routeScheduleMap.get(key).add(day);
+  });
+
   // 1. Build Airlines dynamically from dataset
   const airlineMap = new Map();
   allFlights.forEach(f => {
@@ -1003,19 +1017,47 @@ function renderFlights() {
           <span>• ${dayFullName}</span>
         </div>
         <div class="fc-days">
-          ${[1,2,3,4,5,6,7].map(d => {
+          ${(() => {
+            const fn = (f.flight_number || f.callsign || '').replace(/\s+/g, '');
+            const rKey = `${fn}_${f.dep_icao}_${f.arr_icao}`;
+            const opDays = routeScheduleMap.get(rKey) || new Set(f.days_of_week || [f.day_of_operation || 1]);
             const cardDay = f.day_of_operation === 0 ? 7 : (f.day_of_operation || 1);
-            const operates = (f.days_of_week || f.days_of_operation || []).map(x => x === 0 ? 7 : x).includes(d);
-            const isCurrentCardDay = (cardDay === d);
-            const dotClass = isCurrentCardDay ? 'active active-primary' : (operates ? 'active active-secondary' : '');
             const labels = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
-            return `<span class="day-dot ${dotClass}" title="${labels[d-1]}: ${operates ? 'Operates' : 'No flight'}">${labels[d-1]}</span>`;
-          }).join('')}
+            const dayFullNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+            return [1,2,3,4,5,6,7].map(d => {
+              const operates = opDays.has(d);
+              const isCurrentCardDay = (cardDay === d);
+              const dotClass = isCurrentCardDay ? 'active active-primary' : (operates ? 'active active-secondary clickable' : '');
+              const tooltip = isCurrentCardDay 
+                ? `${dayFullNames[d-1]} (Viewing this flight)`
+                : (operates ? `${dayFullNames[d-1]}: Also operates! Click to filter by ${dayFullNames[d-1]}` : `${dayFullNames[d-1]}: No flight scheduled`);
+              
+              return `<span class="day-dot ${dotClass}" data-day="${d}" title="${tooltip}">${labels[d-1]}</span>`;
+            }).join('');
+          })()}
         </div>
       </div>
     `;
 
-    card.addEventListener('click', () => openFlightModal(f));
+    // Click listener for card, with special handling for clickable day dots
+    card.addEventListener('click', (e) => {
+      const dayDot = e.target.closest('.day-dot.clickable');
+      if (dayDot) {
+        e.stopPropagation();
+        const targetDay = parseInt(dayDot.getAttribute('data-day'), 10);
+        if (targetDay >= 1 && targetDay <= 7) {
+          currentDay = targetDay;
+          document.querySelectorAll('.vff-day-btn').forEach(b => {
+            b.classList.toggle('active', b.getAttribute('data-day') === String(targetDay));
+          });
+          applyFilters();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          return;
+        }
+      }
+      openFlightModal(f);
+    });
     flightsGrid.appendChild(card);
   });
 }
