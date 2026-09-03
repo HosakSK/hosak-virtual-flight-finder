@@ -18564,5 +18564,309 @@
     "city": "Saltillo",
     "country": "Mexico",
     "iata": "SLW"
+  },
+  "EKRK": {
+    "lat": 55.58556,
+    "lon": 12.13142,
+    "tz": 2,
+    "city": "Roskilde",
+    "country": "Denmark",
+    "iata": "RKE"
+  },
+  "LKPM": {
+    "lat": 49.719719,
+    "lon": 14.099405,
+    "tz": 2,
+    "city": "Pribram",
+    "country": "Czechia",
+    "iata": "QZP"
+  },
+  "LRSM": {
+    "lat": 47.70327,
+    "lon": 22.8857,
+    "tz": 2,
+    "city": "Satu Mare",
+    "country": "Romania",
+    "iata": "SUJ"
+  },
+  "EDLN": {
+    "lat": 51.23035,
+    "lon": 6.504494,
+    "tz": 2,
+    "city": "Dusseldorf",
+    "country": "Germany",
+    "iata": "MGL"
+  },
+  "LTBY": {
+    "lat": 39.809521,
+    "lon": 30.52833,
+    "tz": 2,
+    "city": "Eskisehir",
+    "country": "Turkey",
+    "iata": "AOE"
+  },
+  "LEBA": {
+    "lat": 37.841999,
+    "lon": -4.84887,
+    "tz": 2,
+    "city": "Cordoba",
+    "country": "Spain",
+    "iata": "ODB"
+  },
+  "LESA": {
+    "lat": 40.95211,
+    "lon": -5.50198,
+    "tz": 2,
+    "city": "Salamanca",
+    "country": "Spain",
+    "iata": "SLM"
+  },
+  "OITR": {
+    "lat": 37.668121,
+    "lon": 45.068699,
+    "tz": 2,
+    "city": "Urmia",
+    "country": "Iran",
+    "iata": "OMH"
+  },
+  "URMG": {
+    "lat": 43.388199,
+    "lon": 45.699684,
+    "tz": 2,
+    "city": "Grozny",
+    "country": "Russia",
+    "iata": "GRV"
+  },
+  "UMKK": {
+    "lat": 54.890049,
+    "lon": 20.59263,
+    "tz": 2,
+    "city": "Kaliningrad",
+    "country": "Russia",
+    "iata": "KGD"
+  },
+  "KDLZ": {
+    "lat": 40.279354,
+    "lon": -83.111938,
+    "tz": 2,
+    "city": "Delaware",
+    "country": "United States",
+    "iata": "QSL"
+  },
+  "KCSV": {
+    "lat": 35.951302,
+    "lon": -85.084999,
+    "tz": 2,
+    "city": "Crossville",
+    "country": "United States",
+    "iata": "CSV"
+  },
+  "MUCU": {
+    "lat": 19.969761,
+    "lon": -75.835403,
+    "tz": 2,
+    "city": "Santiago de Cuba",
+    "country": "Cuba",
+    "iata": "SCU"
+  },
+  "KTRK": {
+    "lat": 39.31789,
+    "lon": -120.140503,
+    "tz": 2,
+    "city": "Truckee",
+    "country": "United States",
+    "iata": "TKF"
+  },
+  "KHND": {
+    "lat": 35.974396,
+    "lon": -115.135384,
+    "tz": 2,
+    "city": "Las Vegas",
+    "country": "United States",
+    "iata": "HSH"
+  },
+  "KHRF": {
+    "lat": 46.255352,
+    "lon": -114.123894,
+    "tz": 2,
+    "city": "Hamilton",
+    "country": "United States",
+    "iata": "QNH"
+  },
+  "KWRI": {
+    "lat": 40.017223,
+    "lon": -74.593674,
+    "tz": 2,
+    "city": "Wrightstown",
+    "country": "United States",
+    "iata": "WRI"
+  },
+  "RJNW": {
+    "lat": 37.293098,
+    "lon": 136.961853,
+    "tz": 2,
+    "city": "Wajima",
+    "country": "Japan",
+    "iata": "NTQ"
+  },
+  "RCYU": {
+    "lat": 24.02372,
+    "lon": 121.616898,
+    "tz": 2,
+    "city": "Hualien",
+    "country": "Taiwan",
+    "iata": "HUN"
+  },
+  "ZUZH": {
+    "lat": 26.542315,
+    "lon": 101.798515,
+    "tz": 2,
+    "city": "Panzhihua",
+    "country": "China",
+    "iata": "PZI"
+  },
+  "ZYYK": {
+    "lat": 40.540833,
+    "lon": 122.357346,
+    "tz": 2,
+    "city": "Yingkou",
+    "country": "China",
+    "iata": "YKH"
+  },
+  "ZHNY": {
+    "lat": 32.98,
+    "lon": 112.610001,
+    "tz": 2,
+    "city": "Nanyang",
+    "country": "China",
+    "iata": "NNY"
+  },
+  "ZHQQ": {
+    "lat": 35.869514,
+    "lon": 114.465767,
+    "tz": 2,
+    "city": "Anyang",
+    "country": "China",
+    "iata": "HQQ"
+  },
+  "ZPWS": {
+    "lat": 23.562069,
+    "lon": 104.326866,
+    "tz": 2,
+    "city": "Wenshan",
+    "country": "China",
+    "iata": "WNH"
+  },
+  "ZLXH": {
+    "lat": 34.810555,
+    "lon": 102.644722,
+    "tz": 2,
+    "city": "Xiahe",
+    "country": "China",
+    "iata": "GXH"
+  },
+  "ZUGZ": {
+    "lat": 31.7575,
+    "lon": 99.554169,
+    "tz": 2,
+    "city": "Garze",
+    "country": "China",
+    "iata": "GZG"
+  },
+  "VYMD": {
+    "lat": 21.70215,
+    "lon": 95.977921,
+    "tz": 2,
+    "city": "Mandalay",
+    "country": "Myanmar (Burma)",
+    "iata": "MDL"
+  },
+  "WMKD": {
+    "lat": 3.775389,
+    "lon": 103.209,
+    "tz": 2,
+    "city": "Kuantan",
+    "country": "Malaysia",
+    "iata": "KUA"
+  },
+  "WIMN": {
+    "lat": 2.259722,
+    "lon": 98.995277,
+    "tz": 2,
+    "city": "Siborong-Borong",
+    "country": "Indonesia",
+    "iata": "DTB"
+  },
+  "WAOS": {
+    "lat": -2.499167,
+    "lon": 112.974998,
+    "tz": 2,
+    "city": "Sampit",
+    "country": "Indonesia",
+    "iata": "SMQ"
+  },
+  "WARA": {
+    "lat": -7.92655,
+    "lon": 112.7145,
+    "tz": 2,
+    "city": "Malang",
+    "country": "Indonesia",
+    "iata": "MLG"
+  },
+  "VAPR": {
+    "lat": 21.64867,
+    "lon": 69.657211,
+    "tz": 2,
+    "city": "Porbandar",
+    "country": "India",
+    "iata": "PBD"
+  },
+  "VELR": {
+    "lat": 27.296024,
+    "lon": 94.097733,
+    "tz": 2,
+    "city": "Lilabari",
+    "country": "India",
+    "iata": "IXI"
+  },
+  "YGTE": {
+    "lat": -13.972356,
+    "lon": 136.458435,
+    "tz": 2,
+    "city": "Groote Eylandt",
+    "country": "Australia",
+    "iata": "GTE"
+  },
+  "YPKU": {
+    "lat": -15.778186,
+    "lon": 128.709564,
+    "tz": 2,
+    "city": "Kununurra",
+    "country": "Australia",
+    "iata": "KNX"
+  },
+  "YCAI": {
+    "lat": -30.120394,
+    "lon": 120.570854,
+    "tz": 2,
+    "city": "Callion",
+    "country": "Australia",
+    "iata": "QBI"
+  },
+  "YCPR": {
+    "lat": -20.978449,
+    "lon": 116.272301,
+    "tz": 2,
+    "city": "Cape Preston",
+    "country": "Australia",
+    "iata": "QBE"
+  },
+  "NZWK": {
+    "lat": -37.920502,
+    "lon": 176.914093,
+    "tz": 2,
+    "city": "Whakatane",
+    "country": "New Zealand",
+    "iata": "WHK"
   }
 }
