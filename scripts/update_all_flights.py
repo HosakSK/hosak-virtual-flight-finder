@@ -239,20 +239,29 @@ def fetch_airport_schedule(iata_code, mode='departures'):
 
 print(f"Starting rolling timetable scraper for {len(HUB_ICAOS)} unique global passenger & cargo hubs...")
 
-# 1. Load existing dataset so all 7 days of the week are preserved and cumulatively updated
+# 1. Load existing dataset with 7-day rolling window expiration and stable flight keys
 all_flights_map = {}
+current_epoch = int(datetime.now(timezone.utc).timestamp())
+MAX_AGE_SECONDS = 7 * 24 * 3600  # 7 days expiration (removes discontinued / inactive routes)
+purged_count = 0
+
 if os.path.exists(OUTPUT_PATH):
     try:
         with open(OUTPUT_PATH, 'r', encoding='utf-8') as f:
             existing_flights = json.load(f)
             for f_item in existing_flights:
-                cs = f_item.get('callsign') or f_item.get('flight_number')
+                last_seen = f_item.get('last_seen', current_epoch)
+                if (current_epoch - last_seen) > MAX_AGE_SECONDS:
+                    purged_count += 1
+                    continue
+                
+                fn = (f_item.get('flight_number') or f_item.get('callsign') or '').replace(' ', '')
                 dep = f_item.get('dep_icao') or f_item.get('departure_icao')
                 arr = f_item.get('arr_icao') or f_item.get('arrival_icao')
                 day = f_item.get('day_of_operation', 1)
-                k = f"{cs}_{dep}_{arr}_{day}"
+                k = f"{fn}_{dep}_{arr}_{day}"
                 all_flights_map[k] = f_item
-        print(f"Loaded {len(all_flights_map)} existing flights from previous rolling updates.")
+        print(f"Loaded {len(all_flights_map)} active flights (purged {purged_count} flights older than 7 days).")
     except Exception as e:
         print(f"Note: Starting fresh database: {e}")
 
@@ -358,7 +367,8 @@ for icao in HUB_ICAOS:
         callsign_final = callsign or f"{airline_icao}{clean_num}"
         flight_num_final = f"{airline_iata} {clean_num}"
         
-        key = f"{callsign_final}_{dep_icao}_{arr_icao}_{day_of_week}"
+        fn_key = flight_num_final.replace(" ", "") if clean_num else callsign_final
+        key = f"{fn_key}_{dep_icao}_{arr_icao}_{day_of_week}"
         
         all_flights_map[key] = {
             'airline': airline_name,
@@ -504,7 +514,8 @@ for icao in HUB_ICAOS:
         callsign_final = callsign or f"{airline_icao}{clean_num}"
         flight_num_final = f"{airline_iata} {clean_num}"
         
-        key = f"{callsign_final}_{dep_icao}_{arr_icao}_{day_of_week}"
+        fn_key = flight_num_final.replace(" ", "") if clean_num else callsign_final
+        key = f"{fn_key}_{dep_icao}_{arr_icao}_{day_of_week}"
         
         all_flights_map[key] = {
             'airline': airline_name,
@@ -552,7 +563,8 @@ for icao in HUB_ICAOS:
             'arr_lon': arr_apt.get('lon', 14.26),
             'distance_nm': dist_nm,
             'days_of_operation': [day_of_week],
-            'days_of_week': [day_of_week]
+            'days_of_week': [day_of_week],
+            'last_seen': current_epoch
         }
 
 with open(AIRPORTS_PATH, 'w', encoding='utf-8') as f:

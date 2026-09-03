@@ -1031,7 +1031,7 @@ function renderFlights() {
               const dotClass = isCurrentCardDay ? 'active active-primary' : (operates ? 'active active-secondary clickable' : '');
               const tooltip = isCurrentCardDay 
                 ? `${dayFullNames[d-1]} (Viewing this flight)`
-                : (operates ? `${dayFullNames[d-1]}: Also operates! Click to filter by ${dayFullNames[d-1]}` : `${dayFullNames[d-1]}: No flight scheduled`);
+                : (operates ? `${dayFullNames[d-1]}: Click to open flight details for ${dayFullNames[d-1]}` : `${dayFullNames[d-1]}: No flight scheduled`);
               
               return `<span class="day-dot ${dotClass}" data-day="${d}" title="${tooltip}">${labels[d-1]}</span>`;
             }).join('');
@@ -1040,19 +1040,35 @@ function renderFlights() {
       </div>
     `;
 
-    // Click listener for card, with special handling for clickable day dots
+    // Click listener for card: if user clicks a day dot, open flight modal for that specific day!
     card.addEventListener('click', (e) => {
       const dayDot = e.target.closest('.day-dot.clickable');
       if (dayDot) {
         e.stopPropagation();
         const targetDay = parseInt(dayDot.getAttribute('data-day'), 10);
         if (targetDay >= 1 && targetDay <= 7) {
-          currentDay = targetDay;
-          document.querySelectorAll('.vff-day-btn').forEach(b => {
-            b.classList.toggle('active', b.getAttribute('data-day') === String(targetDay));
+          const fn = (f.flight_number || f.callsign || '').replace(/\s+/g, '');
+          
+          // Find the specific flight record in allFlights for the target day
+          const targetFlight = allFlights.find(item => {
+            const itemFn = (item.flight_number || item.callsign || '').replace(/\s+/g, '');
+            const itemDay = item.day_of_operation === 0 ? 7 : (item.day_of_operation || 1);
+            return itemFn === fn && 
+                   item.dep_icao === f.dep_icao && 
+                   item.arr_icao === f.arr_icao && 
+                   itemDay === targetDay;
           });
-          applyFilters();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+
+          if (targetFlight) {
+            openFlightModal(targetFlight);
+          } else {
+            // If identical flight details apply, open with updated day
+            openFlightModal({
+              ...f,
+              day_of_operation: targetDay,
+              days_of_week: [targetDay]
+            });
+          }
           return;
         }
       }
