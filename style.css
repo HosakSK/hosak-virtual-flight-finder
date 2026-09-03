@@ -2645,3 +2645,131 @@ path:focus {
   border-color: #38bdf8;
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
 }
+
+
+/* ==========================================================================
+   THEME HARMONIZED PAGINATION & CALENDAR DAY DOTS
+   ========================================================================== */
+
+/* Calendar Day Dots (Harmonized with teal/amber theme accent) */
+.day-dot {
+  width: 20px !important;
+  height: 20px !important;
+  border-radius: 50% !important;
+  background: var(--badge-bg, rgba(0, 0, 0, 0.05)) !important;
+  color: var(--text-muted) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.64rem !important;
+  font-weight: 700 !important;
+  border: 1px solid transparent !important;
+}
+
+.day-dot.active.active-primary {
+  background: var(--color-accent) !important;
+  color: #FFFFFF !important;
+  font-weight: 800 !important;
+  box-shadow: 0 2px 8px rgba(var(--color-accent-rgb), 0.4) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.day-dot.active.active-secondary {
+  background: rgba(var(--color-accent-rgb), 0.12) !important;
+  color: var(--color-accent) !important;
+  border-color: rgba(var(--color-accent-rgb), 0.3) !important;
+  font-weight: 700 !important;
+}
+
+.day-dot.clickable {
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.day-dot.clickable:hover {
+  transform: scale(1.25) !important;
+  background: var(--color-accent) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 3px 10px rgba(var(--color-accent-rgb), 0.5) !important;
+  border-color: #FFFFFF !important;
+  z-index: 3 !important;
+}
+
+/* Pagination Wrap */
+.modern-pagination-wrap {
+  background: var(--panel-solid, #FFFFFF) !important;
+  border: 1px solid var(--panel-border, rgba(0, 189, 177, 0.25)) !important;
+  border-radius: 9999px !important;
+  padding: 0.4rem 0.55rem !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="dark"] .modern-pagination-wrap,
+.theme-dark .modern-pagination-wrap {
+  background: var(--panel-solid, #26292B) !important;
+  border-color: var(--panel-border, rgba(255, 140, 0, 0.25)) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Pagination Buttons (Prev, Next, First, Last) */
+.modern-page-btn {
+  background: var(--input-bg, #FFFFFF) !important;
+  border: 1px solid var(--input-border, #D1D5DB) !important;
+  color: var(--text-main, #1F2937) !important;
+  font-family: inherit !important;
+  transition: all 0.2s ease !important;
+}
+
+[data-theme="dark"] .modern-page-btn,
+.theme-dark .modern-page-btn {
+  background: var(--input-bg, #2D3032) !important;
+  border-color: var(--input-border, #4B5563) !important;
+  color: var(--text-main, #F3F4F6) !important;
+}
+
+.modern-page-btn:hover:not(:disabled) {
+  background: var(--color-accent) !important;
+  color: #FFFFFF !important;
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 2px 10px rgba(var(--color-accent-rgb), 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+.modern-page-btn:active:not(:disabled) {
+  transform: translateY(0) !important;
+}
+
+.modern-page-btn:disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed !important;
+}
+
+/* Jump to page number input */
+.page-jump-input {
+  background: var(--input-bg, #FFFFFF) !important;
+  border: 1.5px solid var(--input-border, #D1D5DB) !important;
+  color: var(--color-accent) !important;
+  font-family: 'JetBrains Mono', 'Space Mono', monospace !important;
+  font-weight: 700 !important;
+}
+
+.page-jump-input:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.25) !important;
+}
+
+[data-theme="dark"] .page-jump-input {
+  background: var(--input-bg, #2D3032) !important;
+  border-color: var(--input-border, #4B5563) !important;
+  color: var(--color-accent) !important;
+}
+
+[data-theme="dark"] .page-jump-input:focus {
+  border-color: var(--color-accent) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.35) !important;
+}
+
+.page-num-text strong {
+  color: var(--color-accent) !important;
+  font-weight: 800 !important;
+}
