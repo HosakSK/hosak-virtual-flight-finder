@@ -18964,5 +18964,813 @@
     "city": "Bole",
     "country": "China",
     "iata": "BPL"
+  },
+  "EPPW": {
+    "lat": 52.379131,
+    "lon": 17.851624,
+    "tz": 2,
+    "city": "Powidz",
+    "country": "Poland",
+    "iata": "QMP"
+  },
+  "LGLM": {
+    "lat": 39.917068,
+    "lon": 25.2363,
+    "tz": 2,
+    "city": "Lemnos",
+    "country": "Greece",
+    "iata": "LXS"
+  },
+  "CYYR": {
+    "lat": 53.31916,
+    "lon": -60.4258,
+    "tz": 2,
+    "city": "Goose Bay",
+    "country": "Canada",
+    "iata": "YYR"
+  },
+  "ESOW": {
+    "lat": 59.589439,
+    "lon": 16.63361,
+    "tz": 2,
+    "city": "Stockholm",
+    "country": "Sweden",
+    "iata": "VST"
+  },
+  "UTAV": {
+    "lat": 38.930832,
+    "lon": 63.563889,
+    "tz": 2,
+    "city": "Turkmenabat",
+    "country": "Turkmenistan",
+    "iata": "CRZ"
+  },
+  "LHSM": {
+    "lat": 46.686378,
+    "lon": 17.15905,
+    "tz": 2,
+    "city": "Heviz",
+    "country": "Hungary",
+    "iata": "SOB"
+  },
+  "LIBG": {
+    "lat": 40.517509,
+    "lon": 17.40321,
+    "tz": 2,
+    "city": "Taranto",
+    "country": "Italy",
+    "iata": "TAR"
+  },
+  "LIPV": {
+    "lat": 45.428623,
+    "lon": 12.388437,
+    "tz": 2,
+    "city": "Venice",
+    "country": "Italy",
+    "iata": "QIZ"
+  },
+  "LETL": {
+    "lat": 40.411945,
+    "lon": -1.2175,
+    "tz": 2,
+    "city": "Teruel",
+    "country": "Spain",
+    "iata": "TEV"
+  },
+  "LDOS": {
+    "lat": 45.462662,
+    "lon": 18.81015,
+    "tz": 2,
+    "city": "Osijek",
+    "country": "Croatia",
+    "iata": "OSI"
+  },
+  "EGXW": {
+    "lat": 53.166111,
+    "lon": -0.523889,
+    "tz": 2,
+    "city": "Waddington",
+    "country": "United Kingdom",
+    "iata": "WTN"
+  },
+  "EDGS": {
+    "lat": 50.707699,
+    "lon": 8.08297,
+    "tz": 2,
+    "city": "Siegen",
+    "country": "Germany",
+    "iata": "SGE"
+  },
+  "LFOE": {
+    "lat": 49.028702,
+    "lon": 1.21986,
+    "tz": 2,
+    "city": "Evreux",
+    "country": "France",
+    "iata": "EVX"
+  },
+  "EDLE": {
+    "lat": 51.402328,
+    "lon": 6.937333,
+    "tz": 2,
+    "city": "Essen",
+    "country": "Germany",
+    "iata": "ESS"
+  },
+  "EDTF": {
+    "lat": 48.022652,
+    "lon": 7.832583,
+    "tz": 2,
+    "city": "Freiburg",
+    "country": "Germany",
+    "iata": "QCF"
+  },
+  "LPBJ": {
+    "lat": 38.078888,
+    "lon": -7.9325,
+    "tz": 2,
+    "city": "Beja",
+    "country": "Portugal",
+    "iata": "BYJ"
+  },
+  "LFSD": {
+    "lat": 47.265831,
+    "lon": 5.095,
+    "tz": 2,
+    "city": "Dijon",
+    "country": "France",
+    "iata": "DIJ"
+  },
+  "LSZA": {
+    "lat": 46.004269,
+    "lon": 8.910578,
+    "tz": 2,
+    "city": "Lugano",
+    "country": "Switzerland",
+    "iata": "LUG"
+  },
+  "LPPI": {
+    "lat": 38.554329,
+    "lon": -28.441299,
+    "tz": 2,
+    "city": "Pico",
+    "country": "Portugal",
+    "iata": "PIX"
+  },
+  "LIMP": {
+    "lat": 44.824478,
+    "lon": 10.29636,
+    "tz": 2,
+    "city": "Parma",
+    "country": "Italy",
+    "iata": "PMF"
+  },
+  "LGIO": {
+    "lat": 39.696381,
+    "lon": 20.8225,
+    "tz": 2,
+    "city": "Ioannina",
+    "country": "Greece",
+    "iata": "IOA"
+  },
+  "ENNA": {
+    "lat": 70.06881,
+    "lon": 24.97348,
+    "tz": 2,
+    "city": "Lakselv",
+    "country": "Norway",
+    "iata": "LKL"
+  },
+  "LTCM": {
+    "lat": 42.019608,
+    "lon": 35.074341,
+    "tz": 2,
+    "city": "Sinop",
+    "country": "Turkey",
+    "iata": "NOP"
+  },
+  "UWLL": {
+    "lat": 54.275555,
+    "lon": 48.243057,
+    "tz": 2,
+    "city": "Ulyanovsk",
+    "country": "Russia",
+    "iata": "ULV"
+  },
+  "UATT": {
+    "lat": 50.245831,
+    "lon": 57.206661,
+    "tz": 2,
+    "city": "Aktobe",
+    "country": "Kazakhstan",
+    "iata": "AKX"
+  },
+  "LGKJ": {
+    "lat": 36.14167,
+    "lon": 29.576376,
+    "tz": 2,
+    "city": "Kastelorizo",
+    "country": "Greece",
+    "iata": "KZS"
+  },
+  "KBBD": {
+    "lat": 31.179539,
+    "lon": -99.324631,
+    "tz": 2,
+    "city": "Brady",
+    "country": "United States",
+    "iata": "BBD"
+  },
+  "KVJI": {
+    "lat": 36.686111,
+    "lon": -82.033333,
+    "tz": 2,
+    "city": "Abingdon",
+    "country": "United States",
+    "iata": "VJI"
+  },
+  "RODN": {
+    "lat": 26.356916,
+    "lon": 127.766441,
+    "tz": 2,
+    "city": "Okinawa",
+    "country": "Japan",
+    "iata": "DNA"
+  },
+  "PAPB": {
+    "lat": 56.575466,
+    "lon": -169.664078,
+    "tz": 2,
+    "city": "St George",
+    "country": "United States",
+    "iata": "STG"
+  },
+  "PAPO": {
+    "lat": 68.349998,
+    "lon": -166.800003,
+    "tz": 2,
+    "city": "Point Hope",
+    "country": "United States",
+    "iata": "PHO"
+  },
+  "UWOO": {
+    "lat": 51.79578,
+    "lon": 55.456741,
+    "tz": 2,
+    "city": "Orenburg",
+    "country": "Russia",
+    "iata": "REN"
+  },
+  "KIFP": {
+    "lat": 35.155972,
+    "lon": -114.558998,
+    "tz": 2,
+    "city": "Bullhead City",
+    "country": "United States",
+    "iata": "IFP"
+  },
+  "KAWO": {
+    "lat": 48.160831,
+    "lon": -122.15889,
+    "tz": 2,
+    "city": "Arlington",
+    "country": "United States",
+    "iata": "QQW"
+  },
+  "LFRI": {
+    "lat": 46.702381,
+    "lon": -1.38175,
+    "tz": 2,
+    "city": "La Roche-sur-Yon",
+    "country": "France",
+    "iata": "EDM"
+  },
+  "ZLGY": {
+    "lat": 36.07,
+    "lon": 106.209999,
+    "tz": 2,
+    "city": "Guyuan",
+    "country": "China",
+    "iata": "GYU"
+  },
+  "ZWLK": {
+    "lat": 43.756802,
+    "lon": 93.136765,
+    "tz": 2,
+    "city": "Barkol",
+    "country": "China",
+    "iata": "DHH"
+  },
+  "KMCF": {
+    "lat": 27.849483,
+    "lon": -82.521019,
+    "tz": 2,
+    "city": "Tampa",
+    "country": "United States",
+    "iata": "MCF"
+  },
+  "KCMX": {
+    "lat": 47.168411,
+    "lon": -88.488998,
+    "tz": 2,
+    "city": "Hancock",
+    "country": "United States",
+    "iata": "CMX"
+  },
+  "MMPN": {
+    "lat": 19.39669,
+    "lon": -102.039001,
+    "tz": 2,
+    "city": "Uruapan",
+    "country": "Mexico",
+    "iata": "UPN"
+  },
+  "KSGJ": {
+    "lat": 29.959324,
+    "lon": -81.337852,
+    "tz": 2,
+    "city": "St. Augustine",
+    "country": "United States",
+    "iata": "UST"
+  },
+  "KMCC": {
+    "lat": 38.667629,
+    "lon": -121.400002,
+    "tz": 2,
+    "city": "Sacramento",
+    "country": "United States",
+    "iata": "MCC"
+  },
+  "KOFP": {
+    "lat": 37.708027,
+    "lon": -77.436058,
+    "tz": 2,
+    "city": "Ashland",
+    "country": "United States",
+    "iata": "QSP"
+  },
+  "KJZI": {
+    "lat": 32.700001,
+    "lon": -80,
+    "tz": 2,
+    "city": "Charleston",
+    "country": "United States",
+    "iata": "JZI"
+  },
+  "KGVL": {
+    "lat": 34.273369,
+    "lon": -83.831322,
+    "tz": 2,
+    "city": "Gainesville",
+    "country": "United States",
+    "iata": "GVL"
+  },
+  "KHYR": {
+    "lat": 46.025368,
+    "lon": -91.444527,
+    "tz": 2,
+    "city": "Hayward",
+    "country": "United States",
+    "iata": "HYR"
+  },
+  "KRIL": {
+    "lat": 39.526268,
+    "lon": -107.725487,
+    "tz": 2,
+    "city": "Rifle",
+    "country": "United States",
+    "iata": "RIL"
+  },
+  "KPNA": {
+    "lat": 42.79726,
+    "lon": -109.810715,
+    "tz": 2,
+    "city": "Pinedale",
+    "country": "United States",
+    "iata": "PWY"
+  },
+  "PAWG": {
+    "lat": 56.484444,
+    "lon": -132.36972,
+    "tz": 2,
+    "city": "Wrangell",
+    "country": "United States",
+    "iata": "WRG"
+  },
+  "KACB": {
+    "lat": 44.988602,
+    "lon": -85.198402,
+    "tz": 2,
+    "city": "Bellaire",
+    "country": "United States",
+    "iata": "ACB"
+  },
+  "KNIP": {
+    "lat": 30.23164,
+    "lon": -81.673973,
+    "tz": 2,
+    "city": "Jacksonville",
+    "country": "United States",
+    "iata": "NIP"
+  },
+  "KFTW": {
+    "lat": 32.819771,
+    "lon": -97.362396,
+    "tz": 2,
+    "city": "Fort Worth",
+    "country": "United States",
+    "iata": "FTW"
+  },
+  "KMRH": {
+    "lat": 34.73159,
+    "lon": -76.659531,
+    "tz": 2,
+    "city": "Beaufort",
+    "country": "United States",
+    "iata": "QNM"
+  },
+  "KDTO": {
+    "lat": 33.200832,
+    "lon": -97.198059,
+    "tz": 2,
+    "city": "Denton",
+    "country": "United States",
+    "iata": "QQD"
+  },
+  "KMQY": {
+    "lat": 36,
+    "lon": -86.519997,
+    "tz": 2,
+    "city": "Smyrna",
+    "country": "United States",
+    "iata": "MQY"
+  },
+  "KHBG": {
+    "lat": 31.264999,
+    "lon": -89.252777,
+    "tz": 2,
+    "city": "Hattiesburg",
+    "country": "United States",
+    "iata": "HBG"
+  },
+  "PHTO": {
+    "lat": 19.720261,
+    "lon": -155.048004,
+    "tz": 2,
+    "city": "Hilo",
+    "country": "United States",
+    "iata": "ITO"
+  },
+  "KISM": {
+    "lat": 28.29093,
+    "lon": -81.435013,
+    "tz": 2,
+    "city": "Kissimmee",
+    "country": "United States",
+    "iata": "ISM"
+  },
+  "KUES": {
+    "lat": 43.038914,
+    "lon": -88.237747,
+    "tz": 2,
+    "city": "Waukesha",
+    "country": "United States",
+    "iata": "UES"
+  },
+  "KAHN": {
+    "lat": 33.95195,
+    "lon": -83.324722,
+    "tz": 2,
+    "city": "Athens",
+    "country": "United States",
+    "iata": "AHN"
+  },
+  "KMKY": {
+    "lat": 25.999664,
+    "lon": -81.674171,
+    "tz": 2,
+    "city": "Marco Island",
+    "country": "United States",
+    "iata": "MRK"
+  },
+  "CYMT": {
+    "lat": 49.771938,
+    "lon": -74.528,
+    "tz": 2,
+    "city": "Chibougamau",
+    "country": "Canada",
+    "iata": "YMT"
+  },
+  "CYPX": {
+    "lat": 60.052223,
+    "lon": -77.287498,
+    "tz": 2,
+    "city": "Puvirnituq",
+    "country": "Canada",
+    "iata": "YPX"
+  },
+  "MPSM": {
+    "lat": 8.371162,
+    "lon": -80.127876,
+    "tz": 2,
+    "city": "Rio Hato",
+    "country": "Panama",
+    "iata": "RIH"
+  },
+  "KFXE": {
+    "lat": 26.197269,
+    "lon": -80.1707,
+    "tz": 2,
+    "city": "Fort Lauderdale",
+    "country": "United States",
+    "iata": "FXE"
+  },
+  "CYYB": {
+    "lat": 46.363609,
+    "lon": -79.422699,
+    "tz": 2,
+    "city": "North Bay",
+    "country": "Canada",
+    "iata": "YYB"
+  },
+  "KOMK": {
+    "lat": 48.461575,
+    "lon": -119.517174,
+    "tz": 2,
+    "city": "Omak",
+    "country": "United States",
+    "iata": "OMK"
+  },
+  "OYSY": {
+    "lat": 15.961794,
+    "lon": 48.787086,
+    "tz": 2,
+    "city": "Seiyun",
+    "country": "Yemen",
+    "iata": "GXF"
+  },
+  "DAAT": {
+    "lat": 22.81146,
+    "lon": 5.451075,
+    "tz": 2,
+    "city": "Tamanrasset",
+    "country": "Algeria",
+    "iata": "TMR"
+  },
+  "HAHU": {
+    "lat": 13.833588,
+    "lon": 36.878773,
+    "tz": 2,
+    "city": "Humera",
+    "country": "Ethiopia",
+    "iata": "HUE"
+  },
+  "HANK": {
+    "lat": 9.342161,
+    "lon": 36.536739,
+    "tz": 2,
+    "city": "Nekemte",
+    "country": "Ethiopia",
+    "iata": "NEK"
+  },
+  "FQNC": {
+    "lat": -14.4882,
+    "lon": 40.71225,
+    "tz": 2,
+    "city": "Nacala",
+    "country": "Mozambique",
+    "iata": "MNC"
+  },
+  "GMMA": {
+    "lat": 26.734003,
+    "lon": -11.684893,
+    "tz": 2,
+    "city": "Smara",
+    "country": "Morocco",
+    "iata": "SMW"
+  },
+  "GMAT": {
+    "lat": 28.448191,
+    "lon": -11.1613,
+    "tz": 2,
+    "city": "Tan Tan",
+    "country": "Morocco",
+    "iata": "TTA"
+  },
+  "GLRB": {
+    "lat": 6.233789,
+    "lon": -10.3623,
+    "tz": 2,
+    "city": "Monrovia",
+    "country": "Liberia",
+    "iata": "ROB"
+  },
+  "WMKM": {
+    "lat": 2.263361,
+    "lon": 102.251503,
+    "tz": 2,
+    "city": "Malacca",
+    "country": "Malaysia",
+    "iata": "MKZ"
+  },
+  "ZUJZ": {
+    "lat": 32.856667,
+    "lon": 103.68306,
+    "tz": 2,
+    "city": "Songpan",
+    "country": "China",
+    "iata": "JZH"
+  },
+  "ZYHE": {
+    "lat": 50.171619,
+    "lon": 127.308884,
+    "tz": 2,
+    "city": "Heihe",
+    "country": "China",
+    "iata": "HEK"
+  },
+  "ZGWZ": {
+    "lat": 23.401388,
+    "lon": 111.09861,
+    "tz": 2,
+    "city": "Wuzhou",
+    "country": "China",
+    "iata": "WUZ"
+  },
+  "ZGMX": {
+    "lat": 24.268999,
+    "lon": 116.103996,
+    "tz": 2,
+    "city": "Meixian",
+    "country": "China",
+    "iata": "MXZ"
+  },
+  "ZBTS": {
+    "lat": 39.718784,
+    "lon": 117.99791,
+    "tz": 2,
+    "city": "Tangshan",
+    "country": "China",
+    "iata": "TVS"
+  },
+  "ZWRQ": {
+    "lat": 38.974689,
+    "lon": 88.008415,
+    "tz": 2,
+    "city": "Ruoqiang",
+    "country": "China",
+    "iata": "RQA"
+  },
+  "ZGSG": {
+    "lat": 24.976419,
+    "lon": 113.421494,
+    "tz": 2,
+    "city": "Shaoguan",
+    "country": "China",
+    "iata": "HSC"
+  },
+  "ZUQJ": {
+    "lat": 29.515894,
+    "lon": 108.832306,
+    "tz": 2,
+    "city": "Qianjiang",
+    "country": "China",
+    "iata": "JIQ"
+  },
+  "WAMP": {
+    "lat": -2.79929,
+    "lon": 122.141335,
+    "tz": 2,
+    "city": "Morowali",
+    "country": "Indonesia",
+    "iata": "MWS"
+  },
+  "WATU": {
+    "lat": -9.668131,
+    "lon": 120.301315,
+    "tz": 2,
+    "city": "Waingapu",
+    "country": "Indonesia",
+    "iata": "WGP"
+  },
+  "VIKG": {
+    "lat": 26.591726,
+    "lon": 74.814255,
+    "tz": 2,
+    "city": "Kishangarh",
+    "country": "India",
+    "iata": "KQH"
+  },
+  "UZFN": {
+    "lat": 40.984215,
+    "lon": 71.55983,
+    "tz": 2,
+    "city": "Namangan",
+    "country": "Uzbekistan",
+    "iata": "NMA"
+  },
+  "VASL": {
+    "lat": 17.627665,
+    "lon": 75.934967,
+    "tz": 2,
+    "city": "Solapur",
+    "country": "India",
+    "iata": "SSE"
+  },
+  "VAAM": {
+    "lat": 20.814203,
+    "lon": 77.721405,
+    "tz": 2,
+    "city": "Amravati",
+    "country": "India",
+    "iata": "AVR"
+  },
+  "VIAG": {
+    "lat": 27.15583,
+    "lon": 77.960892,
+    "tz": 2,
+    "city": "Agra",
+    "country": "India",
+    "iata": "AGR"
+  },
+  "VQGP": {
+    "lat": 26.88348,
+    "lon": 90.465965,
+    "tz": 2,
+    "city": "Gelephu",
+    "country": "Bhutan",
+    "iata": "GLU"
+  },
+  "YSHK": {
+    "lat": -25.893333,
+    "lon": 113.576668,
+    "tz": 2,
+    "city": "Monkey Mia",
+    "country": "Australia",
+    "iata": "MJK"
+  },
+  "YBWX": {
+    "lat": -20.864401,
+    "lon": 115.405998,
+    "tz": 2,
+    "city": "Barrow Island",
+    "country": "Australia",
+    "iata": "BWB"
+  },
+  "NIUE": {
+    "lat": -19.08,
+    "lon": -169.925003,
+    "tz": 2,
+    "city": "Niue",
+    "country": "New Zealand",
+    "iata": "IUE"
+  },
+  "SDSC": {
+    "lat": -21.871481,
+    "lon": -47.903568,
+    "tz": 2,
+    "city": "Sao Carlos",
+    "country": "Brazil",
+    "iata": "QSC"
+  },
+  "SAZN": {
+    "lat": -38.949001,
+    "lon": -68.155701,
+    "tz": 2,
+    "city": "Neuquen",
+    "country": "Argentina",
+    "iata": "NQN"
+  },
+  "SKTL": {
+    "lat": 9.509513,
+    "lon": -75.585793,
+    "tz": 2,
+    "city": "Tolu",
+    "country": "Colombia",
+    "iata": "TLU"
+  },
+  "SKTM": {
+    "lat": 6.451036,
+    "lon": -71.759903,
+    "tz": 2,
+    "city": "Tame",
+    "country": "Colombia",
+    "iata": "TME"
+  },
+  "MPPA": {
+    "lat": 8.914011,
+    "lon": -79.598091,
+    "tz": 2,
+    "city": "Balboa",
+    "country": "Panama",
+    "iata": "BLB"
+  },
+  "SASA": {
+    "lat": -24.8559,
+    "lon": -65.486099,
+    "tz": 2,
+    "city": "Salta",
+    "country": "Argentina",
+    "iata": "SLA"
   }
 }
