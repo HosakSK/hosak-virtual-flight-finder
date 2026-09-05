@@ -8,6 +8,7 @@ from datetime import datetime, timedelta, timezone
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 AIRPORTS_PATH = os.path.join(ROOT_DIR, 'scripts', 'airports.json')
+PUBLIC_AIRPORTS_PATH = os.path.join(ROOT_DIR, 'airports.json')
 OUTPUT_PATH = os.path.join(ROOT_DIR, 'flights.json')
 METADATA_PATH = os.path.join(ROOT_DIR, 'metadata.json')
 
@@ -217,6 +218,30 @@ def clean_flight_number(fn_raw, airline_iata, airline_icao):
     digits = ''.join(c for c in clean_str if c.isdigit())
     return digits or clean_str
 
+def make_flight_record(airline_name, airline_icao, airline_iata, aircraft_type,
+                       flight_num_final, callsign_final, dep_icao, arr_icao,
+                       dep_time_local_str, dep_time_utc_str, arr_time_local_str, arr_time_utc_str,
+                       dur_mins, day_of_week, homebase, dist_nm, current_epoch):
+    return {
+        'airline': airline_name,
+        'airline_icao': airline_icao,
+        'airline_iata': airline_iata,
+        'aircraft_type': aircraft_type,
+        'flight_number': flight_num_final,
+        'callsign': callsign_final,
+        'dep_icao': dep_icao,
+        'arr_icao': arr_icao,
+        'dep_time_local': dep_time_local_str,
+        'dep_time_utc': dep_time_utc_str,
+        'arr_time_local': arr_time_local_str,
+        'arr_time_utc': arr_time_utc_str,
+        'duration_minutes': dur_mins,
+        'day_of_operation': day_of_week,
+        'homebase': homebase,
+        'distance_nm': dist_nm,
+        'last_seen': current_epoch
+    }
+
 def fetch_airport_schedule(iata_code, mode='departures'):
     url = f"https://api.flightradar24.com/common/v1/airport.json?code={iata_code}&plugin[]=&plugin-setting[schedule][mode]={mode}&plugin-setting[schedule][timestamp]={int(time.time())}&page=1&limit=100"
     headers = {
@@ -255,9 +280,21 @@ if os.path.exists(OUTPUT_PATH):
                     purged_count += 1
                     continue
                 
+                # Strip legacy redundant airport and duplicate keys
+                for redundant_key in [
+                    'departure_icao', 'departure_iata', 'departure_city', 'departure_country',
+                    'arrival_icao', 'arrival_iata', 'arrival_city', 'arrival_country',
+                    'departure_time', 'departure_time_utc', 'arrival_time', 'arrival_time_utc',
+                    'departure_lat', 'departure_lon', 'arrival_lat', 'arrival_lon',
+                    'days_of_operation', 'days_of_week',
+                    'dep_iata', 'dep_city', 'dep_country', 'dep_lat', 'dep_lon', 'dep_tz',
+                    'arr_iata', 'arr_city', 'arr_country', 'arr_lat', 'arr_lon', 'arr_tz'
+                ]:
+                    f_item.pop(redundant_key, None)
+
                 fn = (f_item.get('flight_number') or f_item.get('callsign') or '').replace(' ', '')
-                dep = f_item.get('dep_icao') or f_item.get('departure_icao')
-                arr = f_item.get('arr_icao') or f_item.get('arrival_icao')
+                dep = f_item.get('dep_icao')
+                arr = f_item.get('arr_icao')
                 day = f_item.get('day_of_operation', 1)
                 k = f"{fn}_{dep}_{arr}_{day}"
                 all_flights_map[k] = f_item
@@ -370,55 +407,13 @@ for icao in HUB_ICAOS:
         fn_key = flight_num_final.replace(" ", "") if clean_num else callsign_final
         key = f"{fn_key}_{dep_icao}_{arr_icao}_{day_of_week}"
         
-        all_flights_map[key] = {
-            'airline': airline_name,
-            'airline_icao': airline_icao,
-            'airline_iata': airline_iata,
-            'aircraft_type': aircraft_type,
-            'flight_number': flight_num_final,
-            'callsign': callsign_final,
-            'departure_icao': dep_icao,
-            'dep_icao': dep_icao,
-            'departure_iata': dep_apt.get('iata', dep_iata or ''),
-            'dep_iata': dep_apt.get('iata', dep_iata or ''),
-            'departure_city': dep_apt.get('city', ''),
-            'dep_city': dep_apt.get('city', ''),
-            'departure_country': dep_apt.get('country', ''),
-            'dep_country': dep_apt.get('country', ''),
-            'arrival_icao': arr_icao,
-            'arr_icao': arr_icao,
-            'arrival_iata': arr_apt.get('iata', arr_iata or ''),
-            'arr_iata': arr_apt.get('iata', arr_iata or ''),
-            'arrival_city': arr_apt.get('city', ''),
-            'arr_city': arr_apt.get('city', ''),
-            'arrival_country': arr_apt.get('country', ''),
-            'arr_country': arr_apt.get('country', ''),
-            'departure_time': dep_time_local_str,
-            'dep_time_local': dep_time_local_str,
-            'dep_time_utc': dep_time_utc_str,
-            'departure_time_utc': dep_time_utc_str,
-            'arrival_time': arr_time_local_str,
-            'arr_time_local': arr_time_local_str,
-            'arr_time_utc': arr_time_utc_str,
-            'arrival_time_utc': arr_time_utc_str,
-            'dep_tz': dep_tz,
-            'arr_tz': arr_tz,
-            'duration_minutes': dur_mins,
-            'day_of_operation': day_of_week,
-            'homebase': dep_icao if dep_icao in HUB_ICAOS else (arr_icao if arr_icao in HUB_ICAOS else 'LZIB'),
-            'departure_lat': dep_apt.get('lat', 48.17),
-            'dep_lat': dep_apt.get('lat', 48.17),
-            'departure_lon': dep_apt.get('lon', 17.21),
-            'dep_lon': dep_apt.get('lon', 17.21),
-            'arrival_lat': arr_apt.get('lat', 50.10),
-            'arr_lat': arr_apt.get('lat', 50.10),
-            'arrival_lon': arr_apt.get('lon', 14.26),
-            'arr_lon': arr_apt.get('lon', 14.26),
-            'distance_nm': dist_nm,
-            'days_of_operation': [day_of_week],
-            'days_of_week': [day_of_week],
-            'last_seen': current_epoch
-        }
+        homebase = dep_icao if dep_icao in HUB_ICAOS else (arr_icao if arr_icao in HUB_ICAOS else 'LZIB')
+        all_flights_map[key] = make_flight_record(
+            airline_name, airline_icao, airline_iata, aircraft_type,
+            flight_num_final, callsign_final, dep_icao, arr_icao,
+            dep_time_local_str, dep_time_utc_str, arr_time_local_str, arr_time_utc_str,
+            dur_mins, day_of_week, homebase, dist_nm, current_epoch
+        )
 
     # B. Arrivals into Hub
     arrs = fetch_airport_schedule(hub_iata, mode='arrivals')
@@ -517,58 +512,19 @@ for icao in HUB_ICAOS:
         fn_key = flight_num_final.replace(" ", "") if clean_num else callsign_final
         key = f"{fn_key}_{dep_icao}_{arr_icao}_{day_of_week}"
         
-        all_flights_map[key] = {
-            'airline': airline_name,
-            'airline_icao': airline_icao,
-            'airline_iata': airline_iata,
-            'aircraft_type': aircraft_type,
-            'flight_number': flight_num_final,
-            'callsign': callsign_final,
-            'departure_icao': dep_icao,
-            'dep_icao': dep_icao,
-            'departure_iata': dep_apt.get('iata', dep_iata or ''),
-            'dep_iata': dep_apt.get('iata', dep_iata or ''),
-            'departure_city': dep_apt.get('city', ''),
-            'dep_city': dep_apt.get('city', ''),
-            'departure_country': dep_apt.get('country', ''),
-            'dep_country': dep_apt.get('country', ''),
-            'arrival_icao': arr_icao,
-            'arr_icao': arr_icao,
-            'arrival_iata': arr_apt.get('iata', arr_iata or ''),
-            'arr_iata': arr_apt.get('iata', arr_iata or ''),
-            'arrival_city': arr_apt.get('city', ''),
-            'arr_city': arr_apt.get('city', ''),
-            'arrival_country': arr_apt.get('country', ''),
-            'arr_country': arr_apt.get('country', ''),
-            'departure_time': dep_time_local_str,
-            'dep_time_local': dep_time_local_str,
-            'dep_time_utc': dep_time_utc_str,
-            'departure_time_utc': dep_time_utc_str,
-            'arrival_time': arr_time_local_str,
-            'arr_time_local': arr_time_local_str,
-            'arr_time_utc': arr_time_utc_str,
-            'arrival_time_utc': arr_time_utc_str,
-            'dep_tz': dep_tz,
-            'arr_tz': arr_tz,
-            'duration_minutes': dur_mins,
-            'day_of_operation': day_of_week,
-            'homebase': dep_icao if dep_icao in HUB_ICAOS else (arr_icao if arr_icao in HUB_ICAOS else 'LZIB'),
-            'departure_lat': dep_apt.get('lat', 48.17),
-            'dep_lat': dep_apt.get('lat', 48.17),
-            'departure_lon': dep_apt.get('lon', 17.21),
-            'dep_lon': dep_apt.get('lon', 17.21),
-            'arrival_lat': arr_apt.get('lat', 50.10),
-            'arr_lat': arr_apt.get('lat', 50.10),
-            'arrival_lon': arr_apt.get('lon', 14.26),
-            'arr_lon': arr_apt.get('lon', 14.26),
-            'distance_nm': dist_nm,
-            'days_of_operation': [day_of_week],
-            'days_of_week': [day_of_week],
-            'last_seen': current_epoch
-        }
+        homebase = dep_icao if dep_icao in HUB_ICAOS else (arr_icao if arr_icao in HUB_ICAOS else 'LZIB')
+        all_flights_map[key] = make_flight_record(
+            airline_name, airline_icao, airline_iata, aircraft_type,
+            flight_num_final, callsign_final, dep_icao, arr_icao,
+            dep_time_local_str, dep_time_utc_str, arr_time_local_str, arr_time_utc_str,
+            dur_mins, day_of_week, homebase, dist_nm, current_epoch
+        )
 
 with open(AIRPORTS_PATH, 'w', encoding='utf-8') as f:
     json.dump(airports, f, indent=2, ensure_ascii=False)
+
+with open(PUBLIC_AIRPORTS_PATH, 'w', encoding='utf-8') as f:
+    json.dump(airports, f, separators=(',', ':'), ensure_ascii=False)
 
 flights_list = list(all_flights_map.values())
 print(f"\nSuccessfully compiled {len(flights_list)} 100% authentic, verified real-world flights across cumulative rolling days.")

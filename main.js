@@ -15,6 +15,7 @@ let leafletMap = null;
 let globeMap = null;
 let globePolylines = [];
 let countdownTimer = null;
+let airportsData = {};
 
 // Known Aircraft Metadata Catalog for standard categorization & aliases
 const AIRCRAFT_METADATA = {
@@ -683,12 +684,42 @@ async function loadMetadata() {
   }
 }
 
+function hydrateFlight(f) {
+  const dep = airportsData[f.dep_icao] || {};
+  const arr = airportsData[f.arr_icao] || {};
+
+  f.dep_iata = f.dep_iata || dep.iata || '';
+  f.dep_city = f.dep_city || dep.city || '';
+  f.dep_country = f.dep_country || dep.country || '';
+  f.dep_lat = f.dep_lat !== undefined ? f.dep_lat : (dep.lat ?? 48.17);
+  f.dep_lon = f.dep_lon !== undefined ? f.dep_lon : (dep.lon ?? 17.21);
+  f.dep_tz = f.dep_tz !== undefined ? f.dep_tz : (dep.tz ?? 0);
+
+  f.arr_iata = f.arr_iata || arr.iata || '';
+  f.arr_city = f.arr_city || arr.city || '';
+  f.arr_country = f.arr_country || arr.country || '';
+  f.arr_lat = f.arr_lat !== undefined ? f.arr_lat : (arr.lat ?? 50.10);
+  f.arr_lon = f.arr_lon !== undefined ? f.arr_lon : (arr.lon ?? 14.26);
+  f.arr_tz = f.arr_tz !== undefined ? f.arr_tz : (arr.tz ?? 0);
+
+  return f;
+}
+
 async function loadFlights() {
   try {
     loadMetadata();
-    const res = await fetch(`./flights.json?v=${Date.now()}`);
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    allFlights = await res.json();
+    const [airportsRes, flightsRes] = await Promise.all([
+      fetch(`./airports.json?v=${Date.now()}`).catch(e => { console.warn('Airports fetch error:', e); return null; }),
+      fetch(`./flights.json?v=${Date.now()}`)
+    ]);
+
+    if (airportsRes && airportsRes.ok) {
+      airportsData = await airportsRes.json();
+    }
+
+    if (!flightsRes.ok) throw new Error('HTTP ' + flightsRes.status);
+    const rawFlights = await flightsRes.json();
+    allFlights = rawFlights.map(hydrateFlight);
     buildDynamicDefinitions();
     syncAirlineAvailability();
     syncAircraftAvailability();
