@@ -20172,5 +20172,309 @@
     "city": "San Vicente del Caguan",
     "country": "Colombia",
     "iata": "SVI"
+  },
+  "LGSY": {
+    "lat": 38.967548,
+    "lon": 24.487221,
+    "tz": 2,
+    "city": "Skyros",
+    "country": "Greece",
+    "iata": "SKU"
+  },
+  "DTKA": {
+    "lat": 36.98,
+    "lon": 8.876944,
+    "tz": 2,
+    "city": "Tabarka",
+    "country": "Tunisia",
+    "iata": "TBJ"
+  },
+  "LFMQ": {
+    "lat": 43.25222,
+    "lon": 5.786111,
+    "tz": 2,
+    "city": "Le Castellet",
+    "country": "France",
+    "iata": "CTT"
+  },
+  "LIMB": {
+    "lat": 45.539577,
+    "lon": 9.202372,
+    "tz": 2,
+    "city": "Bresso",
+    "country": "Italy",
+    "iata": "QIB"
+  },
+  "LFMV": {
+    "lat": 43.906582,
+    "lon": 4.902028,
+    "tz": 2,
+    "city": "Avignon",
+    "country": "France",
+    "iata": "AVN"
+  },
+  "ESUT": {
+    "lat": 65.806107,
+    "lon": 15.08277,
+    "tz": 2,
+    "city": "Hemavan",
+    "country": "Sweden",
+    "iata": "HMV"
+  },
+  "OIII": {
+    "lat": 35.689159,
+    "lon": 51.313412,
+    "tz": 2,
+    "city": "Tehran",
+    "country": "Iran",
+    "iata": "THR"
+  },
+  "UUYY": {
+    "lat": 61.647049,
+    "lon": 50.845051,
+    "tz": 2,
+    "city": "Syktyvkar",
+    "country": "Russia",
+    "iata": "SCW"
+  },
+  "ESSD": {
+    "lat": 60.422009,
+    "lon": 15.51521,
+    "tz": 2,
+    "city": "Borlange",
+    "country": "Sweden",
+    "iata": "BLE"
+  },
+  "KEKX": {
+    "lat": 37.688889,
+    "lon": -85.92778,
+    "tz": 2,
+    "city": "Elizabethtown",
+    "country": "United States",
+    "iata": "EKX"
+  },
+  "PFCB": {
+    "lat": 60.078671,
+    "lon": -147.994705,
+    "tz": 2,
+    "city": "Chenega",
+    "country": "United States",
+    "iata": "NCN"
+  },
+  "KTMA": {
+    "lat": 31.433332,
+    "lon": -83.48333,
+    "tz": 2,
+    "city": "Tifton",
+    "country": "United States",
+    "iata": "TMA"
+  },
+  "KSZT": {
+    "lat": 48.29887,
+    "lon": -116.560768,
+    "tz": 2,
+    "city": "Sandpoint",
+    "country": "United States",
+    "iata": "QTZ"
+  },
+  "KDIJ": {
+    "lat": 43.742561,
+    "lon": -111.097008,
+    "tz": 2,
+    "city": "Driggs",
+    "country": "United States",
+    "iata": "QND"
+  },
+  "KAGC": {
+    "lat": 40.349998,
+    "lon": -79.93,
+    "tz": 2,
+    "city": "Pittsburgh",
+    "country": "United States",
+    "iata": "AGC"
+  },
+  "KSVC": {
+    "lat": 32.631943,
+    "lon": -108.153893,
+    "tz": 2,
+    "city": "Silver City",
+    "country": "United States",
+    "iata": "SVC"
+  },
+  "KBAK": {
+    "lat": 39.261902,
+    "lon": -85.896301,
+    "tz": 2,
+    "city": "Columbus",
+    "country": "United States",
+    "iata": "CLU"
+  },
+  "KWWD": {
+    "lat": 39.008499,
+    "lon": -74.908203,
+    "tz": 2,
+    "city": "Wildwood",
+    "country": "United States",
+    "iata": "WWD"
+  },
+  "KOGS": {
+    "lat": 44.681862,
+    "lon": -75.4655,
+    "tz": 2,
+    "city": "Ogdensburg",
+    "country": "United States",
+    "iata": "OGS"
+  },
+  "KESN": {
+    "lat": 38.802776,
+    "lon": -76.06778,
+    "tz": 2,
+    "city": "Easton",
+    "country": "United States",
+    "iata": "ESN"
+  },
+  "KRSN": {
+    "lat": 32.513824,
+    "lon": -92.58844,
+    "tz": 2,
+    "city": "Ruston",
+    "country": "United States",
+    "iata": "RSN"
+  },
+  "KSTF": {
+    "lat": 33.434425,
+    "lon": -88.848625,
+    "tz": 2,
+    "city": "Starkville",
+    "country": "United States",
+    "iata": "QNT"
+  },
+  "KUOX": {
+    "lat": 34.384251,
+    "lon": -89.536324,
+    "tz": 2,
+    "city": "Oxford",
+    "country": "United States",
+    "iata": "UOX"
+  },
+  "KBMQ": {
+    "lat": 30.740639,
+    "lon": -98.238022,
+    "tz": 2,
+    "city": "Burnet",
+    "country": "United States",
+    "iata": "QDQ"
+  },
+  "KSUA": {
+    "lat": 27.182892,
+    "lon": -80.22168,
+    "tz": 2,
+    "city": "Stuart",
+    "country": "United States",
+    "iata": "SUA"
+  },
+  "KLFK": {
+    "lat": 31.234011,
+    "lon": -94.75,
+    "tz": 2,
+    "city": "Lufkin",
+    "country": "United States",
+    "iata": "LFK"
+  },
+  "KCPS": {
+    "lat": 38.570599,
+    "lon": -90.158066,
+    "tz": 2,
+    "city": "St. Louis",
+    "country": "United States",
+    "iata": "CPS"
+  },
+  "KFTY": {
+    "lat": 33.777195,
+    "lon": -84.521141,
+    "tz": 2,
+    "city": "Atlanta",
+    "country": "United States",
+    "iata": "FTY"
+  },
+  "CYWK": {
+    "lat": 52.92194,
+    "lon": -66.864403,
+    "tz": 2,
+    "city": "Wabush",
+    "country": "Canada",
+    "iata": "YWK"
+  },
+  "CYPR": {
+    "lat": 54.28611,
+    "lon": -130.444,
+    "tz": 2,
+    "city": "Prince Rupert",
+    "country": "Canada",
+    "iata": "YPR"
+  },
+  "UZST": {
+    "lat": 37.287842,
+    "lon": 67.310158,
+    "tz": 2,
+    "city": "Termez",
+    "country": "Uzbekistan",
+    "iata": "TMJ"
+  },
+  "OYRN": {
+    "lat": 14.66263,
+    "lon": 49.375019,
+    "tz": 2,
+    "city": "Mukalla",
+    "country": "Yemen",
+    "iata": "RIY"
+  },
+  "OJAQ": {
+    "lat": 29.61161,
+    "lon": 35.018059,
+    "tz": 2,
+    "city": "Aqaba",
+    "country": "Jordan",
+    "iata": "AQJ"
+  },
+  "GMAZ": {
+    "lat": 30.267143,
+    "lon": -5.852456,
+    "tz": 2,
+    "city": "Zagora",
+    "country": "Morocco",
+    "iata": "OZG"
+  },
+  "WARD": {
+    "lat": -7.751845,
+    "lon": 111.948479,
+    "tz": 2,
+    "city": "Kediri",
+    "country": "Indonesia",
+    "iata": "DHX"
+  },
+  "VIBR": {
+    "lat": 31.876699,
+    "lon": 77.154358,
+    "tz": 2,
+    "city": "Kullu",
+    "country": "India",
+    "iata": "KUU"
+  },
+  "VIHR": {
+    "lat": 29.190376,
+    "lon": 75.733826,
+    "tz": 2,
+    "city": "Hisar",
+    "country": "India",
+    "iata": "HSS"
+  },
+  "SBTC": {
+    "lat": -15.353333,
+    "lon": -38.997223,
+    "tz": 2,
+    "city": "Una",
+    "country": "Brazil",
+    "iata": "UNA"
   }
 }
