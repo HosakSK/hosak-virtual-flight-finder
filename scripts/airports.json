@@ -20476,5 +20476,325 @@
     "city": "Una",
     "country": "Brazil",
     "iata": "UNA"
+  },
+  "EDAZ": {
+    "lat": 52.203888,
+    "lon": 13.16,
+    "tz": 2,
+    "city": "Trebbin",
+    "country": "Germany",
+    "iata": "QCZ"
+  },
+  "EGHL": {
+    "lat": 51.187199,
+    "lon": -1.0335,
+    "tz": 2,
+    "city": "Lasham",
+    "country": "United Kingdom",
+    "iata": "QKL"
+  },
+  "UCFL": {
+    "lat": 42.588055,
+    "lon": 76.713058,
+    "tz": 2,
+    "city": "Tamchy",
+    "country": "Kyrgyzstan",
+    "iata": "IKU"
+  },
+  "LKKU": {
+    "lat": 49.0294,
+    "lon": 17.439699,
+    "tz": 2,
+    "city": "Kunovice",
+    "country": "Czechia",
+    "iata": "UHE"
+  },
+  "LFMC": {
+    "lat": 43.384663,
+    "lon": 6.38694,
+    "tz": 2,
+    "city": "Le Luc",
+    "country": "France",
+    "iata": "QRU"
+  },
+  "LGPA": {
+    "lat": 37.019958,
+    "lon": 25.113379,
+    "tz": 2,
+    "city": "Paros",
+    "country": "Greece",
+    "iata": "PAS"
+  },
+  "LJPZ": {
+    "lat": 45.473351,
+    "lon": 13.61497,
+    "tz": 2,
+    "city": "Portoroz",
+    "country": "Slovenia",
+    "iata": "POW"
+  },
+  "LTAL": {
+    "lat": 41.314007,
+    "lon": 33.795811,
+    "tz": 2,
+    "city": "Kastamonu",
+    "country": "Turkey",
+    "iata": "KFS"
+  },
+  "KCPP": {
+    "lat": 33.597832,
+    "lon": -83.138596,
+    "tz": 2,
+    "city": "Greensboro",
+    "country": "United States",
+    "iata": "QNP"
+  },
+  "KDNV": {
+    "lat": 40.197224,
+    "lon": -87.596947,
+    "tz": 2,
+    "city": "Danville",
+    "country": "United States",
+    "iata": "DNV"
+  },
+  "KUVA": {
+    "lat": 29.21139,
+    "lon": -99.743614,
+    "tz": 2,
+    "city": "Uvalde",
+    "country": "United States",
+    "iata": "UVA"
+  },
+  "KMYL": {
+    "lat": 44.89267,
+    "lon": -116.103989,
+    "tz": 2,
+    "city": "McCall",
+    "country": "United States",
+    "iata": "MYL"
+  },
+  "KSPW": {
+    "lat": 43.163891,
+    "lon": -95.200836,
+    "tz": 2,
+    "city": "Spencer",
+    "country": "United States",
+    "iata": "SPW"
+  },
+  "KHIO": {
+    "lat": 45.540001,
+    "lon": -122.949997,
+    "tz": 2,
+    "city": "Portland",
+    "country": "United States",
+    "iata": "HIO"
+  },
+  "KSVH": {
+    "lat": 35.765121,
+    "lon": -80.951424,
+    "tz": 2,
+    "city": "Statesville",
+    "country": "United States",
+    "iata": "SVH"
+  },
+  "KMCD": {
+    "lat": 45.866669,
+    "lon": -84.633331,
+    "tz": 2,
+    "city": "Mackinac Island",
+    "country": "United States",
+    "iata": "MCD"
+  },
+  "KERV": {
+    "lat": 29.976667,
+    "lon": -99.085556,
+    "tz": 2,
+    "city": "Kerrville",
+    "country": "United States",
+    "iata": "ERV"
+  },
+  "KDBQ": {
+    "lat": 42.400002,
+    "lon": -90.699997,
+    "tz": 2,
+    "city": "Dubuque",
+    "country": "United States",
+    "iata": "DBQ"
+  },
+  "KSAA": {
+    "lat": 41.445,
+    "lon": -106.809998,
+    "tz": 2,
+    "city": "Saratoga",
+    "country": "United States",
+    "iata": "SAA"
+  },
+  "KGLS": {
+    "lat": 29.265329,
+    "lon": -94.860397,
+    "tz": 2,
+    "city": "Galveston",
+    "country": "United States",
+    "iata": "GLS"
+  },
+  "KRIF": {
+    "lat": 38.736961,
+    "lon": -112.09964,
+    "tz": 2,
+    "city": "Richfield",
+    "country": "United States",
+    "iata": "RIF"
+  },
+  "KCXP": {
+    "lat": 39.1922,
+    "lon": -119.734001,
+    "tz": 2,
+    "city": "Carson City",
+    "country": "United States",
+    "iata": "CSN"
+  },
+  "KEQY": {
+    "lat": 35.018452,
+    "lon": -80.620728,
+    "tz": 2,
+    "city": "Monroe",
+    "country": "United States",
+    "iata": "QSQ"
+  },
+  "KGXY": {
+    "lat": 40.427757,
+    "lon": -104.636864,
+    "tz": 2,
+    "city": "Greeley",
+    "country": "United States",
+    "iata": "GXY"
+  },
+  "KEPH": {
+    "lat": 47.309227,
+    "lon": -119.517326,
+    "tz": 2,
+    "city": "Ephrata",
+    "country": "United States",
+    "iata": "EPH"
+  },
+  "KDLL": {
+    "lat": 43.522129,
+    "lon": -89.770317,
+    "tz": 2,
+    "city": "Baraboo",
+    "country": "United States",
+    "iata": "QDL"
+  },
+  "KBPK": {
+    "lat": 36.3689,
+    "lon": -92.470497,
+    "tz": 2,
+    "city": "Mountain Home",
+    "country": "United States",
+    "iata": "WMH"
+  },
+  "KLPC": {
+    "lat": 34.665596,
+    "lon": -120.467377,
+    "tz": 2,
+    "city": "Lompoc",
+    "country": "United States",
+    "iata": "LPC"
+  },
+  "KCNO": {
+    "lat": 33.974701,
+    "lon": -117.637001,
+    "tz": 2,
+    "city": "Chino",
+    "country": "United States",
+    "iata": "CNO"
+  },
+  "KSDM": {
+    "lat": 32.572224,
+    "lon": -116.980003,
+    "tz": 2,
+    "city": "San Diego",
+    "country": "United States",
+    "iata": "SDM"
+  },
+  "KISW": {
+    "lat": 44.360664,
+    "lon": -89.838181,
+    "tz": 2,
+    "city": "Wisconsin Rapids",
+    "country": "United States",
+    "iata": "ISW"
+  },
+  "KMBL": {
+    "lat": 44.272598,
+    "lon": -86.242218,
+    "tz": 2,
+    "city": "Manistee",
+    "country": "United States",
+    "iata": "MBL"
+  },
+  "KARV": {
+    "lat": 45.924168,
+    "lon": -89.732224,
+    "tz": 2,
+    "city": "Minocqua Woodruff",
+    "country": "United States",
+    "iata": "ARV"
+  },
+  "KLDM": {
+    "lat": 43.962502,
+    "lon": -86.407776,
+    "tz": 2,
+    "city": "Ludington",
+    "country": "United States",
+    "iata": "LDM"
+  },
+  "KMQS": {
+    "lat": 39.979,
+    "lon": -75.865501,
+    "tz": 2,
+    "city": "Coatesville",
+    "country": "United States",
+    "iata": "CTH"
+  },
+  "CYLJ": {
+    "lat": 54.125271,
+    "lon": -108.522003,
+    "tz": 2,
+    "city": "Meadow Lake",
+    "country": "Canada",
+    "iata": "YLJ"
+  },
+  "YMLS": {
+    "lat": -26.809168,
+    "lon": 150.164993,
+    "tz": 2,
+    "city": "Miles",
+    "country": "Australia",
+    "iata": "WLE"
+  },
+  "NZCI": {
+    "lat": -43.812897,
+    "lon": -176.469711,
+    "tz": 2,
+    "city": "Chatham",
+    "country": "New Zealand",
+    "iata": "CHT"
+  },
+  "SKLG": {
+    "lat": -0.181093,
+    "lon": -74.77272,
+    "tz": 2,
+    "city": "Puerto Leguizamo",
+    "country": "Colombia",
+    "iata": "LQM"
+  },
+  "SKCZ": {
+    "lat": 9.333333,
+    "lon": -75.283302,
+    "tz": 2,
+    "city": "Corozal",
+    "country": "Colombia",
+    "iata": "CZU"
   }
 }
