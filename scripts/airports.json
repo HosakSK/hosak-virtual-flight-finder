@@ -20796,5 +20796,325 @@
     "city": "Corozal",
     "country": "Colombia",
     "iata": "CZU"
+  },
+  "OMAD": {
+    "lat": 24.428329,
+    "lon": 54.45808,
+    "tz": 2,
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "iata": "AZI"
+  },
+  "EBKT": {
+    "lat": 50.8172,
+    "lon": 3.20472,
+    "tz": 2,
+    "city": "Kortrijk",
+    "country": "Belgium",
+    "iata": "KJK"
+  },
+  "LFLB": {
+    "lat": 45.639069,
+    "lon": 5.880086,
+    "tz": 2,
+    "city": "Chambery",
+    "country": "France",
+    "iata": "CMF"
+  },
+  "FNLU": {
+    "lat": -8.859176,
+    "lon": 13.232758,
+    "tz": 2,
+    "city": "Luanda",
+    "country": "Angola",
+    "iata": "LAD"
+  },
+  "LZZI": {
+    "lat": 49.231522,
+    "lon": 18.613501,
+    "tz": 2,
+    "city": "Zilina",
+    "country": "Slovakia",
+    "iata": "ILZ"
+  },
+  "LFLS": {
+    "lat": 45.362926,
+    "lon": 5.332563,
+    "tz": 2,
+    "city": "Grenoble",
+    "country": "France",
+    "iata": "GNB"
+  },
+  "BGSF": {
+    "lat": 67.01696,
+    "lon": -50.689301,
+    "tz": 2,
+    "city": "Kangerlussuaq",
+    "country": "Greenland",
+    "iata": "SFJ"
+  },
+  "LEDA": {
+    "lat": 41.726925,
+    "lon": 0.539164,
+    "tz": 2,
+    "city": "Lleida",
+    "country": "Spain",
+    "iata": "ILD"
+  },
+  "KUGN": {
+    "lat": 42.422161,
+    "lon": -87.867897,
+    "tz": 2,
+    "city": "Chicago",
+    "country": "United States",
+    "iata": "UGN"
+  },
+  "KAMW": {
+    "lat": 41.992001,
+    "lon": -93.621803,
+    "tz": 2,
+    "city": "Ames",
+    "country": "United States",
+    "iata": "AMW"
+  },
+  "PASI": {
+    "lat": 57.047131,
+    "lon": -135.360992,
+    "tz": 2,
+    "city": "Sitka",
+    "country": "United States",
+    "iata": "SIT"
+  },
+  "KDET": {
+    "lat": 42.409191,
+    "lon": -83.009804,
+    "tz": 2,
+    "city": "Detroit",
+    "country": "United States",
+    "iata": "DET"
+  },
+  "KSBM": {
+    "lat": 43.764751,
+    "lon": -87.850708,
+    "tz": 2,
+    "city": "Sheboygan",
+    "country": "United States",
+    "iata": "SBM"
+  },
+  "KCSM": {
+    "lat": 35.344353,
+    "lon": -99.20153,
+    "tz": 2,
+    "city": "Clinton",
+    "country": "United States",
+    "iata": "CSM"
+  },
+  "KOSC": {
+    "lat": 44.454258,
+    "lon": -83.387764,
+    "tz": 2,
+    "city": "Oscoda",
+    "country": "United States",
+    "iata": "OSC"
+  },
+  "KINT": {
+    "lat": 36.13372,
+    "lon": -80.222,
+    "tz": 2,
+    "city": "Winston-Salem",
+    "country": "United States",
+    "iata": "INT"
+  },
+  "KOCF": {
+    "lat": 29.174091,
+    "lon": -82.221596,
+    "tz": 2,
+    "city": "Ocala",
+    "country": "United States",
+    "iata": "OCF"
+  },
+  "KOGD": {
+    "lat": 41.196388,
+    "lon": -112.010834,
+    "tz": 2,
+    "city": "Ogden",
+    "country": "United States",
+    "iata": "OGD"
+  },
+  "KCXO": {
+    "lat": 30.356249,
+    "lon": -95.415443,
+    "tz": 2,
+    "city": "Conroe",
+    "country": "United States",
+    "iata": "CXO"
+  },
+  "KBUY": {
+    "lat": 36.048611,
+    "lon": -79.474998,
+    "tz": 2,
+    "city": "Burlington",
+    "country": "United States",
+    "iata": "QQY"
+  },
+  "KUIN": {
+    "lat": 39.94088,
+    "lon": -91.194305,
+    "tz": 2,
+    "city": "Quincy",
+    "country": "United States",
+    "iata": "UIN"
+  },
+  "KOQU": {
+    "lat": 41.59565,
+    "lon": -71.410355,
+    "tz": 2,
+    "city": "North Kingstown",
+    "country": "United States",
+    "iata": "NCO"
+  },
+  "KCCR": {
+    "lat": 37.988888,
+    "lon": -122.055557,
+    "tz": 2,
+    "city": "Concord",
+    "country": "United States",
+    "iata": "CCR"
+  },
+  "KORL": {
+    "lat": 28.54546,
+    "lon": -81.332901,
+    "tz": 2,
+    "city": "Orlando",
+    "country": "United States",
+    "iata": "ORL"
+  },
+  "KGAI": {
+    "lat": 39.168331,
+    "lon": -77.166,
+    "tz": 2,
+    "city": "Gaithersburg",
+    "country": "United States",
+    "iata": "GAI"
+  },
+  "KMWL": {
+    "lat": 32.781601,
+    "lon": -98.060097,
+    "tz": 2,
+    "city": "Mineral Wells",
+    "country": "United States",
+    "iata": "MWL"
+  },
+  "KCOT": {
+    "lat": 28.45669,
+    "lon": -99.2183,
+    "tz": 2,
+    "city": "Cotulla",
+    "country": "United States",
+    "iata": "COT"
+  },
+  "KAFO": {
+    "lat": 42.711201,
+    "lon": -110.942001,
+    "tz": 2,
+    "city": "Afton",
+    "country": "United States",
+    "iata": "AFO"
+  },
+  "KCQF": {
+    "lat": 30.460573,
+    "lon": -87.876991,
+    "tz": 2,
+    "city": "Fairhope",
+    "country": "United States",
+    "iata": "QTQ"
+  },
+  "KRBD": {
+    "lat": 32.680832,
+    "lon": -96.868332,
+    "tz": 2,
+    "city": "Dallas",
+    "country": "United States",
+    "iata": "RBD"
+  },
+  "KFST": {
+    "lat": 30.914251,
+    "lon": -102.917603,
+    "tz": 2,
+    "city": "Fort Stockton",
+    "country": "United States",
+    "iata": "FST"
+  },
+  "KTVI": {
+    "lat": 30.9025,
+    "lon": -83.880554,
+    "tz": 2,
+    "city": "Thomasville",
+    "country": "United States",
+    "iata": "TVI"
+  },
+  "KSSI": {
+    "lat": 31.15,
+    "lon": -81.389999,
+    "tz": 2,
+    "city": "Brunswick",
+    "country": "United States",
+    "iata": "SSI"
+  },
+  "KLRU": {
+    "lat": 32.290833,
+    "lon": -106.921669,
+    "tz": 2,
+    "city": "Las Cruces",
+    "country": "United States",
+    "iata": "LRU"
+  },
+  "KYNG": {
+    "lat": 41.260731,
+    "lon": -80.679001,
+    "tz": 2,
+    "city": "Youngstown",
+    "country": "United States",
+    "iata": "YNG"
+  },
+  "KBIV": {
+    "lat": 42.742935,
+    "lon": -86.106941,
+    "tz": 2,
+    "city": "Holland",
+    "country": "United States",
+    "iata": "QTB"
+  },
+  "MUGM": {
+    "lat": 19.906549,
+    "lon": -75.206551,
+    "tz": 2,
+    "city": "Guantanamo",
+    "country": "Cuba",
+    "iata": "NBW"
+  },
+  "CET2": {
+    "lat": 55.696438,
+    "lon": -111.280838,
+    "tz": 2,
+    "city": "Conklin",
+    "country": "Canada",
+    "iata": "CFM"
+  },
+  "VADN": {
+    "lat": 20.434944,
+    "lon": 72.843674,
+    "tz": 2,
+    "city": "Daman",
+    "country": "India",
+    "iata": "NMB"
+  },
+  "YCBA": {
+    "lat": -31.530001,
+    "lon": 145.789993,
+    "tz": 2,
+    "city": "Cobar",
+    "country": "Australia",
+    "iata": "CAZ"
   }
 }
