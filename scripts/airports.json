@@ -21116,5 +21116,229 @@
     "city": "Cobar",
     "country": "Australia",
     "iata": "CAZ"
+  },
+  "LIMG": {
+    "lat": 44.050598,
+    "lon": 8.127428,
+    "tz": 2,
+    "city": "Albenga",
+    "country": "Italy",
+    "iata": "ALL"
+  },
+  "EDRK": {
+    "lat": 50.325493,
+    "lon": 7.528571,
+    "tz": 2,
+    "city": "Koblenz",
+    "country": "Germany",
+    "iata": "QCI"
+  },
+  "EHGR": {
+    "lat": 51.567402,
+    "lon": 4.93183,
+    "tz": 2,
+    "city": "Breda",
+    "country": "Netherlands",
+    "iata": "GLZ"
+  },
+  "EDFM": {
+    "lat": 49.472698,
+    "lon": 8.514264,
+    "tz": 2,
+    "city": "Mannheim",
+    "country": "Germany",
+    "iata": "MHG"
+  },
+  "LJMB": {
+    "lat": 46.479858,
+    "lon": 15.68613,
+    "tz": 2,
+    "city": "Maribor",
+    "country": "Slovenia",
+    "iata": "MBX"
+  },
+  "DXNG": {
+    "lat": 9.767333,
+    "lon": 1.09125,
+    "tz": 2,
+    "city": "Niamtougou",
+    "country": "Togo",
+    "iata": "LRL"
+  },
+  "UWPS": {
+    "lat": 54.125,
+    "lon": 45.215,
+    "tz": 2,
+    "city": "Saransk",
+    "country": "Russia",
+    "iata": "SKX"
+  },
+  "LZPP": {
+    "lat": 48.62524,
+    "lon": 17.82844,
+    "tz": 2,
+    "city": "Piestany",
+    "country": "Slovakia",
+    "iata": "PZY"
+  },
+  "KTVL": {
+    "lat": 38.894169,
+    "lon": -119.994446,
+    "tz": 2,
+    "city": "South Lake Tahoe",
+    "country": "United States",
+    "iata": "TVL"
+  },
+  "KHHR": {
+    "lat": 33.922993,
+    "lon": -118.331543,
+    "tz": 2,
+    "city": "Hawthorne",
+    "country": "United States",
+    "iata": "HHR"
+  },
+  "KADW": {
+    "lat": 38.809425,
+    "lon": -76.867081,
+    "tz": 2,
+    "city": "Camp Springs",
+    "country": "United States",
+    "iata": "ADW"
+  },
+  "KLBT": {
+    "lat": 34.61404,
+    "lon": -79.060112,
+    "tz": 2,
+    "city": "Lumberton",
+    "country": "United States",
+    "iata": "LBT"
+  },
+  "KPJC": {
+    "lat": 40.801548,
+    "lon": -80.160744,
+    "tz": 2,
+    "city": "Zelienople",
+    "country": "United States",
+    "iata": "QDZ"
+  },
+  "KOLS": {
+    "lat": 31.417721,
+    "lon": -110.847,
+    "tz": 2,
+    "city": "Nogales",
+    "country": "United States",
+    "iata": "OLS"
+  },
+  "KANE": {
+    "lat": 45.145,
+    "lon": -93.210281,
+    "tz": 2,
+    "city": "Minneapolis",
+    "country": "United States",
+    "iata": "QQA"
+  },
+  "KFRH": {
+    "lat": 38.506214,
+    "lon": -86.636841,
+    "tz": 2,
+    "city": "French Lick",
+    "country": "United States",
+    "iata": "FRH"
+  },
+  "KEFD": {
+    "lat": 29.6073,
+    "lon": -95.158699,
+    "tz": 2,
+    "city": "Houston",
+    "country": "United States",
+    "iata": "EFD"
+  },
+  "KCNW": {
+    "lat": 31.6378,
+    "lon": -97.074097,
+    "tz": 2,
+    "city": "Waco",
+    "country": "United States",
+    "iata": "CNW"
+  },
+  "KPRB": {
+    "lat": 35.669998,
+    "lon": -120.620003,
+    "tz": 2,
+    "city": "Paso Robles",
+    "country": "United States",
+    "iata": "PRB"
+  },
+  "KGOK": {
+    "lat": 35.8498,
+    "lon": -97.415604,
+    "tz": 2,
+    "city": "Guthrie",
+    "country": "United States",
+    "iata": "GOK"
+  },
+  "KTME": {
+    "lat": 29.805782,
+    "lon": -95.897949,
+    "tz": 2,
+    "city": "Houston",
+    "country": "United States",
+    "iata": "QSE"
+  },
+  "KCNY": {
+    "lat": 38.759445,
+    "lon": -109.746109,
+    "tz": 2,
+    "city": "Moab",
+    "country": "United States",
+    "iata": "CNY"
+  },
+  "KRME": {
+    "lat": 43.233799,
+    "lon": -75.406998,
+    "tz": 2,
+    "city": "Rome",
+    "country": "United States",
+    "iata": "RME"
+  },
+  "KJWN": {
+    "lat": 36.18222,
+    "lon": -86.886665,
+    "tz": 2,
+    "city": "Nashville",
+    "country": "United States",
+    "iata": "QQN"
+  },
+  "KLCQ": {
+    "lat": 30.181883,
+    "lon": -82.575287,
+    "tz": 2,
+    "city": "Lake City",
+    "country": "United States",
+    "iata": "LCQ"
+  },
+  "CYPE": {
+    "lat": 56.22694,
+    "lon": -117.446999,
+    "tz": 2,
+    "city": "Peace River",
+    "country": "Canada",
+    "iata": "YPE"
+  },
+  "OAKS": {
+    "lat": 33.284706,
+    "lon": 69.80735,
+    "tz": 2,
+    "city": "Khost",
+    "country": "Afghanistan",
+    "iata": "KHT"
+  },
+  "YLLE": {
+    "lat": -27.408333,
+    "lon": 141.808334,
+    "tz": 2,
+    "city": "Ballera",
+    "country": "Australia",
+    "iata": "BBL"
   }
 }
