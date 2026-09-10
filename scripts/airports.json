@@ -21340,5 +21340,101 @@
     "city": "Ballera",
     "country": "Australia",
     "iata": "BBL"
+  },
+  "LCRA": {
+    "lat": 34.590336,
+    "lon": 32.987949,
+    "tz": 2,
+    "city": "Akrotiri",
+    "country": "Cyprus",
+    "iata": "AKT"
+  },
+  "EDAB": {
+    "lat": 51.193542,
+    "lon": 14.519808,
+    "tz": 2,
+    "city": "Bautzen",
+    "country": "Germany",
+    "iata": "QEB"
+  },
+  "LIRU": {
+    "lat": 41.952232,
+    "lon": 12.502346,
+    "tz": 2,
+    "city": "Rome",
+    "country": "Italy",
+    "iata": "QIU"
+  },
+  "EFET": {
+    "lat": 68.362579,
+    "lon": 23.42432,
+    "tz": 2,
+    "city": "Enontekio",
+    "country": "Finland",
+    "iata": "ENF"
+  },
+  "UWKE": {
+    "lat": 55.564125,
+    "lon": 52.103409,
+    "tz": 2,
+    "city": "Naberezhnye Chelny",
+    "country": "Russia",
+    "iata": "NBC"
+  },
+  "PACD": {
+    "lat": 55.206059,
+    "lon": -162.725006,
+    "tz": 2,
+    "city": "Cold Bay",
+    "country": "United States",
+    "iata": "CDB"
+  },
+  "KALN": {
+    "lat": 38.890301,
+    "lon": -90.045998,
+    "tz": 2,
+    "city": "Alton",
+    "country": "United States",
+    "iata": "ALN"
+  },
+  "KGGE": {
+    "lat": 33.311699,
+    "lon": -79.319603,
+    "tz": 2,
+    "city": "Georgetown",
+    "country": "United States",
+    "iata": "GGE"
+  },
+  "KBTM": {
+    "lat": 45.951111,
+    "lon": -112.493889,
+    "tz": 2,
+    "city": "Butte",
+    "country": "United States",
+    "iata": "BTM"
+  },
+  "KFDY": {
+    "lat": 41.011944,
+    "lon": -83.66861,
+    "tz": 2,
+    "city": "Findlay",
+    "country": "United States",
+    "iata": "FDY"
+  },
+  "KOKV": {
+    "lat": 39.143501,
+    "lon": -78.144402,
+    "tz": 2,
+    "city": "Winchester",
+    "country": "United States",
+    "iata": "WGO"
+  },
+  "OIKB": {
+    "lat": 27.218309,
+    "lon": 56.37785,
+    "tz": 2,
+    "city": "Bandar Abbas",
+    "country": "Iran",
+    "iata": "BND"
   }
 }
