@@ -21436,5 +21436,197 @@
     "city": "Bandar Abbas",
     "country": "Iran",
     "iata": "BND"
+  },
+  "LEVD": {
+    "lat": 41.706108,
+    "lon": -4.85194,
+    "tz": 2,
+    "city": "Valladolid",
+    "country": "Spain",
+    "iata": "VLL"
+  },
+  "EGBJ": {
+    "lat": 51.894161,
+    "lon": -2.16722,
+    "tz": 2,
+    "city": "Gloucester",
+    "country": "United Kingdom",
+    "iata": "GLO"
+  },
+  "LFMA": {
+    "lat": 43.505264,
+    "lon": 5.367415,
+    "tz": 2,
+    "city": "Aix-en-Provence",
+    "country": "France",
+    "iata": "QXB"
+  },
+  "ETSI": {
+    "lat": 48.715557,
+    "lon": 11.533889,
+    "tz": 2,
+    "city": "Ingolstadt",
+    "country": "Germany",
+    "iata": "IGS"
+  },
+  "LFPV": {
+    "lat": 48.774399,
+    "lon": 2.20154,
+    "tz": 2,
+    "city": "Paris",
+    "country": "France",
+    "iata": "VIY"
+  },
+  "PASX": {
+    "lat": 60.474918,
+    "lon": -151.034775,
+    "tz": 2,
+    "city": "Soldotna",
+    "country": "United States",
+    "iata": "SXQ"
+  },
+  "UUMU": {
+    "lat": 55.880695,
+    "lon": 38.054661,
+    "tz": 2,
+    "city": "Moscow",
+    "country": "Russia",
+    "iata": "CKL"
+  },
+  "KDUC": {
+    "lat": 34.472221,
+    "lon": -97.959724,
+    "tz": 2,
+    "city": "Duncan",
+    "country": "United States",
+    "iata": "DUC"
+  },
+  "KMTN": {
+    "lat": 39.321667,
+    "lon": -76.411667,
+    "tz": 2,
+    "city": "Baltimore",
+    "country": "United States",
+    "iata": "MTN"
+  },
+  "KASH": {
+    "lat": 42.778889,
+    "lon": -71.509445,
+    "tz": 2,
+    "city": "Nashua",
+    "country": "United States",
+    "iata": "ASH"
+  },
+  "KLWM": {
+    "lat": 42.717499,
+    "lon": -71.122498,
+    "tz": 2,
+    "city": "Lawrence",
+    "country": "United States",
+    "iata": "LWM"
+  },
+  "KNQA": {
+    "lat": 35.356659,
+    "lon": -89.870201,
+    "tz": 2,
+    "city": "Millington",
+    "country": "United States",
+    "iata": "NQA"
+  },
+  "MMLT": {
+    "lat": 25.989189,
+    "lon": -111.348,
+    "tz": 2,
+    "city": "Loreto",
+    "country": "Mexico",
+    "iata": "LTO"
+  },
+  "KDMW": {
+    "lat": 39.606937,
+    "lon": -77.006523,
+    "tz": 2,
+    "city": "Westminster",
+    "country": "United States",
+    "iata": "QNW"
+  },
+  "KBVU": {
+    "lat": 35.946777,
+    "lon": -114.856377,
+    "tz": 2,
+    "city": "Boulder City",
+    "country": "United States",
+    "iata": "BLD"
+  },
+  "KISO": {
+    "lat": 35.326668,
+    "lon": -77.616669,
+    "tz": 2,
+    "city": "Kinston",
+    "country": "United States",
+    "iata": "ISO"
+  },
+  "KAUO": {
+    "lat": 32.615101,
+    "lon": -85.433998,
+    "tz": 2,
+    "city": "Auburn",
+    "country": "United States",
+    "iata": "AUO"
+  },
+  "KFIN": {
+    "lat": 29.467501,
+    "lon": -81.20639,
+    "tz": 2,
+    "city": "Bunnell",
+    "country": "United States",
+    "iata": "QQF"
+  },
+  "KFYV": {
+    "lat": 36.005089,
+    "lon": -94.169998,
+    "tz": 2,
+    "city": "Fayetteville",
+    "country": "United States",
+    "iata": "FYV"
+  },
+  "KLCI": {
+    "lat": 43.571388,
+    "lon": -71.421112,
+    "tz": 2,
+    "city": "Laconia",
+    "country": "United States",
+    "iata": "LCI"
+  },
+  "CYGV": {
+    "lat": 50.281944,
+    "lon": -63.611111,
+    "tz": 2,
+    "city": "Havre-Saint-Pierre",
+    "country": "Canada",
+    "iata": "YGV"
+  },
+  "VOAT": {
+    "lat": 10.82365,
+    "lon": 72.176041,
+    "tz": 2,
+    "city": "Agatti",
+    "country": "India",
+    "iata": "AGX"
+  },
+  "YPXM": {
+    "lat": -10.450556,
+    "lon": 105.690277,
+    "tz": 2,
+    "city": "Christmas Island",
+    "country": "Australia",
+    "iata": "XCH"
+  },
+  "SARI": {
+    "lat": -25.7372,
+    "lon": -54.4734,
+    "tz": 2,
+    "city": "Puerto Iguazu",
+    "country": "Argentina",
+    "iata": "IGR"
   }
 }
