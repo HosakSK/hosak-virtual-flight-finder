@@ -21628,5 +21628,157 @@
     "city": "Puerto Iguazu",
     "country": "Argentina",
     "iata": "IGR"
+  },
+  "LHPP": {
+    "lat": 45.990833,
+    "lon": 18.240833,
+    "tz": 2,
+    "city": "Pecs",
+    "country": "Hungary",
+    "iata": "PEV"
+  },
+  "EGBP": {
+    "lat": 51.668056,
+    "lon": -2.056944,
+    "tz": 2,
+    "city": "Kemble",
+    "country": "United Kingdom",
+    "iata": "GBA"
+  },
+  "LHPA": {
+    "lat": 47.363102,
+    "lon": 17.500999,
+    "tz": 2,
+    "city": "Papa",
+    "country": "Hungary",
+    "iata": "QHP"
+  },
+  "LFLA": {
+    "lat": 47.846321,
+    "lon": 3.496578,
+    "tz": 2,
+    "city": "Auxerre",
+    "country": "France",
+    "iata": "AUF"
+  },
+  "SBJH": {
+    "lat": -23.426945,
+    "lon": -47.165833,
+    "tz": 2,
+    "city": "Sao Roque",
+    "country": "Brazil",
+    "iata": "JHF"
+  },
+  "LSMP": {
+    "lat": 46.844105,
+    "lon": 6.916415,
+    "tz": 2,
+    "city": "Payerne",
+    "country": "Switzerland",
+    "iata": "VIP"
+  },
+  "KTIX": {
+    "lat": 28.512222,
+    "lon": -80.799446,
+    "tz": 2,
+    "city": "Titusville",
+    "country": "United States",
+    "iata": "TIX"
+  },
+  "EDRZ": {
+    "lat": 49.209518,
+    "lon": 7.400647,
+    "tz": 2,
+    "city": "Zweibrucken",
+    "country": "Germany",
+    "iata": "ZQW"
+  },
+  "OMFJ": {
+    "lat": 25.112221,
+    "lon": 56.323959,
+    "tz": 2,
+    "city": "Fujairah",
+    "country": "United Arab Emirates",
+    "iata": "FJR"
+  },
+  "KRBW": {
+    "lat": 32.921112,
+    "lon": -80.640556,
+    "tz": 2,
+    "city": "Walterboro",
+    "country": "United States",
+    "iata": "RBW"
+  },
+  "KSRR": {
+    "lat": 33.462776,
+    "lon": -105.534721,
+    "tz": 2,
+    "city": "Ruidoso",
+    "country": "United States",
+    "iata": "RUI"
+  },
+  "KEDC": {
+    "lat": 30.389999,
+    "lon": -97.559998,
+    "tz": 2,
+    "city": "Austin",
+    "country": "United States",
+    "iata": "EDC"
+  },
+  "KNEW": {
+    "lat": 30.039444,
+    "lon": -90.026665,
+    "tz": 2,
+    "city": "New Orleans",
+    "country": "United States",
+    "iata": "NEW"
+  },
+  "KATS": {
+    "lat": 32.852501,
+    "lon": -104.468002,
+    "tz": 2,
+    "city": "Artesia",
+    "country": "United States",
+    "iata": "ATS"
+  },
+  "KMGN": {
+    "lat": 45.425392,
+    "lon": -84.912216,
+    "tz": 2,
+    "city": "Harbor Springs",
+    "country": "United States",
+    "iata": "QSG"
+  },
+  "KOXR": {
+    "lat": 34.200756,
+    "lon": -119.207245,
+    "tz": 2,
+    "city": "Oxnard",
+    "country": "United States",
+    "iata": "OXR"
+  },
+  "OIZC": {
+    "lat": 25.44335,
+    "lon": 60.382111,
+    "tz": 2,
+    "city": "Chabahar",
+    "country": "Iran",
+    "iata": "ZBR"
+  },
+  "OOKB": {
+    "lat": 26.17098,
+    "lon": 56.240559,
+    "tz": 2,
+    "city": "Khasab",
+    "country": "Oman",
+    "iata": "KHS"
+  },
+  "YNAR": {
+    "lat": -34.702221,
+    "lon": 146.512222,
+    "tz": 2,
+    "city": "Narrandera",
+    "country": "Australia",
+    "iata": "NRA"
   }
 }
