@@ -21780,5 +21780,133 @@
     "city": "Narrandera",
     "country": "Australia",
     "iata": "NRA"
+  },
+  "LKKB": {
+    "lat": 50.121567,
+    "lon": 14.544365,
+    "tz": 2,
+    "city": "Prague",
+    "country": "Czechia",
+    "iata": "QZK"
+  },
+  "EDHK": {
+    "lat": 54.379501,
+    "lon": 10.14516,
+    "tz": 2,
+    "city": "Kiel",
+    "country": "Germany",
+    "iata": "KEL"
+  },
+  "EGNR": {
+    "lat": 53.178051,
+    "lon": -2.97777,
+    "tz": 2,
+    "city": "Chester",
+    "country": "United Kingdom",
+    "iata": "CEG"
+  },
+  "PASN": {
+    "lat": 57.164482,
+    "lon": -170.223175,
+    "tz": 2,
+    "city": "St. Paul Island",
+    "country": "United States",
+    "iata": "SNP"
+  },
+  "KGYR": {
+    "lat": 33.42469,
+    "lon": -112.373993,
+    "tz": 2,
+    "city": "Phoenix",
+    "country": "United States",
+    "iata": "GYR"
+  },
+  "FHAW": {
+    "lat": -7.9696,
+    "lon": -14.3937,
+    "tz": 2,
+    "city": "Ascension Island",
+    "country": "Saint Helena",
+    "iata": "ASI"
+  },
+  "KSEZ": {
+    "lat": 34.848991,
+    "lon": -111.78791,
+    "tz": 2,
+    "city": "Sedona",
+    "country": "United States",
+    "iata": "SDX"
+  },
+  "KEYE": {
+    "lat": 39.830833,
+    "lon": -86.294441,
+    "tz": 2,
+    "city": "Indianapolis",
+    "country": "United States",
+    "iata": "QTY"
+  },
+  "CZBM": {
+    "lat": 45.290798,
+    "lon": -72.741402,
+    "tz": 2,
+    "city": "Bromont",
+    "country": "Canada",
+    "iata": "ZBM"
+  },
+  "KAVQ": {
+    "lat": 32.408981,
+    "lon": -111.216171,
+    "tz": 2,
+    "city": "Tucson",
+    "country": "United States",
+    "iata": "AVW"
+  },
+  "KALI": {
+    "lat": 27.740879,
+    "lon": -98.026901,
+    "tz": 2,
+    "city": "Alice",
+    "country": "United States",
+    "iata": "ALI"
+  },
+  "KHUM": {
+    "lat": 29.566944,
+    "lon": -90.660835,
+    "tz": 2,
+    "city": "Houma",
+    "country": "United States",
+    "iata": "HUM"
+  },
+  "KUMP": {
+    "lat": 39.935005,
+    "lon": -86.044708,
+    "tz": 2,
+    "city": "Indianapolis",
+    "country": "United States",
+    "iata": "QDP"
+  },
+  "CYBX": {
+    "lat": 51.439999,
+    "lon": -57.18,
+    "tz": 2,
+    "city": "Blanc-Sablon",
+    "country": "Canada",
+    "iata": "YBX"
+  },
+  "LTBR": {
+    "lat": 40.256081,
+    "lon": 29.564604,
+    "tz": 2,
+    "city": "Bursa",
+    "country": "Turkey",
+    "iata": "YEI"
+  },
+  "UZSK": {
+    "lat": 38.802528,
+    "lon": 65.773285,
+    "tz": 2,
+    "city": "Karshi",
+    "country": "Uzbekistan",
+    "iata": "KSQ"
   }
 }
