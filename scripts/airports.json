@@ -21908,5 +21908,157 @@
     "city": "Karshi",
     "country": "Uzbekistan",
     "iata": "KSQ"
+  },
+  "EKSP": {
+    "lat": 55.222565,
+    "lon": 9.256979,
+    "tz": 2,
+    "city": "Vojens",
+    "country": "Denmark",
+    "iata": "SKS"
+  },
+  "LEAB": {
+    "lat": 38.948502,
+    "lon": -1.86352,
+    "tz": 2,
+    "city": "Albacete",
+    "country": "Spain",
+    "iata": "ABC"
+  },
+  "LTCL": {
+    "lat": 37.978901,
+    "lon": 41.840401,
+    "tz": 2,
+    "city": "Siirt",
+    "country": "Turkey",
+    "iata": "SXZ"
+  },
+  "KMOD": {
+    "lat": 37.625809,
+    "lon": -120.954002,
+    "tz": 2,
+    "city": "Modesto",
+    "country": "United States",
+    "iata": "MOD"
+  },
+  "KEKS": {
+    "lat": 45.274384,
+    "lon": -111.648827,
+    "tz": 2,
+    "city": "Ennis",
+    "country": "United States",
+    "iata": "QTE"
+  },
+  "PAED": {
+    "lat": 61.252537,
+    "lon": -149.797928,
+    "tz": 2,
+    "city": "Anchorage",
+    "country": "United States",
+    "iata": "EDF"
+  },
+  "ZLGM": {
+    "lat": 36.4006,
+    "lon": 94.786102,
+    "tz": 2,
+    "city": "Golmud",
+    "country": "China",
+    "iata": "GOQ"
+  },
+  "KBVO": {
+    "lat": 36.762501,
+    "lon": -96.0112,
+    "tz": 2,
+    "city": "Bartlesville",
+    "country": "United States",
+    "iata": "BVO"
+  },
+  "KBTL": {
+    "lat": 42.307301,
+    "lon": -85.251503,
+    "tz": 2,
+    "city": "Battle Creek",
+    "country": "United States",
+    "iata": "BTL"
+  },
+  "KMWA": {
+    "lat": 37.751945,
+    "lon": -89.016388,
+    "tz": 2,
+    "city": "Marion",
+    "country": "United States",
+    "iata": "MWA"
+  },
+  "KVTN": {
+    "lat": 42.849998,
+    "lon": -100.540001,
+    "tz": 2,
+    "city": "Valentine",
+    "country": "United States",
+    "iata": "VTN"
+  },
+  "KLVM": {
+    "lat": 45.69788,
+    "lon": -110.445969,
+    "tz": 2,
+    "city": "Livingston",
+    "country": "United States",
+    "iata": "LVM"
+  },
+  "KRBL": {
+    "lat": 40.154999,
+    "lon": -122.252464,
+    "tz": 2,
+    "city": "Red Bluff",
+    "country": "United States",
+    "iata": "RBL"
+  },
+  "KBYY": {
+    "lat": 28.97315,
+    "lon": -95.863335,
+    "tz": 2,
+    "city": "Bay City",
+    "country": "United States",
+    "iata": "BBC"
+  },
+  "KVPZ": {
+    "lat": 41.452404,
+    "lon": -87.006912,
+    "tz": 2,
+    "city": "Valparaiso",
+    "country": "United States",
+    "iata": "VPZ"
+  },
+  "KRAC": {
+    "lat": 42.760555,
+    "lon": -87.815277,
+    "tz": 2,
+    "city": "Racine",
+    "country": "United States",
+    "iata": "RAC"
+  },
+  "KBML": {
+    "lat": 44.575401,
+    "lon": -71.175926,
+    "tz": 2,
+    "city": "Berlin",
+    "country": "United States",
+    "iata": "BML"
+  },
+  "KLQK": {
+    "lat": 34.809811,
+    "lon": -82.702606,
+    "tz": 2,
+    "city": "Pickens",
+    "country": "United States",
+    "iata": "LQK"
+  },
+  "ZSTX": {
+    "lat": 29.73333,
+    "lon": 118.255798,
+    "tz": 2,
+    "city": "Huangshan City",
+    "country": "China",
+    "iata": "TXN"
   }
 }
