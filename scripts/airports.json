@@ -22060,5 +22060,237 @@
     "city": "Huangshan City",
     "country": "China",
     "iata": "TXN"
+  },
+  "EGSC": {
+    "lat": 52.205002,
+    "lon": 0.175,
+    "tz": 2,
+    "city": "Cambridge",
+    "country": "United Kingdom",
+    "iata": "CBG"
+  },
+  "LFDB": {
+    "lat": 44.027069,
+    "lon": 1.376231,
+    "tz": 2,
+    "city": "Montauban",
+    "country": "France",
+    "iata": "QFQ"
+  },
+  "LFBF": {
+    "lat": 43.545696,
+    "lon": 1.36722,
+    "tz": 2,
+    "city": "Toulouse",
+    "country": "France",
+    "iata": "QYF"
+  },
+  "LELL": {
+    "lat": 41.520992,
+    "lon": 2.104927,
+    "tz": 2,
+    "city": "Sabadell",
+    "country": "Spain",
+    "iata": "QYS"
+  },
+  "EHWO": {
+    "lat": 51.4491,
+    "lon": 4.34203,
+    "tz": 2,
+    "city": "Bergen op Zoom",
+    "country": "Netherlands",
+    "iata": "WOE"
+  },
+  "LBGO": {
+    "lat": 43.15144,
+    "lon": 25.712879,
+    "tz": 2,
+    "city": "Gorna Oryahovitsa",
+    "country": "Bulgaria",
+    "iata": "GOZ"
+  },
+  "EEKE": {
+    "lat": 58.229881,
+    "lon": 22.509489,
+    "tz": 2,
+    "city": "Kuressaare",
+    "country": "Estonia",
+    "iata": "URE"
+  },
+  "UBBG": {
+    "lat": 40.737778,
+    "lon": 46.317501,
+    "tz": 2,
+    "city": "Ganja",
+    "country": "Azerbaijan",
+    "iata": "GNJ"
+  },
+  "KPGA": {
+    "lat": 36.926083,
+    "lon": -111.448357,
+    "tz": 2,
+    "city": "Page",
+    "country": "United States",
+    "iata": "PGA"
+  },
+  "KEKA": {
+    "lat": 40.805,
+    "lon": -124.114998,
+    "tz": 2,
+    "city": "Eureka",
+    "country": "United States",
+    "iata": "EKA"
+  },
+  "KBKV": {
+    "lat": 28.475687,
+    "lon": -82.44783,
+    "tz": 2,
+    "city": "Brooksville",
+    "country": "United States",
+    "iata": "QSK"
+  },
+  "KSPG": {
+    "lat": 27.767256,
+    "lon": -82.62484,
+    "tz": 2,
+    "city": "St. Petersburg",
+    "country": "United States",
+    "iata": "SPG"
+  },
+  "KCUB": {
+    "lat": 33.970501,
+    "lon": -80.995201,
+    "tz": 2,
+    "city": "Columbia",
+    "country": "United States",
+    "iata": "CUB"
+  },
+  "KILE": {
+    "lat": 31.085781,
+    "lon": -97.686546,
+    "tz": 2,
+    "city": "Killeen",
+    "country": "United States",
+    "iata": "ILE"
+  },
+  "KRWL": {
+    "lat": 41.804443,
+    "lon": -107.201385,
+    "tz": 2,
+    "city": "Rawlins",
+    "country": "United States",
+    "iata": "RWL"
+  },
+  "KAID": {
+    "lat": 40.108665,
+    "lon": -85.613815,
+    "tz": 2,
+    "city": "Anderson",
+    "country": "United States",
+    "iata": "AID"
+  },
+  "KBAZ": {
+    "lat": 29.703056,
+    "lon": -98.041115,
+    "tz": 2,
+    "city": "New Braunfels",
+    "country": "United States",
+    "iata": "QQZ"
+  },
+  "KCVC": {
+    "lat": 33.632229,
+    "lon": -83.846649,
+    "tz": 2,
+    "city": "Covington",
+    "country": "United States",
+    "iata": "QDC"
+  },
+  "KBKS": {
+    "lat": 27.204731,
+    "lon": -98.122398,
+    "tz": 2,
+    "city": "Falfurrias",
+    "country": "United States",
+    "iata": "QTK"
+  },
+  "KRKP": {
+    "lat": 28.086111,
+    "lon": -97.04361,
+    "tz": 2,
+    "city": "Rockport",
+    "country": "United States",
+    "iata": "RKP"
+  },
+  "KBWD": {
+    "lat": 31.794722,
+    "lon": -98.956665,
+    "tz": 2,
+    "city": "Brownwood",
+    "country": "United States",
+    "iata": "BWD"
+  },
+  "KAXN": {
+    "lat": 45.867222,
+    "lon": -95.394165,
+    "tz": 2,
+    "city": "Alexandria",
+    "country": "United States",
+    "iata": "AXN"
+  },
+  "KLRJ": {
+    "lat": 42.778362,
+    "lon": -96.193619,
+    "tz": 2,
+    "city": "Lemars",
+    "country": "United States",
+    "iata": "LRJ"
+  },
+  "KSGH": {
+    "lat": 39.840279,
+    "lon": -83.840279,
+    "tz": 2,
+    "city": "Springfield",
+    "country": "United States",
+    "iata": "SGH"
+  },
+  "KTCM": {
+    "lat": 47.138634,
+    "lon": -122.476471,
+    "tz": 2,
+    "city": "Tacoma",
+    "country": "United States",
+    "iata": "TCM"
+  },
+  "KLVK": {
+    "lat": 37.69389,
+    "lon": -121.817223,
+    "tz": 2,
+    "city": "Livermore",
+    "country": "United States",
+    "iata": "LVK"
+  },
+  "CYZU": {
+    "lat": 54.14389,
+    "lon": -115.786003,
+    "tz": 2,
+    "city": "Whitecourt",
+    "country": "Canada",
+    "iata": "YZU"
+  },
+  "CYYE": {
+    "lat": 58.83638,
+    "lon": -122.596001,
+    "tz": 2,
+    "city": "Fort Nelson",
+    "country": "Canada",
+    "iata": "YYE"
+  },
+  "CYQL": {
+    "lat": 49.630268,
+    "lon": -112.799004,
+    "tz": 2,
+    "city": "Lethbridge",
+    "country": "Canada",
+    "iata": "YQL"
   }
 }
