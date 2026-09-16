@@ -22292,5 +22292,189 @@
     "city": "Lethbridge",
     "country": "Canada",
     "iata": "YQL"
+  },
+  "LEMO": {
+    "lat": 37.174774,
+    "lon": -5.615983,
+    "tz": 2,
+    "city": "Moron de la Frontera",
+    "country": "Spain",
+    "iata": "OZP"
+  },
+  "LFSG": {
+    "lat": 48.325001,
+    "lon": 6.066742,
+    "tz": 2,
+    "city": "Epinal",
+    "country": "France",
+    "iata": "EPL"
+  },
+  "EGNO": {
+    "lat": 53.744999,
+    "lon": -2.883889,
+    "tz": 2,
+    "city": "Warton",
+    "country": "United Kingdom",
+    "iata": "WRT"
+  },
+  "LFRC": {
+    "lat": 49.650829,
+    "lon": -1.47527,
+    "tz": 2,
+    "city": "Cherbourg",
+    "country": "France",
+    "iata": "CER"
+  },
+  "LFLP": {
+    "lat": 45.930771,
+    "lon": 6.106289,
+    "tz": 2,
+    "city": "Annecy",
+    "country": "France",
+    "iata": "NCY"
+  },
+  "EGDM": {
+    "lat": 51.158348,
+    "lon": -1.741247,
+    "tz": 2,
+    "city": "Amesbury",
+    "country": "United Kingdom",
+    "iata": "QUA"
+  },
+  "OING": {
+    "lat": 36.909401,
+    "lon": 54.401299,
+    "tz": 2,
+    "city": "Gorgan",
+    "country": "Iran",
+    "iata": "GBT"
+  },
+  "UBBQ": {
+    "lat": 40.815983,
+    "lon": 47.723049,
+    "tz": 2,
+    "city": "Qabala",
+    "country": "Azerbaijan",
+    "iata": "GBB"
+  },
+  "KMAW": {
+    "lat": 36.600601,
+    "lon": -89.992203,
+    "tz": 2,
+    "city": "Malden",
+    "country": "United States",
+    "iata": "MAW"
+  },
+  "KVPC": {
+    "lat": 34.123055,
+    "lon": -84.84861,
+    "tz": 2,
+    "city": "Cartersville",
+    "country": "United States",
+    "iata": "QQV"
+  },
+  "TJIG": {
+    "lat": 18.45682,
+    "lon": -66.098099,
+    "tz": 2,
+    "city": "San Juan",
+    "country": "Puerto Rico",
+    "iata": "SIG"
+  },
+  "KMIV": {
+    "lat": 39.367802,
+    "lon": -75.072197,
+    "tz": 2,
+    "city": "Millville",
+    "country": "United States",
+    "iata": "MIV"
+  },
+  "KJSO": {
+    "lat": 31.869329,
+    "lon": -95.217407,
+    "tz": 2,
+    "city": "Jacksonville",
+    "country": "United States",
+    "iata": "JKV"
+  },
+  "KMWH": {
+    "lat": 47.20858,
+    "lon": -119.319,
+    "tz": 2,
+    "city": "Moses Lake",
+    "country": "United States",
+    "iata": "MWH"
+  },
+  "KRMN": {
+    "lat": 38.396832,
+    "lon": -77.454086,
+    "tz": 2,
+    "city": "Stafford",
+    "country": "United States",
+    "iata": "QDS"
+  },
+  "KMJX": {
+    "lat": 39.928093,
+    "lon": -74.293053,
+    "tz": 2,
+    "city": "Toms River",
+    "country": "United States",
+    "iata": "MJX"
+  },
+  "KPBF": {
+    "lat": 34.175133,
+    "lon": -91.9356,
+    "tz": 2,
+    "city": "Pine Bluff",
+    "country": "United States",
+    "iata": "PBF"
+  },
+  "KTPH": {
+    "lat": 38.06028,
+    "lon": -117.08667,
+    "tz": 2,
+    "city": "Tonopah",
+    "country": "United States",
+    "iata": "TPH"
+  },
+  "KDAN": {
+    "lat": 36.572899,
+    "lon": -79.336098,
+    "tz": 2,
+    "city": "Danville",
+    "country": "United States",
+    "iata": "DAN"
+  },
+  "KMVL": {
+    "lat": 44.537231,
+    "lon": -72.614136,
+    "tz": 2,
+    "city": "Morrisville",
+    "country": "United States",
+    "iata": "MVL"
+  },
+  "KTTA": {
+    "lat": 35.582787,
+    "lon": -79.101196,
+    "tz": 2,
+    "city": "Sanford",
+    "country": "United States",
+    "iata": "QTT"
+  },
+  "KCDW": {
+    "lat": 40.875004,
+    "lon": -74.280212,
+    "tz": 2,
+    "city": "Caldwell",
+    "country": "United States",
+    "iata": "CDW"
+  },
+  "CYZH": {
+    "lat": 55.293049,
+    "lon": -114.777,
+    "tz": 2,
+    "city": "Slave Lake",
+    "country": "Canada",
+    "iata": "YZH"
   }
 }
