@@ -22476,5 +22476,165 @@
     "city": "Slave Lake",
     "country": "Canada",
     "iata": "YZH"
+  },
+  "LESB": {
+    "lat": 39.600178,
+    "lon": 2.704697,
+    "tz": 2,
+    "city": "Palma de Mallorca",
+    "country": "Spain",
+    "iata": "QRS"
+  },
+  "LHKE": {
+    "lat": 46.917618,
+    "lon": 19.748909,
+    "tz": 2,
+    "city": "Kecskemet",
+    "country": "Hungary",
+    "iata": "QHK"
+  },
+  "OMAM": {
+    "lat": 24.248199,
+    "lon": 54.547699,
+    "tz": 2,
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "iata": "DHF"
+  },
+  "BGQO": {
+    "lat": 60.765835,
+    "lon": -46.064999,
+    "tz": 2,
+    "city": "Qaqortoq",
+    "country": "Greenland",
+    "iata": "JJU"
+  },
+  "KSAC": {
+    "lat": 38.51289,
+    "lon": -121.494347,
+    "tz": 2,
+    "city": "Sacramento",
+    "country": "United States",
+    "iata": "SAC"
+  },
+  "KASN": {
+    "lat": 33.570244,
+    "lon": -86.050545,
+    "tz": 2,
+    "city": "Talladega",
+    "country": "United States",
+    "iata": "ASN"
+  },
+  "KLXT": {
+    "lat": 38.959721,
+    "lon": -94.371391,
+    "tz": 2,
+    "city": "Lee's Summit",
+    "country": "United States",
+    "iata": "QQL"
+  },
+  "KJYO": {
+    "lat": 39.077789,
+    "lon": -77.557396,
+    "tz": 2,
+    "city": "Leesburg",
+    "country": "United States",
+    "iata": "QSO"
+  },
+  "KMLF": {
+    "lat": 38.42498,
+    "lon": -113.013298,
+    "tz": 2,
+    "city": "Milford",
+    "country": "United States",
+    "iata": "MLF"
+  },
+  "KCRG": {
+    "lat": 30.3363,
+    "lon": -81.514397,
+    "tz": 2,
+    "city": "Jacksonville",
+    "country": "United States",
+    "iata": "CRG"
+  },
+  "KXBP": {
+    "lat": 33.176147,
+    "lon": -97.8284,
+    "tz": 2,
+    "city": "Bridgeport",
+    "country": "United States",
+    "iata": "QLP"
+  },
+  "KFDK": {
+    "lat": 39.417599,
+    "lon": -77.374298,
+    "tz": 2,
+    "city": "Frederick",
+    "country": "United States",
+    "iata": "FDK"
+  },
+  "KMCW": {
+    "lat": 43.156944,
+    "lon": -93.329445,
+    "tz": 2,
+    "city": "Mason City",
+    "country": "United States",
+    "iata": "MCW"
+  },
+  "KGFL": {
+    "lat": 43.341202,
+    "lon": -73.610298,
+    "tz": 2,
+    "city": "Glens Falls",
+    "country": "United States",
+    "iata": "GFL"
+  },
+  "KUDD": {
+    "lat": 33.748184,
+    "lon": -116.274185,
+    "tz": 2,
+    "city": "Palm Springs",
+    "country": "United States",
+    "iata": "UDD"
+  },
+  "KLGD": {
+    "lat": 45.289722,
+    "lon": -118.004997,
+    "tz": 2,
+    "city": "La Grande",
+    "country": "United States",
+    "iata": "LGD"
+  },
+  "CYFJ": {
+    "lat": 46.409168,
+    "lon": -74.779999,
+    "tz": 2,
+    "city": "Mont Tremblant",
+    "country": "Canada",
+    "iata": "YTM"
+  },
+  "KBXM": {
+    "lat": 43.892288,
+    "lon": -69.937485,
+    "tz": 2,
+    "city": "Brunswick",
+    "country": "United States",
+    "iata": "NHZ"
+  },
+  "WSSL": {
+    "lat": 1.416006,
+    "lon": 103.867081,
+    "tz": 2,
+    "city": "Singapore",
+    "country": "Singapore",
+    "iata": "XSP"
+  },
+  "MMCZ": {
+    "lat": 20.5224,
+    "lon": -86.925598,
+    "tz": 2,
+    "city": "Cozumel",
+    "country": "Mexico",
+    "iata": "CZM"
   }
 }
