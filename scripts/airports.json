@@ -22636,5 +22636,149 @@
     "city": "Cozumel",
     "country": "Mexico",
     "iata": "CZM"
+  },
+  "ETNS": {
+    "lat": 54.457157,
+    "lon": 9.51221,
+    "tz": 2,
+    "city": "Schleswig",
+    "country": "Germany",
+    "iata": "WBG"
+  },
+  "LFOZ": {
+    "lat": 47.897499,
+    "lon": 2.164167,
+    "tz": 2,
+    "city": "Orleans",
+    "country": "France",
+    "iata": "ORE"
+  },
+  "CYOO": {
+    "lat": 43.916668,
+    "lon": -78.900002,
+    "tz": 2,
+    "city": "Oshawa",
+    "country": "Canada",
+    "iata": "YOO"
+  },
+  "KTRM": {
+    "lat": 33.626884,
+    "lon": -116.155937,
+    "tz": 2,
+    "city": "Thermal",
+    "country": "United States",
+    "iata": "TRM"
+  },
+  "KMFD": {
+    "lat": 40.82,
+    "lon": -82.512779,
+    "tz": 2,
+    "city": "Mansfield",
+    "country": "United States",
+    "iata": "MFD"
+  },
+  "KOKM": {
+    "lat": 35.666054,
+    "lon": -95.948532,
+    "tz": 2,
+    "city": "Okmulgee",
+    "country": "United States",
+    "iata": "OKM"
+  },
+  "KVCV": {
+    "lat": 34.594856,
+    "lon": -117.386482,
+    "tz": 2,
+    "city": "Victorville",
+    "country": "United States",
+    "iata": "VCV"
+  },
+  "KJNX": {
+    "lat": 35.541203,
+    "lon": -78.390175,
+    "tz": 2,
+    "city": "Smithfield",
+    "country": "United States",
+    "iata": "QSJ"
+  },
+  "KBYI": {
+    "lat": 42.542599,
+    "lon": -113.772003,
+    "tz": 2,
+    "city": "Burley",
+    "country": "United States",
+    "iata": "BYI"
+  },
+  "KOJC": {
+    "lat": 38.849998,
+    "lon": -94.73333,
+    "tz": 2,
+    "city": "Kansas City",
+    "country": "United States",
+    "iata": "OJC"
+  },
+  "KHDE": {
+    "lat": 40.452602,
+    "lon": -99.337372,
+    "tz": 2,
+    "city": "Holdrege",
+    "country": "United States",
+    "iata": "HDE"
+  },
+  "KAAO": {
+    "lat": 37.74733,
+    "lon": -97.221191,
+    "tz": 2,
+    "city": "Wichita",
+    "country": "United States",
+    "iata": "QNO"
+  },
+  "KVBT": {
+    "lat": 36.345627,
+    "lon": -94.219337,
+    "tz": 2,
+    "city": "Bentonville",
+    "country": "United States",
+    "iata": "QTV"
+  },
+  "KHFD": {
+    "lat": 41.736721,
+    "lon": -72.649399,
+    "tz": 2,
+    "city": "Hartford",
+    "country": "United States",
+    "iata": "HFD"
+  },
+  "KCRE": {
+    "lat": 33.811699,
+    "lon": -78.7239,
+    "tz": 2,
+    "city": "North Myrtle Beach",
+    "country": "United States",
+    "iata": "CRE"
+  },
+  "TJRV": {
+    "lat": 18.250284,
+    "lon": -65.63575,
+    "tz": 2,
+    "city": "Ceiba",
+    "country": "Puerto Rico",
+    "iata": "NRR"
+  },
+  "CYPQ": {
+    "lat": 44.23,
+    "lon": -78.363297,
+    "tz": 2,
+    "city": "Peterborough",
+    "country": "Canada",
+    "iata": "YPQ"
+  },
+  "OIBB": {
+    "lat": 28.944811,
+    "lon": 50.834629,
+    "tz": 2,
+    "city": "Bushehr",
+    "country": "Iran",
+    "iata": "BUZ"
   }
 }
