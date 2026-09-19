@@ -22780,5 +22780,133 @@
     "city": "Bushehr",
     "country": "Iran",
     "iata": "BUZ"
+  },
+  "LFRQ": {
+    "lat": 47.974998,
+    "lon": -4.16777,
+    "tz": 2,
+    "city": "Quimper",
+    "country": "France",
+    "iata": "UIP"
+  },
+  "EDCY": {
+    "lat": 51.577148,
+    "lon": 14.137252,
+    "tz": 2,
+    "city": "Welzow",
+    "country": "Germany",
+    "iata": "QEY"
+  },
+  "LFSN": {
+    "lat": 48.692081,
+    "lon": 6.22605,
+    "tz": 2,
+    "city": "Nancy",
+    "country": "France",
+    "iata": "ENC"
+  },
+  "LFPN": {
+    "lat": 48.752697,
+    "lon": 2.105363,
+    "tz": 2,
+    "city": "Paris",
+    "country": "France",
+    "iata": "TNF"
+  },
+  "DAUK": {
+    "lat": 33.067799,
+    "lon": 6.088672,
+    "tz": 2,
+    "city": "Touggourt",
+    "country": "Algeria",
+    "iata": "TGR"
+  },
+  "LFOH": {
+    "lat": 49.533878,
+    "lon": 0.088056,
+    "tz": 2,
+    "city": "Le Havre",
+    "country": "France",
+    "iata": "LEH"
+  },
+  "UZFA": {
+    "lat": 40.72773,
+    "lon": 72.294006,
+    "tz": 2,
+    "city": "Andizhan",
+    "country": "Uzbekistan",
+    "iata": "AZN"
+  },
+  "PADK": {
+    "lat": 51.87796,
+    "lon": -176.645996,
+    "tz": 2,
+    "city": "Adak Island",
+    "country": "United States",
+    "iata": "ADK"
+  },
+  "KHYI": {
+    "lat": 29.892778,
+    "lon": -97.863052,
+    "tz": 2,
+    "city": "San Marcos",
+    "country": "United States",
+    "iata": "HYI"
+  },
+  "KNGU": {
+    "lat": 36.937462,
+    "lon": -76.289284,
+    "tz": 2,
+    "city": "Norfolk",
+    "country": "United States",
+    "iata": "NGU"
+  },
+  "KNZY": {
+    "lat": 32.699142,
+    "lon": -117.21521,
+    "tz": 2,
+    "city": "San Diego",
+    "country": "United States",
+    "iata": "NZY"
+  },
+  "KEEN": {
+    "lat": 42.898399,
+    "lon": -72.270798,
+    "tz": 2,
+    "city": "Keene",
+    "country": "United States",
+    "iata": "EEN"
+  },
+  "KGTU": {
+    "lat": 30.677477,
+    "lon": -97.678467,
+    "tz": 2,
+    "city": "Georgetown",
+    "country": "United States",
+    "iata": "QTG"
+  },
+  "KASG": {
+    "lat": 36.176388,
+    "lon": -94.119164,
+    "tz": 2,
+    "city": "Springdale",
+    "country": "United States",
+    "iata": "SPZ"
+  },
+  "KRPD": {
+    "lat": 45.415955,
+    "lon": -91.775085,
+    "tz": 2,
+    "city": "Rice Lake",
+    "country": "United States",
+    "iata": "RIE"
+  },
+  "KSUE": {
+    "lat": 44.843887,
+    "lon": -87.421387,
+    "tz": 2,
+    "city": "Sturgeon Bay",
+    "country": "United States",
+    "iata": "SUE"
   }
 }
