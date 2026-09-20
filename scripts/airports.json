@@ -22908,5 +22908,53 @@
     "city": "Sturgeon Bay",
     "country": "United States",
     "iata": "SUE"
+  },
+  "KBEH": {
+    "lat": 42.128601,
+    "lon": -86.428497,
+    "tz": 2,
+    "city": "Benton Harbor",
+    "country": "United States",
+    "iata": "BEH"
+  },
+  "KJVY": {
+    "lat": 38.366142,
+    "lon": -85.737885,
+    "tz": 2,
+    "city": "Louisville",
+    "country": "United States",
+    "iata": "QSV"
+  },
+  "KCKC": {
+    "lat": 47.838333,
+    "lon": -90.383057,
+    "tz": 2,
+    "city": "Grand Marais",
+    "country": "United States",
+    "iata": "GRM"
+  },
+  "KMYF": {
+    "lat": 32.815449,
+    "lon": -117.135635,
+    "tz": 2,
+    "city": "San Diego",
+    "country": "United States",
+    "iata": "MYF"
+  },
+  "CYPD": {
+    "lat": 45.657928,
+    "lon": -61.376122,
+    "tz": 2,
+    "city": "Port Hawkesbury",
+    "country": "Canada",
+    "iata": "YPS"
+  },
+  "KBOW": {
+    "lat": 27.943333,
+    "lon": -81.783333,
+    "tz": 2,
+    "city": "Bartow",
+    "country": "United States",
+    "iata": "BOW"
   }
 }
