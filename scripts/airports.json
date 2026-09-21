@@ -22956,5 +22956,85 @@
     "city": "Bartow",
     "country": "United States",
     "iata": "BOW"
+  },
+  "LHPR": {
+    "lat": 47.627132,
+    "lon": 17.808203,
+    "tz": 2,
+    "city": "Gyor",
+    "country": "Hungary",
+    "iata": "QGY"
+  },
+  "LFRD": {
+    "lat": 48.587769,
+    "lon": -2.08,
+    "tz": 2,
+    "city": "Dinard",
+    "country": "France",
+    "iata": "DNR"
+  },
+  "LIPU": {
+    "lat": 45.395832,
+    "lon": 11.847766,
+    "tz": 2,
+    "city": "Padua",
+    "country": "Italy",
+    "iata": "QIP"
+  },
+  "KTRL": {
+    "lat": 32.709351,
+    "lon": -96.267082,
+    "tz": 2,
+    "city": "Terrell",
+    "country": "United States",
+    "iata": "TRL"
+  },
+  "KDVT": {
+    "lat": 33.688332,
+    "lon": -112.082497,
+    "tz": 2,
+    "city": "Phoenix",
+    "country": "United States",
+    "iata": "DVT"
+  },
+  "KCGZ": {
+    "lat": 32.955158,
+    "lon": -111.766068,
+    "tz": 2,
+    "city": "Casa Grande",
+    "country": "United States",
+    "iata": "CGZ"
+  },
+  "KCFT": {
+    "lat": 32.952801,
+    "lon": -109.209999,
+    "tz": 2,
+    "city": "Clifton/Morenci",
+    "country": "United States",
+    "iata": "CFT"
+  },
+  "KDRI": {
+    "lat": 30.829233,
+    "lon": -93.337662,
+    "tz": 2,
+    "city": "De Ridder",
+    "country": "United States",
+    "iata": "DRI"
+  },
+  "KTHA": {
+    "lat": 35.3801,
+    "lon": -86.246399,
+    "tz": 2,
+    "city": "Tullahoma",
+    "country": "United States",
+    "iata": "THA"
+  },
+  "CYQW": {
+    "lat": 52.769344,
+    "lon": -108.243599,
+    "tz": 2,
+    "city": "North Battleford",
+    "country": "Canada",
+    "iata": "YQW"
   }
 }
