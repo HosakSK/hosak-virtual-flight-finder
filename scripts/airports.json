@@ -23036,5 +23036,133 @@
     "city": "North Battleford",
     "country": "Canada",
     "iata": "YQW"
+  },
+  "LOAN": {
+    "lat": 47.843334,
+    "lon": 16.26,
+    "tz": 2,
+    "city": "Wiener Neustadt",
+    "country": "Austria",
+    "iata": "QEW"
+  },
+  "LTBU": {
+    "lat": 41.138332,
+    "lon": 27.919167,
+    "tz": 2,
+    "city": "Tekirdag",
+    "country": "Turkey",
+    "iata": "TEQ"
+  },
+  "UNOO": {
+    "lat": 54.967041,
+    "lon": 73.310509,
+    "tz": 2,
+    "city": "Omsk",
+    "country": "Russia",
+    "iata": "OMS"
+  },
+  "KSQL": {
+    "lat": 37.511944,
+    "lon": -122.249443,
+    "tz": 2,
+    "city": "San Carlos",
+    "country": "United States",
+    "iata": "SQL"
+  },
+  "BIRK": {
+    "lat": 64.1287,
+    "lon": -21.93741,
+    "tz": 2,
+    "city": "Reykjavik",
+    "country": "Iceland",
+    "iata": "RKV"
+  },
+  "CYSC": {
+    "lat": 45.43861,
+    "lon": -71.691299,
+    "tz": 2,
+    "city": "Sherbrooke",
+    "country": "Canada",
+    "iata": "YSC"
+  },
+  "KPSO": {
+    "lat": 37.288059,
+    "lon": -107.055023,
+    "tz": 2,
+    "city": "Pagosa Springs",
+    "country": "United States",
+    "iata": "PGO"
+  },
+  "KIGM": {
+    "lat": 35.25,
+    "lon": -113.93,
+    "tz": 2,
+    "city": "Kingman",
+    "country": "United States",
+    "iata": "IGM"
+  },
+  "KMQJ": {
+    "lat": 39.843613,
+    "lon": -85.896942,
+    "tz": 2,
+    "city": "Indianapolis",
+    "country": "United States",
+    "iata": "QQQ"
+  },
+  "KKNB": {
+    "lat": 37.010342,
+    "lon": -112.53157,
+    "tz": 2,
+    "city": "Kanab",
+    "country": "United States",
+    "iata": "KNB"
+  },
+  "KPMP": {
+    "lat": 26.25,
+    "lon": -80.116669,
+    "tz": 2,
+    "city": "Pompano Beach",
+    "country": "United States",
+    "iata": "PPM"
+  },
+  "KCDS": {
+    "lat": 34.433781,
+    "lon": -100.287003,
+    "tz": 2,
+    "city": "Childress",
+    "country": "United States",
+    "iata": "CDS"
+  },
+  "KGLH": {
+    "lat": 33.48362,
+    "lon": -90.987251,
+    "tz": 2,
+    "city": "Greenville",
+    "country": "United States",
+    "iata": "GLH"
+  },
+  "CYYY": {
+    "lat": 48.608608,
+    "lon": -68.208,
+    "tz": 2,
+    "city": "Mont-Joli",
+    "country": "Canada",
+    "iata": "YYY"
+  },
+  "AYNZ": {
+    "lat": -6.56982,
+    "lon": 146.726196,
+    "tz": 2,
+    "city": "Lae",
+    "country": "Papua New Guinea",
+    "iata": "LAE"
+  },
+  "YPJT": {
+    "lat": -32.09,
+    "lon": 115.879997,
+    "tz": 2,
+    "city": "Perth",
+    "country": "Australia",
+    "iata": "JAD"
   }
 }
