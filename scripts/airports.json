@@ -23164,5 +23164,141 @@
     "city": "Perth",
     "country": "Australia",
     "iata": "JAD"
+  },
+  "EHLE": {
+    "lat": 52.454941,
+    "lon": 5.517929,
+    "tz": 2,
+    "city": "Lelystad",
+    "country": "Netherlands",
+    "iata": "LEY"
+  },
+  "EGQS": {
+    "lat": 57.705212,
+    "lon": -3.33916,
+    "tz": 2,
+    "city": "Lossiemouth",
+    "country": "United Kingdom",
+    "iata": "LMO"
+  },
+  "KDLS": {
+    "lat": 45.6185,
+    "lon": -121.167,
+    "tz": 2,
+    "city": "The Dalles",
+    "country": "United States",
+    "iata": "DLS"
+  },
+  "KDRT": {
+    "lat": 29.374201,
+    "lon": -100.927002,
+    "tz": 2,
+    "city": "Del Rio",
+    "country": "United States",
+    "iata": "DRT"
+  },
+  "KPAM": {
+    "lat": 30.069481,
+    "lon": -85.575554,
+    "tz": 2,
+    "city": "Panama City",
+    "country": "United States",
+    "iata": "PAM"
+  },
+  "KFIT": {
+    "lat": 42.553902,
+    "lon": -71.759102,
+    "tz": 2,
+    "city": "Fitchburg",
+    "country": "United States",
+    "iata": "QTI"
+  },
+  "KSLE": {
+    "lat": 44.909443,
+    "lon": -123.002502,
+    "tz": 2,
+    "city": "Salem",
+    "country": "United States",
+    "iata": "SLE"
+  },
+  "KPPO": {
+    "lat": 41.572914,
+    "lon": -86.734055,
+    "tz": 2,
+    "city": "La Porte",
+    "country": "United States",
+    "iata": "LPO"
+  },
+  "KHLG": {
+    "lat": 40.176743,
+    "lon": -80.646057,
+    "tz": 2,
+    "city": "Wheeling",
+    "country": "United States",
+    "iata": "HLG"
+  },
+  "KROG": {
+    "lat": 36.372223,
+    "lon": -94.106667,
+    "tz": 2,
+    "city": "Rogers",
+    "country": "United States",
+    "iata": "ROG"
+  },
+  "KMPO": {
+    "lat": 41.133331,
+    "lon": -75.366669,
+    "tz": 2,
+    "city": "Mount Pocono",
+    "country": "United States",
+    "iata": "MPO"
+  },
+  "KSFM": {
+    "lat": 43.39389,
+    "lon": -70.708054,
+    "tz": 2,
+    "city": "Sanford",
+    "country": "United States",
+    "iata": "SFM"
+  },
+  "KPHN": {
+    "lat": 42.910969,
+    "lon": -82.528801,
+    "tz": 2,
+    "city": "Port Huron",
+    "country": "United States",
+    "iata": "PHN"
+  },
+  "CYDQ": {
+    "lat": 55.742329,
+    "lon": -120.182999,
+    "tz": 2,
+    "city": "Dawson Creek",
+    "country": "Canada",
+    "iata": "YDQ"
+  },
+  "VNPR": {
+    "lat": 28.184038,
+    "lon": 84.014229,
+    "tz": 2,
+    "city": "Pokhara",
+    "country": "Nepal",
+    "iata": "PHH"
+  },
+  "HEBL": {
+    "lat": 22.37595,
+    "lon": 31.611719,
+    "tz": 2,
+    "city": "Abu Simbel",
+    "country": "Egypt",
+    "iata": "ABS"
+  },
+  "WSAP": {
+    "lat": 1.360288,
+    "lon": 103.909477,
+    "tz": 2,
+    "city": "Singapore",
+    "country": "Singapore",
+    "iata": "QPG"
   }
 }
