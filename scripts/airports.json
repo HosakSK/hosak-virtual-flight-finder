@@ -23300,5 +23300,117 @@
     "city": "Singapore",
     "country": "Singapore",
     "iata": "QPG"
+  },
+  "LFBA": {
+    "lat": 44.174709,
+    "lon": 0.590619,
+    "tz": 2,
+    "city": "Agen",
+    "country": "France",
+    "iata": "AGF"
+  },
+  "OIFM": {
+    "lat": 32.750832,
+    "lon": 51.861259,
+    "tz": 2,
+    "city": "Isfahan",
+    "country": "Iran",
+    "iata": "IFN"
+  },
+  "KLHZ": {
+    "lat": 36.0233,
+    "lon": -78.330299,
+    "tz": 2,
+    "city": "Louisburg",
+    "country": "United States",
+    "iata": "LFN"
+  },
+  "KBIE": {
+    "lat": 40.299999,
+    "lon": -96.75,
+    "tz": 2,
+    "city": "Beatrice",
+    "country": "United States",
+    "iata": "BIE"
+  },
+  "KSCH": {
+    "lat": 42.853489,
+    "lon": -73.92849,
+    "tz": 2,
+    "city": "Schenectady",
+    "country": "United States",
+    "iata": "SCH"
+  },
+  "KUKF": {
+    "lat": 36.222801,
+    "lon": -81.098297,
+    "tz": 2,
+    "city": "North Wilkesboro",
+    "country": "United States",
+    "iata": "IKB"
+  },
+  "KMRF": {
+    "lat": 30.369631,
+    "lon": -104.015869,
+    "tz": 2,
+    "city": "Marfa",
+    "country": "United States",
+    "iata": "MRF"
+  },
+  "KLUD": {
+    "lat": 33.254257,
+    "lon": -97.580498,
+    "tz": 2,
+    "city": "Decatur",
+    "country": "United States",
+    "iata": "QTU"
+  },
+  "KZZV": {
+    "lat": 39.944401,
+    "lon": -81.892097,
+    "tz": 2,
+    "city": "Zanesville",
+    "country": "United States",
+    "iata": "ZZV"
+  },
+  "KEGV": {
+    "lat": 45.929169,
+    "lon": -89.265831,
+    "tz": 2,
+    "city": "Eagle River",
+    "country": "United States",
+    "iata": "EGV"
+  },
+  "KARR": {
+    "lat": 41.7719,
+    "lon": -88.4757,
+    "tz": 2,
+    "city": "Chicago",
+    "country": "United States",
+    "iata": "AUZ"
+  },
+  "KAKR": {
+    "lat": 41.037498,
+    "lon": -81.466904,
+    "tz": 2,
+    "city": "Akron",
+    "country": "United States",
+    "iata": "AKC"
+  },
+  "MYLS": {
+    "lat": 23.58144,
+    "lon": -75.270401,
+    "tz": 2,
+    "city": "Stella Maris",
+    "country": "Bahamas",
+    "iata": "SML"
+  },
+  "CYOP": {
+    "lat": 58.492813,
+    "lon": -119.414139,
+    "tz": 2,
+    "city": "Rainbow Lake",
+    "country": "Canada",
+    "iata": "YOP"
   }
 }
