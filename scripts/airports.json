@@ -23412,5 +23412,101 @@
     "city": "Rainbow Lake",
     "country": "Canada",
     "iata": "YOP"
+  },
+  "LSGL": {
+    "lat": 46.545277,
+    "lon": 6.616667,
+    "tz": 2,
+    "city": "Lausanne",
+    "country": "Switzerland",
+    "iata": "QYL"
+  },
+  "LIED": {
+    "lat": 39.354088,
+    "lon": 8.973726,
+    "tz": 2,
+    "city": "Decimomannu",
+    "country": "Italy",
+    "iata": "DCI"
+  },
+  "EDFW": {
+    "lat": 49.817822,
+    "lon": 9.897534,
+    "tz": 2,
+    "city": "Wurzburg",
+    "country": "Germany",
+    "iata": "QJW"
+  },
+  "LFAV": {
+    "lat": 50.326458,
+    "lon": 3.458615,
+    "tz": 2,
+    "city": "Valenciennes",
+    "country": "France",
+    "iata": "QYV"
+  },
+  "LIDE": {
+    "lat": 44.697876,
+    "lon": 10.665618,
+    "tz": 2,
+    "city": "Reggio Emilia",
+    "country": "Italy",
+    "iata": "QIE"
+  },
+  "EGYD": {
+    "lat": 53.030277,
+    "lon": -0.483333,
+    "tz": 2,
+    "city": "Cranwell",
+    "country": "United Kingdom",
+    "iata": "QKY"
+  },
+  "KRNT": {
+    "lat": 47.493301,
+    "lon": -122.215698,
+    "tz": 2,
+    "city": "Renton",
+    "country": "United States",
+    "iata": "RNT"
+  },
+  "KCTJ": {
+    "lat": 33.633232,
+    "lon": -85.152779,
+    "tz": 2,
+    "city": "Carrollton",
+    "country": "United States",
+    "iata": "QDJ"
+  },
+  "KDOV": {
+    "lat": 39.129501,
+    "lon": -75.466003,
+    "tz": 2,
+    "city": "Dover",
+    "country": "United States",
+    "iata": "DOV"
+  },
+  "KLOM": {
+    "lat": 40.137501,
+    "lon": -75.265099,
+    "tz": 2,
+    "city": "Philadelphia",
+    "country": "United States",
+    "iata": "BBX"
+  },
+  "KLEE": {
+    "lat": 28.822128,
+    "lon": -81.807053,
+    "tz": 2,
+    "city": "Leesburg",
+    "country": "United States",
+    "iata": "LEE"
+  },
+  "CYND": {
+    "lat": 45.52169,
+    "lon": -75.563499,
+    "tz": 2,
+    "city": "Gatineau",
+    "country": "Canada",
+    "iata": "YND"
   }
 }
