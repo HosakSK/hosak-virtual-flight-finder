@@ -23508,5 +23508,29 @@
     "city": "Gatineau",
     "country": "Canada",
     "iata": "YND"
+  },
+  "UAIT": {
+    "lat": 43.311111,
+    "lon": 68.550278,
+    "tz": 2,
+    "city": "Turkistan",
+    "country": "Kazakhstan",
+    "iata": "HSA"
+  },
+  "CYTR": {
+    "lat": 44.118851,
+    "lon": -77.528259,
+    "tz": 2,
+    "city": "Trenton",
+    "country": "Canada",
+    "iata": "YTR"
+  },
+  "KSUT": {
+    "lat": 33.931015,
+    "lon": -78.073135,
+    "tz": 2,
+    "city": "Oak Island",
+    "country": "United States",
+    "iata": "QNU"
   }
 }
