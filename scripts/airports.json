@@ -23532,5 +23532,77 @@
     "city": "Oak Island",
     "country": "United States",
     "iata": "QNU"
+  },
+  "UZTP": {
+    "lat": 41.313911,
+    "lon": 69.403549,
+    "tz": 2,
+    "city": "Tashkent",
+    "country": "Uzbekistan",
+    "iata": "TVT"
+  },
+  "LEIZ": {
+    "lat": 38.513363,
+    "lon": -3.367825,
+    "tz": 2,
+    "city": "La Perdiz",
+    "country": "Spain",
+    "iata": "QYI"
+  },
+  "LTBO": {
+    "lat": 38.681469,
+    "lon": 29.47167,
+    "tz": 2,
+    "city": "Usak",
+    "country": "Turkey",
+    "iata": "USQ"
+  },
+  "EDTL": {
+    "lat": 48.369301,
+    "lon": 7.82772,
+    "tz": 2,
+    "city": "Lahr",
+    "country": "Germany",
+    "iata": "LHA"
+  },
+  "PANV": {
+    "lat": 62.647778,
+    "lon": -160.188889,
+    "tz": 2,
+    "city": "Anvik",
+    "country": "United States",
+    "iata": "ANV"
+  },
+  "KGLR": {
+    "lat": 45.009998,
+    "lon": -84.699997,
+    "tz": 2,
+    "city": "Gaylord",
+    "country": "United States",
+    "iata": "GLR"
+  },
+  "KANQ": {
+    "lat": 41.639702,
+    "lon": -85.083504,
+    "tz": 2,
+    "city": "Angola",
+    "country": "United States",
+    "iata": "ANQ"
+  },
+  "KSRB": {
+    "lat": 36.057575,
+    "lon": -85.529381,
+    "tz": 2,
+    "city": "Cookeville",
+    "country": "United States",
+    "iata": "QNR"
+  },
+  "CYAZ": {
+    "lat": 49.082218,
+    "lon": -125.772003,
+    "tz": 2,
+    "city": "Tofino",
+    "country": "Canada",
+    "iata": "YAZ"
   }
 }
