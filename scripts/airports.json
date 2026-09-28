@@ -23604,5 +23604,93 @@
     "city": "Tofino",
     "country": "Canada",
     "iata": "YAZ"
+  },
+  "EDQM": {
+    "lat": 50.28883,
+    "lon": 11.85491,
+    "tz": 2,
+    "city": "Hof",
+    "country": "Germany",
+    "iata": "HOQ"
+  },
+  "LFMH": {
+    "lat": 45.53405,
+    "lon": 4.297311,
+    "tz": 2,
+    "city": "Saint Etienne",
+    "country": "France",
+    "iata": "EBU"
+  },
+  "KUAO": {
+    "lat": 45.247269,
+    "lon": -122.77002,
+    "tz": 2,
+    "city": "Aurora",
+    "country": "United States",
+    "iata": "QSA"
+  },
+  "KEKM": {
+    "lat": 41.719398,
+    "lon": -86.003197,
+    "tz": 2,
+    "city": "Elkhart",
+    "country": "United States",
+    "iata": "EKI"
+  },
+  "KYKN": {
+    "lat": 42.917255,
+    "lon": -97.386177,
+    "tz": 2,
+    "city": "Yankton",
+    "country": "United States",
+    "iata": "YKN"
+  },
+  "KALS": {
+    "lat": 37.43491,
+    "lon": -105.865997,
+    "tz": 2,
+    "city": "Alamosa",
+    "country": "United States",
+    "iata": "ALS"
+  },
+  "KSPA": {
+    "lat": 34.916687,
+    "lon": -81.95549,
+    "tz": 2,
+    "city": "Spartanburg",
+    "country": "United States",
+    "iata": "SPA"
+  },
+  "KOLV": {
+    "lat": 34.978306,
+    "lon": -89.788452,
+    "tz": 2,
+    "city": "Olive Branch",
+    "country": "United States",
+    "iata": "OLV"
+  },
+  "CYVV": {
+    "lat": 44.744858,
+    "lon": -81.109474,
+    "tz": 2,
+    "city": "Wiarton",
+    "country": "Canada",
+    "iata": "YVV"
+  },
+  "MYAN": {
+    "lat": 25.05381,
+    "lon": -78.048897,
+    "tz": 2,
+    "city": "San Andros",
+    "country": "Bahamas",
+    "iata": "SAQ"
+  },
+  "YNBR": {
+    "lat": -30.318291,
+    "lon": 149.829117,
+    "tz": 2,
+    "city": "Narrabri",
+    "country": "Australia",
+    "iata": "NAA"
   }
 }
