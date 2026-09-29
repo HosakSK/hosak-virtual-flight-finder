@@ -23692,5 +23692,85 @@
     "city": "Narrabri",
     "country": "Australia",
     "iata": "NAA"
+  },
+  "EPOK": {
+    "lat": 54.579674,
+    "lon": 18.517136,
+    "tz": 2,
+    "city": "Gdynia",
+    "country": "Poland",
+    "iata": "QPO"
+  },
+  "EDAC": {
+    "lat": 50.981812,
+    "lon": 12.50636,
+    "tz": 2,
+    "city": "Altenburg",
+    "country": "Germany",
+    "iata": "AOC"
+  },
+  "LFBG": {
+    "lat": 45.657669,
+    "lon": -0.314753,
+    "tz": 2,
+    "city": "Cognac",
+    "country": "France",
+    "iata": "CNG"
+  },
+  "KSNS": {
+    "lat": 36.664909,
+    "lon": -121.610428,
+    "tz": 2,
+    "city": "Salinas",
+    "country": "United States",
+    "iata": "SNS"
+  },
+  "KBDN": {
+    "lat": 44.095383,
+    "lon": -121.200256,
+    "tz": 2,
+    "city": "Bend",
+    "country": "United States",
+    "iata": "QSN"
+  },
+  "KPOB": {
+    "lat": 35.170834,
+    "lon": -79.014442,
+    "tz": 2,
+    "city": "Fort Liberty",
+    "country": "United States",
+    "iata": "POB"
+  },
+  "KGDJ": {
+    "lat": 32.443275,
+    "lon": -97.816109,
+    "tz": 2,
+    "city": "Granbury",
+    "country": "United States",
+    "iata": "QNG"
+  },
+  "KOXB": {
+    "lat": 38.316666,
+    "lon": -75.116669,
+    "tz": 2,
+    "city": "Ocean City",
+    "country": "United States",
+    "iata": "OCE"
+  },
+  "KCXY": {
+    "lat": 40.217129,
+    "lon": -76.851402,
+    "tz": 2,
+    "city": "Harrisburg",
+    "country": "United States",
+    "iata": "HAR"
+  },
+  "KVDF": {
+    "lat": 28.01226,
+    "lon": -82.347511,
+    "tz": 2,
+    "city": "Tampa",
+    "country": "United States",
+    "iata": "VDF"
   }
 }
