@@ -23772,5 +23772,93 @@
     "city": "Tampa",
     "country": "United States",
     "iata": "VDF"
+  },
+  "LFGA": {
+    "lat": 48.110352,
+    "lon": 7.359147,
+    "tz": 2,
+    "city": "Colmar",
+    "country": "France",
+    "iata": "CMR"
+  },
+  "EYSA": {
+    "lat": 55.893879,
+    "lon": 23.39497,
+    "tz": 2,
+    "city": "Siauliai",
+    "country": "Lithuania",
+    "iata": "SQQ"
+  },
+  "MMAN": {
+    "lat": 25.86557,
+    "lon": -100.237,
+    "tz": 2,
+    "city": "Monterrey",
+    "country": "Mexico",
+    "iata": "NTR"
+  },
+  "KMYV": {
+    "lat": 39.098057,
+    "lon": -121.569725,
+    "tz": 2,
+    "city": "Marysville",
+    "country": "United States",
+    "iata": "MYV"
+  },
+  "KPKD": {
+    "lat": 46.900036,
+    "lon": -95.071373,
+    "tz": 2,
+    "city": "Park Rapids",
+    "country": "United States",
+    "iata": "PKD"
+  },
+  "KHUF": {
+    "lat": 39.451462,
+    "lon": -87.307503,
+    "tz": 2,
+    "city": "Terre Haute",
+    "country": "United States",
+    "iata": "HUF"
+  },
+  "KJLN": {
+    "lat": 37.15181,
+    "lon": -94.498199,
+    "tz": 2,
+    "city": "Joplin",
+    "country": "United States",
+    "iata": "JLN"
+  },
+  "KCNM": {
+    "lat": 32.337471,
+    "lon": -104.263,
+    "tz": 2,
+    "city": "Carlsbad",
+    "country": "United States",
+    "iata": "CNM"
+  },
+  "KODO": {
+    "lat": 31.922865,
+    "lon": -102.386818,
+    "tz": 2,
+    "city": "Odessa",
+    "country": "United States",
+    "iata": "ODT"
+  },
+  "CYQH": {
+    "lat": 60.116894,
+    "lon": -128.824661,
+    "tz": 2,
+    "city": "Watson Lake",
+    "country": "Canada",
+    "iata": "YQH"
+  },
+  "YSKR": {
+    "lat": -11.866466,
+    "lon": 142.009842,
+    "tz": 2,
+    "city": "Skardon River",
+    "country": "Australia",
+    "iata": "QBS"
   }
 }
