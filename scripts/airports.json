@@ -23860,5 +23860,133 @@
     "city": "Skardon River",
     "country": "Australia",
     "iata": "QBS"
+  },
+  "LOIJ": {
+    "lat": 47.52021,
+    "lon": 12.449533,
+    "tz": 2,
+    "city": "Sankt Johann",
+    "country": "Austria",
+    "iata": "QOJ"
+  },
+  "BIAR": {
+    "lat": 65.658607,
+    "lon": -18.072201,
+    "tz": 2,
+    "city": "Akureyri",
+    "country": "Iceland",
+    "iata": "AEY"
+  },
+  "LPAR": {
+    "lat": 38.884068,
+    "lon": -9.029201,
+    "tz": 2,
+    "city": "Alverca",
+    "country": "Portugal",
+    "iata": "QOA"
+  },
+  "PABA": {
+    "lat": 70.131943,
+    "lon": -143.623886,
+    "tz": 2,
+    "city": "Barter Island",
+    "country": "United States",
+    "iata": "BTI"
+  },
+  "UBBL": {
+    "lat": 38.748993,
+    "lon": 48.813194,
+    "tz": 2,
+    "city": "Lankaran",
+    "country": "Azerbaijan",
+    "iata": "LLK"
+  },
+  "UTAK": {
+    "lat": 40.063332,
+    "lon": 53.007221,
+    "tz": 2,
+    "city": "Turkmenbashi",
+    "country": "Turkmenistan",
+    "iata": "KRW"
+  },
+  "UBBF": {
+    "lat": 39.592281,
+    "lon": 47.19772,
+    "tz": 2,
+    "city": "Fuzuli",
+    "country": "Azerbaijan",
+    "iata": "FZL"
+  },
+  "KBVS": {
+    "lat": 48.472748,
+    "lon": -122.417976,
+    "tz": 2,
+    "city": "Burlington / Mount Vernon",
+    "country": "United States",
+    "iata": "MVW"
+  },
+  "KJXN": {
+    "lat": 42.258888,
+    "lon": -84.461388,
+    "tz": 2,
+    "city": "Jackson",
+    "country": "United States",
+    "iata": "JXN"
+  },
+  "KBID": {
+    "lat": 41.169434,
+    "lon": -71.579613,
+    "tz": 2,
+    "city": "Block Island",
+    "country": "United States",
+    "iata": "BID"
+  },
+  "KCON": {
+    "lat": 43.202702,
+    "lon": -71.502296,
+    "tz": 2,
+    "city": "Concord",
+    "country": "United States",
+    "iata": "CON"
+  },
+  "KGKY": {
+    "lat": 32.66,
+    "lon": -97.089996,
+    "tz": 2,
+    "city": "Arlington",
+    "country": "United States",
+    "iata": "QQG"
+  },
+  "KECG": {
+    "lat": 36.260578,
+    "lon": -76.1745,
+    "tz": 2,
+    "city": "Elizabeth City",
+    "country": "United States",
+    "iata": "ECG"
+  },
+  "KS05": {
+    "lat": 43.085926,
+    "lon": -124.40786,
+    "tz": 2,
+    "city": "Bandon",
+    "country": "United States",
+    "iata": "BDY"
+  },
+  "OISL": {
+    "lat": 27.669689,
+    "lon": 54.382759,
+    "tz": 2,
+    "city": "Lar",
+    "country": "Iran",
+    "iata": "LRR"
+  },
+  "VAKJ": {
+    "lat": 24.81719,
+    "lon": 79.918587,
+    "tz": 2,
+    "city": "Khajuraho",
+    "country": "India",
+    "iata": "HJR"
   }
 }
