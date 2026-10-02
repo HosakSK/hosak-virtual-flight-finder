@@ -23988,5 +23988,77 @@
     "city": "Khajuraho",
     "country": "India",
     "iata": "HJR"
+  },
+  "KSUU": {
+    "lat": 38.262661,
+    "lon": -121.927002,
+    "tz": 2,
+    "city": "Fairfield",
+    "country": "United States",
+    "iata": "SUU"
+  },
+  "KDXR": {
+    "lat": 41.371666,
+    "lon": -73.482224,
+    "tz": 2,
+    "city": "Danbury",
+    "country": "United States",
+    "iata": "DXR"
+  },
+  "KFAM": {
+    "lat": 37.761101,
+    "lon": -90.428596,
+    "tz": 2,
+    "city": "Farmington",
+    "country": "United States",
+    "iata": "FAM"
+  },
+  "KMBO": {
+    "lat": 32.441071,
+    "lon": -90.104126,
+    "tz": 2,
+    "city": "Madison",
+    "country": "United States",
+    "iata": "DXE"
+  },
+  "KWVI": {
+    "lat": 36.935699,
+    "lon": -121.790001,
+    "tz": 2,
+    "city": "Watsonville",
+    "country": "United States",
+    "iata": "WVI"
+  },
+  "KBNL": {
+    "lat": 33.262321,
+    "lon": -81.386368,
+    "tz": 2,
+    "city": "Barnwell",
+    "country": "United States",
+    "iata": "BNL"
+  },
+  "CYJT": {
+    "lat": 48.544159,
+    "lon": -58.5499,
+    "tz": 2,
+    "city": "Stephenville",
+    "country": "Canada",
+    "iata": "YJT"
+  },
+  "HLLS": {
+    "lat": 26.986959,
+    "lon": 14.47252,
+    "tz": 2,
+    "city": "Sabha",
+    "country": "Libya",
+    "iata": "SEB"
+  },
+  "DABS": {
+    "lat": 35.430737,
+    "lon": 8.124193,
+    "tz": 2,
+    "city": "Tebessa",
+    "country": "Algeria",
+    "iata": "TEE"
   }
 }
