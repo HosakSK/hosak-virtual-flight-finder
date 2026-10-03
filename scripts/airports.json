@@ -24060,5 +24060,45 @@
     "city": "Tebessa",
     "country": "Algeria",
     "iata": "TEE"
+  },
+  "KBRL": {
+    "lat": 40.785069,
+    "lon": -91.123856,
+    "tz": 2,
+    "city": "Burlington",
+    "country": "United States",
+    "iata": "BRL"
+  },
+  "KIKK": {
+    "lat": 41.074471,
+    "lon": -87.845665,
+    "tz": 2,
+    "city": "Kankakee",
+    "country": "United States",
+    "iata": "IKK"
+  },
+  "KDVO": {
+    "lat": 38.143333,
+    "lon": -122.555832,
+    "tz": 2,
+    "city": "Novato",
+    "country": "United States",
+    "iata": "NOT"
+  },
+  "KCEW": {
+    "lat": 30.77883,
+    "lon": -86.522102,
+    "tz": 2,
+    "city": "Crestview",
+    "country": "United States",
+    "iata": "CEW"
+  },
+  "KC65": {
+    "lat": 41.365261,
+    "lon": -86.302094,
+    "tz": 2,
+    "city": "Plymouth",
+    "country": "United States",
+    "iata": "PLY"
   }
 }
