@@ -24100,5 +24100,45 @@
     "city": "Plymouth",
     "country": "United States",
     "iata": "PLY"
+  },
+  "DTTZ": {
+    "lat": 33.93972,
+    "lon": 8.110556,
+    "tz": 2,
+    "city": "Tozeur",
+    "country": "Tunisia",
+    "iata": "TOE"
+  },
+  "KFFT": {
+    "lat": 38.18,
+    "lon": -84.900002,
+    "tz": 2,
+    "city": "Frankfort",
+    "country": "United States",
+    "iata": "FFT"
+  },
+  "KEFK": {
+    "lat": 44.889606,
+    "lon": -72.228043,
+    "tz": 2,
+    "city": "Newport",
+    "country": "United States",
+    "iata": "EFK"
+  },
+  "KCHD": {
+    "lat": 33.268829,
+    "lon": -111.811607,
+    "tz": 2,
+    "city": "Chandler",
+    "country": "United States",
+    "iata": "QSD"
+  },
+  "KAXV": {
+    "lat": 40.493515,
+    "lon": -84.298233,
+    "tz": 2,
+    "city": "Wapakoneta",
+    "country": "United States",
+    "iata": "AXV"
   }
 }
