@@ -24140,5 +24140,61 @@
     "city": "Wapakoneta",
     "country": "United States",
     "iata": "AXV"
+  },
+  "ESMK": {
+    "lat": 55.92168,
+    "lon": 14.08553,
+    "tz": 2,
+    "city": "Kristianstad",
+    "country": "Sweden",
+    "iata": "KID"
+  },
+  "KMAC": {
+    "lat": 32.822266,
+    "lon": -83.562706,
+    "tz": 2,
+    "city": "Macon",
+    "country": "United States",
+    "iata": "MAC"
+  },
+  "KVDI": {
+    "lat": 32.192047,
+    "lon": -82.368858,
+    "tz": 2,
+    "city": "Vidalia",
+    "country": "United States",
+    "iata": "VDI"
+  },
+  "KWDR": {
+    "lat": 33.982777,
+    "lon": -83.667503,
+    "tz": 2,
+    "city": "Winder",
+    "country": "United States",
+    "iata": "WDR"
+  },
+  "KPCW": {
+    "lat": 41.517311,
+    "lon": -82.868217,
+    "tz": 2,
+    "city": "Port Clinton",
+    "country": "United States",
+    "iata": "QNC"
+  },
+  "KAFJ": {
+    "lat": 40.136501,
+    "lon": -80.290199,
+    "tz": 2,
+    "city": "Washington",
+    "country": "United States",
+    "iata": "WSG"
+  },
+  "KBLV": {
+    "lat": 38.54517,
+    "lon": -89.835098,
+    "tz": 2,
+    "city": "Belleville",
+    "country": "United States",
+    "iata": "BLV"
   }
 }
