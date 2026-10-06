@@ -24196,5 +24196,85 @@
     "city": "Belleville",
     "country": "United States",
     "iata": "BLV"
+  },
+  "KUKI": {
+    "lat": 39.125816,
+    "lon": -123.202164,
+    "tz": 2,
+    "city": "Ukiah",
+    "country": "United States",
+    "iata": "UKI"
+  },
+  "KBLH": {
+    "lat": 33.616505,
+    "lon": -114.716782,
+    "tz": 2,
+    "city": "Blythe",
+    "country": "United States",
+    "iata": "BLH"
+  },
+  "KIJX": {
+    "lat": 39.774445,
+    "lon": -90.238464,
+    "tz": 2,
+    "city": "Jacksonville",
+    "country": "United States",
+    "iata": "IJX"
+  },
+  "KVEL": {
+    "lat": 40.438889,
+    "lon": -109.510277,
+    "tz": 2,
+    "city": "Vernal",
+    "country": "United States",
+    "iata": "VEL"
+  },
+  "KRXE": {
+    "lat": 43.8339,
+    "lon": -111.805,
+    "tz": 2,
+    "city": "Rexburg",
+    "country": "United States",
+    "iata": "RXE"
+  },
+  "KELY": {
+    "lat": 39.301945,
+    "lon": -114.841942,
+    "tz": 2,
+    "city": "Ely",
+    "country": "United States",
+    "iata": "ELY"
+  },
+  "KGYH": {
+    "lat": 34.75,
+    "lon": -82.370003,
+    "tz": 2,
+    "city": "Greenville",
+    "country": "United States",
+    "iata": "GDC"
+  },
+  "KSVN": {
+    "lat": 32.009991,
+    "lon": -81.145554,
+    "tz": 2,
+    "city": "Savannah",
+    "country": "United States",
+    "iata": "SVN"
+  },
+  "KRQB": {
+    "lat": 43.724476,
+    "lon": -85.504463,
+    "tz": 2,
+    "city": "Big Rapids",
+    "country": "United States",
+    "iata": "WBR"
+  },
+  "CYYL": {
+    "lat": 56.86388,
+    "lon": -101.075996,
+    "tz": 2,
+    "city": "Lynn Lake",
+    "country": "Canada",
+    "iata": "YYL"
   }
 }
