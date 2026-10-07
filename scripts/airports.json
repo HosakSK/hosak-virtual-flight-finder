@@ -24276,5 +24276,37 @@
     "city": "Lynn Lake",
     "country": "Canada",
     "iata": "YYL"
+  },
+  "LEDC": {
+    "lat": 38.531445,
+    "lon": -2.836983,
+    "tz": 2,
+    "city": "La Cuesta",
+    "country": "Spain",
+    "iata": "QUD"
+  },
+  "MPMG": {
+    "lat": 8.973339,
+    "lon": -79.555496,
+    "tz": 2,
+    "city": "Panama City",
+    "country": "Panama",
+    "iata": "PAC"
+  },
+  "KMGJ": {
+    "lat": 41.516666,
+    "lon": -74.26667,
+    "tz": 2,
+    "city": "Montgomery",
+    "country": "United States",
+    "iata": "MGJ"
+  },
+  "KF70": {
+    "lat": 33.57486,
+    "lon": -117.128296,
+    "tz": 2,
+    "city": "Murrieta",
+    "country": "United States",
+    "iata": "RBK"
   }
 }
