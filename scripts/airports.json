@@ -24308,5 +24308,85 @@
     "city": "Murrieta",
     "country": "United States",
     "iata": "RBK"
+  },
+  "EPDE": {
+    "lat": 51.551472,
+    "lon": 21.891415,
+    "tz": 2,
+    "city": "Deblin",
+    "country": "Poland",
+    "iata": "QPD"
+  },
+  "LFOV": {
+    "lat": 48.032249,
+    "lon": -0.74278,
+    "tz": 2,
+    "city": "Laval",
+    "country": "France",
+    "iata": "LVA"
+  },
+  "LFPT": {
+    "lat": 49.096619,
+    "lon": 2.040722,
+    "tz": 2,
+    "city": "Pontoise",
+    "country": "France",
+    "iata": "POX"
+  },
+  "KNUW": {
+    "lat": 48.351929,
+    "lon": -122.655731,
+    "tz": 2,
+    "city": "Whidbey Island",
+    "country": "United States",
+    "iata": "NUW"
+  },
+  "KJHW": {
+    "lat": 42.150555,
+    "lon": -79.258057,
+    "tz": 2,
+    "city": "Jamestown",
+    "country": "United States",
+    "iata": "JHW"
+  },
+  "KMMH": {
+    "lat": 37.624992,
+    "lon": -118.842377,
+    "tz": 2,
+    "city": "Mammoth Lakes",
+    "country": "United States",
+    "iata": "MMH"
+  },
+  "KCEZ": {
+    "lat": 37.302776,
+    "lon": -108.62722,
+    "tz": 2,
+    "city": "Cortez",
+    "country": "United States",
+    "iata": "CEZ"
+  },
+  "KLGU": {
+    "lat": 41.787498,
+    "lon": -111.855003,
+    "tz": 2,
+    "city": "Logan",
+    "country": "United States",
+    "iata": "LGU"
+  },
+  "KBUU": {
+    "lat": 42.691944,
+    "lon": -88.303886,
+    "tz": 2,
+    "city": "Burlington",
+    "country": "United States",
+    "iata": "QQU"
+  },
+  "KANK": {
+    "lat": 38.538334,
+    "lon": -106.048615,
+    "tz": 2,
+    "city": "Salida",
+    "country": "United States",
+    "iata": "SLT"
   }
 }
