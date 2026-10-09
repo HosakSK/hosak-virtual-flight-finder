@@ -24388,5 +24388,37 @@
     "city": "Salida",
     "country": "United States",
     "iata": "SLT"
+  },
+  "LFAQ": {
+    "lat": 49.970394,
+    "lon": 2.698475,
+    "tz": 2,
+    "city": "Albert",
+    "country": "France",
+    "iata": "BYF"
+  },
+  "KIMS": {
+    "lat": 38.760994,
+    "lon": -85.463814,
+    "tz": 2,
+    "city": "Madison",
+    "country": "United States",
+    "iata": "MDN"
+  },
+  "K1F0": {
+    "lat": 34.147793,
+    "lon": -97.122688,
+    "tz": 2,
+    "city": "Ardmore",
+    "country": "United States",
+    "iata": "AHD"
+  },
+  "KHUT": {
+    "lat": 38.068054,
+    "lon": -97.861115,
+    "tz": 2,
+    "city": "Hutchinson",
+    "country": "United States",
+    "iata": "HUT"
   }
 }
