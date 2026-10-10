@@ -24420,5 +24420,29 @@
     "city": "Hutchinson",
     "country": "United States",
     "iata": "HUT"
+  },
+  "LTAG": {
+    "lat": 37.001099,
+    "lon": 35.424721,
+    "tz": 2,
+    "city": "Adana",
+    "country": "Turkey",
+    "iata": "UAB"
+  },
+  "KJEF": {
+    "lat": 38.59222,
+    "lon": -92.156387,
+    "tz": 2,
+    "city": "Jefferson City",
+    "country": "United States",
+    "iata": "JEF"
+  },
+  "KCXW": {
+    "lat": 35.019905,
+    "lon": -92.555183,
+    "tz": 2,
+    "city": "Conway",
+    "country": "United States",
+    "iata": "QNX"
   }
 }
