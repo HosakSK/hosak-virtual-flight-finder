@@ -24444,5 +24444,53 @@
     "city": "Conway",
     "country": "United States",
     "iata": "QNX"
+  },
+  "LFLN": {
+    "lat": 46.412498,
+    "lon": 4.01326,
+    "tz": 2,
+    "city": "St-Yan",
+    "country": "France",
+    "iata": "SYT"
+  },
+  "LEBG": {
+    "lat": 42.357498,
+    "lon": -3.613611,
+    "tz": 2,
+    "city": "Burgos",
+    "country": "Spain",
+    "iata": "RGS"
+  },
+  "PALU": {
+    "lat": 68.87513,
+    "lon": -166.110001,
+    "tz": 2,
+    "city": "Cape Lisburne",
+    "country": "United States",
+    "iata": "LUR"
+  },
+  "KFOE": {
+    "lat": 38.951473,
+    "lon": -95.66124,
+    "tz": 2,
+    "city": "Topeka",
+    "country": "United States",
+    "iata": "FOE"
+  },
+  "MYCC": {
+    "lat": 25.554428,
+    "lon": -79.275352,
+    "tz": 2,
+    "city": "Cat Cays",
+    "country": "Bahamas",
+    "iata": "CXY"
+  },
+  "YBTH": {
+    "lat": -33.400002,
+    "lon": 149.649994,
+    "tz": 2,
+    "city": "Bathurst",
+    "country": "Australia",
+    "iata": "BHS"
   }
 }
