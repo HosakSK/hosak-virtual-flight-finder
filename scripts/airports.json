@@ -24492,5 +24492,37 @@
     "city": "Bathurst",
     "country": "Australia",
     "iata": "BHS"
+  },
+  "LFRT": {
+    "lat": 48.537491,
+    "lon": -2.85654,
+    "tz": 2,
+    "city": "Saint-Brieuc",
+    "country": "France",
+    "iata": "SBK"
+  },
+  "KRIV": {
+    "lat": 33.881283,
+    "lon": -117.259819,
+    "tz": 2,
+    "city": "Riverside",
+    "country": "United States",
+    "iata": "RIV"
+  },
+  "KPNC": {
+    "lat": 36.731911,
+    "lon": -97.099701,
+    "tz": 2,
+    "city": "Ponca City",
+    "country": "United States",
+    "iata": "PNC"
+  },
+  "MYBG": {
+    "lat": 25.7383,
+    "lon": -77.840103,
+    "tz": 2,
+    "city": "Great Harbour Cay",
+    "country": "Bahamas",
+    "iata": "GHC"
   }
 }
