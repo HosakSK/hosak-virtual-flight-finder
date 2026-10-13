@@ -24524,5 +24524,37 @@
     "city": "Great Harbour Cay",
     "country": "Bahamas",
     "iata": "GHC"
+  },
+  "MYER": {
+    "lat": 24.891701,
+    "lon": -76.177696,
+    "tz": 2,
+    "city": "Rock Sound",
+    "country": "Bahamas",
+    "iata": "RSD"
+  },
+  "KMFI": {
+    "lat": 44.63459,
+    "lon": -90.188683,
+    "tz": 2,
+    "city": "Marshfield",
+    "country": "United States",
+    "iata": "MFI"
+  },
+  "CYHC": {
+    "lat": 49.290829,
+    "lon": -123.117966,
+    "tz": 2,
+    "city": "Vancouver",
+    "country": "Canada",
+    "iata": "CXH"
+  },
+  "SKBU": {
+    "lat": 3.819592,
+    "lon": -76.989601,
+    "tz": 2,
+    "city": "Buenaventura",
+    "country": "Colombia",
+    "iata": "BUN"
   }
 }
