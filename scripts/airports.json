@@ -24556,5 +24556,45 @@
     "city": "Buenaventura",
     "country": "Colombia",
     "iata": "BUN"
+  },
+  "LKVO": {
+    "lat": 50.216389,
+    "lon": 14.395,
+    "tz": 2,
+    "city": "Vodochody",
+    "country": "Czechia",
+    "iata": "VOD"
+  },
+  "EFLP": {
+    "lat": 61.044552,
+    "lon": 28.14439,
+    "tz": 2,
+    "city": "Lappeenranta",
+    "country": "Finland",
+    "iata": "LPP"
+  },
+  "LFJR": {
+    "lat": 47.56028,
+    "lon": -0.312222,
+    "tz": 2,
+    "city": "Angers",
+    "country": "France",
+    "iata": "ANE"
+  },
+  "KSER": {
+    "lat": 38.918369,
+    "lon": -85.907257,
+    "tz": 2,
+    "city": "Seymour",
+    "country": "United States",
+    "iata": "SER"
+  },
+  "KDUG": {
+    "lat": 31.463676,
+    "lon": -109.604416,
+    "tz": 2,
+    "city": "Bisbee Douglas",
+    "country": "United States",
+    "iata": "DUG"
   }
 }
