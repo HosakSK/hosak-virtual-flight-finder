@@ -24596,5 +24596,45 @@
     "city": "Bisbee Douglas",
     "country": "United States",
     "iata": "DUG"
+  },
+  "LFQA": {
+    "lat": 49.208611,
+    "lon": 4.156667,
+    "tz": 2,
+    "city": "Reims",
+    "country": "France",
+    "iata": "QYR"
+  },
+  "KELK": {
+    "lat": 35.430801,
+    "lon": -99.394302,
+    "tz": 2,
+    "city": "Elk City",
+    "country": "United States",
+    "iata": "ELK"
+  },
+  "KGSH": {
+    "lat": 41.52639,
+    "lon": -85.794167,
+    "tz": 2,
+    "city": "Goshen",
+    "country": "United States",
+    "iata": "GSH"
+  },
+  "KARW": {
+    "lat": 32.410831,
+    "lon": -80.635002,
+    "tz": 2,
+    "city": "Beaufort",
+    "country": "United States",
+    "iata": "BFT"
+  },
+  "KDED": {
+    "lat": 29.068205,
+    "lon": -81.283318,
+    "tz": 2,
+    "city": "DeLand",
+    "country": "United States",
+    "iata": "QLD"
   }
 }
