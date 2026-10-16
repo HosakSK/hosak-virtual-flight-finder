@@ -24636,5 +24636,53 @@
     "city": "DeLand",
     "country": "United States",
     "iata": "QLD"
+  },
+  "LFBU": {
+    "lat": 45.729469,
+    "lon": 0.219153,
+    "tz": 2,
+    "city": "Angouleme",
+    "country": "France",
+    "iata": "ANG"
+  },
+  "KDNL": {
+    "lat": 33.468098,
+    "lon": -82.0392,
+    "tz": 2,
+    "city": "Augusta",
+    "country": "United States",
+    "iata": "DNL"
+  },
+  "KTDZ": {
+    "lat": 41.564899,
+    "lon": -83.4823,
+    "tz": 2,
+    "city": "Toledo",
+    "country": "United States",
+    "iata": "TDZ"
+  },
+  "HKEL": {
+    "lat": 0.404458,
+    "lon": 35.238918,
+    "tz": 2,
+    "city": "Eldoret",
+    "country": "Kenya",
+    "iata": "EDL"
+  },
+  "ZBXT": {
+    "lat": 36.883373,
+    "lon": 114.429169,
+    "tz": 2,
+    "city": "Xingtai",
+    "country": "China",
+    "iata": "XNT"
+  },
+  "WAWC": {
+    "lat": -5.766382,
+    "lon": 123.918648,
+    "tz": 2,
+    "city": "Tomia",
+    "country": "Indonesia",
+    "iata": "TQQ"
   }
 }
