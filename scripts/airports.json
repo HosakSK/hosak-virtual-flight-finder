@@ -24684,5 +24684,45 @@
     "city": "Tomia",
     "country": "Indonesia",
     "iata": "TQQ"
+  },
+  "KMZZ": {
+    "lat": 40.489899,
+    "lon": -85.679703,
+    "tz": 2,
+    "city": "Marion",
+    "country": "United States",
+    "iata": "MZZ"
+  },
+  "KHSD": {
+    "lat": 35.601254,
+    "lon": -97.706223,
+    "tz": 2,
+    "city": "Oklahoma City",
+    "country": "United States",
+    "iata": "QNJ"
+  },
+  "KHKY": {
+    "lat": 35.741138,
+    "lon": -81.389503,
+    "tz": 2,
+    "city": "Hickory",
+    "country": "United States",
+    "iata": "HKY"
+  },
+  "K7V2": {
+    "lat": 38.832001,
+    "lon": -107.643814,
+    "tz": 2,
+    "city": "Paonia",
+    "country": "United States",
+    "iata": "WPO"
+  },
+  "KGLE": {
+    "lat": 33.651402,
+    "lon": -97.196999,
+    "tz": 2,
+    "city": "Gainesville",
+    "country": "United States",
+    "iata": "GLE"
   }
 }
