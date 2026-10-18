@@ -24724,5 +24724,37 @@
     "city": "Gainesville",
     "country": "United States",
     "iata": "GLE"
+  },
+  "MMES": {
+    "lat": 31.79528,
+    "lon": -116.601997,
+    "tz": 2,
+    "city": "Ensenada",
+    "country": "Mexico",
+    "iata": "ESE"
+  },
+  "K1B1": {
+    "lat": 42.293453,
+    "lon": -73.709717,
+    "tz": 2,
+    "city": "Hudson",
+    "country": "United States",
+    "iata": "HCC"
+  },
+  "KOXD": {
+    "lat": 39.50219,
+    "lon": -84.784538,
+    "tz": 2,
+    "city": "Oxford",
+    "country": "United States",
+    "iata": "OXD"
+  },
+  "KGCN": {
+    "lat": 35.951942,
+    "lon": -112.147499,
+    "tz": 2,
+    "city": "Grand Canyon",
+    "country": "United States",
+    "iata": "GCN"
   }
 }
