@@ -24756,5 +24756,77 @@
     "city": "Grand Canyon",
     "country": "United States",
     "iata": "GCN"
+  },
+  "EGSY": {
+    "lat": 51.404106,
+    "lon": -3.439235,
+    "tz": 2,
+    "city": "St. Athan",
+    "country": "United Kingdom",
+    "iata": "DGX"
+  },
+  "BIEG": {
+    "lat": 65.283333,
+    "lon": -14.4013,
+    "tz": 2,
+    "city": "Egilsstadir",
+    "country": "Iceland",
+    "iata": "EGS"
+  },
+  "KMZJ": {
+    "lat": 32.509842,
+    "lon": -111.325302,
+    "tz": 2,
+    "city": "Marana",
+    "country": "United States",
+    "iata": "MZJ"
+  },
+  "KPRX": {
+    "lat": 33.636665,
+    "lon": -95.450279,
+    "tz": 2,
+    "city": "Paris",
+    "country": "United States",
+    "iata": "PRX"
+  },
+  "KDTN": {
+    "lat": 32.540199,
+    "lon": -93.745003,
+    "tz": 2,
+    "city": "Shreveport",
+    "country": "United States",
+    "iata": "DTN"
+  },
+  "KEVB": {
+    "lat": 29.055555,
+    "lon": -80.948891,
+    "tz": 2,
+    "city": "New Smyrna Beach",
+    "country": "United States",
+    "iata": "QQB"
+  },
+  "KEXX": {
+    "lat": 35.78133,
+    "lon": -80.303383,
+    "tz": 2,
+    "city": "Lexington",
+    "country": "United States",
+    "iata": "QNE"
+  },
+  "KMHE": {
+    "lat": 43.77103,
+    "lon": -98.037498,
+    "tz": 2,
+    "city": "Mitchell",
+    "country": "United States",
+    "iata": "MHE"
+  },
+  "KCDN": {
+    "lat": 34.2836,
+    "lon": -80.564537,
+    "tz": 2,
+    "city": "Camden",
+    "country": "United States",
+    "iata": "CDN"
   }
 }
