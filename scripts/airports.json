@@ -24828,5 +24828,85 @@
     "city": "Camden",
     "country": "United States",
     "iata": "CDN"
+  },
+  "KPOC": {
+    "lat": 34.091648,
+    "lon": -117.781776,
+    "tz": 2,
+    "city": "La Verne",
+    "country": "United States",
+    "iata": "POC"
+  },
+  "CYOS": {
+    "lat": 44.590118,
+    "lon": -80.838058,
+    "tz": 2,
+    "city": "Owen Sound",
+    "country": "Canada",
+    "iata": "YOS"
+  },
+  "KREG": {
+    "lat": 30.173285,
+    "lon": -90.94075,
+    "tz": 2,
+    "city": "Gonzales",
+    "country": "United States",
+    "iata": "QDG"
+  },
+  "KRZR": {
+    "lat": 35.214195,
+    "lon": -84.797913,
+    "tz": 2,
+    "city": "Cleveland",
+    "country": "United States",
+    "iata": "QNZ"
+  },
+  "KALM": {
+    "lat": 32.845833,
+    "lon": -105.985275,
+    "tz": 2,
+    "city": "Alamogordo",
+    "country": "United States",
+    "iata": "ALM"
+  },
+  "KETB": {
+    "lat": 43.422199,
+    "lon": -88.127899,
+    "tz": 2,
+    "city": "West Bend",
+    "country": "United States",
+    "iata": "ETB"
+  },
+  "KSNL": {
+    "lat": 35.356438,
+    "lon": -96.94278,
+    "tz": 2,
+    "city": "Shawnee",
+    "country": "United States",
+    "iata": "SNL"
+  },
+  "KLNN": {
+    "lat": 41.683998,
+    "lon": -81.389702,
+    "tz": 2,
+    "city": "Willoughby",
+    "country": "United States",
+    "iata": "LNN"
+  },
+  "MYSM": {
+    "lat": 24.063271,
+    "lon": -74.523903,
+    "tz": 2,
+    "city": "San Salvador",
+    "country": "Bahamas",
+    "iata": "ZSA"
+  },
+  "OYSQ": {
+    "lat": 12.63067,
+    "lon": 53.905769,
+    "tz": 2,
+    "city": "Socotra",
+    "country": "Yemen",
+    "iata": "SCT"
   }
 }
