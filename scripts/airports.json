@@ -24908,5 +24908,53 @@
     "city": "Socotra",
     "country": "Yemen",
     "iata": "SCT"
+  },
+  "EGUL": {
+    "lat": 52.409302,
+    "lon": 0.561,
+    "tz": 2,
+    "city": "Lakenheath",
+    "country": "United Kingdom",
+    "iata": "LKZ"
+  },
+  "ENNM": {
+    "lat": 64.472092,
+    "lon": 11.577442,
+    "tz": 2,
+    "city": "Namsos",
+    "country": "Norway",
+    "iata": "OSY"
+  },
+  "KHAO": {
+    "lat": 39.360001,
+    "lon": -84.519997,
+    "tz": 2,
+    "city": "Hamilton",
+    "country": "United States",
+    "iata": "HAO"
+  },
+  "KALX": {
+    "lat": 32.915195,
+    "lon": -85.962997,
+    "tz": 2,
+    "city": "Alexander City",
+    "country": "United States",
+    "iata": "ALX"
+  },
+  "KPTS": {
+    "lat": 37.446667,
+    "lon": -94.730553,
+    "tz": 2,
+    "city": "Pittsburg",
+    "country": "United States",
+    "iata": "PTS"
+  },
+  "CYQS": {
+    "lat": 42.773056,
+    "lon": -81.105995,
+    "tz": 2,
+    "city": "St. Thomas",
+    "country": "Canada",
+    "iata": "YQS"
   }
 }
