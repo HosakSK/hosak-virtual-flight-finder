@@ -24956,5 +24956,77 @@
     "city": "St. Thomas",
     "country": "Canada",
     "iata": "YQS"
+  },
+  "ESCF": {
+    "lat": 58.401375,
+    "lon": 15.525439,
+    "tz": 2,
+    "city": "Linkoping",
+    "country": "Sweden",
+    "iata": "QEI"
+  },
+  "KPUC": {
+    "lat": 39.609722,
+    "lon": -110.752777,
+    "tz": 2,
+    "city": "Price",
+    "country": "United States",
+    "iata": "PUC"
+  },
+  "KTOP": {
+    "lat": 39.069721,
+    "lon": -95.622498,
+    "tz": 2,
+    "city": "Topeka",
+    "country": "United States",
+    "iata": "TOP"
+  },
+  "KWWR": {
+    "lat": 36.438,
+    "lon": -99.522667,
+    "tz": 2,
+    "city": "Woodward",
+    "country": "United States",
+    "iata": "WWR"
+  },
+  "KUNI": {
+    "lat": 39.210999,
+    "lon": -82.2314,
+    "tz": 2,
+    "city": "Athens",
+    "country": "United States",
+    "iata": "ATO"
+  },
+  "KXNX": {
+    "lat": 36.374924,
+    "lon": -86.408386,
+    "tz": 2,
+    "city": "Gallatin",
+    "country": "United States",
+    "iata": "QSX"
+  },
+  "KICR": {
+    "lat": 43.389309,
+    "lon": -99.840874,
+    "tz": 2,
+    "city": "Winner",
+    "country": "United States",
+    "iata": "QNI"
+  },
+  "KHOP": {
+    "lat": 36.67408,
+    "lon": -87.489609,
+    "tz": 2,
+    "city": "Hopkinsville",
+    "country": "United States",
+    "iata": "HOP"
+  },
+  "CYXH": {
+    "lat": 50.01889,
+    "lon": -110.720001,
+    "tz": 2,
+    "city": "Medicine Hat",
+    "country": "Canada",
+    "iata": "YXH"
   }
 }
