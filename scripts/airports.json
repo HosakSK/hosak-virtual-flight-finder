@@ -25028,5 +25028,61 @@
     "city": "Medicine Hat",
     "country": "Canada",
     "iata": "YXH"
+  },
+  "LERL": {
+    "lat": 38.85638,
+    "lon": -3.97,
+    "tz": 2,
+    "city": "Ciudad Real",
+    "country": "Spain",
+    "iata": "CQM"
+  },
+  "KBTN": {
+    "lat": 45.816257,
+    "lon": -97.744698,
+    "tz": 2,
+    "city": "Britton",
+    "country": "United States",
+    "iata": "TTO"
+  },
+  "KGBR": {
+    "lat": 42.184216,
+    "lon": -73.403114,
+    "tz": 2,
+    "city": "Great Barrington",
+    "country": "United States",
+    "iata": "GBR"
+  },
+  "KHZL": {
+    "lat": 40.986698,
+    "lon": -75.992744,
+    "tz": 2,
+    "city": "Hazleton",
+    "country": "United States",
+    "iata": "HZL"
+  },
+  "KARB": {
+    "lat": 42.223057,
+    "lon": -83.74556,
+    "tz": 2,
+    "city": "Ann Arbor",
+    "country": "United States",
+    "iata": "ARB"
+  },
+  "CYLS": {
+    "lat": 44.48605,
+    "lon": -79.555603,
+    "tz": 2,
+    "city": "Barrie",
+    "country": "Canada",
+    "iata": "YLK"
+  },
+  "KFFA": {
+    "lat": 36.017395,
+    "lon": -75.6716,
+    "tz": 2,
+    "city": "Kill Devil Hills",
+    "country": "United States",
+    "iata": "FFA"
   }
 }
