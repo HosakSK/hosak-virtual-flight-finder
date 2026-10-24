@@ -25084,5 +25084,45 @@
     "city": "Kill Devil Hills",
     "country": "United States",
     "iata": "FFA"
+  },
+  "LFQB": {
+    "lat": 48.321609,
+    "lon": 4.016622,
+    "tz": 2,
+    "city": "Troyes",
+    "country": "France",
+    "iata": "QYT"
+  },
+  "KMWO": {
+    "lat": 39.529251,
+    "lon": -84.394165,
+    "tz": 2,
+    "city": "Middletown",
+    "country": "United States",
+    "iata": "MWO"
+  },
+  "KOWB": {
+    "lat": 37.739502,
+    "lon": -87.167297,
+    "tz": 2,
+    "city": "Owensboro",
+    "country": "United States",
+    "iata": "OWB"
+  },
+  "KTPL": {
+    "lat": 31.150278,
+    "lon": -97.409164,
+    "tz": 2,
+    "city": "Temple",
+    "country": "United States",
+    "iata": "TPL"
+  },
+  "KMPV": {
+    "lat": 44.200516,
+    "lon": -72.563248,
+    "tz": 2,
+    "city": "Barre Montpelier",
+    "country": "United States",
+    "iata": "MPV"
   }
 }
