@@ -25124,5 +25124,53 @@
     "city": "Barre Montpelier",
     "country": "United States",
     "iata": "MPV"
+  },
+  "KMVC": {
+    "lat": 31.458,
+    "lon": -87.350998,
+    "tz": 2,
+    "city": "Monroeville",
+    "country": "United States",
+    "iata": "MVC"
+  },
+  "KRTN": {
+    "lat": 36.74139,
+    "lon": -104.501114,
+    "tz": 2,
+    "city": "Raton",
+    "country": "United States",
+    "iata": "RTN"
+  },
+  "ZBHD": {
+    "lat": 36.524715,
+    "lon": 114.423988,
+    "tz": 2,
+    "city": "Handan",
+    "country": "China",
+    "iata": "HDG"
+  },
+  "VIJR": {
+    "lat": 26.888651,
+    "lon": 70.86496,
+    "tz": 2,
+    "city": "Jaisalmer",
+    "country": "India",
+    "iata": "JSA"
+  },
+  "VIPT": {
+    "lat": 29.0334,
+    "lon": 79.47374,
+    "tz": 2,
+    "city": "Pantnagar",
+    "country": "India",
+    "iata": "PGH"
+  },
+  "SPJL": {
+    "lat": -15.4671,
+    "lon": -70.158096,
+    "tz": 2,
+    "city": "Juliaca",
+    "country": "Peru",
+    "iata": "JUL"
   }
 }
