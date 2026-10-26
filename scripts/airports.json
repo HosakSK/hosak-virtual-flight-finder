@@ -25172,5 +25172,69 @@
     "city": "Juliaca",
     "country": "Peru",
     "iata": "JUL"
+  },
+  "LIMW": {
+    "lat": 45.738499,
+    "lon": 7.36872,
+    "tz": 2,
+    "city": "Aosta",
+    "country": "Italy",
+    "iata": "AOT"
+  },
+  "KTIW": {
+    "lat": 47.267632,
+    "lon": -122.576477,
+    "tz": 2,
+    "city": "Tacoma",
+    "country": "United States",
+    "iata": "TIW"
+  },
+  "KMTW": {
+    "lat": 44.129723,
+    "lon": -87.68222,
+    "tz": 2,
+    "city": "Manitowoc",
+    "country": "United States",
+    "iata": "MTW"
+  },
+  "KMNM": {
+    "lat": 45.126652,
+    "lon": -87.638397,
+    "tz": 2,
+    "city": "Menominee",
+    "country": "United States",
+    "iata": "MNM"
+  },
+  "KOCW": {
+    "lat": 35.572655,
+    "lon": -77.048737,
+    "tz": 2,
+    "city": "Washington",
+    "country": "United States",
+    "iata": "OCW"
+  },
+  "KP52": {
+    "lat": 34.729931,
+    "lon": -112.035065,
+    "tz": 2,
+    "city": "Cottonwood",
+    "country": "United States",
+    "iata": "CTW"
+  },
+  "KSPK": {
+    "lat": 40.143215,
+    "lon": -111.665215,
+    "tz": 2,
+    "city": "Spanish Fork",
+    "country": "United States",
+    "iata": "QNK"
+  },
+  "KFRM": {
+    "lat": 43.643902,
+    "lon": -94.415604,
+    "tz": 2,
+    "city": "Fairmont",
+    "country": "United States",
+    "iata": "FRM"
   }
 }
