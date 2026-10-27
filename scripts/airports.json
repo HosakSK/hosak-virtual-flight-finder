@@ -25236,5 +25236,53 @@
     "city": "Fairmont",
     "country": "United States",
     "iata": "FRM"
+  },
+  "RJTY": {
+    "lat": 35.748489,
+    "lon": 139.348404,
+    "tz": 2,
+    "city": "Tokyo",
+    "country": "Japan",
+    "iata": "OKO"
+  },
+  "KBIF": {
+    "lat": 31.849592,
+    "lon": -106.379868,
+    "tz": 2,
+    "city": "El Paso",
+    "country": "United States",
+    "iata": "BIF"
+  },
+  "KRKW": {
+    "lat": 35.922363,
+    "lon": -84.689812,
+    "tz": 2,
+    "city": "Rockwood",
+    "country": "United States",
+    "iata": "RKW"
+  },
+  "KVSF": {
+    "lat": 43.340981,
+    "lon": -72.519363,
+    "tz": 2,
+    "city": "Springfield",
+    "country": "United States",
+    "iata": "VSF"
+  },
+  "MYAK": {
+    "lat": 24.158367,
+    "lon": -77.588799,
+    "tz": 2,
+    "city": "Congo Town",
+    "country": "Bahamas",
+    "iata": "TZN"
+  },
+  "ZUBJ": {
+    "lat": 27.266666,
+    "lon": 105.479164,
+    "tz": 2,
+    "city": "Bijie",
+    "country": "China",
+    "iata": "BFJ"
   }
 }
