@@ -25284,5 +25284,93 @@
     "city": "Bijie",
     "country": "China",
     "iata": "BFJ"
+  },
+  "EGHF": {
+    "lat": 50.814758,
+    "lon": -1.208131,
+    "tz": 2,
+    "city": "Fareham",
+    "country": "United Kingdom",
+    "iata": "QKB"
+  },
+  "EHTW": {
+    "lat": 52.27441,
+    "lon": 6.885969,
+    "tz": 2,
+    "city": "Enschede",
+    "country": "Netherlands",
+    "iata": "ENS"
+  },
+  "ESIB": {
+    "lat": 58.429558,
+    "lon": 12.711525,
+    "tz": 2,
+    "city": "Satenas",
+    "country": "Sweden",
+    "iata": "QMI"
+  },
+  "KHFY": {
+    "lat": 39.628262,
+    "lon": -86.087967,
+    "tz": 2,
+    "city": "Greenwood",
+    "country": "United States",
+    "iata": "QNY"
+  },
+  "PADG": {
+    "lat": 68.032097,
+    "lon": -162.899002,
+    "tz": 2,
+    "city": "Red Dog",
+    "country": "United States",
+    "iata": "RDB"
+  },
+  "KGHG": {
+    "lat": 42.095955,
+    "lon": -70.675049,
+    "tz": 2,
+    "city": "Marshfield",
+    "country": "United States",
+    "iata": "QQH"
+  },
+  "KWLW": {
+    "lat": 39.516399,
+    "lon": -122.218002,
+    "tz": 2,
+    "city": "Willows",
+    "country": "United States",
+    "iata": "WLW"
+  },
+  "KGED": {
+    "lat": 38.688332,
+    "lon": -75.357498,
+    "tz": 2,
+    "city": "Georgetown",
+    "country": "United States",
+    "iata": "GED"
+  },
+  "KSPF": {
+    "lat": 44.480278,
+    "lon": -103.783058,
+    "tz": 2,
+    "city": "Spearfish",
+    "country": "United States",
+    "iata": "SPF"
+  },
+  "KMMI": {
+    "lat": 35.397221,
+    "lon": -84.5625,
+    "tz": 2,
+    "city": "Athens",
+    "country": "United States",
+    "iata": "MMI"
+  },
+  "KE38": {
+    "lat": 30.387016,
+    "lon": -103.681152,
+    "tz": 2,
+    "city": "Alpine",
+    "country": "United States",
+    "iata": "ALE"
   }
 }
