@@ -25372,5 +25372,53 @@
     "city": "Alpine",
     "country": "United States",
     "iata": "ALE"
+  },
+  "BGJN": {
+    "lat": 69.24321,
+    "lon": -51.057098,
+    "tz": 2,
+    "city": "Ilulissat",
+    "country": "Greenland",
+    "iata": "JAV"
+  },
+  "KMRC": {
+    "lat": 35.553375,
+    "lon": -87.177437,
+    "tz": 2,
+    "city": "Columbia",
+    "country": "United States",
+    "iata": "MRC"
+  },
+  "KDYS": {
+    "lat": 32.42083,
+    "lon": -99.854599,
+    "tz": 2,
+    "city": "Abilene",
+    "country": "United States",
+    "iata": "DYS"
+  },
+  "KPVG": {
+    "lat": 36.780453,
+    "lon": -76.452492,
+    "tz": 2,
+    "city": "Norfolk",
+    "country": "United States",
+    "iata": "QNV"
+  },
+  "KDVN": {
+    "lat": 41.610298,
+    "lon": -90.588303,
+    "tz": 2,
+    "city": "Davenport",
+    "country": "United States",
+    "iata": "DVN"
+  },
+  "KUZA": {
+    "lat": 34.987778,
+    "lon": -81.05722,
+    "tz": 2,
+    "city": "Rock Hill",
+    "country": "United States",
+    "iata": "RKH"
   }
 }
