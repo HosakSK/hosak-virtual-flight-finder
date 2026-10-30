@@ -25420,5 +25420,93 @@
     "city": "Rock Hill",
     "country": "United States",
     "iata": "RKH"
+  },
+  "ESNO": {
+    "lat": 63.408329,
+    "lon": 18.99003,
+    "tz": 2,
+    "city": "Ornskoldsvik",
+    "country": "Sweden",
+    "iata": "OER"
+  },
+  "GOOY": {
+    "lat": 14.7397,
+    "lon": -17.4902,
+    "tz": 2,
+    "city": "Dakar",
+    "country": "Senegal",
+    "iata": "DKR"
+  },
+  "LFOP": {
+    "lat": 49.390831,
+    "lon": 1.183889,
+    "tz": 2,
+    "city": "Rouen",
+    "country": "France",
+    "iata": "URO"
+  },
+  "KDHT": {
+    "lat": 36.022579,
+    "lon": -102.546997,
+    "tz": 2,
+    "city": "Dalhart",
+    "country": "United States",
+    "iata": "DHT"
+  },
+  "PHJR": {
+    "lat": 21.305307,
+    "lon": -158.071228,
+    "tz": 2,
+    "city": "Kapolei",
+    "country": "United States",
+    "iata": "JRF"
+  },
+  "KHVR": {
+    "lat": 48.542969,
+    "lon": -109.762001,
+    "tz": 2,
+    "city": "Havre",
+    "country": "United States",
+    "iata": "HVR"
+  },
+  "KLKP": {
+    "lat": 44.265873,
+    "lon": -73.964584,
+    "tz": 2,
+    "city": "Lake Placid",
+    "country": "United States",
+    "iata": "LKP"
+  },
+  "KGKJ": {
+    "lat": 41.626499,
+    "lon": -80.214699,
+    "tz": 2,
+    "city": "Meadville",
+    "country": "United States",
+    "iata": "MEJ"
+  },
+  "KBLF": {
+    "lat": 37.295696,
+    "lon": -81.20771,
+    "tz": 2,
+    "city": "Bluefield",
+    "country": "United States",
+    "iata": "BLF"
+  },
+  "KSEP": {
+    "lat": 32.21574,
+    "lon": -98.177963,
+    "tz": 2,
+    "city": "Stephenville",
+    "country": "United States",
+    "iata": "SEP"
+  },
+  "YPCC": {
+    "lat": -12.188611,
+    "lon": 96.830559,
+    "tz": 2,
+    "city": "Cocos Islands",
+    "country": "Cocos (Keeling) Islands",
+    "iata": "CCK"
   }
 }
