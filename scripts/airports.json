@@ -25508,5 +25508,37 @@
     "city": "Cocos Islands",
     "country": "Cocos (Keeling) Islands",
     "iata": "CCK"
+  },
+  "VRDA": {
+    "lat": 5.822222,
+    "lon": 73.474724,
+    "tz": 2,
+    "city": "Maafaru",
+    "country": "Maldives",
+    "iata": "NMF"
+  },
+  "KRCA": {
+    "lat": 44.145088,
+    "lon": -103.102997,
+    "tz": 2,
+    "city": "Rapid City",
+    "country": "United States",
+    "iata": "RCA"
+  },
+  "KUTS": {
+    "lat": 30.746372,
+    "lon": -95.587234,
+    "tz": 2,
+    "city": "Huntsville",
+    "country": "United States",
+    "iata": "HTV"
+  },
+  "LTBQ": {
+    "lat": 40.735027,
+    "lon": 30.083336,
+    "tz": 2,
+    "city": "Izmit",
+    "country": "Turkey",
+    "iata": "KCO"
   }
 }
